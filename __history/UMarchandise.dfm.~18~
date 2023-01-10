@@ -1,0 +1,249 @@
+object FMarchandise: TFMarchandise
+  Left = 0
+  Top = 0
+  ClientHeight = 493
+  ClientWidth = 930
+  Caption = 'Marchandises'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 930
+    Height = 493
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = -154
+    ExplicitTop = -152
+    ExplicitWidth = 799
+    ExplicitHeight = 461
+    object PanTitle: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 930
+      Height = 27
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 1
+      Title = 'Escales'
+      Caption = 'Marchandises'
+      Color = clWhite
+      Layout = 'column'
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 27
+      Width = 930
+      Height = 67
+      Hint = ''
+      Align = alTop
+      TabOrder = 2
+      Caption = ''
+      object EdCode: TUniEdit
+        Left = 44
+        Top = 31
+        Width = 121
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 1
+      end
+      object EdLibelle: TUniEdit
+        Left = 248
+        Top = 31
+        Width = 241
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 2
+      end
+      object UniLabel1: TUniLabel
+        Left = 44
+        Top = 12
+        Width = 25
+        Height = 13
+        Hint = ''
+        Caption = 'Code'
+        TabOrder = 4
+      end
+      object UniLabel2: TUniLabel
+        Left = 248
+        Top = 12
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Libell'#233
+        TabOrder = 5
+      end
+      object UniLabel3: TUniLabel
+        Left = 577
+        Top = 12
+        Width = 24
+        Height = 13
+        Hint = ''
+        Caption = 'Type'
+        TabOrder = 6
+      end
+      object DBLUnite: TUniDBLookupComboBox
+        Left = 577
+        Top = 31
+        Width = 224
+        Hint = ''
+        ListField = 'description_unite'
+        ListSource = DM.DS_DBL_TM
+        KeyField = 'id_type_march'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 3
+        Color = clWindow
+      end
+      object BtnCancel: TUniButton
+        Left = 846
+        Top = 38
+        Width = 80
+        Height = 25
+        Hint = ''
+        Caption = 'Annuler'
+        TabOrder = 7
+        IconCls = 'delete'
+      end
+      object BtnSave: TUniButton
+        Left = 846
+        Top = 6
+        Width = 81
+        Height = 25
+        Hint = ''
+        Caption = 'Enregistrer'
+        TabOrder = 8
+        IconCls = 'bookmarks'
+      end
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 94
+      Width = 44
+      Height = 399
+      Hint = ''
+      Align = alLeft
+      TabOrder = 3
+      Caption = ''
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 36
+        Height = 30
+        Hint = 'Ajouter'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Ajouter'
+        Align = alTop
+        TabOrder = 1
+        IconAlign = iaTop
+        IconCls = 'add'
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 40
+        Width = 36
+        Height = 30
+        Hint = 'Modifier'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Modifier'
+        Align = alTop
+        TabOrder = 2
+        IconAlign = iaTop
+        IconCls = 'compose'
+      end
+      object BtnDelete: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 76
+        Width = 36
+        Height = 30
+        Hint = 'Supprimer'
+        Enabled = False
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Supprimer'
+        Align = alTop
+        TabOrder = 3
+        IconAlign = iaTop
+        IconCls = 'trash'
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 44
+      Top = 94
+      Width = 886
+      Height = 399
+      Hint = ''
+      DataSource = DM.DS_Grid_March
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 4
+      Columns = <
+        item
+          FieldName = 'id_marchandise'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'libelle_marchandise'
+          Title.Alignment = taCenter
+          Title.Caption = 'Nom'
+          Title.Font.Style = [fsBold]
+          Width = 315
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'code_marchandise'
+          Title.Alignment = taCenter
+          Title.Caption = 'Code'
+          Title.Font.Style = [fsBold]
+          Width = 102
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'libelle_type_march'
+          Title.Alignment = taCenter
+          Title.Caption = 'Type'
+          Title.Font.Style = [fsBold]
+          Width = 193
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'description_unite'
+          Title.Alignment = taCenter
+          Title.Caption = 'Mesure'
+          Title.Font.Style = [fsBold]
+          Width = 160
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
+    end
+  end
+end

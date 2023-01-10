@@ -1,0 +1,48 @@
+unit URapportEscale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniGroupBox,
+  uniBasicGrid, uniDBGrid, uniLabel, uniEdit, uniButton;
+
+type
+  TFRapportEscale = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    PanOp: TUniPanel;
+    BtnDel: TUniButton;
+    BtnUpdate: TUniButton;
+    BtnAdd: TUniButton;
+    EdSearch: TUniEdit;
+    UniLabel1: TUniLabel;
+    BtnValidate: TUniButton;
+    BtnControl: TUniButton;
+    DBGrid: TUniDBGrid;
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    UniPanel1: TUniPanel;
+    UniPanel2: TUniPanel;
+    UniGroupBox1: TUniGroupBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FRapportEscale: TFRapportEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FRapportEscale: TFRapportEscale;
+begin
+  Result := TFRapportEscale(DM.GetFormInstance(TFRapportEscale));
+end;
+
+end.

@@ -1,0 +1,147 @@
+unit UNavire;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniButton, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniLabel, uniEdit, uniPanel,
+  uniGUIBaseClasses;
+
+type
+  TFNavire = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    DBGrid: TUniDBGrid;
+    UniContainerPanel2: TUniContainerPanel;
+    UniPanel3: TUniPanel;
+    UniPanel4: TUniPanel;
+    UniSimplePanel1: TUniSimplePanel;
+    UniLabel5: TUniLabel;
+    EdSearch: TUniEdit;
+    BtnAdd: TUniButton;
+    BtnUpdate: TUniButton;
+    BtnDelete: TUniButton;
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnAddClick(Sender: TObject);
+    procedure BtnUpdateClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure UpdateLoadData;
+  public
+    { Public declarations }
+    procedure ShowData;
+  end;
+
+function FNavire: TFNavire;
+var
+    filter, search, init_query, query:string;
+    title :string = 'Navires';
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, Main, ServerModule, UDataLaod, UFunction,
+  UGlobal, ULoadData, UEditNavire;
+
+function FNavire: TFNavire;
+begin
+  Result := TFNavire(DM.GetFormInstance(TFNavire));
+end;
+
+procedure TFNavire.UpdateLoadData;
+begin
+    //UPDATE CHECK VARIABLES
+   FEditNavire.id_nav :=DM.QStand.FieldValues['id_navire'];
+   FEditNavire.nom_nav :=DM.QStand.FieldValues['nom_navire'];
+
+   //UPDATE LOAD_DATA
+   FEditNavire.EdNom.Text :=DM.QStand.FieldValues['nom_navire'];
+   FEditNavire.EdImma.Text :=DM.QStand.FieldValues['imma_navire'];
+   FEditNavire.DBLTypeNav.KeyValue :=DM.QStand.FieldValues['type_navire'];
+   FEditNavire.DBLPays.KeyValue :=DM.QStand.FieldValues['pays_navire'];
+end;
+
+procedure TFNavire.ShowData;
+  begin
+      filter:=' order by nom_navire';
+
+      if EdSearch.IsBlank then search:='' else
+      search:=' AND (UPPER(nom_navire) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
+
+
+      init_query:= 'SELECT *, case WHEN T.facturable_type_nav=TRUE THEN ''OUI'' ELSE ''NON''	end as statut from navire N  '#13+
+                    ' LEFT JOIN type_navire T on N.type_navire= T.id_type_nav   '#13+
+                    ' LEFT JOIN pays P on N.pays_navire=P.id_pays WHERE id_navire is not null  ' ;
+      query:=init_query + search+ filter;
+
+      DM.DQ_Grid_Navire.Close;
+      DM.DQ_Grid_Navire.SQL.Clear;
+      DM.DQ_Grid_Navire.SQL.Text := query;
+      DM.DQ_Grid_Navire.Open;
+  end;
+
+
+procedure TFNavire.BtnAddClick(Sender: TObject);
+begin
+  FEditNavire.EditContext := FormContext;
+  FEditNavire.FmContext := AddContext;
+  FEditNavire.Caption := FrmEditTitle(title, AddTitle);
+  FEditNavire.Show;
+end;
+
+procedure TFNavire.BtnUpdateClick(Sender: TObject);
+begin
+    FEditNavire.Caption := FrmEditTitle(title, UpdateTitle);
+
+    FEditNavire.ShowModal;
+    FEditNavire.BtnSave.Caption := UpdateBtnCaption;
+    FEditNavire.BtnSave.IconCls := 'compose';
+
+    FEditNavire.FmContext := UpdateContext;
+
+     with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM navire where id_navire=:id ');
+           Parameters.ParamByName('id').Value:= DBGrid.DataSource.DataSet.FieldByName('id_navire').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               FEditNavire.ShowModal;
+               UpdateLoadData;
+           end
+
+           else
+end;
+
+procedure TFNavire.DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+begin
+if  DM.DQ_Grid_Navire.RecordCount=0 then
+      begin
+            BtnUpdate.Enabled:=False;
+            BtnDelete.Enabled:=False;
+      end
+    else
+       begin
+          BtnUpdate.Enabled:=true;
+          BtnDelete.Enabled:=true;
+       end;
+end;
+
+procedure TFNavire.UniFormShow(Sender: TObject);
+begin
+    LoadDBLPays;
+    LoadDBLTypeNavire;
+
+    ShowData;
+end;
+
+end.

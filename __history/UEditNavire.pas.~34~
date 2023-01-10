@@ -1,0 +1,246 @@
+unit UEditNavire;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Data.DB,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniEdit, uniLabel, uniButton, uniPanel,
+  uniGUIBaseClasses, uniMultiItem, uniComboBox, uniDBComboBox,
+  uniDBLookupComboBox;
+
+type
+  TFEditNavire = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    UniPanel1: TUniPanel;
+    UniLabel4: TUniLabel;
+    EdImma: TUniEdit;
+    EdNom: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    UniLabel3: TUniLabel;
+    DBLPays: TUniDBLookupComboBox;
+    DBLTypeNav: TUniDBLookupComboBox;
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnCancelClick(Sender: TObject);
+    procedure BtnSaveClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    var
+    id_nav, nom_nav, imma_nav, type_nav, pays_nav : string;
+    FmContext : string;
+    EditContext : string;
+  end;
+
+function FEditNavire: TFEditNavire;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, ULoadData, UGlobal, UNavire;
+
+function FEditNavire: TFEditNavire;
+begin
+  Result := TFEditNavire(DM.GetFormInstance(TFEditNavire));
+end;
+
+procedure TFEditNavire.BtnCancelClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFEditNavire.BtnSaveClick(Sender: TObject);
+begin
+     //INSERT
+  if FmContext = AddContext then
+      begin
+        if EdNom.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Nom',mtWarning,[mbok]);
+                 EdNom.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+              with  DM.QCheck do
+                begin
+                     close;
+                     SQL.Clear;
+                     sql.add('select * from navire where nom_navire=:nom_navire');
+                     Parameters.ParamByName('nom_navire').Value:=EdNom.text;
+                     ExecSQL;
+                     Open;
+                end;
+                if DM.QCheck.RecordCount > 0 then
+                     begin
+                         MessageDlg('Un Navire posséde dejà ce Nom',mtError,[mbok]);
+                         EdNom.JSInterface.JSCall('focus' ,[]);
+                         Abort;
+                     end
+
+            else
+
+             if EdImma.IsBlank = False then
+              begin
+                with  DM.QCheck2 do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from navire where imma_navire=:imma_navire');
+                       Parameters.ParamByName('imma_navire').Value:=EdImma.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck2.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Navire posséde dejà cet immatricule',mtError,[mbok]);
+                           EdImma.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end;
+              end
+
+              else
+
+              if DBLTypeNav.KeyValue = 0 then
+                    begin
+                       MessageDlg('Veuillez sélectionner le Type du Navire',mtWarning,[mbok]);
+                       DBLTypeNav.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                    end
+               else
+
+               if DBLPays.KeyValue = 0 then
+                    begin
+                       MessageDlg('Veuillez sélectionner le Pays du Navire',mtWarning,[mbok]);
+                       DBLPays.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                    end
+               else
+
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO navire (nom_navire, imma_navire, type_navire, pays_navire )'#13+
+                                                          ' Values ( :nom, :imma, :type, :pays)');
+                                                  Parameters.ParamByName('nom').Value:= EdNom.Text;
+                                                  Parameters.ParamByName('imma').Value:= EdImma.Text;
+                                                  Parameters.ParamByName('type').Value:= DBLTypeNav.KeyValue;
+                                                  Parameters.ParamByName('pays').Value:=DBLPays.KeyValue;
+                                                  ExecSQL;
+                                              end;
+                                        begin
+                                        if EditContext = LookUpContext then
+                                            LoadDBLNavire
+                                        else
+                                          if EditContext = FormContext then
+                                              FNavire.ShowData
+                                        end;
+
+                                        close;
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+ if FmContext = UpdateContext then
+    begin
+      if EdNom.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Nom',mtWarning,[mbok]);
+               EdNom.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdNom.Text <> nom_nav) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from navire where nom_navire=:nom_navire');
+                       Parameters.ParamByName('nom_navire').Value:=EdNom.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Navire a dejà ce Nom',mtError,[mbok]);
+                           EdNom.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+
+           if DBLTypeNav.KeyValue = 0 then
+                    begin
+                       MessageDlg('Veuillez sélectionner le Type du Navire',mtWarning,[mbok]);
+                       DBLTypeNav.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                    end ;
+
+
+            if DBLPays.KeyValue = 0 then
+                    begin
+                       MessageDlg('Veuillez sélectionner le Pays du Navire',mtWarning,[mbok]);
+                       DBLPays.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                    end   ;
+
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE navire SET nom_navire=:nom, imma_navire=:imma, type_navire=:type, pays_navire=:pays  WHERE id_navire=:id ');
+                                            Parameters.ParamByName('id').Value:= id_nav;
+                                            Parameters.ParamByName('nom').Value:= EdNom.Text;
+                                            Parameters.ParamByName('imma').Value:= EdImma.Text;
+                                            Parameters.ParamByName('type').Value:= DBLTypeNav.KeyValue;
+                                            Parameters.ParamByName('pays').Value:= DBLPays.KeyValue;
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       FNavire.ShowData;
+                                       DM.DQ_Grid_Navire.Locate('id_navire',id_nav,[loCaseInsensitive] );
+                                       close;
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
+
+end;
+
+procedure TFEditNavire.UniFormShow(Sender: TObject);
+begin
+LoadDBLPays;
+LoadDBLTypeNavire;
+
+end;
+
+end.

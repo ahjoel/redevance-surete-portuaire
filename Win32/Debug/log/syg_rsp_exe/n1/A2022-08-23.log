@@ -1,0 +1,30 @@
+syg_rsp.exe: 000044AC: 05:26:48 []:Node-1, Terminate Started.
+syg_rsp.exe: 00002A54: 05:26:49 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00002A54: 05:26:49 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00002A54: 05:26:50 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00002A54: 05:26:50 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00002A54: 05:26:50 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00002A54: 05:26:50 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00002A54: 05:26:50 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00002A54: 05:26:50 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00002A54: 05:26:50 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00002A54: 05:26:50 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00002A54: 05:26:50 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000045F0: 06:30:51 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000045F0: 06:30:51 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000045F0: 06:30:51 [TUniServerModule]:Node Id = 1
+syg_rsp.exe: 000045F0: 06:30:51 [TUniServerModule]:Node MaxSessions = 250
+syg_rsp.exe: 000045F0: 06:30:51 [TUniServerModule]:Starting HTTP Server on Port: 16385...
+syg_rsp.exe: 000045F0: 06:30:51 [TUniServerModule]:HTTP Server Started on Port: 16385
+syg_rsp.exe: 0000417C: 10:12:43 []:Node-1, Terminate Started.
+syg_rsp.exe: 000045F0: 10:12:44 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000045F0: 10:12:44 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000045F0: 10:12:45 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000045F0: 10:12:45 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000045F0: 10:12:45 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000045F0: 10:12:45 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000045F0: 10:12:45 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000045F0: 10:12:45 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000045F0: 10:12:45 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000045F0: 10:12:45 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000045F0: 10:12:45 [Terminated]:Exit Code: 0

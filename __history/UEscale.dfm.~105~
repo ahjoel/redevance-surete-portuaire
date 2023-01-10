@@ -1,0 +1,429 @@
+object FEscale: TFEscale
+  Left = 0
+  Top = 0
+  ClientHeight = 700
+  ClientWidth = 1432
+  Caption = 'Escales'
+  OnShow = UniFormShow
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu, biMaximize]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainContainer: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 1432
+    Height = 700
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    object PanOp: TUniPanel
+      AlignWithMargins = True
+      Left = 3
+      Top = 28
+      Width = 1426
+      Height = 33
+      Hint = ''
+      Align = alTop
+      TabOrder = 1
+      Caption = ''
+      object BtnDel: TUniButton
+        AlignWithMargins = True
+        Left = 1344
+        Top = 4
+        Width = 78
+        Height = 25
+        Hint = ''
+        Enabled = False
+        Caption = 'Supprimer'
+        Align = alRight
+        TabOrder = 1
+        IconCls = 'delete'
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 1263
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Modifier'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'compose'
+        OnClick = BtnUpdateClick
+      end
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 1020
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Ajouter'
+        Align = alRight
+        TabOrder = 3
+        IconCls = 'add'
+        OnClick = BtnAddClick
+      end
+      object EdSearch: TUniEdit
+        Left = 83
+        Top = 5
+        Width = 225
+        Hint = 'Recherche ...'
+        ShowHint = True
+        ParentShowHint = False
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 4
+      end
+      object UniLabel1: TUniLabel
+        Left = 10
+        Top = 10
+        Width = 58
+        Height = 13
+        Hint = ''
+        Caption = 'Recherche :'
+        TabOrder = 5
+      end
+      object BtnValidate: TUniButton
+        AlignWithMargins = True
+        Left = 1182
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Enabled = False
+        Caption = 'Valider'
+        Align = alRight
+        TabOrder = 6
+        IconCls = 'check'
+        OnClick = BtnValidateClick
+      end
+      object BtnControl: TUniButton
+        AlignWithMargins = True
+        Left = 1101
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Controler'
+        Align = alRight
+        TabOrder = 7
+        IconCls = 'check2'
+        OnClick = BtnControlClick
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 0
+      Top = 64
+      Width = 1432
+      Height = 636
+      Hint = ''
+      DataSource = DM.DS_Grid_Escale
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      WebOptions.PageSize = 200
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 2
+      OnSelectionChange = DBGridSelectionChange
+      OnDrawColumnCell = DBGridDrawColumnCell
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'id'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+          ReadOnly = True
+        end
+        item
+          FieldName = 'ref'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ref Int'
+          Title.Font.Style = [fsBold]
+          Width = 70
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'num_port'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ref Port'
+          Title.Font.Style = [fsBold]
+          Width = 70
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'nom_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Navire'
+          Title.Font.Style = [fsBold]
+          Width = 206
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'code_type_nav'
+          Title.Alignment = taCenter
+          Title.Caption = 'Type'
+          Title.Font.Style = [fsBold]
+          Width = 44
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'statut'
+          Title.Alignment = taCenter
+          Title.Caption = 'Statut'
+          Title.Font.Style = [fsBold]
+          Width = 49
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'nom_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consignataire'
+          Title.Font.Style = [fsBold]
+          Width = 182
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'date_rade'
+          Title.Alignment = taCenter
+          Title.Caption = 'Rade'
+          Title.Font.Style = [fsBold]
+          Width = 90
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'date_accost'
+          Title.Alignment = taCenter
+          Title.Caption = 'Accostage'
+          Title.Font.Style = [fsBold]
+          Width = 90
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'date_depart'
+          Title.Alignment = taCenter
+          Title.Caption = 'Depart'
+          Title.Font.Style = [fsBold]
+          Width = 90
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'code_pq'
+          Title.Alignment = taCenter
+          Title.Caption = ' Poste'
+          Title.Font.Style = [fsBold]
+          Width = 46
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'orgine'
+          Title.Alignment = taCenter
+          Title.Caption = ' Provenance'
+          Title.Font.Style = [fsBold]
+          Width = 91
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'destination'
+          Title.Alignment = taCenter
+          Title.Caption = ' Destination'
+          Title.Font.Style = [fsBold]
+          Width = 84
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'tonne_brut'
+          Title.Alignment = taCenter
+          Title.Caption = 'TN Brut'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'tonne_net'
+          Title.Alignment = taCenter
+          Title.Caption = ' TN Net'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'observation'
+          Title.Alignment = taCenter
+          Title.Caption = ' OBS'
+          Title.Font.Style = [fsBold]
+          Width = 41
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'control'
+          Title.Alignment = taCenter
+          Title.Caption = 'C'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'validation'
+          Title.Alignment = taCenter
+          Title.Caption = 'V'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'rapport_esc'
+          Title.Alignment = taCenter
+          Title.Caption = ' R'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'fact_int'
+          Title.Alignment = taCenter
+          Title.Caption = ' FI'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'fact_pal'
+          Title.Alignment = taCenter
+          Title.Caption = ' FP'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Alignment = taCenter
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'commentaire_control'
+          Title.Alignment = taCenter
+          Title.Caption = 'commentaire_control'
+          Title.Font.Style = [fsBold]
+          Width = 64
+        end
+        item
+          FieldName = 'commentaire_validate'
+          Title.Alignment = taCenter
+          Title.Caption = 'commentaire_validate'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'rapport_control'
+          Title.Caption = 'rapport_control'
+          Width = 64
+        end
+        item
+          FieldName = 'rapport_validate'
+          Title.Caption = 'rapport_validate'
+          Width = 64
+        end
+        item
+          Title.Caption = ' '
+          Width = 64
+        end>
+    end
+    object UniContainerPanel1: TUniContainerPanel
+      Left = 0
+      Top = 0
+      Width = 1432
+      Height = 25
+      Hint = ''
+      ParentColor = False
+      Align = alTop
+      TabOrder = 3
+      object PanTitle: TUniPanel
+        Left = 35
+        Top = 0
+        Width = 1397
+        Height = 25
+        Hint = ''
+        Align = alClient
+        ParentFont = False
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Style = [fsBold]
+        TabOrder = 1
+        BorderStyle = ubsNone
+        Alignment = taLeftJustify
+        Title = 'Escales'
+        Caption = 'Escales'
+        Color = clSkyBlue
+        Layout = 'column'
+        ExplicitLeft = 41
+        ExplicitTop = 1
+      end
+      object UniPanel1: TUniPanel
+        Left = 0
+        Top = 0
+        Width = 35
+        Height = 25
+        Hint = ''
+        Align = alLeft
+        TabOrder = 2
+        BorderStyle = ubsNone
+        Caption = ''
+        Color = clSkyBlue
+      end
+    end
+  end
+end

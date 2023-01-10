@@ -1,0 +1,32 @@
+unit URapportEscale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFRapportEscale = class(TUniForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FRapportEscale: TFRapportEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FRapportEscale: TFRapportEscale;
+begin
+  Result := TFRapportEscale(DM.GetFormInstance(TFRapportEscale));
+end;
+
+end.

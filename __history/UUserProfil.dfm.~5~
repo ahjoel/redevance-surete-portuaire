@@ -1,0 +1,51 @@
+object FUserProfil: TFUserProfil
+  Left = 0
+  Top = 0
+  ClientHeight = 217
+  ClientWidth = 474
+  Caption = 'Profil Utilisateur'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 474
+    Height = 217
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 136
+    ExplicitTop = 136
+    ExplicitWidth = 256
+    ExplicitHeight = 128
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 474
+      Height = 33
+      Hint = ''
+      Align = alTop
+      TabOrder = 1
+      Caption = ''
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 33
+      Width = 474
+      Height = 184
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      ExplicitLeft = 88
+      ExplicitTop = 86
+      ExplicitWidth = 256
+      ExplicitHeight = 128
+    end
+  end
+end

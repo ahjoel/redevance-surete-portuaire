@@ -1,0 +1,36 @@
+hyper_server.exe: 00003DF0: 05:26:48 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00003DF0: 05:26:48 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00003DF0: 05:26:48 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00003DF0: 05:26:50 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00003DF0: 05:26:50 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00003DF0: 05:26:50 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00003DF0: 05:26:50 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00003DF0: 05:26:50 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00003DF0: 05:26:50 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00003DF0: 05:26:50 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00003DF0: 05:26:50 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00003DF0: 05:26:51 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00003DF0: 05:26:51 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00003DF0: 05:26:51 []:<-------------------------------------------------------------->
+hyper_server.exe: 00003DF0: 05:26:51 [Terminated]:Exit Code: 0
+hyper_server.exe: 00002898: 06:30:50 []:>--------------------------------------------------------------<
+hyper_server.exe: 00002898: 06:30:50 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00002898: 06:30:50 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00002898: 06:30:50 [Transport.PoolSize]:516
+hyper_server.exe: 00002898: 06:30:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00002898: 06:30:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00002898: 10:12:43 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00002898: 10:12:43 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00002898: 10:12:43 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00002898: 10:12:47 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00002898: 10:12:47 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00002898: 10:12:48 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00002898: 10:12:48 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00002898: 10:12:48 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00002898: 10:12:48 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00002898: 10:12:48 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00002898: 10:12:48 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00002898: 10:12:48 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00002898: 10:12:48 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00002898: 10:12:48 []:<-------------------------------------------------------------->
+hyper_server.exe: 00002898: 10:12:48 [Terminated]:Exit Code: 0

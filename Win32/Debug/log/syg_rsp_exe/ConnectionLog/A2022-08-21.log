@@ -1,0 +1,3 @@
+syg_rsp.exe: 00000E78: 08:04:25 [127.0.0.1]:Failed Sequence Recovery: SeqId: 5, Event: click
+syg_rsp.exe: 00000414: 08:04:34 [127.0.0.1]:Failed Sequence Recovery: SeqId: 6, Event: click
+syg_rsp.exe: 0000227C: 08:04:43 [127.0.0.1]:Failed Sequence Recovery: SeqId: 7, Event: click

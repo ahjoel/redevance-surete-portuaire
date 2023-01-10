@@ -1,0 +1,70 @@
+unit UPermissions;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMPerms = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  //ESCALES
+
+
+
+  //RADES
+
+
+  //FACTURATIONS
+
+
+  //REGLEMENTS
+
+
+
+  //USERS
+
+
+
+  //BAREME
+
+
+
+
+  //STATISTIQUES
+
+
+
+  //PARAMETRES
+
+
+  // TABLEAU DE BORDS
+
+
+  //S
+
+
+function DMPerms: TDMPerms;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  UniGUIVars, uniGUIMainModule, MainModule;
+
+function DMPerms: TDMPerms;
+begin
+  Result := TDMPerms(DM.GetModuleInstance(TDMPerms));
+end;
+
+initialization
+  RegisterModuleClass(TDMPerms);
+
+end.

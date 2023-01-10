@@ -1,0 +1,25 @@
+object FRapportEscale: TFRapportEscale
+  Left = 0
+  Top = 0
+  ClientHeight = 721
+  ClientWidth = 1303
+  Caption = 'FRapportEscale'
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 1303
+    Height = 721
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 472
+    ExplicitTop = 272
+    ExplicitWidth = 256
+    ExplicitHeight = 128
+  end
+end

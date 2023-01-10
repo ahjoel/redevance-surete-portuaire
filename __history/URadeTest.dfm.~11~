@@ -1,0 +1,316 @@
+object FRadeTest: TFRadeTest
+  Left = 0
+  Top = 0
+  ClientHeight = 769
+  ClientWidth = 1359
+  Caption = 'Rades | Test'
+  OnShow = UniFormShow
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainContainerPanel: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 1359
+    Height = 769
+    Hint = ''
+    ParentColor = False
+    Color = clSkyBlue
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = -8
+    object UniContainerPanel1: TUniContainerPanel
+      Left = 0
+      Top = 0
+      Width = 1359
+      Height = 30
+      Hint = ''
+      ParentColor = False
+      Color = clSkyBlue
+      Align = alTop
+      TabOrder = 1
+      object PanRowCount: TUniPanel
+        Left = 1262
+        Top = 0
+        Width = 97
+        Height = 30
+        Hint = ''
+        Align = alRight
+        TabOrder = 1
+        BorderStyle = ubsNone
+        Caption = ''
+        Color = clSkyBlue
+        ExplicitLeft = 504
+        ExplicitTop = -32
+        ExplicitHeight = 57
+      end
+      object UniPanel1: TUniPanel
+        Left = 0
+        Top = 0
+        Width = 49
+        Height = 30
+        Hint = ''
+        Align = alLeft
+        TabOrder = 2
+        BorderStyle = ubsNone
+        Caption = ''
+        Color = clSkyBlue
+        ExplicitHeight = 25
+      end
+      object PanTitle: TUniPanel
+        Left = 49
+        Top = 0
+        Width = 1213
+        Height = 30
+        Hint = ''
+        Align = alClient
+        TabOrder = 3
+        BorderStyle = ubsNone
+        Caption = ''
+        Color = clSkyBlue
+        ExplicitLeft = 72
+        ExplicitTop = -24
+        ExplicitWidth = 1113
+        ExplicitHeight = 49
+        object UniLabel1: TUniLabel
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 46
+          Height = 18
+          Hint = ''
+          Caption = 'Rades'
+          Align = alLeft
+          ParentFont = False
+          Font.Height = -15
+          Font.Style = [fsBold]
+          TabOrder = 1
+          ExplicitTop = 6
+        end
+      end
+    end
+    object PanOption: TUniPanel
+      Left = 0
+      Top = 30
+      Width = 1359
+      Height = 33
+      Hint = ''
+      Align = alTop
+      TabOrder = 2
+      Caption = ''
+      object UniLabel2: TUniLabel
+        Left = 14
+        Top = 6
+        Width = 73
+        Height = 16
+        Hint = ''
+        Caption = 'Recherche : '
+        ParentFont = False
+        Font.Height = -13
+        TabOrder = 1
+      end
+      object EdSearch: TUniEdit
+        Left = 93
+        Top = 6
+        Width = 220
+        Hint = 'Recherche ...'
+        ShowHint = True
+        ParentShowHint = False
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 4
+        OnChange = EdSearchChange
+      end
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 956
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Ajouter'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'add'
+        OnClick = BtnAddClick
+        ExplicitLeft = 875
+        ExplicitTop = 5
+      end
+      object BtnControl: TUniButton
+        AlignWithMargins = True
+        Left = 1037
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Controler'
+        Align = alRight
+        TabOrder = 3
+        IconCls = 'check2'
+        ExplicitLeft = 1024
+        ExplicitTop = 6
+      end
+      object BtnValidate: TUniButton
+        AlignWithMargins = True
+        Left = 1118
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Valider'
+        Align = alRight
+        TabOrder = 5
+        IconCls = 'check'
+        OnClick = BtnValidateClick
+        ExplicitTop = 6
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 1199
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Modifier'
+        Align = alRight
+        TabOrder = 6
+        IconCls = 'compose'
+        OnClick = BtnUpdateClick
+        ExplicitLeft = 1014
+        ExplicitTop = 6
+      end
+      object BtnDel: TUniButton
+        AlignWithMargins = True
+        Left = 1280
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Supprimer'
+        Align = alRight
+        TabOrder = 7
+        ExplicitLeft = 872
+        ExplicitTop = 8
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 0
+      Top = 63
+      Width = 1359
+      Height = 706
+      Hint = ''
+      TitleFont.Style = [fsBold]
+      DataSource = DM.DS_Grid_RadeT
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      BorderStyle = ubsNone
+      Align = alClient
+      TabOrder = 3
+      ParentColor = False
+      Color = clBtnFace
+      OnSelectionChange = DBGridSelectionChange
+      Columns = <
+        item
+          FieldName = 'id'
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'ref_ex'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ref Int'
+          Title.Font.Style = [fsBold]
+          Width = 96
+        end
+        item
+          FieldName = 'nom_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Navire'
+          Title.Font.Style = [fsBold]
+          Width = 238
+        end
+        item
+          FieldName = 'nom_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consignataire'
+          Title.Font.Style = [fsBold]
+          Width = 182
+        end
+        item
+          FieldName = 'code_type_nav'
+          Title.Alignment = taCenter
+          Title.Caption = 'Type'
+          Title.Font.Style = [fsBold]
+          Width = 45
+        end
+        item
+          FieldName = 'debut'
+          Title.Alignment = taCenter
+          Title.Caption = 'Debut'
+          Title.Font.Style = [fsBold]
+          Width = 98
+        end
+        item
+          FieldName = 'fin'
+          Title.Alignment = taCenter
+          Title.Caption = ' Fin'
+          Title.Font.Style = [fsBold]
+          Width = 95
+        end
+        item
+          FieldName = 'sejour'
+          Title.Alignment = taCenter
+          Title.Caption = 'Nb Jours'
+          Title.Font.Style = [fsBold]
+          Width = 55
+        end
+        item
+          FieldName = 'nombre_jour_taux_rade'
+          Title.Alignment = taCenter
+          Title.Caption = ' Base'
+          Title.Font.Style = [fsBold]
+          Width = 47
+        end
+        item
+          FieldName = 'qte'
+          Title.Alignment = taCenter
+          Title.Caption = 'Qte'
+          Title.Font.Style = [fsBold]
+          Width = 44
+        end
+        item
+          FieldName = 'control'
+          Title.Alignment = taCenter
+          Title.Caption = 'C'
+          Title.Font.Style = [fsBold]
+          Width = 30
+        end
+        item
+          FieldName = 'validation'
+          Title.Alignment = taCenter
+          Title.Caption = ' V'
+          Title.Font.Style = [fsBold]
+          Width = 30
+        end
+        item
+          FieldName = 'fact_int'
+          Title.Alignment = taCenter
+          Title.Caption = 'FI'
+          Title.Font.Style = [fsBold]
+          Width = 30
+        end
+        item
+          FieldName = 'fact_pal'
+          Title.Alignment = taCenter
+          Title.Caption = ' FP'
+          Title.Font.Style = [fsBold]
+          Width = 30
+        end>
+    end
+  end
+end

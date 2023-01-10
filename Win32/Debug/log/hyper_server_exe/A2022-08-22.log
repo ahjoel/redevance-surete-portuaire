@@ -1,0 +1,7 @@
+hyper_server.exe: 00003DF0: 09:15:34 []:>--------------------------------------------------------------<
+hyper_server.exe: 00003DF0: 09:15:34 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00003DF0: 09:15:34 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00003DF0: 09:15:34 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00003DF0: 09:15:34 []:Transport.PoolSize: 750
+hyper_server.exe: 00003DF0: 09:15:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00003DF0: 09:15:36 [TUniServerModule]:HTTP Server Started on Port: 8077

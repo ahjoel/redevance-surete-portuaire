@@ -1,0 +1,27 @@
+syg_rsp.exe: 00002044: 09:15:35 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00002044: 09:15:35 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00002044: 09:15:35 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00002044: 09:15:35 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00002044: 09:15:35 [TUniServerModule]:Node Id = 0
+syg_rsp.exe: 00002044: 09:15:35 [TUniServerModule]:Node MaxSessions = 250
+syg_rsp.exe: 00002044: 09:15:35 [TUniServerModule]:Starting HTTP Server on Port: 16384...
+syg_rsp.exe: 00002044: 09:15:35 [TUniServerModule]:HTTP Server Started on Port: 16384
+syg_rsp.exe: 00001ACC: 09:26:39 []:Node-0, Terminate Started.
+syg_rsp.exe: 00002044: 09:26:40 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00002044: 09:26:40 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00002044: 09:26:41 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00002044: 09:26:41 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00002044: 09:26:41 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00002044: 09:26:41 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00002044: 09:26:41 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00002044: 09:26:41 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00002044: 09:26:41 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00002044: 09:26:41 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00002044: 09:26:41 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000027EC: 09:26:41 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000027EC: 09:26:41 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000027EC: 09:26:41 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000027EC: 09:26:41 [TUniServerModule]:Node Id = 0
+syg_rsp.exe: 000027EC: 09:26:41 [TUniServerModule]:Node MaxSessions = 250
+syg_rsp.exe: 000027EC: 09:26:41 [TUniServerModule]:Starting HTTP Server on Port: 16384...
+syg_rsp.exe: 000027EC: 09:26:41 [TUniServerModule]:HTTP Server Started on Port: 16384

@@ -1,0 +1,702 @@
+unit UPaysPorts;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses, Data.DB,
+  uniGUIClasses, uniGUIForm, uniMultiItem, uniComboBox, uniDBComboBox,
+  uniDBLookupComboBox, uniBasicGrid, uniDBGrid, uniLabel, uniEdit, uniButton,
+  uniPanel, uniPageControl, uniGUIBaseClasses;
+
+type
+  TFPaysPorts = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PInstaPort: TUniPageControl;
+    Pays: TUniTabSheet;
+    UniContainerPanel3: TUniContainerPanel;
+    UniPanel3: TUniPanel;
+    UniPanel4: TUniPanel;
+    BtSavePays: TUniButton;
+    BtCancelPays: TUniButton;
+    EdCodePays: TUniEdit;
+    EdLibPays: TUniEdit;
+    UniLabel3: TUniLabel;
+    UniLabel4: TUniLabel;
+    UniPanel5: TUniPanel;
+    BtnAddPays: TUniButton;
+    BtnUpdatePays: TUniButton;
+    BtnDeletePays: TUniButton;
+    DBGridPays: TUniDBGrid;
+    Ports: TUniTabSheet;
+    UniContainerPanel2: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    UniPanel1: TUniPanel;
+    BtnSavePort: TUniButton;
+    BtnCancelPort: TUniButton;
+    EdCodePort: TUniEdit;
+    EdLibPort: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    DBLPays: TUniDBLookupComboBox;
+    UniLabel5: TUniLabel;
+    UniPanel2: TUniPanel;
+    BtnAddPort: TUniButton;
+    BtnUpdatePort: TUniButton;
+    BtnDeletePort: TUniButton;
+    DBGridPort: TUniDBGrid;
+    procedure BtSavePaysClick(Sender: TObject);
+    procedure BtnSavePortClick(Sender: TObject);
+    procedure UniFormShow(Sender: TObject);
+    procedure DBGridPaysRecordCount(Sender: TUniDBGrid;
+      var RecCount: Integer);
+    procedure DBGridPortRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure BtnUpdatePortClick(Sender: TObject);
+    procedure BtnUpdatePaysClick(Sender: TObject);
+    procedure BtnDeletePaysClick(Sender: TObject);
+    procedure BtnDeletePortClick(Sender: TObject);
+    procedure PortsBeforeActivate(Sender: TObject; var AllowActivate: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure ShowDataPays;
+    procedure ClearDataPays;
+
+    procedure ShowDataPort;
+    procedure ClearDataPort;
+
+    var
+    id_Pays, code_Pays, lib_Pays: string;
+    id_Port, code_Port, lib_Port, pays_Port: string;
+    FmContextPays : string;
+    FmContextPort : string;
+  end;
+
+function FPaysPorts: TFPaysPorts;
+var
+    filter_Pays, search_Pays, init_query_Pays, query_Pays:string;
+    filter_Port, search_Port, init_query_Port, query_Port:string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, Main, ServerModule, UDataLaod, UFunction,
+  UInstallationPort, UGlobal;
+
+function FPaysPorts: TFPaysPorts;
+begin
+  Result := TFPaysPorts(DM.GetFormInstance(TFPaysPorts));
+end;
+
+procedure TFPaysPorts.BtnDeletePaysClick(Sender: TObject);
+begin
+      with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from pays P, port R where P.id_pays=R.pays_port AND  P.id_pays=:id_pays');
+                   params.ParamByName('id_pays').Value:=DBGridPays.DataSource.DataSet.FieldByName('id_pays').AsString;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Donnée referencée, Suppression impossible',mtError,[mbok]);
+                       Abort;
+                   end
+              else
+
+              begin
+
+                    MessageDlg('Voulez-vous Supprimer '+DBGridPays.DataSource.DataSet.FieldByName('libelle_Pays').AsString , mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('DELETE FROM pays WHERE id_pays=:id');
+                                                  params.ParamByName('id').Value:= DBGridPays.DataSource.DataSet.FieldByName('id_pays').AsString;
+                                                  ExecSQL;
+                                              end;
+                                             ShowDataPays;
+                                end
+                            end ;
+                          end
+                        );
+              end;
+end;
+
+procedure TFPaysPorts.BtnDeletePortClick(Sender: TObject);
+begin
+    with  DM.QCheck do
+          begin
+               close;
+               SQL.Clear;
+               sql.add('select * from port P, escale E, rade R where P.id_port=E.port_orgine_esc OR P.id_port=E.port_dest_esc '#13+
+                        ' OR P.id_port=R.port_orgine_rade OR P.id_port=E.port_dest_rade AND P.id_port=:id_port');
+               params.ParamByName('id_port').Value:=DBGridPort.DataSource.DataSet.FieldByName('id_port').AsString;
+               ExecSQL;
+               Open;
+          end;
+          if DM.QCheck.RecordCount > 0 then
+               begin
+                   MessageDlg('Donnée referencée, Suppression impossible',mtError,[mbok]);
+                   Abort;
+               end
+          else
+
+          begin
+
+                MessageDlg('Voulez-vous Supprimer '+DBGridPort.DataSource.DataSet.FieldByName('libelle_port').AsString , mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('DELETE FROM port WHERE id_port=:id');
+                                              params.ParamByName('id').Value:= DBGridPort.DataSource.DataSet.FieldByName('id_port').AsString;
+                                              ExecSQL;
+                                          end;
+                                         ShowDataPort;
+                            end
+                        end ;
+                      end
+                    );
+          end;
+end;
+
+procedure TFPaysPorts.BtnSavePortClick(Sender: TObject);
+begin
+      //INSERT
+  if FmContextPort = AddContext then
+      begin
+
+        if EdLibPort.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+                 EdLibPort.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from Port where libelle_port=:libelle_port');
+                   params.ParamByName('libelle_port').Value:=EdLibPort.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Port posséde dejà ce Libellé',mtError,[mbok]);
+                       EdLibPort.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+          if EdCodePort.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+                 EdCodePort.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from port where code_port=:code_port');
+                   params.ParamByName('code_port').Value:=EdCodePort.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Port posséde dejà ce Code',mtError,[mbok]);
+                       EdCodePort.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+              if DBLPays.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner  le Pays ',mtWarning,[mbok]);
+                     DBLPays.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO port (code_port, libelle_port, pays_port ) Values (:code, :libelle, :pays  )');
+                                                  params.ParamByName('code').Value:= EdCodePort.Text;
+                                                  params.ParamByName('libelle').Value:= EdLibPort.Text;
+                                                  params.ParamByName('pays').Value:= DBLPays.KeyValue;
+                                                  ExecSQL;
+                                              end;
+                                             ClearDataPort;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_port) from port');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             ShowDataPort;
+                                             DM.DQ_Grid_port.Locate('id_port',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+//UPDATE
+  if FmContextPort = UpdateContext then
+    begin
+      if EdLibPort.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+               EdLibPort.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdLibPort.Text <> lib_Port) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from port where libelle_port=:libelle_port');
+                       params.ParamByName('libelle_port').Value:=EdLibPort.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Port dejà ce Libellé',mtError,[mbok]);
+                           EdLibPort.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+       if EdCodePort.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+               EdCodePort.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdCodePort.Text <> code_Port) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from port where code_port=:code_port');
+                       params.ParamByName('code_port').Value:=EdCodePort.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Port dejà ce Code',mtError,[mbok]);
+                           EdCodePort.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+        if DBLPays.IsBlank then
+            begin
+               MessageDlg('Veuillez sélectionner  le Pays ',mtWarning,[mbok]);
+               DBLPays.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end;
+
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE port SET code_port=:code, libelle_port=:libelle, pays_port=:ip_port  WHERE id_port=:id ');
+                                            params.ParamByName('id').Value:= id_Port;
+                                            params.ParamByName('code').Value:= EdCodePort.Text;
+                                            params.ParamByName('libelle').Value:= EdLibPort.Text;
+                                            params.ParamByName('pays_port').Value:= DBLPays.KeyValue;
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       ShowDataPort;
+                                       DM.DQ_Grid_port.Locate('id_port',id_Port,[loCaseInsensitive] );
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
+end;
+
+procedure TFPaysPorts.BtnUpdatePaysClick(Sender: TObject);
+begin
+         FmContextPays := UpdateContext;
+ with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM pays where id_pays=:id ');
+           Params.ParamByName('id').Value:= DBGridPays.DataSource.DataSet.FieldByName('id_pays').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               id_Pays:=DM.QStand.FieldValues['id_pays'];
+               lib_Pays :=DM.QStand.FieldValues['libelle_pays'];
+               code_Pays :=DM.QStand.FieldValues['code_pays'];
+
+               EdLibPays.Text :=DM.QStand.FieldValues['libelle_pays'];
+               EdCodePays.Text :=DM.QStand.FieldValues['code_pays'];
+           end
+end;
+
+procedure TFPaysPorts.BtnUpdatePortClick(Sender: TObject);
+begin
+     FmContextPort := UpdateContext;
+        with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM port where id_port=:id ');
+           Params.ParamByName('id').Value:= DBGridPort.DataSource.DataSet.FieldByName('id_port').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+
+               id_Port:=DM.QStand.FieldValues['id_port'];
+               code_Port :=DM.QStand.FieldValues['code_port'];
+               lib_Port :=DM.QStand.FieldValues['libelle_port'];
+               pays_Port :=DM.QStand.FieldValues['pays_port'];
+
+
+               EdCodePort.Text :=DM.QStand.FieldValues['code_port'];
+               EdLibPort.Text :=DM.QStand.FieldValues['libelle_port'];
+               DBLPays.KeyValue :=DM.QStand.FieldValues['pays_port'];
+           end
+end;
+
+procedure TFPaysPorts.BtSavePaysClick(Sender: TObject);
+begin
+   //INSERT
+  if FmContextPays = AddContext then
+      begin
+
+        if EdLibPays.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+                 EdLibPays.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from pays where libelle_pays=:libelle_pays');
+                   params.ParamByName('libelle_pays').Value:=EdLibPays.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Pays posséde dejà ce Libellé',mtError,[mbok]);
+                       EdLibPays.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+          if EdCodePays.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+                 EdCodePays.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from pays where code_pays=:code_pays');
+                   params.ParamByName('code_pays').Value:=EdCodePays.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Pays posséde dejà ce Code',mtError,[mbok]);
+                       EdCodePays.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO pays (code_pays, libelle_pays ) Values (:code, :libelle)');
+                                                  params.ParamByName('code').Value:= EdCodePays.Text;
+                                                  params.ParamByName('libelle').Value:= EdLibPays.Text;
+                                                  ExecSQL;
+                                              end;
+                                             ClearDataPays;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_pays) from pays');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             ShowDataPays;
+                                             DM.DQ_Grid_pays.Locate('id_pays',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+//UPDATE
+ if FmContextPays = UpdateContext then
+    begin
+      if EdLibPays.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+               EdLibPays.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdLibPays.Text <> lib_Pays) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from pays where libelle_pays=:libelle_pays');
+                       params.ParamByName('libelle_pays').Value:=EdLibPays.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Pays posséde dejà ce Libellé',mtError,[mbok]);
+                           EdLibpays.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+       if EdCodePays.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+               EdCodePays.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdCodePays.Text <> code_Pays) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from pays where code_pays=:code_pays');
+                       params.ParamByName('code_pays').Value:=EdCodePays.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Pays posséde dejà ce Code ',mtError,[mbok]);
+                           EdCodePays.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE pays SET code_pays=:code, libelle_pays=:libelle WHERE id_pays=:id ');
+                                            params.ParamByName('id').Value:= id_Pays;
+                                            params.ParamByName('code').Value:= EdCodePays.Text;
+                                            params.ParamByName('libelle').Value:= EdLibPays.Text;
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       ShowDataPays;
+                                       DM.DQ_Grid_pays.Locate('id_pays',id_pays,[loCaseInsensitive] );
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
+end;
+
+procedure TFPaysPorts.ClearDataPays;
+  begin
+      EdLibPays.Clear;
+      EdCodePays.Clear;
+  end;
+
+
+procedure TFPaysPorts.ClearDataPort;
+  begin
+      EdLibPort.Clear;
+      EdCodePort.Clear ;
+      DBLPays.KeyValue:=null;
+  end;
+
+procedure TFPaysPorts.DBGridPaysRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+   if  DBGridPays.DataSource.DataSet.RecordCount > 0 then
+        begin
+              BtnUpdatePays.Enabled:=true;
+              BtnDeletePays.Enabled:=true;
+        end
+      else
+  if  DBGridPays.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdatePays.Enabled:=False;
+            BtnDeletePays.Enabled:=False;
+         end;
+end;
+
+procedure TFPaysPorts.DBGridPortRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+   if  DBGridPort.DataSource.DataSet.RecordCount > 0 then
+        begin
+              BtnUpdatePort.Enabled:=true;
+              BtnDeletePort.Enabled:=true;
+        end
+      else
+  if  DBGridPort.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdatePort.Enabled:=False;
+            BtnDeletePort.Enabled:=False;
+         end;
+end;
+
+procedure TFPaysPorts.PortsBeforeActivate(Sender: TObject;
+  var AllowActivate: Boolean);
+begin
+    DM.DQ_DBL_Pays.Close;
+    DM.DQ_DBL_Pays.SQL.Clear;
+    DM.DQ_DBL_Pays.SQL.Add('SELECT * FROM pays WHERE id_pays is not null order by libelle_pays');
+    DM.DQ_DBL_Pays.Open;
+    ShowDataPort;
+end;
+
+procedure TFPaysPorts.ShowDataPays;
+  begin
+      filter_Pays:=' order by libelle_pays';
+
+      init_query_Pays:= 'SELECT * FROM pays WHERE id_pays is not null ' ;
+      query_Pays:=init_query_Pays + search_Pays+ filter_Pays;
+
+      DM.DQ_Grid_Pays.Close;
+      DM.DQ_Grid_Pays.SQL.Clear;
+      DM.DQ_Grid_Pays.SQL.Text := query_Pays;
+      DM.DQ_Grid_Pays.Open;
+  end;
+
+procedure TFPaysPorts.ShowDataPort;
+  begin
+      filter_Port:=' order by libelle_port';
+
+      init_query_Port:= 'SELECT * FROM port R, pays P WHERE R.pays_port= P.id_pays  ' ;
+      query_Port:=init_query_Port + search_Port+ filter_Port;
+
+      DM.DQ_Grid_Port.Close;
+      DM.DQ_Grid_Port.SQL.Clear;
+      DM.DQ_Grid_Port.SQL.Text := query_Port;
+      DM.DQ_Grid_Port.Open;
+  end;
+
+
+procedure TFPaysPorts.UniFormShow(Sender: TObject);
+begin
+       //Intsllation Pays
+    FmContextPays := AddContext;
+
+    ShowDataPays;
+
+    BtnAddPays.Caption := '';
+    BtnUpdatePays.Caption := '';
+    BtnDeletePays.Caption := '';
+
+    //Port
+    FmContextPort := AddContext;
+
+    DM.DQ_DBL_Pays.Close;
+    DM.DQ_DBL_Pays.SQL.Clear;
+    DM.DQ_DBL_Pays.SQL.Add('SELECT * FROM pays WHERE id_pays is not null order by libelle_pays');
+    DM.DQ_DBL_Pays.Open;
+
+    ShowDataPort;
+
+    BtnAddPort.Caption := '';
+    BtnUpdatePort.Caption := '';
+    BtnDeletePort.Caption := '';
+end;
+
+end.

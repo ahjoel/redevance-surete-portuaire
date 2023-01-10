@@ -1,0 +1,7 @@
+syg_rsp.exe: 000042C0: 17:17:34 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000042C0: 17:17:34 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000042C0: 17:17:34 [TUniServerModule]:Global Cache Folder Erased. <52> Files deleted.
+syg_rsp.exe: 000042C0: 17:17:35 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000042C0: 17:17:35 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003C64: 17:17:47 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: w57ARWJei910B716708 ) : Addr: $0080492E
+syg_rsp.exe: 00004FDC: 17:17:47 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: w57ARWJei910B716708 ) : Addr: $0080492E

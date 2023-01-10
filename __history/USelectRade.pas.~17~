@@ -1,0 +1,125 @@
+unit USelectRade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniLabel, uniEdit,
+  uniPanel, uniGUIBaseClasses;
+
+type
+  TFSelectRade = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    DBGrid: TUniDBGrid;
+    EdSearch: TUniEdit;
+    procedure UniFormShow(Sender: TObject);
+    procedure EdSearchChange(Sender: TObject);
+    procedure DBGridDblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     procedure ShowData_FactPal;
+     var
+     FrmMode, FrmModeTitle : string;
+  end;
+
+function FSelectRade: TFSelectRade;
+
+var
+    filter, search, init_query, query:string;
+    exercice_filter :string;
+    title :string = 'RADE';
+    FrmMode, FrmModeTitle : string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UGlobal, UEditFactRadePal;
+
+procedure TFSelectRade.DBGridDblClick(Sender: TObject);
+begin
+    if FrmMode = ModeFactPal then
+    begin
+          if DBGrid.DataSource.DataSet.RecordCount > 0  then
+      begin
+         FEditFactRadePal.EdNavire.Text := DBGrid.DataSource.DataSet.FieldByName('nom_navire').AsString;
+         FEditFactRadePal.EdConsignataire.Text := DBGrid.DataSource.DataSet.FieldByName('nom_consignataire').AsString;
+         FEditFactRadePal.Edarrive.Text := DBGrid.DataSource.DataSet.FieldByName('debut').AsString;
+         FEditFactRadePal.Eddepart.Text := DBGrid.DataSource.DataSet.FieldByName('fin').AsString;
+         FEditFactRadePal.EdRefInt.Text := DBGrid.DataSource.DataSet.FieldByName('ref').AsString;
+         FEditFactRadePal.EdNbJours.Text := DBGrid.DataSource.DataSet.FieldByName('sejour').AsString;
+         FEditFactRadePal.EdBase.Text := DBGrid.DataSource.DataSet.FieldByName('nombre_jour_taux_rade').AsString;
+         FEditFactRadePal.EdQte.Text := DBGrid.DataSource.DataSet.FieldByName('qte').AsString;
+
+         FEditFactRadePal.id_rade :=DBGrid.DataSource.DataSet.FieldByName('id').AsString;
+
+         FEditFactRadePal.EdNumFact.SetFocus;
+         close;
+      end
+
+      else
+    end;
+
+end;
+
+procedure TFSelectRade.EdSearchChange(Sender: TObject);
+begin
+    ShowData_FactPal;
+end;
+
+procedure TFSelectRade.ShowData_FactPal;
+  begin
+      filter:=' order by debut desc , ref desc' ;
+
+      if EdSearch.IsBlank then search:='' else
+      search:=' AND (UPPER(nom_navire) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
+
+       exercice_filter := ' AND R.exercice='''+ IdExerciceInst +'''';
+
+
+      init_query:= 'SELECT * ,case WHEN facturable_type_nav=TRUE THEN ''F'' ELSE ''N''	end as statut,  DATEDIFF( R.fin , R.debut)+1 AS sejour, CEILING((DATEDIFF( R.fin , R.debut)+1)/X.nombre_jour_taux_rade) as qte, '#13+
+                   ' us.login_user as user_saisie , uc.login_user as user_control , uv.login_user as user_validation,  '#13+
+                   ' case WHEN date_control is null THEN '''' ELSE ''O''	end as control , '#13+
+                   ' case WHEN date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
+                   ' case WHEN facturer_int = False THEN ''''  ELSE ''O''	end as fact_int , '#13+
+                   ' case WHEN facturer_pal = False THEN ''''  ELSE ''O''	end as fact_pal  '#13+
+                   ' FROM rade R '#13+
+                   'INNER JOIN user as us on R. user_create=us.id_user '#13+
+                   'LEFT JOIN user as uc on R.user_control=uc.id_user '#13+
+                   'LEFT JOIN user as uv on R.user_validate=uv.id_user '#13+
+                   'INNER JOIN consignataire C on R.consignataire=C.id_consignataire '#13+
+                   'INNER JOIN navire  N on R.navire=N.id_navire '#13+
+                   'INNER JOIN exercice Z on R.exercice=Z.id_exercice '#13+
+                   'INNER JOIN taux_rade X on R.taux_rade=X.id_taux_rade '#13+
+                   'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                    ' WHERE facturer_int=False ';
+      query:=init_query + search+ filter;
+
+      DM.DQ_Grid_Rade.Close;
+      DM.DQ_Grid_Rade.SQL.Clear;
+      DM.DQ_Grid_Rade.SQL.Text := query;
+      DM.DQ_Grid_Rade.Open;
+  end;
+
+function FSelectRade: TFSelectRade;
+begin
+  Result := TFSelectRade(DM.GetFormInstance(TFSelectRade));
+end;
+
+procedure TFSelectRade.UniFormShow(Sender: TObject);
+begin
+if FrmMode = ModeFactPal then
+    begin
+         ShowData_FactPal;
+    end;
+
+
+
+EdSearch.SetFocus;
+end;
+
+end.

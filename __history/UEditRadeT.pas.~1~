@@ -1,0 +1,47 @@
+unit UEditRadeT;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniButton, uniEdit,
+  uniLabel, uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox,
+  uniDateTimePicker;
+
+type
+  TFEditRadeT = class(TUniForm)
+    UniPanel1: TUniPanel;
+    PanOps: TUniPanel;
+    BtnSave: TUniButton;
+    UniButton1: TUniButton;
+    UniButton2: TUniButton;
+    EdRapport: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    UniLabel3: TUniLabel;
+    DBLNavire: TUniDBLookupComboBox;
+    DBLConsignataire: TUniDBLookupComboBox;
+    Eddebut: TUniDateTimePicker;
+    Edfin: TUniDateTimePicker;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEditRadeT: TFEditRadeT;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEditRadeT: TFEditRadeT;
+begin
+  Result := TFEditRadeT(UniMainModule.GetFormInstance(TFEditRadeT));
+end;
+
+end.

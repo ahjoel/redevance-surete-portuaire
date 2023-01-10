@@ -1,0 +1,51 @@
+unit UEditTauxMarchandise;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniPanel, uniGUIBaseClasses, uniLabel,
+  uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniEdit,
+  uniDateTimePicker, uniButton;
+
+type
+  TUniForm2 = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniPanel2: TUniPanel;
+    DBLOperation: TUniDBLookupComboBox;
+    UniLabel3: TUniLabel;
+    UniLabel7: TUniLabel;
+    EdMinTauxMarch: TUniNumberEdit;
+    UniLabel6: TUniLabel;
+    EdMaxTauxMarch: TUniNumberEdit;
+    UniLabel4: TUniLabel;
+    EdMontantTauxMarch: TUniFormattedNumberEdit;
+    EdDateDebutTauxMarch: TUniDateTimePicker;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    UniDateTimePicker1: TUniDateTimePicker;
+    BtnSave: TUniButton;
+    BtnCancel: TUniButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function UniForm2: TUniForm2;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function UniForm2: TUniForm2;
+begin
+  Result := TUniForm2(UniMainModule.GetFormInstance(TUniForm2));
+end;
+
+end.

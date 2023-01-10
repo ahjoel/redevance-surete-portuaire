@@ -1,0 +1,20 @@
+syg_rsp.exe: 00000584: 02:53:59 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 7OCsVHjs2610B024308 ) : Addr: $00804502
+syg_rsp.exe: 00003844: 09:12:38 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: YEC1nexRlp10B04E7A1 ) : Addr: $00804502
+syg_rsp.exe: 00002F68: 22:22:44 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: mtDDCviTmo10B04E8AD ) : Addr: $00804502
+syg_rsp.exe: 00002F68: 22:22:52 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: vAWobYdeRN10B048219 ) : Addr: $00804502
+syg_rsp.exe: 00004470: 22:37:08 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00004470: 22:37:08 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00004470: 22:37:09 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00004470: 22:37:09 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00004470: 22:37:09 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00004470: 22:37:09 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00004470: 22:37:09 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00004470: 22:37:09 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00004470: 22:37:09 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00004470: 22:37:09 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00004470: 22:37:09 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00001360: 22:37:16 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00001360: 22:37:16 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00001360: 22:37:16 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00001360: 22:37:16 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00001FA0: 22:37:28 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ex8ZKzsCrD10B05C0C7 ) : Addr: $00804502

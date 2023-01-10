@@ -1,0 +1,152 @@
+object FSelectRade: TFSelectRade
+  Left = 0
+  Top = 0
+  ClientHeight = 327
+  ClientWidth = 893
+  Caption = 'Selection Rade'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainContainer: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 893
+    Height = 327
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = -56
+    ExplicitWidth = 786
+    ExplicitHeight = 304
+    object PanOp: TUniPanel
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 887
+      Height = 33
+      Hint = ''
+      Align = alTop
+      TabOrder = 1
+      Caption = ''
+      ExplicitWidth = 780
+      object EdSearch: TUniEdit
+        Left = 83
+        Top = 5
+        Width = 438
+        Hint = 'Recherche ...'
+        ShowHint = True
+        ParentShowHint = False
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 1
+      end
+      object UniLabel1: TUniLabel
+        Left = 10
+        Top = 10
+        Width = 58
+        Height = 13
+        Hint = ''
+        Caption = 'Recherche :'
+        TabOrder = 2
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 0
+      Top = 39
+      Width = 893
+      Height = 288
+      Hint = ''
+      DataSource = DM.DS_Grid_Rade
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      WebOptions.PageSize = 200
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 2
+      Columns = <
+        item
+          FieldName = 'id'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'ref'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ref Int'
+          Title.Font.Style = [fsBold]
+          Width = 86
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'nom_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Navire'
+          Title.Font.Style = [fsBold]
+          Width = 193
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'nom_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consignataire'
+          Title.Font.Style = [fsBold]
+          Width = 182
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'debut'
+          Title.Alignment = taCenter
+          Title.Caption = ' Debut'
+          Title.Font.Style = [fsBold]
+          Width = 75
+          Alignment = taCenter
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'fin'
+          Title.Alignment = taCenter
+          Title.Caption = 'Fin'
+          Title.Font.Style = [fsBold]
+          Width = 75
+          Alignment = taCenter
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'sejour'
+          Title.Alignment = taCenter
+          Title.Caption = 'Nb Jours'
+          Title.Font.Style = [fsBold]
+          Width = 55
+        end
+        item
+          FieldName = 'nombre_jour_taux_rade'
+          Title.Alignment = taCenter
+          Title.Caption = 'Base'
+          Title.Font.Style = [fsBold]
+          Width = 47
+        end
+        item
+          FieldName = 'qte'
+          Title.Alignment = taCenter
+          Title.Caption = ' Qte'
+          Title.Font.Style = [fsBold]
+          Width = 44
+        end>
+    end
+  end
+end

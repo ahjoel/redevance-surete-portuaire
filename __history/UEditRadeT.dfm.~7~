@@ -1,0 +1,187 @@
+object FEditRadeT: TFEditRadeT
+  Left = 0
+  Top = 0
+  ClientHeight = 159
+  ClientWidth = 538
+  Caption = 'Edition Rade Test'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniPanel1: TUniPanel
+    Left = 0
+    Top = 0
+    Width = 538
+    Height = 137
+    Hint = ''
+    Align = alTop
+    TabOrder = 0
+    Caption = ''
+    ExplicitLeft = 8
+    object UniLabel1: TUniLabel
+      Left = 32
+      Top = 24
+      Width = 31
+      Height = 13
+      Hint = ''
+      Caption = 'Navire'
+      TabOrder = 1
+    end
+    object UniLabel2: TUniLabel
+      Left = 32
+      Top = 56
+      Width = 66
+      Height = 13
+      Hint = ''
+      Caption = 'Consignataire'
+      TabOrder = 2
+    end
+    object UniLabel3: TUniLabel
+      Left = 32
+      Top = 88
+      Width = 29
+      Height = 13
+      Hint = ''
+      Caption = 'Debut'
+      TabOrder = 3
+    end
+    object DBLNavire: TUniDBLookupComboBox
+      Left = 120
+      Top = 24
+      Width = 321
+      Hint = ''
+      ListFieldIndex = 0
+      ClearButton = True
+      TabOrder = 4
+      Color = clWindow
+      Style = csDropDown
+    end
+    object DBLConsignataire: TUniDBLookupComboBox
+      Left = 120
+      Top = 52
+      Width = 321
+      Hint = ''
+      ListFieldIndex = 0
+      TabOrder = 5
+      Color = clWindow
+    end
+    object Eddebut: TUniDateTimePicker
+      Left = 120
+      Top = 88
+      Width = 120
+      Hint = ''
+      DateTime = 44930.000000000000000000
+      DateFormat = 'dd/MM/yyyy'
+      TimeFormat = 'HH:mm:ss'
+      TabOrder = 6
+    end
+    object Edfin: TUniDateTimePicker
+      Left = 321
+      Top = 88
+      Width = 120
+      Hint = ''
+      DateTime = 44930.000000000000000000
+      DateFormat = 'dd/MM/yyyy'
+      TimeFormat = 'HH:mm:ss'
+      TabOrder = 7
+    end
+    object UniLabel4: TUniLabel
+      Left = 264
+      Top = 88
+      Width = 14
+      Height = 13
+      Hint = ''
+      Caption = 'Fin'
+      TabOrder = 8
+    end
+    object BtAddNavire: TUniSpeedButton
+      Left = 447
+      Top = 24
+      Width = 23
+      Height = 22
+      Hint = ''
+      Caption = ''
+      ParentColor = False
+      TabOrder = 9
+      OnClick = BtAddNavireClick
+    end
+    object BtAddConsignataire: TUniSpeedButton
+      Left = 447
+      Top = 52
+      Width = 23
+      Height = 22
+      Hint = ''
+      Caption = ''
+      ParentColor = False
+      TabOrder = 10
+      OnClick = BtAddConsignataireClick
+    end
+  end
+  object PanOps: TUniPanel
+    Left = 0
+    Top = 127
+    Width = 538
+    Height = 32
+    Hint = ''
+    Align = alBottom
+    TabOrder = 1
+    Caption = ''
+    object BtnSave: TUniButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 75
+      Height = 24
+      Hint = ''
+      Caption = 'Enregistrer'
+      Align = alLeft
+      TabOrder = 1
+      IconCls = 'bookmarks'
+      OnClick = BtnSaveClick
+      ExplicitLeft = 48
+      ExplicitTop = 6
+      ExplicitHeight = 25
+    end
+    object BtnRapport: TUniButton
+      AlignWithMargins = True
+      Left = 85
+      Top = 4
+      Width = 75
+      Height = 24
+      Hint = ''
+      Caption = 'Rapporter'
+      Align = alLeft
+      TabOrder = 2
+      OnClick = BtnRapportClick
+      ExplicitLeft = 120
+      ExplicitHeight = 25
+    end
+    object UniButton2: TUniButton
+      AlignWithMargins = True
+      Left = 459
+      Top = 4
+      Width = 75
+      Height = 24
+      Hint = ''
+      Caption = 'Annuler'
+      Align = alRight
+      TabOrder = 3
+      OnClick = UniButton2Click
+      ExplicitLeft = 352
+      ExplicitTop = 8
+      ExplicitHeight = 25
+    end
+    object EdRapport: TUniEdit
+      Left = 184
+      Top = 4
+      Width = 257
+      Height = 21
+      Hint = ''
+      Text = ''
+      TabOrder = 4
+    end
+  end
+end

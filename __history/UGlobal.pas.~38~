@@ -1,0 +1,149 @@
+unit UGlobal;
+
+interface
+
+var
+    AddTitle : string = 'Enregistrement';
+    UpdateTitle : string = 'Modification';
+    DeleteTitle : string = 'Supression';
+    EnUpTitle : string = 'Fin';
+    ControlTitle : string = 'Contrôle';
+    ValidateTitle : string = 'Validation';
+
+    AddContext : string = 'add';
+    UpdateContext : string = 'update';
+    DeleteContext : string = 'delete';
+    EndUpContext : string = 'End';
+    ControlContext : string = 'control';
+    ValidatContext : string = 'validat';
+
+    ReplaceContext : string = 'replace';
+
+    //BUTON CAPTION
+
+    AddBtnCaption : string = 'Enregister';
+    UpdateBtnCaption : string = 'Modifier';
+    DeleteBtnCaption : string = 'Supprimer';
+    ControlBtnCaption : string = 'Contrôler';
+    EndBtnCaption : string = 'Fin';
+    ValidatBtnCaption : string = 'Valider';
+
+
+    //Mode
+    // Ce mode definit
+    ModeEdit : string = 'edit';
+    ModeControl : string = 'control';
+    ModeValid : string = 'valide';
+
+    //Mode Liste escale
+    ModeRapport : string = 'rapport';
+    ModeFactPal : string = 'facture_pal';
+    ModeFactInt : string = 'facture_int';
+
+    ModeEditTitle : string = 'Saisie';
+    ModeControlTitle : string = 'Contrôle';
+    ModeValidTitle : string = 'Validation';
+
+
+
+    //Context d'edition des données. Soit pour un DBLookup ou un formulaire
+
+    LookUpContext : string = 'LookUp';
+    FormContext : string = 'Form';
+
+
+
+    //VARIABLE REQUETE SQL
+
+
+     // REQUETE DE RECHERCHE d'UN ESCALE POUR FACTURATION
+    init_query_select_escale : string = 'SELECT * ,case WHEN facturable_obs=TRUE THEN ''F'' ELSE ''N''	end as statut , '#13+
+                   ' case WHEN date_control is null THEN '''' ELSE ''O''	end as control , '#13+
+                   ' case WHEN date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
+                   ' case WHEN rapport= True THEN ''O'' ELSE ''''	end as rapport_esc ,  '#13+
+                   ' po.libelle_port as orgine ,pd.libelle_port as destination '#13+
+                   ' FROM escale E  '#13+
+                   'INNER JOIN port as po on E.port_orgine=po.id_port '#13+
+                   'INNER JOIN observation o ON E.observation = o.id_obs '#13+
+                   'LEFT JOIN port as pd on E.port_dest=pd.id_port '#13+
+                   'INNER JOIN user as us on E. user_create=us.id_user '#13+
+                   'LEFT JOIN user as uc on E.user_control=uc.id_user '#13+
+                   'LEFT JOIN user as uv on E.user_validate=uv.id_user '#13+
+                   'INNER JOIN consignataire C on E.consignataire=C.id_consignataire '#13+
+                   'INNER JOIN navire  N on E.navire=N.id_navire '#13+
+                   'INNER JOIN poste_quai Q on E.post_quai=Q.id_pq '#13+
+                   'INNER JOIN exercice Z on E.exercice=Z.id_exercice '#13+
+                   'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                   ' WHERE E.id is not null ';
+
+    //REQUETE DE RECHERCHE DUNE FACTURE POUR REGLEMENT
+    init_query_select_fact : string = '';
+
+
+
+
+    init_query_select_rade : string =  'SELECT * ,CONCAT(R.ref, ''-'', RIGHT(Z.libelle_exercice, 2)) as ref_ex,  DATEDIFF( R.fin , R.debut)+1 AS sejour, CEILING((DATEDIFF( R.fin , R.debut)+1)/X.nombre_jour_taux_rade) as qte, '#13+
+                   ' us.login_user as user_saisie , uc.login_user as user_control , uv.login_user as user_validation,  '#13+
+                   ' case WHEN date_control is null THEN '''' ELSE ''O''	end as control , '#13+
+                   ' case WHEN date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
+                   ' case WHEN facturer_int = False THEN ''N''  ELSE ''O''	end as fact_int , '#13+
+                   ' case WHEN facturer_pal = False THEN ''N''  ELSE ''O''	end as fact_pal  '#13+
+                   ' FROM rade R '#13+
+                   'INNER JOIN user as us on R. user_create=us.id_user '#13+
+                   'LEFT JOIN user as uc on R.user_control=uc.id_user '#13+
+                   'LEFT JOIN user as uv on R.user_validate=uv.id_user '#13+
+                   'INNER JOIN consignataire C on R.consignataire=C.id_consignataire '#13+
+                   'INNER JOIN navire  N on R.navire=N.id_navire '#13+
+                   'INNER JOIN exercice Z on R.exercice=Z.id_exercice '#13+
+                   'INNER JOIN taux_rade X on R.taux_rade=X.id_taux_rade '#13+
+                   'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                    '  WHERE R.id is not null ';
+
+
+    // ETAT FACTURES PAL
+    title_etat_fact_PAL : string = 'LISTE DES FACTURES PAL ';
+
+    init_query_etat_fact_PAL : string =  ' SELECT * FROM ('#13+
+                            ' SELECT F.id_factures_pal, F.ref_facture_pal AS ref_fact,  R.ref AS ref_nav, N.nom_navire, N.id_navire, P.code_type_nav, P.id_type_nav, F.ref_facture_pal, T.code_type_fact, T.id_type_fact, '#13+
+                            ' F.montant_facture_pal as montant, F.montant_complement_facture_pal as complement, (montant_facture_pal-montant_complement_facture_pal) as montant_reel, '#13+
+                            ' FLOOR (montant_facture_pal * 655.957) as montant_xof, '#13+
+                            ' F.date_emise_facture_pal, F.date_trans_facture_pal, F.date_ech_facture_pal, F.statut_facture_pal, C.nom_consignataire AS cons_fact, C.id_consignataire AS id_cons_fact, '#13+
+                            ' K.nom_consignataire AS cons_nav, K.id_consignataire AS id_cons_nav, Z.id_exercice, Z.libelle_exercice, '#13+
+                            ' case WHEN F.statut_facture_pal is null THEN ''N'' ELSE F.statut_facture_pal	end AS statut_fact, '#13+
+                            ' case WHEN date_control_facture_pal is null THEN '''' ELSE ''O''	end as control, '#13+
+                            ' case WHEN date_validate_facture_pal is null THEN '''' ELSE ''O''	end as validation, '#13+
+                            ' case WHEN montant_complement_facture_pal =0 THEN ''NON'' ELSE ''OUI''	end as complement_statut  '#13+
+                            ' FROM facture_pal F '#13+
+                            ' LEFT JOIN rade R on F.rade_facture_pal=R.id '#13+
+                            ' INNER JOIN exercice Z ON R.exercice = Z.id_exercice '#13+
+                            ' INNER JOIN consignataire C ON F.consignataire_facture_pal=C.id_consignataire '#13+
+                            ' INNER JOIN consignataire K on R.consignataire=K.id_consignataire '#13+
+                            ' INNER JOIN navire N on R.navire=N.id_navire '#13+
+                            ' LEFT JOIN type_navire P on N.type_navire= P.id_type_nav '#13+
+                            ' INNER JOIN type_facture T on F.type_facture=T.id_type_fact '#13+
+                            ' UNION '#13+
+                            ' SELECT F.id_factures_pal, F.ref_facture_pal AS ref_fact, E.ref as ref_nav,  N.nom_navire, N.id_navire, P.code_type_nav, P.id_type_nav, F.ref_facture_pal, T.code_type_fact, T.id_type_fact, '#13+
+                            ' F.montant_facture_pal as montant, F.montant_complement_facture_pal as complement,(montant_facture_pal-montant_complement_facture_pal) AS montant_reel, '#13+
+                            ' FLOOR (montant_facture_pal * 655.957) as montant_xof, '#13+
+                            ' F.date_emise_facture_pal, F.date_trans_facture_pal, F.date_ech_facture_pal, F.statut_facture_pal, C.nom_consignataire AS cons_fact, C.id_consignataire AS id_cons_fact, '#13+
+                            ' K.nom_consignataire AS cons_nav, K.id_consignataire AS id_cons_nav, Z.id_exercice, Z.libelle_exercice, '#13+
+                            ' case WHEN F.statut_facture_pal is null THEN ''N'' ELSE F.statut_facture_pal	end AS statut_fact, '#13+
+                            ' case WHEN date_control_facture_pal is null THEN '''' ELSE ''O''	end as control, '#13+
+                            ' case WHEN date_validate_facture_pal is null THEN '''' ELSE ''O''	end as validation,'#13+
+                            ' case WHEN montant_complement_facture_pal =0 THEN ''NON'' ELSE ''OUI''	end as complement_statut  '#13+
+                            ' FROM facture_pal F '#13+
+                            ' LEFT JOIN escale E on F.escale_facture_pal=E.id '#13+
+                            ' INNER JOIN exercice Z ON E.exercice = Z.id_exercice '#13+
+                            ' INNER JOIN consignataire C ON F.consignataire_facture_pal=C.id_consignataire '#13+
+                            ' INNER JOIN consignataire K on E.consignataire=K.id_consignataire '#13+
+                            ' INNER JOIN navire N on E.navire=N.id_navire '#13+
+                            ' LEFT JOIN type_navire P on N.type_navire= P.id_type_nav '#13+
+                            ' INNER JOIN type_facture T on F.type_facture=T.id_type_fact '#13+
+                            ' ) AS L '#13+
+                            ' WHERE L.id_factures_pal IS NOT NULL'#13+
+                            '';
+
+implementation
+
+
+end.

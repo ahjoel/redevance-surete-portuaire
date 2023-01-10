@@ -1,0 +1,256 @@
+object FOperation: TFOperation
+  Left = 0
+  Top = 0
+  ClientHeight = 509
+  ClientWidth = 834
+  Caption = 'Op'#233'rations'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 834
+    Height = 509
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 192
+    ExplicitTop = 152
+    ExplicitWidth = 256
+    ExplicitHeight = 128
+    object PanTitle: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 834
+      Height = 27
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 1
+      Title = 'Escales'
+      Caption = 'Op'#233'rations'
+      Color = clWhite
+      Layout = 'column'
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 27
+      Width = 834
+      Height = 82
+      Hint = ''
+      Align = alTop
+      TabOrder = 2
+      Caption = ''
+      object EdLibelle: TUniEdit
+        Left = 116
+        Top = 46
+        Width = 613
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        ParentFont = False
+        Font.Color = clMaroon
+        TabOrder = 1
+        Color = clCream
+        ReadOnly = True
+      end
+      object UniLabel2: TUniLabel
+        Left = 18
+        Top = 51
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Libell'#233
+        TabOrder = 5
+      end
+      object UniLabel3: TUniLabel
+        Left = 13
+        Top = 18
+        Width = 87
+        Height = 13
+        Hint = ''
+        Caption = 'Type Marchandise'
+        TabOrder = 6
+      end
+      object BtnCancel: TUniButton
+        Left = 746
+        Top = 48
+        Width = 80
+        Height = 25
+        Hint = ''
+        Caption = 'Annuler'
+        TabOrder = 3
+        IconCls = 'delete'
+      end
+      object BtnSave: TUniButton
+        Left = 746
+        Top = 10
+        Width = 81
+        Height = 25
+        Hint = ''
+        Caption = 'Enregistrer'
+        TabOrder = 2
+        IconCls = 'bookmarks'
+        OnClick = BtnSaveClick
+      end
+      object UniLabel4: TUniLabel
+        Left = 361
+        Top = 18
+        Width = 30
+        Height = 13
+        Hint = ''
+        Caption = 'Action'
+        TabOrder = 7
+      end
+      object DBLType: TUniDBLookupComboBox
+        Left = 116
+        Top = 12
+        Width = 205
+        Hint = ''
+        ListField = 'libelle_type_march'
+        ListSource = DM.DS_DBL_TM
+        KeyField = 'id_type_march'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 0
+        Color = clWindow
+        OnChangeValue = DBLTypeChangeValue
+      end
+      object DBLAct: TUniDBLookupComboBox
+        Left = 404
+        Top = 12
+        Width = 325
+        Hint = ''
+        ListField = 'libelle_action'
+        ListSource = DM.DS_DBL_Act
+        KeyField = 'id_action'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 8
+        Color = clWindow
+        OnChangeValue = DBLActChangeValue
+      end
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 109
+      Width = 44
+      Height = 400
+      Hint = ''
+      Align = alLeft
+      TabOrder = 3
+      Caption = ''
+      ExplicitTop = 94
+      ExplicitHeight = 415
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 36
+        Height = 30
+        Hint = 'Ajouter'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Ajouter'
+        Align = alTop
+        TabOrder = 1
+        IconAlign = iaTop
+        IconCls = 'add'
+        OnClick = BtnAddClick
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 40
+        Width = 36
+        Height = 30
+        Hint = 'Modifier'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Modifier'
+        Align = alTop
+        TabOrder = 2
+        IconAlign = iaTop
+        IconCls = 'compose'
+        OnClick = BtnUpdateClick
+      end
+      object BtnDelete: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 76
+        Width = 36
+        Height = 30
+        Hint = 'Supprimer'
+        Enabled = False
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Supprimer'
+        Align = alTop
+        TabOrder = 3
+        IconAlign = iaTop
+        IconCls = 'trash'
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 44
+      Top = 109
+      Width = 790
+      Height = 400
+      Hint = ''
+      DataSource = DM.DS_Grid_Ope
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 4
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'code_operation'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'libelle_operation'
+          Title.Alignment = taCenter
+          Title.Caption = 'Libell'#233
+          Title.Font.Style = [fsBold]
+          Width = 491
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'nature_operation'
+          Title.Alignment = taCenter
+          Title.Caption = 'Code'
+          Title.Font.Style = [fsBold]
+          Width = 170
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'type_marchandise'
+          Title.Alignment = taCenter
+          Title.Caption = 'Unit'#233
+          Title.Font.Style = [fsBold]
+          Width = 156
+          Visible = False
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
+    end
+  end
+end

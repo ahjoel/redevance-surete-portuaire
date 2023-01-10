@@ -1,0 +1,207 @@
+unit ULoadData;
+
+interface
+uses Forms,SysUtils, Classes, ADODB,inifiles, DBCtrls, Grids,Dialogs, uniDBLookupComboBox, Data.DB,
+    Windows,clipbrd , DBGrids,strUtils, Excel2000,Variants, sGauge,Graphics ,TLHelp32,jpeg,
+    Messages, Controls,Menus,NB30,registry,sEdit;
+
+
+procedure DBLDataLoad(ADOQ : TADOQuery; Query : string) ;
+
+procedure LoadDBLNavire;
+procedure LoadDBLConsignataire;
+procedure LoadDBLPort;
+procedure LoadDBLPays;
+procedure LoadDBLPosteQuai;
+procedure LoadDBLUniteMesure;
+procedure LoadDBLMarchandise;
+procedure LoadDBLTypeMarchandise;
+procedure LoadDBLTypeNavire;
+procedure LoadDBLInstallationPort;
+procedure LoadDBLPerms;
+procedure LoadDBLProfil;
+procedure LoadDBLOperation;
+procedure LoadDBLAction;
+procedure LoadDBLObs;
+
+procedure LoadDBLTypeFact;
+procedure LoadDBLTypeFactEscale;
+procedure LoadDBLTypeFactRade;
+procedure ExQuery(ADOQ : TADOQuery; Query : string) ;
+
+
+//REFERENCE INCREMENTATION
+function RefEscInc : string;
+function RefRadeInc : string;
+
+
+implementation
+
+
+
+uses MainModule, ServerModule, UFunction, UGlobal;
+
+function RefEscInc : string;
+var last_ref : string;
+begin
+ with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select E.ref from escale E, exercice X where E.exercice=X.id_exercice  AND E.id=(SELECT MAX(id) FROM escale) AND E.exercice=:id_exercice');
+                       Parameters.ParamByName('id_exercice').Value:=IdExerciceInst;
+                       ExecSQL;
+                       Open;
+                  end;
+
+                  if DM.QCheck.RecordCount > 0 then
+                      last_ref := DM.QCheck.FieldValues['ref']
+                  else
+                      last_ref:='';
+
+   Result := IncrementRef(last_ref, 4, 'S');
+
+end;
+
+function RefRadeInc : string;
+var last_ref : string;
+begin
+ with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select R.ref from rade R, exercice X where R.exercice=X.id_exercice  AND R.id=(SELECT MAX(id) FROM rade) AND R.exercice=:id_exercice');
+                       Parameters.ParamByName('id_exercice').Value:=IdExerciceInst;
+                       ExecSQL;
+                       Open;
+                  end;
+
+                  if DM.QCheck.RecordCount > 0 then
+                      last_ref := DM.QCheck.FieldValues['ref']
+                  else
+                      last_ref:='';
+
+   Result := IncrementRef(last_ref, 4, 'R');
+
+end;
+
+procedure ExQuery(ADOQ : TADOQuery; Query : string) ;
+begin
+  ADOQ.Close;
+  ADOQ.SQL.Clear;
+  ADOQ.SQL.Add(Query);
+  ADOQ.Open;
+end;
+
+procedure DBLDataLoad(ADOQ : TADOQuery; Query : string) ;
+begin
+  ADOQ.Close;
+  ADOQ.SQL.Clear;
+  ADOQ.SQL.Add(Query);
+  ADOQ.Open;
+end;
+
+
+
+procedure LoadDBLNavire;
+begin
+  DBLDataLoad(DM.DQ_DBL_Navire, 'SELECT * FROM navire WHERE id_navire is not null order by nom_navire');
+end;
+
+procedure LoadDBLConsignataire;
+begin
+  DBLDataLoad(DM.DQ_DBL_Cons,'SELECT * FROM consignataire WHERE id_consignataire is not null order by nom_consignataire');
+  DBLDataLoad(DM.DQ_DBL_Cons_fact,'SELECT * FROM consignataire WHERE id_consignataire is not null order by nom_consignataire');
+end;
+
+procedure LoadDBLPort;
+begin
+ DBLDataLoad(DM.DQ_DBL_PortProv,'SELECT * FROM port WHERE id_port is not null order by libelle_port');
+ DBLDataLoad(DM.DQ_DBL_PortDest,'SELECT * FROM port WHERE id_port is not null order by libelle_port');
+end;
+
+procedure LoadDBLPays;
+begin
+   DBLDataLoad(DM.DQ_DBL_Pays,'SELECT * FROM pays WHERE id_pays is not null order by libelle_pays');
+end;
+
+
+procedure LoadDBLPosteQuai;
+begin
+   DBLDataLoad(DM.DQ_DBL_PQ,'SELECT * FROM poste_quai WHERE id_pq is not null order by libelle_pq');
+end;
+
+
+procedure LoadDBLUniteMesure;
+begin
+  DBLDataLoad(DM.DQ_DBL_UM,'SELECT * FROM unite_mesure WHERE id_unite is not null order by description_unite');
+end;
+
+procedure LoadDBLTypeMarchandise;
+begin
+  DBLDataLoad(DM.DQ_DBL_TM,'SELECT * FROM type_marchandise WHERE id_type_march is not null order by libelle_type_march');
+end;
+
+procedure LoadDBLTypeNavire;
+begin
+  DBLDataLoad(DM.DQ_DBL_TypeNavire,'SELECT * FROM type_navire WHERE id_type_nav is not null order by libelle_type_nav');
+end;
+
+
+procedure LoadDBLMarchandise;
+begin
+  DBLDataLoad(DM.DQ_DBL_March,'SELECT * FROM marchandise WHERE id_marchandise is not null order by libelle_marchandise');
+end;
+
+procedure LoadDBLInstallationPort;
+begin
+  DBLDataLoad(DM.DQ_DBL_IP,'SELECT * FROM installation_port WHERE id_ip is not null order by libelle_ip');
+end;
+
+procedure LoadDBLPerms;
+begin
+  DBLDataLoad(DM.DQ_DBL_Perms,'SELECT * FROM permissions WHERE id_perms is not null order by libelle_perms');
+end;
+
+procedure LoadDBLProfil;
+begin
+ DBLDataLoad(DM.DQ_DBL_Profil_User,'SELECT * FROM profil_user WHERE id_profil is not null order by libelle_profil');
+ DBLDataLoad(DM.DQ_DBL_Profil_Attrib,'SELECT * FROM profil_user WHERE id_profil is not null order by libelle_profil');
+end;
+
+procedure LoadDBLOperation;
+begin
+  DBLDataLoad(DM.DQ_DBL_Ope,'SELECT * , CONCAT( T.libelle_type_march ," - ", A.libelle_action ) as libelle '#13+
+                            'FROM operation O, type_marchandise T, action A WHERE O.type_marchandise=T.id_type_march AND O.action=A.id_action');
+end;
+
+procedure LoadDBLAction;
+begin
+    DBLDataLoad(DM.DQ_DBL_Act,'SELECT * FROM action WHERE id_action is not null order by libelle_action');
+end;
+
+
+procedure LoadDBLObs;
+begin
+    DBLDataLoad(DM.DQ_DBL_Obs,'SELECT * FROM observation WHERE id_obs is not null order by libelle_obs');
+end;
+
+procedure LoadDBLTypeFact;
+begin
+    DBLDataLoad(DM.DQ_DBL_TypeFact,'SELECT * FROM type_facture WHERE id_type_fact is not null order by libelle_type_fact');
+end;
+
+procedure LoadDBLTypeFactEscale;
+begin
+    DBLDataLoad(DM.DQ_DBL_TypeFact,'SELECT  * FROM type_facture T, taux_rade R WHERE T.id_type_fact  NOT IN (SELECT T.id_type_fact WHERE R.type_fact=T.id_type_fact )');
+end;
+
+procedure LoadDBLTypeFactRade;
+begin
+    DBLDataLoad(DM.DQ_DBL_TypeFact,'SELECT  * FROM type_facture T, taux_rade R WHERE T.id_type_fact IN (SELECT T.id_type_fact WHERE R.type_fact=T.id_type_fact )');
+end;
+
+
+
+
+end.

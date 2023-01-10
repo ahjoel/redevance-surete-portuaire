@@ -1,0 +1,189 @@
+object FConsignataire: TFConsignataire
+  Left = 0
+  Top = 0
+  ClientHeight = 564
+  ClientWidth = 930
+  Caption = 'Consignataire'
+  OnShow = UniFormShow
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu, biMaximize]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainContainer: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 930
+    Height = 564
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 1091
+    ExplicitHeight = 660
+    object PanTitle: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 930
+      Height = 29
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 1
+      Title = 'Escales'
+      Caption = 'Consignataire'
+      Color = clWhite
+      Layout = 'column'
+      ExplicitWidth = 1091
+    end
+    object PanOp: TUniPanel
+      Left = 0
+      Top = 29
+      Width = 930
+      Height = 33
+      Hint = ''
+      Align = alTop
+      TabOrder = 2
+      Caption = ''
+      ExplicitWidth = 1091
+      object BtnDel: TUniButton
+        AlignWithMargins = True
+        Left = 848
+        Top = 4
+        Width = 78
+        Height = 25
+        Hint = ''
+        Enabled = False
+        Caption = 'Supprimer'
+        Align = alRight
+        ParentFont = False
+        Font.Color = clBlack
+        TabOrder = 1
+        IconCls = 'delete'
+        ExplicitLeft = 1009
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 767
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Modifier'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'compose'
+        OnClick = BtnUpdateClick
+        ExplicitLeft = 928
+      end
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 686
+        Top = 4
+        Width = 75
+        Height = 25
+        Hint = ''
+        Caption = 'Ajouter'
+        Align = alRight
+        TabOrder = 3
+        IconCls = 'add'
+        OnClick = BtnAddClick
+        ExplicitLeft = 847
+      end
+      object EdSearch: TUniEdit
+        Left = 83
+        Top = 5
+        Width = 225
+        Hint = 'Recherche ...'
+        ShowHint = True
+        ParentShowHint = False
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 4
+        OnChange = EdSearchChange
+      end
+      object UniLabel1: TUniLabel
+        Left = 10
+        Top = 12
+        Width = 58
+        Height = 13
+        Hint = ''
+        Caption = 'Recherche :'
+        TabOrder = 5
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 0
+      Top = 62
+      Width = 930
+      Height = 502
+      Hint = ''
+      DataSource = DM.DS_Grid_Consignataire
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 3
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'id_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'nom_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Nom'
+          Title.Font.Style = [fsBold]
+          Width = 273
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'code_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Code'
+          Title.Font.Style = [fsBold]
+          Width = 66
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'contact_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = ' Contacts'
+          Title.Font.Style = [fsBold]
+          Width = 111
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'email_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Email'
+          Title.Font.Style = [fsBold]
+          Width = 151
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'adresse_consignataire'
+          Title.Alignment = taCenter
+          Title.Caption = ' Adresse'
+          Title.Font.Style = [fsBold]
+          Width = 271
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
+    end
+  end
+end

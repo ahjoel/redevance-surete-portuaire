@@ -1,0 +1,11 @@
+object FPrintOptionRadeReport: TFPrintOptionRadeReport
+  Left = 0
+  Top = 0
+  ClientHeight = 195
+  ClientWidth = 355
+  Caption = 'FPrintOptionRadeReport'
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+end

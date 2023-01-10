@@ -1,0 +1,448 @@
+unit UTaux;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses, Data.DB,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniButton, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniLabel, uniEdit, uniPanel,
+  uniGUIBaseClasses, uniPageControl, uniDateTimePicker;
+
+type
+  TFTaux = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPageControl1: TUniPageControl;
+    PageOperation: TUniTabSheet;
+    PageRade: TUniTabSheet;
+    PanTitle: TUniPanel;
+    UniContainerPanel2: TUniContainerPanel;
+    UniPanel2: TUniPanel;
+    UniLabel1: TUniLabel;
+    UniLabel3: TUniLabel;
+    DBLOperation: TUniDBLookupComboBox;
+    BtnCancelTauxMarch: TUniButton;
+    BtnSaveTauxMarch: TUniButton;
+    UniPanel3: TUniPanel;
+    BtnAddTauxOpe: TUniButton;
+    BtnUpdateTauxOpe: TUniButton;
+    BtnDeleteTauxOpe: TUniButton;
+    DBGrid_TauxOpe: TUniDBGrid;
+    EdMontantTauxOpe: TUniFormattedNumberEdit;
+    EdDateDebutTauxOpe: TUniDateTimePicker;
+    UniContainerPanel3: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniLabel2: TUniLabel;
+    UniLabel5: TUniLabel;
+    BtnCancelTauxRade: TUniButton;
+    BtnSaveTauxRade: TUniButton;
+    EdNbJours: TUniFormattedNumberEdit;
+    UniDateTimePicker2: TUniDateTimePicker;
+    UniPanel4: TUniPanel;
+    BtnAddTauxRade: TUniButton;
+    BtnUpdateTauxRade: TUniButton;
+    BtnDeleteTauxRade: TUniButton;
+    DBGrid_TauxRade: TUniDBGrid;
+    EdMinTauxOpe: TUniNumberEdit;
+    EdMaxTauxOpe: TUniNumberEdit;
+    UniLabel6: TUniLabel;
+    UniLabel7: TUniLabel;
+    BtnReplaceFinOpe: TUniButton;
+    BtnReplaceTauxRade: TUniButton;
+    UniLabel4: TUniLabel;
+    UniLabel8: TUniLabel;
+    UniFormattedNumberEdit1: TUniFormattedNumberEdit;
+    procedure UniFormShow(Sender: TObject);
+    procedure DBGrid_TauxOpeRecordCount(Sender: TUniDBGrid;
+      var RecCount: Integer);
+    procedure DBGrid_TauxRadeRecordCount(Sender: TUniDBGrid;
+      var RecCount: Integer);
+    procedure BtnSaveTauxMarchClick(Sender: TObject);
+    procedure BtnAddTauxOpeClick(Sender: TObject);
+    procedure BtnReplaceFinOpeClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure UpdateLoadData;
+  public
+    { Public declarations }
+    procedure ShowDataTauxMarch;
+    procedure ClearDataTauxMarch;
+
+    procedure ShowDataTauxRade;
+    procedure ClearDataTauxRade;
+
+    var
+    id_TauxMarch, code_TauxMarch, lib_TauxMarch, debut_TauxMarch, fin_TauxMarch: string;
+    id_TauxRade, code_TauxRade, lib_TauxRade, ip_TauxRade, debut_TauxRade, fin_TauxRade : string;
+    FmContextTauxMarch : string;
+    FmContextTauxRade: string;
+
+
+  end;
+
+function FTaux: TFTaux;
+
+var
+    filter_TauxMarch, search_TauxMarch, init_query_TauxMarch, query_TauxMarch:string;
+    title_TauxMarch :string = 'Taux Marchandise';
+
+    filter_TauxRade, search_TauxRade, init_query_TauxRade, query_TauxRade:string;
+    title_TauxRade :string = 'Taux Rade';
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, Main, UDataLaod, UGlobal, UFunction,
+  UEditTauxMarchandise;
+
+function FTaux: TFTaux;
+begin
+  Result := TFTaux(DM.GetFormInstance(TFTaux));
+end;
+
+
+procedure TFTaux.UpdateLoadData;
+begin
+    //UPDATE CHECK VARIABLES
+   FEditTauxMarchandise.id_TauxMarch :=DM.QStand.FieldValues['id'];
+   FEditTauxMarchandise.ope_TauxMarch :=DM.QStand.FieldValues['id'];
+
+   //UPDATE LOAD_DATA
+   FEditTauxMarchandise.DBLOperation.KeyValue :=DM.QStand.FieldValues['post_quai'];
+   FEditTauxMarchandise.EdMinTauxMarch.Text :=DM.QStand.FieldValues['num_port'];
+   FEditTauxMarchandise.EdMaxTauxMarch.Text :=DM.QStand.FieldValues['num_port'];
+   FEditTauxMarchandise.EdMontantTauxMarch.Text :=DM.QStand.FieldValues['num_port'];
+   FEditTauxMarchandise.EdDateDebutTauxMarch.Text :=DM.QStand.FieldValues['num_port'];
+
+end;
+
+procedure TFTaux.BtnAddTauxOpeClick(Sender: TObject);
+begin
+    FEditTauxMarchandise.EditContext := FormContext;
+    FEditTauxMarchandise.FmContext := AddContext;
+
+    FEditTauxMarchandise.Caption := FrmEditTitle(title_TauxMarch, AddTitle);
+
+    FEditTauxMarchandise.EdDateFinTauxMarch.Visible := False;
+    FEditTauxMarchandise.LbFin.Visible := False;
+    FEditTauxMarchandise.ShowModal;
+end;
+
+procedure TFTaux.BtnReplaceFinOpeClick(Sender: TObject);
+begin
+    FEditTauxMarchandise.EditContext := FormContext;
+    FEditTauxMarchandise.FmContext := EndUpContext;
+
+    FEditTauxMarchandise.Caption := FrmEditTitle(title_TauxMarch, EnUpTitle);
+
+    FEditTauxMarchandise.EdDateFinTauxMarch.Visible := True;
+    FEditTauxMarchandise.LbFin.Visible := True;
+    FEditTauxMarchandise.BtnSave.Caption := EndBtnCaption;
+    FEditTauxMarchandise.BtnSave.IconCls := 'retweet';
+
+     with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM taux_operation where id=:id ');
+           Parameters.ParamByName('id').Value:= DBGrid_TauxOpe.DataSource.DataSet.FieldByName('id').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+
+
+    FEditTauxMarchandise.ShowModal;
+end;
+
+procedure TFTaux.BtnSaveTauxMarchClick(Sender: TObject);
+begin
+    //INSERT
+  if FmContextTauxMarch = AddContext then
+      begin
+             if DBLOperation.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner  l''Operation ',mtWarning,[mbok]);
+                     DBLOperation.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+               with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from taux_operation T, operation O where T.operation_taux = O.id_operation and date_fin is null AND T.operation_taux=:id_ope ');
+                   Parameters.ParamByName('id_ope').Value:=DBLOperation.KeyValue;
+                   ExecSQL;
+                   Open;
+              end;
+
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Cette Opération a un taux en cours de validité ',mtError,[mbok]);
+                       DBLOperation.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+              if EdMontantTauxMarch.Value < 0 then
+                  begin
+                     MessageDlg('Veuillez renseigner le Taux',mtWarning,[mbok]);
+                     EdMontantTauxMarch.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+              if EdDateDebutTauxMarch.IsBlank then
+                  begin
+                     MessageDlg('Veuillez renseigner la Date',mtWarning,[mbok]);
+                     EdMontantTauxMarch.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                               begin
+                                                  SQL.Text := ('INSERT INTO taux_operation (taux_euro, date_debut, max, min, operation_taux ) Values (:taux, :debut, :max, :min, :operation  )');
+                                                  Parameters.ParamByName('taux').Value:=EdMontantTauxMarch.value ;
+                                                  Parameters.ParamByName('debut').Value:= datefr(EdDateDebutTauxMarch.Text);
+                                                  Parameters.ParamByName('max').Value:= EdMaxTauxMarch.Value;
+                                                  Parameters.ParamByName('min').Value:= EdMinTauxMarch.Value;
+                                                  Parameters.ParamByName('operation').Value:= DBLOperation.KeyValue;
+                                                  ExecSQL;
+                                              end;
+                                             ClearDataTauxMarch;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_marchandise) from marchandise');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             ShowDataTauxMarch;
+                                             DM.DQ_Grid_TauxMarch.Locate('id_taux',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+////UPDATE
+//  if FmContext = UpdateContext then
+//    begin
+//      if EdCode.IsBlank then
+//            begin
+//               MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+//               EdCode.JSInterface.JSCall('focus' ,[]);
+//               Abort;
+//            end ;
+//
+//      if (EdCode.Text <> code_March) then
+//           begin
+//               with  DM.QCheck do
+//                  begin
+//                       close;
+//                       SQL.Clear;
+//                       sql.add('select * from marchandise where code_marchandise=:code_marchandise');
+//                       Parameters.ParamByName('code_marchandise').Value:=EdCode.text;
+//                       ExecSQL;
+//                       Open;
+//                  end;
+//                  if DM.QCheck.RecordCount > 0 then
+//                       begin
+//                           MessageDlg('Une Marchandise posséde dejà ce Code',mtError,[mbok]);
+//                           EdCode.JSInterface.JSCall('focus' ,[]);
+//                           Abort;
+//                       end
+//           end ;
+//
+//       if EdLibelle.IsBlank then
+//            begin
+//               MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+//               EdLibelle.JSInterface.JSCall('focus' ,[]);
+//               Abort;
+//            end ;
+//
+//      if (EdLibelle.Text <> lib_March) then
+//           begin
+//               with  DM.QCheck do
+//                  begin
+//                       close;
+//                       SQL.Clear;
+//                       sql.add('select * from marchandise where libelle_marchandise=:libelle_marchandise');
+//                       Parameters.ParamByName('libelle_marchandise').Value:=EdLibelle.text;
+//                       ExecSQL;
+//                       Open;
+//                  end;
+//                  if DM.QCheck.RecordCount > 0 then
+//                       begin
+//                           MessageDlg('Une Marchandise dejà ce Libellé',mtError,[mbok]);
+//                           EdLibelle.JSInterface.JSCall('focus' ,[]);
+//                           Abort;
+//                       end
+//           end ;
+//
+//        if DBLType.IsBlank then
+//            begin
+//               MessageDlg('Veuillez sélectionner le Type',mtWarning,[mbok]);
+//               DBLType.JSInterface.JSCall('focus' ,[]);
+//               Abort;
+//            end;
+//
+//
+//        begin
+//              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+//                    procedure(Sender: TComponent; Res: Integer)
+//                    begin
+//                      case Res of
+//                        mrYes :
+//                            begin
+//                                  with DM.QUpdate do
+//                                        begin
+//                                            SQL.Text := ('UPDATE marchandise SET code_marchandise=:code, libelle_marchandise=:libelle, type_marchandise=:type  WHERE id_marchandise=:id ');
+//                                            Parameters.ParamByName('id').Value:= id_March;
+//                                            Parameters.ParamByName('code').Value:= EdCode.Text;
+//                                            Parameters.ParamByName('libelle').Value:= EdLibelle.Text;
+//                                            Parameters.ParamByName('type').Value:= DBLType.KeyValue;
+//                                            ExecSQL;
+//                                        end;
+//
+//                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+//                                       ShowData;
+//                                       DM.DQ_Grid_March.Locate('id_marchandise',id_March,[loCaseInsensitive] );
+//                          end
+//                      end ;
+//                    end
+//                  );
+//        end;
+//
+//    end
+end;
+
+procedure TFTaux.ClearDataTauxMarch;
+  begin
+      DBLOperation.KeyValue := null;
+      EdMontantTauxMarch.Value := 0;
+      EdMinTauxMarch.Value := 0;
+      EdMaxTauxMarch.Value := 0;
+
+  end;
+
+procedure TFTaux.ClearDataTauxRade;
+  begin
+//      EdLibIP.Clear;
+//      EdCodeIP.Clear;
+  end;
+
+
+procedure TFTaux.DBGrid_TauxOpeRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+   if  DBGrid_TauxMarch.DataSource.DataSet.RecordCount > 0 then
+        begin
+              BtnUpdateTauxMarch.Enabled:=true;
+              BtnDeleteTauxMarch.Enabled:=true;
+              BtnReplaceTauxMarch.Enabled:=true;
+        end
+      else
+  if  DBGrid_TauxMarch.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdateTauxMarch.Enabled:=False;
+            BtnDeleteTauxMarch.Enabled:=False;
+            BtnReplaceTauxMarch.Enabled:=False;
+         end;
+end;
+
+procedure TFTaux.DBGrid_TauxRadeRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+   if  DBGrid_TauxRade.DataSource.DataSet.RecordCount > 0 then
+        begin
+              BtnUpdateTauxRade.Enabled:=true;
+              BtnDeleteTauxRade.Enabled:=true;
+        end
+      else
+  if  DBGrid_TauxRade.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdateTauxRade.Enabled:=False;
+            BtnDeleteTauxRade.Enabled:=False;
+         end;
+end;
+
+procedure TFTaux.ShowDataTauxMarch;
+  begin
+      filter_TauxMarch:=' order by T.date_debut';
+
+      init_query_TauxMarch:= 'SELECT *, CONCAT( Y.libelle_type_march ," - ", A.libelle_action ) as libelle_ope FROM taux_operation T, operation O, action A, type_marchandise Y WHERE T.operation_taux = O.id_operation '#13+
+                              'AND O.action=A.id_action AND O.type_marchandise=Y.id_type_march ';
+      query_TauxMarch:=init_query_TauxMarch + search_TauxMarch+ filter_TauxMarch;
+
+      DM.DQ_Grid_TauxMarch.Close;
+      DM.DQ_Grid_TauxMarch.SQL.Clear;
+      DM.DQ_Grid_TauxMarch.SQL.Text := query_TauxMarch;
+      DM.DQ_Grid_TauxMarch.Open;
+  end;
+
+procedure TFTaux.ShowDataTauxRade;
+  begin
+//      filter_TauxRade:=' order by libelle_ip';
+//
+//      init_query_TauxRade:= 'SELECT * FROM installation_port WHERE id_ip is not null ' ;
+//      query_TauxRade:=init_query_TauxRade + search_TauxRade+ filter_TauxRade;
+//
+//      DM.DQ_Grid_TauxRade.Close;
+//      DM.DQ_Grid_TauxRade.SQL.Clear;
+//      DM.DQ_Grid_TauxRade.SQL.Text := query_TauxRade;
+//      DM.DQ_Grid_TauxRade.Open;
+  end;
+
+procedure TFTaux.UniFormShow(Sender: TObject);
+begin
+
+  //Taux Marchandise
+    FmContextTauxMarch := AddContext;
+
+    DM.DQ_DBL_Ope.Close;
+    DM.DQ_DBL_Ope.SQL.Clear;
+    DM.DQ_DBL_Ope.SQL.Add('SELECT * , CONCAT( T.libelle_type_march ," - ", A.libelle_action ) as libelle '#13+
+                           'FROM operation O, type_marchandise T, action A WHERE O.type_marchandise=T.id_type_march AND O.action=A.id_action');
+    DM.DQ_DBL_Ope.Open;
+
+    ShowDataTauxMarch;
+//    EdDateDebutTauxMarch.DateTime :=StrToDate('') ;
+
+    BtnAddTauxMarch.Caption := '';
+    BtnUpdateTauxMarch.Caption := '';
+    BtnDeleteTauxMarch.Caption := '';
+    BtnReplaceTauxMarch.Caption := '';
+
+
+//Taux Rade
+    FmContextTauxRade := AddContext;
+
+    ShowDataTauxRade;
+
+    BtnAddTauxRade.Caption := '';
+    BtnUpdateTauxRade.Caption := '';
+    BtnDeleteTauxRade.Caption := '';
+    BtnReplaceTauxRade.Caption := '';
+end;
+
+end.

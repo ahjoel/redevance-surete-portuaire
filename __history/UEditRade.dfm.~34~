@@ -1,0 +1,282 @@
+object FEditRade: TFEditRade
+  Left = 0
+  Top = 0
+  ClientHeight = 167
+  ClientWidth = 528
+  Caption = 'Edition Rade'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 528
+    Height = 167
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = -16
+    ExplicitWidth = 1006
+    ExplicitHeight = 472
+    object PanOps: TUniPanel
+      Left = 0
+      Top = 131
+      Width = 528
+      Height = 36
+      Hint = ''
+      Align = alBottom
+      TabOrder = 1
+      Caption = ''
+      ExplicitWidth = 793
+      object BtnCancel: TUniButton
+        AlignWithMargins = True
+        Left = 446
+        Top = 4
+        Width = 78
+        Height = 28
+        Hint = ''
+        Caption = 'Annuler'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'delete'
+        OnClick = BtnCancelClick
+        ExplicitLeft = 711
+      end
+      object BtnSave: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 93
+        Height = 28
+        Hint = ''
+        Caption = 'Enregistrer'
+        Align = alLeft
+        TabOrder = 1
+        Default = True
+        IconCls = 'bookmarks'
+        OnClick = BtnSaveClick
+      end
+      object EdRapport: TUniEdit
+        Left = 208
+        Top = 7
+        Width = 225
+        Hint = ''
+        Visible = False
+        ShowHint = True
+        ParentShowHint = False
+        MaxLength = 255
+        Text = ''
+        TabOrder = 3
+        EmptyText = 'Commentaire rapport'
+      end
+      object BtnRapport: TUniButton
+        AlignWithMargins = True
+        Left = 103
+        Top = 4
+        Width = 82
+        Height = 28
+        Hint = ''
+        Visible = False
+        Caption = 'Rapporter'
+        Align = alLeft
+        TabOrder = 4
+        Default = True
+        IconCls = 'warning_black'
+        OnClick = BtnRapportClick
+      end
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 528
+      Height = 131
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      ExplicitWidth = 793
+      object UniLabel9: TUniLabel
+        Left = 267
+        Top = 85
+        Width = 14
+        Height = 13
+        Hint = ''
+        Caption = 'Fin'
+        TabOrder = 1
+      end
+      object Edfin: TUniDateTimePicker
+        Left = 301
+        Top = 80
+        Width = 132
+        Hint = ''
+        DateTime = 44765.000000000000000000
+        DateFormat = 'dd/MM/yyyy'
+        TimeFormat = 'HH:mm:ss'
+        TabOrder = 2
+      end
+      object UniLabel4: TUniLabel
+        Left = 24
+        Top = 51
+        Width = 66
+        Height = 13
+        Hint = ''
+        Caption = 'Consignataire'
+        TabOrder = 3
+      end
+      object DBLConsignataire: TUniDBLookupComboBox
+        Left = 113
+        Top = 47
+        Width = 284
+        Hint = ''
+        ListField = 'nom_consignataire'
+        ListSource = DM.DS_DBL_Cons
+        KeyField = 'id_consignataire'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 4
+        Color = clWindow
+        Style = csDropDown
+      end
+      object DBLNavire: TUniDBLookupComboBox
+        Left = 113
+        Top = 17
+        Width = 284
+        Hint = ''
+        ListField = 'nom_navire'
+        ListSource = DM.DS_DBL_Navire
+        KeyField = 'id_navire'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 5
+        Color = clWindow
+        Style = csDropDown
+      end
+      object UniLabel2: TUniLabel
+        Left = 24
+        Top = 21
+        Width = 31
+        Height = 13
+        Hint = ''
+        Caption = 'Navire'
+        TabOrder = 6
+      end
+      object UniLabel7: TUniLabel
+        Left = 24
+        Top = 85
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Debut'
+        TabOrder = 7
+      end
+      object Eddebut: TUniDateTimePicker
+        Left = 113
+        Top = 80
+        Width = 120
+        Hint = ''
+        DateTime = 44765.000000000000000000
+        DateFormat = 'dd/MM/yyyy'
+        TimeFormat = 'HH:mm:ss'
+        TabOrder = 8
+      end
+      object BtAddNavire: TUniSpeedButton
+        Left = 410
+        Top = 17
+        Width = 23
+        Height = 22
+        Hint = 'Ajouter'
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000230000003300000033000000330000
+          00230000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008147C0008949FF008847FF008949FF0081
+          47C00000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008949FF0FE9ACFF00E2A1FF0FE9ACFF0089
+          49FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008747FF20E4AFFF00D99BFF20E4AFFF0087
+          47FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008746FF31E2B5FF00D49AFF31E2B5FF0087
+          46FF0000000000000000000000000000000000000000FFFFFF00000000230000
+          0033000000330000003300000033008744FF44E4BCFF00D098FF44E4BCFF0087
+          44FF0000003300000033000000330000003300000023FFFFFF00008146C0008A
+          48FF008947FF008947FF008846FF008340FF58E3C3FF00CD98FF58E3C3FF0083
+          40FF008846FF008947FF008947FF008A48FF008146C0FFFFFF00008947FF69EB
+          D2FF00D0A0FF00D0A1FF00D0A1FF00CE9EFF00CB9AFF00CA99FF00CB9AFF00CE
+          9EFF00D0A1FF00D0A1FF00D0A0FF69EBD2FF008947FFFFFFFF00008844FF75E8
+          D3FF00C699FF00C699FF00C699FF00C699FF00C699FF00C699FF00C699FF00C6
+          99FF00C699FF00C699FF00C699FF75E8D3FF008844FFFFFFFF00008946FF8AEE
+          DEFF8AEADAFF8BEAD9FF8BEAD9FF8BE8D7FF52D8BEFF00C296FF52D8BEFF8BE8
+          D7FF8BEAD9FF8BEAD9FF8AEADAFF8AEEDEFF008946FFFFFFFF00008D4CB00089
+          46FF008743FF008743FF008642FF00813AFF97E9DCFF00BE95FF97E9DCFF0081
+          3AFF008642FF008743FF008743FF008946FF008D4CEFFFFFFF00000000000000
+          0000000000000000000000000000008641FF99EADEFF00BB95FF99EADEFF0086
+          41FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008742FF98E9DEFF00B794FF98E9DEFF0087
+          42FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008843FF97E7E0FF00B395FF97E7E0FF0088
+          43FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008946FF9AE9E6FF96E6E1FF9AE9E6FF0089
+          46FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008D4BB0008946FF008843FF008946FF008D
+          4BEF0000000000000000000000000000000000000000FFFFFF00}
+        Caption = ''
+        ParentColor = False
+        TabOrder = 9
+        OnClick = BtAddNavireClick
+      end
+      object BtAddConsignataire: TUniSpeedButton
+        Left = 410
+        Top = 47
+        Width = 23
+        Height = 22
+        Hint = 'Ajouter'
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000230000003300000033000000330000
+          00230000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008147C0008949FF008847FF008949FF0081
+          47C00000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008949FF0FE9ACFF00E2A1FF0FE9ACFF0089
+          49FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008747FF20E4AFFF00D99BFF20E4AFFF0087
+          47FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008746FF31E2B5FF00D49AFF31E2B5FF0087
+          46FF0000000000000000000000000000000000000000FFFFFF00000000230000
+          0033000000330000003300000033008744FF44E4BCFF00D098FF44E4BCFF0087
+          44FF0000003300000033000000330000003300000023FFFFFF00008146C0008A
+          48FF008947FF008947FF008846FF008340FF58E3C3FF00CD98FF58E3C3FF0083
+          40FF008846FF008947FF008947FF008A48FF008146C0FFFFFF00008947FF69EB
+          D2FF00D0A0FF00D0A1FF00D0A1FF00CE9EFF00CB9AFF00CA99FF00CB9AFF00CE
+          9EFF00D0A1FF00D0A1FF00D0A0FF69EBD2FF008947FFFFFFFF00008844FF75E8
+          D3FF00C699FF00C699FF00C699FF00C699FF00C699FF00C699FF00C699FF00C6
+          99FF00C699FF00C699FF00C699FF75E8D3FF008844FFFFFFFF00008946FF8AEE
+          DEFF8AEADAFF8BEAD9FF8BEAD9FF8BE8D7FF52D8BEFF00C296FF52D8BEFF8BE8
+          D7FF8BEAD9FF8BEAD9FF8AEADAFF8AEEDEFF008946FFFFFFFF00008D4CB00089
+          46FF008743FF008743FF008642FF00813AFF97E9DCFF00BE95FF97E9DCFF0081
+          3AFF008642FF008743FF008743FF008946FF008D4CEFFFFFFF00000000000000
+          0000000000000000000000000000008641FF99EADEFF00BB95FF99EADEFF0086
+          41FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008742FF98E9DEFF00B794FF98E9DEFF0087
+          42FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008843FF97E7E0FF00B395FF97E7E0FF0088
+          43FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008946FF9AE9E6FF96E6E1FF9AE9E6FF0089
+          46FF0000000000000000000000000000000000000000FFFFFF00000000000000
+          0000000000000000000000000000008D4BB0008946FF008843FF008946FF008D
+          4BEF0000000000000000000000000000000000000000FFFFFF00}
+        Caption = ''
+        ParentColor = False
+        TabOrder = 10
+        OnClick = BtAddConsignataireClick
+      end
+    end
+  end
+end

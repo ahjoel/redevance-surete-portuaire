@@ -1,0 +1,157 @@
+object FEditNavire: TFEditNavire
+  Left = 0
+  Top = 0
+  ClientHeight = 181
+  ClientWidth = 384
+  Caption = 'Navires - Enregistrement'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 384
+    Height = 181
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 568
+    ExplicitHeight = 255
+    object PanOps: TUniPanel
+      Left = 0
+      Top = 148
+      Width = 384
+      Height = 33
+      Hint = ''
+      Align = alBottom
+      TabOrder = 1
+      Caption = ''
+      object BtnCancel: TUniButton
+        AlignWithMargins = True
+        Left = 290
+        Top = 4
+        Width = 90
+        Height = 25
+        Hint = ''
+        Caption = 'Annuler'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'delete'
+        OnClick = BtnCancelClick
+      end
+      object BtnSave: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 90
+        Height = 25
+        Hint = ''
+        Caption = 'Enregistrer'
+        Align = alLeft
+        TabOrder = 1
+        Default = True
+        IconCls = 'bookmarks'
+        OnClick = BtnSaveClick
+      end
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 384
+      Height = 148
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      object UniLabel4: TUniLabel
+        Left = 16
+        Top = 119
+        Width = 23
+        Height = 13
+        Hint = ''
+        Caption = 'Pays'
+        TabOrder = 1
+      end
+      object EdImma: TUniEdit
+        Left = 112
+        Top = 45
+        Width = 241
+        Hint = ''
+        CharCase = ecUpperCase
+        MaxLength = 20
+        Text = ''
+        TabOrder = 3
+      end
+      object EdNom: TUniEdit
+        Left = 112
+        Top = 14
+        Width = 241
+        Hint = ''
+        CharCase = ecUpperCase
+        MaxLength = 150
+        Text = ''
+        TabOrder = 2
+      end
+      object UniLabel1: TUniLabel
+        Left = 16
+        Top = 23
+        Width = 30
+        Height = 13
+        Hint = ''
+        Caption = 'Nom *'
+        TabOrder = 6
+      end
+      object UniLabel2: TUniLabel
+        Left = 16
+        Top = 54
+        Width = 55
+        Height = 13
+        Hint = ''
+        Caption = 'Immatricule'
+        TabOrder = 7
+      end
+      object UniLabel3: TUniLabel
+        Left = 16
+        Top = 83
+        Width = 33
+        Height = 13
+        Hint = ''
+        Caption = 'Type *'
+        TabOrder = 8
+      end
+      object DBLPays: TUniDBLookupComboBox
+        Left = 112
+        Top = 110
+        Width = 241
+        Hint = ''
+        ListField = 'libelle_pays'
+        ListSource = DM.DS_DBL_Pays
+        KeyField = 'id_pays'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 5
+        Color = clWindow
+        Style = csDropDown
+      end
+      object DBLTypeNav: TUniDBLookupComboBox
+        Left = 112
+        Top = 78
+        Width = 241
+        Hint = ''
+        ListField = 'libelle_type_nav'
+        ListSource = DM.DS_DBL_TypeNavire
+        KeyField = 'id_type_nav'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 4
+        Color = clWindow
+        Style = csDropDown
+      end
+    end
+  end
+end

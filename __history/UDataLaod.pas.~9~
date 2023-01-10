@@ -1,0 +1,41 @@
+unit UDataLaod;
+
+interface
+
+
+implementation
+
+uses Main, MainModule, ServerModule, UFunction, UGlobal,
+      uniGUIMainModule, SysUtils, Classes, Data.DB, DBAccess, MyAccess, MemDS,
+      Windows, Messages, Variants, Graphics,
+      Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+      uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniLabel, uniEdit,
+      uniButton, uniPanel, uniGUIBaseClasses, uniMultiItem, uniComboBox,
+      uniDBComboBox, uniDBLookupComboBox;
+
+
+
+
+
+
+
+procedure DBLLoadData(DQ : TMyQuery, Query : string, order : string);
+  begin
+    DQ.Close;
+    DQ.SQL.Clear;
+    DQ.SQL.Add(Query+ ' ' + order );
+    DQ.Open;
+
+  end
+
+
+
+
+
+
+
+
+
+
+
+end.

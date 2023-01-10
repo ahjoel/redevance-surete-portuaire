@@ -1,0 +1,61 @@
+unit UEditTauxMarchandise;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniPanel, uniGUIBaseClasses, uniLabel,
+  uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniEdit,
+  uniDateTimePicker, uniButton;
+
+type
+  TFEditTauxMarchandise = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniPanel2: TUniPanel;
+    DBLOperation: TUniDBLookupComboBox;
+    UniLabel3: TUniLabel;
+    UniLabel7: TUniLabel;
+    EdMinTauxMarch: TUniNumberEdit;
+    UniLabel6: TUniLabel;
+    EdMaxTauxMarch: TUniNumberEdit;
+    UniLabel4: TUniLabel;
+    EdMontantTauxMarch: TUniFormattedNumberEdit;
+    EdDateDebutTauxMarch: TUniDateTimePicker;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    UniDateTimePicker1: TUniDateTimePicker;
+    BtnSave: TUniButton;
+    BtnCancel: TUniButton;
+    procedure UniFormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    var
+    id_TauxMarch, ope_TauxMarch, min_TauxMarch, max_TauxMarch, taux_TauxMarch, debut_TauxMarch, fin_TauxMarch : string;
+    FmContext : string;
+    EditContext : string;
+  end;
+
+function FEditTauxMarchandise: TFEditTauxMarchandise;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UGlobal, ULoadData;
+
+function FEditTauxMarchandise: TFEditTauxMarchandise;
+begin
+  Result := TFEditTauxMarchandise(DM.GetFormInstance(TFEditTauxMarchandise));
+end;
+
+procedure TFEditTauxMarchandise.UniFormShow(Sender: TObject);
+begin
+  LoadDBLOperation;
+end;
+
+end.

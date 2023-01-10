@@ -1,0 +1,89 @@
+hyper_server.exe: 00000474: 02:52:52 []:>--------------------------------------------------------------<
+hyper_server.exe: 00000474: 02:52:52 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00000474: 02:52:52 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00000474: 02:52:52 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00000474: 02:52:52 []:Transport.PoolSize: 750
+hyper_server.exe: 00000474: 02:52:53 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00000474: 02:52:53 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00003FD4: 02:54:03 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: BEUHgeUBaB10AF6C389 ) : Addr: $00679C37
+hyper_server.exe: 00000474: 02:54:17 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00000474: 02:54:17 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00000474: 02:54:17 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00000474: 02:54:19 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00000474: 02:54:19 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00000474: 02:54:20 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00000474: 02:54:20 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00000474: 02:54:20 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00000474: 02:54:20 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00000474: 02:54:20 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00000474: 02:54:20 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00000474: 02:54:20 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00000474: 02:54:20 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00000474: 02:54:20 []:<-------------------------------------------------------------->
+hyper_server.exe: 00000474: 02:54:20 [Terminated]:Exit Code: 0
+hyper_server.exe: 00003BF8: 02:54:30 []:>--------------------------------------------------------------<
+hyper_server.exe: 00003BF8: 02:54:30 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00003BF8: 02:54:30 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00003BF8: 02:54:30 [TUniGUISessionManager]:Cache erase job created, Folder count: [2]
+hyper_server.exe: 00003BF8: 02:54:30 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00003BF8: 02:54:30 []:Transport.PoolSize: 750
+hyper_server.exe: 00003BF8: 02:54:30 [PostInit]:Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384
+hyper_server.exe: 00003BF8: 02:54:30 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00003BF8: 02:54:30 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00001288: 02:54:30 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:34 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:35 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:36 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:36 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:37 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:37 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:37 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:37 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:38 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:38 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:38 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 000033B4: 02:54:40 [TUniHyperNodeManagerWorker]:Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384
+hyper_server.exe: 00001288: 02:54:52 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:53 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00001288: 02:54:54 [127.0.0.1]:Exception : Could not create node: 0, Err: Le fichier spécifié est introuvable, "D:\dev\syg_rsp\src\Win32\Debug\syg_rs.exe" /node_id=0 /mode=node /first_node=true /port=16384 : Addr: $00711CA0
+hyper_server.exe: 00003BF8: 02:54:57 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00003BF8: 02:54:57 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00003BF8: 02:54:57 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00003BF8: 02:54:57 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00003BF8: 02:54:57 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00003BF8: 02:54:58 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00003BF8: 02:54:58 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00003BF8: 02:54:58 []:<-------------------------------------------------------------->
+hyper_server.exe: 00003BF8: 02:54:58 [Terminated]:Exit Code: 0
+hyper_server.exe: 00003E44: 02:54:59 []:>--------------------------------------------------------------<
+hyper_server.exe: 00003E44: 02:54:59 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00003E44: 02:54:59 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00003E44: 02:54:59 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00003E44: 02:54:59 []:Transport.PoolSize: 750
+hyper_server.exe: 00003E44: 02:55:00 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00003E44: 02:55:00 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00001620: 07:59:20 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: WOYPpz2Sb810AF6C85A ) : Addr: $00679C37
+hyper_server.exe: 000040EC: 07:59:35 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: WOYPpz2Sb810AF6C85A ) : Addr: $00679C37
+hyper_server.exe: 00004288: 08:24:48 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hMey9AvIk310AF71939 ) : Addr: $00679C37
+hyper_server.exe: 00004288: 08:24:48 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hMey9AvIk310AF71939 ) : Addr: $00679C37
+hyper_server.exe: 00003E44: 11:10:39 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00003E44: 11:10:39 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00003E44: 11:10:39 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00003E44: 11:10:41 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00003E44: 11:10:41 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00003E44: 11:10:42 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00003E44: 11:10:42 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00003E44: 11:10:42 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00003E44: 11:10:42 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00003E44: 11:10:42 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00003E44: 11:10:42 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00003E44: 11:10:42 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00003E44: 11:10:42 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00003E44: 11:10:42 []:<-------------------------------------------------------------->
+hyper_server.exe: 00003E44: 11:10:42 [Terminated]:Exit Code: 0

@@ -1,0 +1,102 @@
+object FEditRapportEscale: TFEditRapportEscale
+  Left = 0
+  Top = 0
+  ClientHeight = 612
+  ClientWidth = 873
+  Caption = 'FEditRapportEscale'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 873
+    Height = 612
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = -16
+    ExplicitWidth = 1006
+    ExplicitHeight = 472
+    object PanOps: TUniPanel
+      Left = 0
+      Top = 576
+      Width = 873
+      Height = 36
+      Hint = ''
+      Align = alBottom
+      TabOrder = 1
+      Caption = ''
+      ExplicitTop = 216
+      ExplicitWidth = 801
+      object BtnCancel: TUniButton
+        AlignWithMargins = True
+        Left = 791
+        Top = 4
+        Width = 78
+        Height = 28
+        Hint = ''
+        Caption = 'Annuler'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'delete'
+        ExplicitLeft = 719
+      end
+      object BtnSave: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 93
+        Height = 28
+        Hint = ''
+        Caption = 'Enregistrer'
+        Align = alLeft
+        TabOrder = 1
+        Default = True
+        IconCls = 'bookmarks'
+      end
+      object BtnRapport: TUniButton
+        AlignWithMargins = True
+        Left = 103
+        Top = 4
+        Width = 93
+        Height = 28
+        Hint = ''
+        Visible = False
+        Caption = 'Rapporter'
+        Align = alLeft
+        TabOrder = 3
+        Default = True
+        IconCls = 'warning_black'
+      end
+      object EdRapport: TUniEdit
+        Left = 208
+        Top = 7
+        Width = 313
+        Hint = ''
+        ShowHint = True
+        ParentShowHint = False
+        MaxLength = 255
+        Text = ''
+        TabOrder = 4
+        EmptyText = 'Commentaire rapport'
+      end
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 873
+      Height = 576
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      ExplicitWidth = 801
+      ExplicitHeight = 216
+    end
+  end
+end

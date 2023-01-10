@@ -1,0 +1,312 @@
+unit URade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniLabel, uniEdit,
+  uniButton, uniPanel, uniGUIBaseClasses;
+
+type
+  TFRade = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    PanOp: TUniPanel;
+    BtnDel: TUniButton;
+    BtnUpdate: TUniButton;
+    BtnAdd: TUniButton;
+    EdSearch: TUniEdit;
+    UniLabel1: TUniLabel;
+    BtnValidate: TUniButton;
+    BtnControl: TUniButton;
+    DBGrid: TUniDBGrid;
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniPanel2: TUniPanel;
+    procedure BtnAddClick(Sender: TObject);
+    procedure BtnUpdateClick(Sender: TObject);
+    procedure UniFormShow(Sender: TObject);
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure BtnControlClick(Sender: TObject);
+    procedure BtnValidateClick(Sender: TObject);
+    procedure DBGridSelectionChange(Sender: TObject);
+    procedure DBGridDrawColumnCell(Sender: TObject; ACol, ARow: Integer;
+      Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
+  private
+    { Private declarations }
+    procedure UpdateLoadData;
+  public
+    { Public declarations }
+      procedure ShowData;
+  var
+    FrmMode, FrmModeTitle : string;
+  end;
+
+function FRade: TFRade;
+
+var
+    filter, search, init_query, query:string;
+    exercice_filter :string;
+    title :string = 'RADE';
+    FrmMode, FrmModeTitle : string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, Main, UDataLaod, UEditRade, UFunction, UGlobal,
+  ULoadData;
+
+function FRade: TFRade;
+begin
+  Result := TFRade(DM.GetFormInstance(TFRade));
+end;
+
+
+procedure TFRade.UpdateLoadData;
+begin
+    //UPDATE CHECK VARIABLES
+   FEditRade.id :=DM.QStand.FieldValues['id'];
+
+   //UPDATE LOAD_DATA
+   FEditRade.id:=DM.QStand.FieldValues['id'];
+   FEditRade.DBLNavire.KeyValue :=DM.QStand.FieldValues['navire'];
+   FEditRade.DBLConsignataire.KeyValue :=DM.QStand.FieldValues['consignataire'];
+   FEditRade.Eddebut.DateTime :=DM.QStand.FieldValues['debut'];
+   FEditRade.Edfin.DateTime :=DM.QStand.FieldValues['fin'];
+end;
+
+
+procedure TFRade.BtnAddClick(Sender: TObject);
+begin
+    FEditRade.EditContext := FormContext;
+    FEditRade.FmContext := AddContext;
+
+    FEditRade.Caption := FrmEditTitle(title, AddTitle);
+    FEditRade.ShowModal;
+end;
+
+procedure TFRade.BtnControlClick(Sender: TObject);
+begin
+    FEditRade.Caption := FrmEditTitle(title, ControlTitle);
+
+    FEditRade.ShowModal;
+    FEditRade.BtnSave.Caption := ControlBtnCaption;
+    FEditRade.BtnSave.IconCls := 'check2';
+    FEditRade.FmContext := ControlContext;
+
+     with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM rade where id=:id ');
+           Parameters.ParamByName('id').Value:= DBGrid.DataSource.DataSet.FieldByName('id').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               FEditRade.ShowModal;
+
+               UpdateLoadData;
+
+               //ENABLE DATA
+
+               //UPDATE LOAD_DATA
+
+               FEditRade.DBLNavire.ReadOnly:=True;
+               FEditRade.DBLConsignataire.ReadOnly:=True;
+               FEditRade.Eddebut.ReadOnly:=True;
+               FEditRade.Edfin.ReadOnly:=True;
+
+
+
+               //UPDATE EDIT COLOR
+               FEditRade.DBLNavire.Color:=clWebLemonChiffon;
+               FEditRade.DBLConsignataire.Color:=clWebLemonChiffon;
+               FEditRade.Eddebut.Color:=clWebLemonChiffon;
+               FEditRade.Edfin.Color:=clWebLemonChiffon;
+
+           end
+
+           else
+end;
+
+procedure TFRade.BtnUpdateClick(Sender: TObject);
+begin
+     FEditRade.Caption := FrmEditTitle(title, UpdateTitle);
+
+    FEditRade.ShowModal;
+    FEditRade.FmContext := UpdateContext;
+
+     with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM rade where id=:id ');
+           Parameters.ParamByName('id').Value:= DBGrid.DataSource.DataSet.FieldByName('id').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               FEditRade.ShowModal;
+               //UPDATE CHECK VARIABLES
+               FEditRade.id :=DM.QStand.FieldValues['id'];
+
+
+               //UPDATE LOAD_DATA
+               FEditRade.id:=DM.QStand.FieldValues['id'];
+               FEditRade.DBLNavire.KeyValue :=DM.QStand.FieldValues['navire'];
+               FEditRade.DBLConsignataire.KeyValue :=DM.QStand.FieldValues['consignataire'];
+               FEditRade.Eddebut.DateTime :=DM.QStand.FieldValues['debut'];
+               FEditRade.Edfin.DateTime :=DM.QStand.FieldValues['fin'];
+           end
+
+           else
+end;
+
+procedure TFRade.BtnValidateClick(Sender: TObject);
+begin
+    FEditRade.Caption := FrmEditTitle(title, ValidateTitle);
+
+    FEditRade.ShowModal;
+    FEditRade.BtnSave.Caption := ValidatBtnCaption;
+    FEditRade.BtnSave.IconCls := 'check';
+    FEditRade.FmContext := ValidatContext;
+
+     with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM rade where id=:id ');
+           Parameters.ParamByName('id').Value:= DBGrid.DataSource.DataSet.FieldByName('id').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               FEditRade.ShowModal;
+
+               UpdateLoadData;
+
+               //ENABLE DATA
+
+               //UPDATE LOAD_DATA
+               FEditRade.DBLNavire.ReadOnly:=True;
+               FEditRade.DBLConsignataire.ReadOnly:=True;
+               FEditRade.Eddebut.ReadOnly:=True;
+               FEditRade.Edfin.ReadOnly:=True;
+
+
+
+               //UPDATE EDIT COLOR
+               FEditRade.DBLNavire.Color:=clWebLightSalmon;
+               FEditRade.DBLConsignataire.Color:=clWebLightSalmon;
+               FEditRade.Eddebut.Color:=clWebLightSalmon;
+               FEditRade.Edfin.Color:=clWebLightSalmon;
+
+
+
+
+
+
+           end
+
+           else
+end;
+
+procedure TFRade.DBGridDrawColumnCell(Sender: TObject; ACol, ARow: Integer;
+  Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
+begin
+  if DBGrid.DataSource.DataSet.FieldByName('rapport_control').AsInteger = 1 then
+      Attribs.Color:= clWebLemonChiffon
+    else
+    if DBGrid.DataSource.DataSet.FieldByName('rapport_validate').AsInteger = 1 then
+      Attribs.Color:= clWebLightSalmon
+    else
+end;
+
+procedure TFRade.DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+begin
+ if  DM.DQ_Grid_Rade.RecordCount=0 then
+      begin
+            BtnUpdate.Enabled:=False;
+            BtnDel.Enabled:=False;
+            BtnControl.Enabled:=False;
+            BtnValidate.Enabled:=False;
+      end
+    else
+       begin
+          BtnUpdate.Enabled:=true;
+         // BtnDel.Enabled:=true;
+          BtnControl.Enabled:=true;
+          BtnValidate.Enabled:=true;
+       end;
+end;
+
+procedure TFRade.DBGridSelectionChange(Sender: TObject);
+begin
+  if DBGrid.DataSource.DataSet.FieldByName('control').AsString = '' then
+    begin
+        BtnControl.Enabled:=True;
+        BtnValidate.Enabled:=False;
+    end
+    else
+    begin
+        BtnControl.Enabled:=False;
+        BtnValidate.Enabled:=True;
+
+    end;
+
+if DBGrid.DataSource.DataSet.FieldByName('validation').AsString <> '' then
+    begin
+       BtnValidate.Enabled:=False;
+    end
+  else
+end;
+
+procedure TFRade.ShowData;
+  begin
+      filter:=' order by debut desc , ref desc' ;
+
+      if EdSearch.IsBlank then search:='' else
+      search:=' AND (UPPER(ref) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
+
+       exercice_filter := ' AND R.exercice='''+ IdExerciceInst +'''';
+
+
+      init_query:= 'SELECT * ,case WHEN facturable_type_nav=TRUE THEN ''F'' ELSE ''N''	end as statut,  TIMESTAMPDIFF(DAY , R.debut, R.fin) AS sejour, CEILING(TIMESTAMPDIFF(DAY , R.debut, R.fin)/X.nombre_jour_taux_rade) as qte, '#13+
+                   ' us.login_user as user_saisie , uc.login_user as user_control , uv.login_user as user_validation,  '#13+
+                   ' case WHEN date_control is null THEN '''' ELSE ''O''	end as control , '#13+
+                   ' case WHEN date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
+                   ' case WHEN facturer_int = False THEN ''''  ELSE ''O''	end as fact_int , '#13+
+                   ' case WHEN facturer_pal = False THEN ''''  ELSE ''O''	end as fact_pal  '#13+
+                   ' FROM rade R '#13+
+                   'INNER JOIN user as us on R. user_create=us.id_user '#13+
+                   'LEFT JOIN user as uc on R.user_control=uc.id_user '#13+
+                   'LEFT JOIN user as uv on R.user_validate=uv.id_user '#13+
+                   'INNER JOIN consignataire C on R.consignataire=C.id_consignataire '#13+
+                   'INNER JOIN navire  N on R.navire=N.id_navire '#13+
+                   'INNER JOIN exercice Z on R.exercice=Z.id_exercice '#13+
+                   'INNER JOIN taux_rade X on R.taux_rade=X.id_taux_rade '#13+
+                   'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                    '  ';
+      query:=init_query + search+ filter;
+
+      DM.DQ_Grid_Rade.Close;
+      DM.DQ_Grid_Rade.SQL.Clear;
+      DM.DQ_Grid_Rade.SQL.Text := query;
+      DM.DQ_Grid_Rade.Open;
+  end;
+
+procedure TFRade.UniFormShow(Sender: TObject);
+begin
+ ShowData;
+end;
+
+end.

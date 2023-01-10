@@ -1,0 +1,98 @@
+unit UNavire;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniButton, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniLabel, uniEdit, uniPanel,
+  uniGUIBaseClasses;
+
+type
+  TFNavire = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel2: TUniPanel;
+    BtnAdd: TUniButton;
+    BtnUpdate: TUniButton;
+    BtnDelete: TUniButton;
+    DBGrid: TUniDBGrid;
+    UniContainerPanel2: TUniContainerPanel;
+    UniPanel3: TUniPanel;
+    UniPanel4: TUniPanel;
+    UniSimplePanel1: TUniSimplePanel;
+    UniLabel5: TUniLabel;
+    EdSearch: TUniEdit;
+    UniButton2: TUniButton;
+    UniButton1: TUniButton;
+    BtControler: TUniButton;
+    BtValidate: TUniButton;
+    BtnDel: TUniButton;
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure UniFormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure ShowData;
+  end;
+
+function FNavire: TFNavire;
+var
+    filter, search, init_query, query:string;
+    title :string = 'Navires';
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, Main, ServerModule, UDataLaod, UFunction,
+  UGlobal, ULoadData;
+
+function FNavire: TFNavire;
+begin
+  Result := TFNavire(DM.GetFormInstance(TFNavire));
+end;
+
+procedure TFNavire.ShowData;
+  begin
+      filter:=' order by nom_navire';
+
+//      if EdSearch.IsBlank then search:='' else
+//      search:=' AND (UPPER(nom_consignataire) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
+
+
+      init_query:= 'SELECT *, case WHEN T.facturable_type_nav=TRUE THEN ''OUI'' ELSE ''NON''	end as statut from navire N , type_navire T, pays P WHERE N.type_navire = t.id_type_nav AND N.pays_navire = P.id_pays ' ;
+      query:=init_query + search+ filter;
+
+      DM.DQ_Grid_Navire.Close;
+      DM.DQ_Grid_Navire.SQL.Clear;
+      DM.DQ_Grid_Navire.SQL.Text := query;
+      DM.DQ_Grid_Navire.Open;
+  end;
+
+
+procedure TFNavire.DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+begin
+if  DM.DQ_Grid_Navire.RecordCount=0 then
+      begin
+            BtnUpdate.Enabled:=False;
+            BtnDelete.Enabled:=False;
+      end
+    else
+       begin
+          BtnUpdate.Enabled:=true;
+          BtnDelete.Enabled:=true;
+       end;
+end;
+
+procedure TFNavire.UniFormShow(Sender: TObject);
+begin
+    LoadDBLPays;
+    LoadDBLTypeNavire;
+
+    ShowData;
+end;
+
+end.

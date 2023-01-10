@@ -1,0 +1,384 @@
+unit UPrintOptionEscaleReport;
+
+interface
+
+uses
+   Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGroupBox, uniPanel, uniBasicGrid, uniDBGrid,
+  uniGUIBaseClasses, uniLabel, uniDateTimePicker, uniMultiItem, uniComboBox,
+  uniDBComboBox, uniDBLookupComboBox, uniRadioGroup, uniButton, uniStatusBar,
+  frxClass, frxExportBaseDialog, frxExportPDF, frxDBSet;
+
+type
+  TFPrintOptionEscaleReport = class(TUniForm)
+    UniPanel1: TUniPanel;
+    GBGroup: TUniGroupBox;
+    GBSum: TUniGroupBox;
+    BtnValidat: TUniButton;
+    CBSummary: TUniComboBox;
+    CBGroup: TUniComboBox;
+    procedure BtnValidatClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FPrintOptionEscaleReport: TFPrintOptionEscaleReport;
+
+var
+    query_print, group_filter, group_select : string;
+    query_sum,  init_query_sum, order_sum, lib_sum, data_sum: string;
+    query_group, init_query_group, data_group, filter_group, order_group , title_group: string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UEtatsEscale, UFunction, UProject_Function,
+  UReport, ULoadData;
+
+function FPrintOptionEscaleReport: TFPrintOptionEscaleReport;
+begin
+  Result := TFPrintOptionEscaleReport(DM.GetFormInstance(TFPrintOptionEscaleReport));
+end;
+
+procedure TFPrintOptionEscaleReport.BtnValidatClick(Sender: TObject);
+begin
+    if ((FEtatsEscale.DBGrid.DataSource.DataSet.RecordCount=0) OR (query.IsEmpty = True)) then
+          begin
+              MessageDlg('Aucune Donnée á Imprimer',mtWarning,[mbok]);
+              Abort;
+          end
+    else
+
+        begin
+            if CBGroup.ItemIndex = 0 then
+              begin
+                if CBSummary.ItemIndex = 0 then
+                    FEtatsEscale.frxReport.Pages[1].Visible := False
+                else
+
+                 begin
+
+                         case CBSummary.ItemIndex of
+                              1 : begin
+                                    group_select := ' C.nom_consignataire ' ;
+                                    group_filter := ' GROUP BY E.consignataire ' ;
+                                    lib_sum := 'CONSIGNATAIRE' ;
+                                    data_sum := '[frxDBDataset_sum."nom_consignataire"]'
+                                  end;
+
+                              2 : begin
+                                    group_select := ' T.libelle_type_nav ' ;
+                                    group_filter := ' GROUP BY N.type_navire ' ;
+                                    lib_sum := 'TYPE DE NAVIRE';
+                                    data_sum := '[frxDBDataset_sum."libelle_type_nav"]'
+                                  end;
+
+                              3 : begin
+                                    group_select := ' I.libelle_ip ' ;
+                                    group_filter := ' GROUP BY Q.ip_pq ' ;
+                                    lib_sum := 'INSTALLATION PORTUAIRE';
+                                    data_sum := '[frxDBDataset_sum."libelle_ip"]'
+                                  end;
+
+                              4 : begin
+                                    group_select := ' Q.libelle_pq ' ;
+                                    group_filter := ' GROUP BY E.post_quai ' ;
+                                    lib_sum := 'POSTE A QUAI'  ;
+                                    data_sum := '[frxDBDataset_sum."libelle_pq"]'
+                                  end;
+
+                              5 : begin
+                                    group_select := ' O.libelle_obs ' ;
+                                    group_filter := ' GROUP BY E.observation ';
+                                    lib_sum := 'OBSERVATION';
+                                    data_sum := '[frxDBDataset_sum."libelle_obs"]'
+                                  end;
+
+                              6 : begin
+                                    group_select := ' case WHEN facturable_obs=TRUE THEN "FACTURABLE" ELSE "NON FACTURABLE"	end as statut ' ;
+                                    group_filter := ' GROUP BY statut ' ;
+                                    lib_sum := 'FACTURABLE';
+                                    data_sum := '[frxDBDataset_sum."statut"]'
+                                  end;
+
+                              7 : begin
+                                    group_select := ' case WHEN facturer_pal = "" THEN "NON"  ELSE "OUI"	end as fact_pal ' ;
+                                    group_filter := ' GROUP BY fact_pal ' ;
+                                    lib_sum := 'FACTURÉ PAL' ;
+                                    data_sum := '[frxDBDataset_sum."fact_pal"]'
+                                  end;
+
+                              8 : begin
+                                    group_select := ' case WHEN facturer_int = "" THEN "NON"  ELSE "OUI"	end as fact_int ' ;
+                                    group_filter := ' GROUP BY fact_int ' ;
+                                    lib_sum := 'FACTURÉ INTERNE'  ;
+                                    data_sum := '[frxDBDataset_sum."fact_int"]'
+                                  end;
+                        end;
+
+                        order_sum := ' order by  nb_esc desc  ' ;
+                        init_query_sum:= 'SELECT ' + group_select +  ', COUNT(E.id) as nb_esc '#13+
+                               ' FROM escale E  '#13+
+                               'INNER JOIN port as po on E.port_orgine=po.id_port '#13+
+                               'LEFT JOIN port as pd on E.port_dest=pd.id_port '#13+
+                               'INNER JOIN user as us on E. user_create=us.id_user '#13+
+                               'LEFT JOIN user as uc on E.user_control=uc.id_user '#13+
+                               'LEFT JOIN user as uv on E.user_validate=uv.id_user '#13+
+                               'INNER JOIN consignataire C on E.consignataire=C.id_consignataire '#13+
+                               'INNER JOIN navire  N on E.navire=N.id_navire '#13+
+                               'INNER JOIN poste_quai Q on E.post_quai=Q.id_pq '#13+
+                               'INNER JOIN installation_port I on Q.ip_pq=I.id_ip '#13+
+                               'INNER JOIN exercice Z on E.exercice=Z.id_exercice '#13+
+                               'INNER JOIN observation O on E.observation=O.id_obs '#13+
+                               'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                               ' WHERE E.id is not null ';
+
+                        query_sum := init_query_sum + filter_periode + filter_IP + filter_poste + filter_consign + filter_TypeNave + filter_navire + filter_facturable +filter_fact_pal + filter_fact_int+ filter_obs +group_filter+ order_sum;
+
+                        ExQuery(DM.QSum, query_sum);
+
+                        //SUMMARY DATA
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('sum_lib_title')).Text := lib_sum ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('sum_lib_data')).Text := data_sum ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('sum_nb_data')).Text := '[frxDBDataset_sum."nb_esc"]' ;
+
+                        FEtatsEscale.frxReport.Pages[1].Visible := True ;
+
+
+                        //SUMMARY CRITERIA
+                        //MAIN REPORT CRITERIA
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_sum')).Text :=title_report ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_typeNav_sum')).Text :=title_typeNav ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_instPort_sum')).Text :=title_instPort ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_postQuai_sum')).Text :=title_postQuai ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_navire_sum')).Text :=title_navire ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_obs_sum')).Text :=title_obs ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_statut_sum')).Text :=title_statut ;
+                        TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_factPAL_sum')).Text :=title_factPAL ;
+
+
+    //                    TfrxGroupHeader(FEtatsEscale.frxReport_group.FindObject('GroupHeader')).Condition :=  'frxDBDataset."E.consignataire"'  ;
+                 end;
+
+
+                       //MAIN REPORT CRITERIA
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_report')).Text :=title_report ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_typeNav')).Text :=title_typeNav ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_instPort')).Text :=title_instPort ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_postQuai')).Text :=title_postQuai ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_navire')).Text :=title_navire ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_obs')).Text :=title_obs ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_statut')).Text :=title_statut ;
+                      TfrxMemoView(FEtatsEscale.frxReport.FindObject('title_factPAL')).Text :=title_factPAL ;
+
+
+
+
+                      query_print:= init_query + filter_periode  + filter_IP + filter_poste + filter_consign + filter_TypeNave + filter_navire + filter_facturable +filter_fact_pal + filter_fact_int+ filter_obs + filter;
+                      FReport.DataAndShowReport(DM.QPrint, query_print, FEtatsEscale.frxDBDataset, FEtatsEscale.frxReport, FEtatsEscale.frxPDFExport, FReport.URLFrame, 'Etat_Escale');
+
+               end
+
+
+
+               //GROUP CONDITIONS
+              else
+              begin
+                  if CBSummary.ItemIndex = 0 then
+                       FEtatsEscale.frxReport_group.Pages[1].Visible := False
+                  else
+
+                 begin
+
+                         case CBSummary.ItemIndex of
+                              1 : begin
+                                    group_select := ' C.nom_consignataire ' ;
+                                    group_filter := ' GROUP BY E.consignataire ' ;
+                                    lib_sum := 'CONSIGNATAIRE' ;
+                                    data_sum := '[frxDBDataset_sum."nom_consignataire"]';
+                                  end;
+
+                              2 : begin
+                                    group_select := ' T.libelle_type_nav ' ;
+                                    group_filter := ' GROUP BY N.type_navire ' ;
+                                    lib_sum := 'TYPE DE NAVIRE';
+                                    data_sum := '[frxDBDataset_sum."libelle_type_nav"]'
+                                  end;
+
+                              3 : begin
+                                    group_select := ' I.libelle_ip ' ;
+                                    group_filter := ' GROUP BY Q.ip_pq ' ;
+                                    lib_sum := 'INSTALLATION PORTUAIRE';
+                                    data_sum := '[frxDBDataset_sum."libelle_ip"]'
+                                  end;
+
+                              4 : begin
+                                    group_select := ' Q.libelle_pq ' ;
+                                    group_filter := ' GROUP BY E.post_quai ' ;
+                                    lib_sum := 'POSTE A QUAI'  ;
+                                    data_sum := '[frxDBDataset_sum."libelle_pq"]'
+                                  end;
+
+                              5 : begin
+                                    group_select := ' O.libelle_obs ' ;
+                                    group_filter := ' GROUP BY E.observation ';
+                                    lib_sum := 'OBSERVATION';
+                                    data_sum := '[frxDBDataset_sum."libelle_obs"]'
+                                  end;
+
+                              6 : begin
+                                    group_select := ' case WHEN facturable_obs=TRUE THEN "FACTURABLE" ELSE "NON FACTURABLE"	end as statut ' ;
+                                    group_filter := ' GROUP BY statut ' ;
+                                    lib_sum := 'FACTURABLE';
+                                    data_sum := '[frxDBDataset_sum."statut"]'
+                                  end;
+
+                              7 : begin
+                                    group_select := ' case WHEN facturer_pal = "" THEN "NON"  ELSE "OUI"	end as fact_pal ' ;
+                                    group_filter := ' GROUP BY fact_pal ' ;
+                                    lib_sum := 'FACTURÉ PAL' ;
+                                    data_sum := '[frxDBDataset_sum."fact_pal"]'
+                                  end;
+
+                              8 : begin
+                                    group_select := ' case WHEN facturer_int = "" THEN "NON"  ELSE "OUI"	end as fact_int ' ;
+                                    group_filter := ' GROUP BY fact_int ' ;
+                                    lib_sum := 'FACTURÉ INTERNE'  ;
+                                    data_sum := '[frxDBDataset_sum."fact_int"]'
+                                  end;
+                        end;
+
+                        order_sum := ' order by  nb_esc desc  ' ;
+                        init_query_sum:= 'SELECT ' + group_select +  ', COUNT(E.id) as nb_esc '#13+
+                               ' FROM escale E  '#13+
+                               'INNER JOIN port as po on E.port_orgine=po.id_port '#13+
+                               'LEFT JOIN port as pd on E.port_dest=pd.id_port '#13+
+                               'INNER JOIN user as us on E. user_create=us.id_user '#13+
+                               'LEFT JOIN user as uc on E.user_control=uc.id_user '#13+
+                               'LEFT JOIN user as uv on E.user_validate=uv.id_user '#13+
+                               'INNER JOIN consignataire C on E.consignataire=C.id_consignataire '#13+
+                               'INNER JOIN navire  N on E.navire=N.id_navire '#13+
+                               'INNER JOIN poste_quai Q on E.post_quai=Q.id_pq '#13+
+                               'INNER JOIN installation_port I on Q.ip_pq=I.id_ip '#13+
+                               'INNER JOIN exercice Z on E.exercice=Z.id_exercice '#13+
+                               'INNER JOIN observation O on E.observation=O.id_obs '#13+
+                               'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                               ' WHERE E.id is not null ';
+
+                        query_sum := init_query_sum + filter_periode + filter_IP + filter_poste + filter_consign + filter_TypeNave + filter_navire + filter_facturable +filter_fact_pal + filter_fact_int+ filter_obs +group_filter+ order_sum;
+
+                        ExQuery(DM.QSum, query_sum);
+
+                        //SUMMARY DATA
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('sum_lib_title')).Text := lib_sum ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('sum_lib_data')).Text := data_sum ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('sum_nb_data')).Text := '[frxDBDataset_sum."nb_esc"]' ;
+
+                        FEtatsEscale.frxReport_group.Pages[1].Visible := True ;
+
+
+                        //SUMMARY CRITERIA
+                        //MAIN REPORT CRITERIA
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_sum')).Text :=title_report ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_typeNav_sum')).Text :=title_typeNav ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_instPort_sum')).Text :=title_instPort ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_postQuai_sum')).Text :=title_postQuai ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_navire_sum')).Text :=title_navire ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_obs_sum')).Text :=title_obs ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_statut_sum')).Text :=title_statut ;
+                        TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_factPAL_sum')).Text :=title_factPAL ;
+
+
+    //                    TfrxGroupHeader(FEtatsEscale.frxReport_group.FindObject('GroupHeader')).Condition :=  'frxDBDataset."E.consignataire"'  ;
+                 end;
+
+
+                 case CBGroup.ItemIndex of
+                      1 : begin
+                            data_group := 'frxDBDataset."consignataire"' ;
+                            filter_group := ' GROUP BY consignataire ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      2 : begin
+                            data_group := 'frxDBDataset."libelle_type_nav"' ;
+                            filter_group := ' GROUP BY N.type_navire ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      3 : begin
+                            data_group := 'frxDBDataset."libelle_ip"' ;
+                            filter_group := ' GROUP BY GROUP BY Q.ip_pq ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      4 : begin
+                            data_group := 'frxDBDataset."libelle_pq"';
+                            filter_group := ' GROUP BY E.post_quai ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      5 : begin
+                            data_group := 'frxDBDataset."libelle_obs"';
+                            filter_group := ' GROUP BY E.observation ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      6 : begin
+                            data_group := 'frxDBDataset."statut"'   ;
+                            filter_group := ' GROUP BY statut ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      7 : begin
+                            data_group := 'frxDBDataset."fact_pal"'  ;
+                            filter_group := ' GROUP BY fact_pal ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+
+                      8 : begin
+                            data_group := 'frxDBDataset."fact_int"'  ;
+                            filter_group := ' GROUP BY fact_int ' ;
+                            order_group :=  ' ORDER BY E.consignataire '  ;
+                            title_group := '[frxDBDataset."nom_consignataire"]';
+                          end;
+                  end;
+
+//                    GROUP DATA
+                   TfrxGroupHeader(FEtatsEscale.frxReport_group.FindObject('GroupHeader')).Condition :=data_group;
+                   TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_group')).Text :=title_group ;
+
+
+
+                       //MAIN REPORT CRITERIA
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_report')).Text :=title_report ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_typeNav')).Text :=title_typeNav ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_instPort')).Text :=title_instPort ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_postQuai')).Text :=title_postQuai ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_navire')).Text :=title_navire ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_obs')).Text :=title_obs ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_statut')).Text :=title_statut ;
+                    TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_factPAL')).Text :=title_factPAL ;
+
+                    query_print:= init_query + filter_periode  + filter_IP + filter_poste + filter_consign + filter_TypeNave + filter_navire + filter_facturable +filter_fact_pal + filter_fact_int+ filter_obs + order_group;
+                    FReport.DataAndShowReport(DM.QPrint, query_print, FEtatsEscale.frxDBDataset, FEtatsEscale.frxReport_group, FEtatsEscale.frxPDFExport, FReport.URLFrame, 'Etat_Escale');
+
+
+              end;
+
+        end;
+end;
+
+end.

@@ -1,0 +1,44 @@
+syg_rsp.exe: 00002F34: 08:50:16 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00002F34: 08:50:16 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00002F34: 08:50:16 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
+syg_rsp.exe: 00002F34: 08:50:16 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00002F34: 08:50:16 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003F70: 14:45:39 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: MCQkWC5J1I10BC58115 ) : Addr: $00836E0B
+syg_rsp.exe: 00004EB4: 15:10:36 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: WkabWoRkPO10BC585C1 ) : Addr: $00836E0B
+syg_rsp.exe: 00005538: 15:55:07 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: KqeL7gAiSE10BC58C90 ) : Addr: $00836E0B
+syg_rsp.exe: 00005038: 16:33:32 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Vz23dR2W4b10BC5989A ) : Addr: $00836E0B
+syg_rsp.exe: 00002F34: 17:02:56 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00002F34: 17:02:56 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00002F34: 17:02:57 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00002F34: 17:02:57 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00002F34: 17:02:57 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00002F34: 17:02:57 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00002F34: 17:02:57 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00002F34: 17:02:57 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00002F34: 17:02:57 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00002F34: 17:02:57 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00002F34: 17:02:57 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003918: 17:03:20 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003918: 17:03:20 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003918: 17:03:20 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
+syg_rsp.exe: 00003918: 17:03:21 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003918: 17:03:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00005608: 17:03:26 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: GDrlaVVMPN10BC5A4F9 ) : Addr: $00836E0B
+syg_rsp.exe: 00003918: 17:29:29 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003918: 17:29:29 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003918: 17:29:30 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003918: 17:29:30 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003918: 17:29:30 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003918: 17:29:30 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003918: 17:29:30 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003918: 17:29:30 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003918: 17:29:30 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003918: 17:29:30 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003918: 17:29:30 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000163C: 17:31:45 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000163C: 17:31:45 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000163C: 17:31:45 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
+syg_rsp.exe: 0000163C: 17:31:45 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000163C: 17:31:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00004228: 17:31:56 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: PyfLWjBUAQ10BC5AB20 ) : Addr: $00836E0B
+syg_rsp.exe: 00004FA4: 17:49:53 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 2dctCcebVv10BC5B2DB ) : Addr: $00836E0B

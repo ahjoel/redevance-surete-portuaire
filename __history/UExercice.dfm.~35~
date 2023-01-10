@@ -1,0 +1,212 @@
+object FExercice: TFExercice
+  Left = 0
+  Top = 0
+  ClientHeight = 360
+  ClientWidth = 564
+  Caption = 'Exercices'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 564
+    Height = 360
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = -154
+    ExplicitTop = -152
+    ExplicitWidth = 799
+    ExplicitHeight = 461
+    object PanTitle: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 564
+      Height = 27
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 1
+      Title = 'Escales'
+      Caption = 'Exercices'
+      Color = clWhite
+      Layout = 'column'
+      ExplicitWidth = 930
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 27
+      Width = 564
+      Height = 52
+      Hint = ''
+      Align = alTop
+      TabOrder = 2
+      Caption = ''
+      object EdLibelle: TUniEdit
+        Left = 85
+        Top = 14
+        Width = 109
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 1
+      end
+      object UniLabel2: TUniLabel
+        Left = 44
+        Top = 19
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Libell'#233
+        TabOrder = 2
+      end
+      object BtnCancel: TUniButton
+        Left = 476
+        Top = 11
+        Width = 81
+        Height = 25
+        Hint = ''
+        Caption = 'Annuler'
+        TabOrder = 3
+        IconCls = 'delete'
+        OnClick = BtnCancelClick
+      end
+      object BtnSave: TUniButton
+        Left = 389
+        Top = 11
+        Width = 81
+        Height = 25
+        Hint = ''
+        Caption = 'Enregistrer'
+        TabOrder = 4
+        IconCls = 'bookmarks'
+        OnClick = BtnSaveClick
+      end
+      object RadActif: TUniRadioGroup
+        Left = 231
+        Top = 3
+        Width = 146
+        Height = 40
+        Hint = ''
+        Items.Strings = (
+          'Oui'
+          'Non')
+        Caption = 'Actif'
+        TabOrder = 5
+        Columns = 2
+      end
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 79
+      Width = 44
+      Height = 281
+      Hint = ''
+      Align = alLeft
+      TabOrder = 3
+      Caption = ''
+      ExplicitTop = 94
+      ExplicitHeight = 399
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 36
+        Height = 30
+        Hint = 'Ajouter'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Ajouter'
+        Align = alTop
+        TabOrder = 1
+        IconAlign = iaTop
+        IconCls = 'add'
+        OnClick = BtnAddClick
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 40
+        Width = 36
+        Height = 30
+        Hint = 'Modifier'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Modifier'
+        Align = alTop
+        TabOrder = 2
+        IconAlign = iaTop
+        IconCls = 'compose'
+        OnClick = BtnUpdateClick
+        ExplicitLeft = 5
+      end
+      object BtnDelete: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 76
+        Width = 36
+        Height = 30
+        Hint = 'Supprimer'
+        Enabled = False
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Supprimer'
+        Align = alTop
+        TabOrder = 3
+        IconAlign = iaTop
+        IconCls = 'trash'
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 44
+      Top = 79
+      Width = 520
+      Height = 281
+      Hint = ''
+      DataSource = DM.DS_Grid_Exo
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 4
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'id_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'libelle_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'Libell'#233
+          Title.Font.Style = [fsBold]
+          Width = 192
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'actif_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'Actif'
+          Title.Font.Style = [fsBold]
+          Width = 160
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
+    end
+  end
+end

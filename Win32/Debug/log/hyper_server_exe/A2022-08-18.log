@@ -1,0 +1,102 @@
+hyper_server.exe: 00004E60: 10:26:39 []:>--------------------------------------------------------------<
+hyper_server.exe: 00004E60: 10:26:39 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00004E60: 10:26:39 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00004E60: 10:26:39 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+hyper_server.exe: 00004E60: 10:26:39 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00004E60: 10:26:39 []:Transport.PoolSize: 750
+hyper_server.exe: 00004E60: 10:26:40 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00004E60: 10:26:40 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00003DF8: 10:26:43 []:>--------------------------------------------------------------<
+hyper_server.exe: 00003DF8: 10:26:43 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00003DF8: 10:26:43 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00003DF8: 10:26:43 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00003DF8: 10:26:43 []:Transport.PoolSize: 750
+hyper_server.exe: 00003DF8: 10:26:43 [TUniHyperNodeManager]:Orphaned Node #1 found.
+hyper_server.exe: 00003DF8: 10:26:43 [TUniHyperNodeManager]:Orphaned Node #0 found.
+hyper_server.exe: 00003DF8: 10:26:43 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00003DF8: 10:26:43 [InitWebServer]:EIdCouldNotBindSocket : Could not bind socket. : Addr: $0059D7B9
+hyper_server.exe: 00004E60: 10:26:47 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00004E60: 10:26:47 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00004E60: 10:26:47 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00003DF8: 10:26:49 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00003DF8: 10:26:49 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00003DF8: 10:26:49 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00004E60: 10:26:49 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00004E60: 10:26:49 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00004E60: 10:26:49 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00004E60: 10:26:49 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00004E60: 10:26:49 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00004E60: 10:26:49 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00004E60: 10:26:49 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00004E60: 10:26:49 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00004E60: 10:26:49 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00004E60: 10:26:49 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00004E60: 10:26:49 []:<-------------------------------------------------------------->
+hyper_server.exe: 00004E60: 10:26:49 [Terminated]:Exit Code: 0
+hyper_server.exe: 000032C8: 10:26:50 []:>--------------------------------------------------------------<
+hyper_server.exe: 000032C8: 10:26:50 [TUniServerModule]:Server First Init.
+hyper_server.exe: 000032C8: 10:26:50 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 000032C8: 10:26:50 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 000032C8: 10:26:50 []:Transport.PoolSize: 750
+hyper_server.exe: 00003DF8: 10:26:51 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 000032C8: 10:26:51 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 000032C8: 10:26:51 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00003DF8: 10:26:51 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00003DF8: 10:26:51 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00003DF8: 10:26:51 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00003DF8: 10:26:51 []:<-------------------------------------------------------------->
+hyper_server.exe: 00003DF8: 10:26:51 [Terminated]:Exit Code: 0
+hyper_server.exe: 00003F14: 10:26:56 [127.0.0.1]:EUniHyperServerException : TUniHyperServer.HandleHTTPRequest(), Node:[0], EIdSocketError, Socket Error # 10061
+Connection refused. : Addr: $0070C924
+hyper_server.exe: 000026E8: 10:26:56 [HandleFileRequest[127.0.0.1]]:File not found: D:\dev\syg_rsp\src\Win32\Debug\favicon.ico
+hyper_server.exe: 00003F14: 10:26:58 [127.0.0.1]:EUniHyperServerException : TUniHyperServer.HandleHTTPRequest(), Node:[0], EIdSocketError, Socket Error # 10061
+Connection refused. : Addr: $0070C924
+hyper_server.exe: 000003A4: 10:26:59 [127.0.0.1]:EUniHyperServerException : TUniHyperServer.HandleHTTPRequest(), Node:[1], EIdSocketError, Socket Error # 10061
+Connection refused. : Addr: $0070C924
+hyper_server.exe: 000042A4: 10:27:02 [SendCommand Error, Node: -1]:Socket Error # 10061
+Connection refused.
+hyper_server.exe: 000042A4: 10:27:04 [SendCommand Error, Node: -1]:Socket Error # 10061
+Connection refused.
+hyper_server.exe: 000032C8: 10:27:08 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 000032C8: 10:27:08 [TUniHyperServer]:Terminating...
+hyper_server.exe: 000032C8: 10:27:08 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 000032C8: 10:27:10 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 000032C8: 10:27:10 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 000032C8: 10:27:11 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 000032C8: 10:27:11 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 000032C8: 10:27:11 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 000032C8: 10:27:11 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 000032C8: 10:27:11 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 000032C8: 10:27:11 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 000032C8: 10:27:11 [TUniHyperServer]:Terminated.
+hyper_server.exe: 000032C8: 10:27:11 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 000032C8: 10:27:11 []:<-------------------------------------------------------------->
+hyper_server.exe: 000032C8: 10:27:11 [Terminated]:Exit Code: 0
+hyper_server.exe: 00002268: 13:18:00 []:>--------------------------------------------------------------<
+hyper_server.exe: 00002268: 13:18:00 [TUniServerModule]:Server First Init.
+hyper_server.exe: 00002268: 13:18:00 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+hyper_server.exe: 00002268: 13:18:00 [TUniHyperServer]:InitInterceptor
+hyper_server.exe: 00002268: 13:18:00 []:Transport.PoolSize: 750
+hyper_server.exe: 00002268: 13:18:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+hyper_server.exe: 00002268: 13:18:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+hyper_server.exe: 00002268: 13:18:11 [TUniServerModule]:Shutting Down Server.
+hyper_server.exe: 00002268: 13:18:11 [TUniHyperServer]:Terminating...
+hyper_server.exe: 00002268: 13:18:11 [TUniHyperNodeManager]:Terminating...
+hyper_server.exe: 00002268: 13:18:13 [TUniHyperNodeManager]:Terminated.
+hyper_server.exe: 00002268: 13:18:13 [TUniServerModule]:Stopping HTTP Server.
+hyper_server.exe: 00002268: 13:18:13 [TUniServerModule]:HTTP Server Stopped.
+hyper_server.exe: 00002268: 13:18:13 [TUniGUISessionManager]:Terminating Session manager.
+hyper_server.exe: 00002268: 13:18:13 [TUniGUISessionManager]:Stopping Cache Eraser...
+hyper_server.exe: 00002268: 13:18:13 [TUniGUISessionManager]:Cache Eraser Stopped.
+hyper_server.exe: 00002268: 13:18:13 [TUniGUISessionManager]:Destroying Worker Threads.
+hyper_server.exe: 00002268: 13:18:13 [TUniGUISessionManager]:Session manager terminated.
+hyper_server.exe: 00002268: 13:18:13 [TUniHyperServer]:Terminated.
+hyper_server.exe: 00002268: 13:18:13 [TUniServerModule]:Server Shutdown Completed.
+hyper_server.exe: 00002268: 13:18:13 []:<-------------------------------------------------------------->
+hyper_server.exe: 00002268: 13:18:13 [Terminated]:Exit Code: 0

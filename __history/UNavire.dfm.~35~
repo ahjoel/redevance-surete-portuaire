@@ -1,0 +1,220 @@
+object FNavire: TFNavire
+  Left = 0
+  Top = 0
+  ClientHeight = 701
+  ClientWidth = 1162
+  Caption = 'Navires'
+  OnShow = UniFormShow
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu, biMaximize]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 1162
+    Height = 701
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    object DBGrid: TUniDBGrid
+      Left = 0
+      Top = 61
+      Width = 1162
+      Height = 640
+      Hint = ''
+      DataSource = DM.Ds_Grid_Navire
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 1
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'id_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'nom_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Nom'
+          Title.Font.Style = [fsBold]
+          Width = 315
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'imma_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Immatricule'
+          Title.Font.Style = [fsBold]
+          Width = 155
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'libelle_type_nav'
+          Title.Alignment = taCenter
+          Title.Caption = 'Type'
+          Title.Font.Style = [fsBold]
+          Width = 193
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'libelle_pays'
+          Title.Alignment = taCenter
+          Title.Caption = 'Pays'
+          Title.Font.Style = [fsBold]
+          Width = 186
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'statut'
+          Title.Alignment = taCenter
+          Title.Caption = ' Facturable'
+          Title.Font.Style = [fsBold]
+          Width = 82
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          Title.Alignment = taCenter
+          Title.Caption = ' Escale'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          Title.Alignment = taCenter
+          Title.Caption = ' Rade'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
+    end
+    object UniContainerPanel2: TUniContainerPanel
+      Left = 0
+      Top = 0
+      Width = 1162
+      Height = 25
+      Hint = ''
+      ParentColor = False
+      Align = alTop
+      TabOrder = 2
+      object UniPanel3: TUniPanel
+        Left = 35
+        Top = 0
+        Width = 1127
+        Height = 25
+        Hint = ''
+        Align = alClient
+        ParentFont = False
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Style = [fsBold]
+        TabOrder = 1
+        BorderStyle = ubsNone
+        Alignment = taLeftJustify
+        Title = 'Escales'
+        Caption = 'Navires'
+        Color = clSkyBlue
+        Layout = 'column'
+      end
+      object UniPanel4: TUniPanel
+        Left = 0
+        Top = 0
+        Width = 35
+        Height = 25
+        Hint = ''
+        Align = alLeft
+        TabOrder = 2
+        BorderStyle = ubsNone
+        Caption = ''
+        Color = clSkyBlue
+      end
+    end
+    object UniSimplePanel1: TUniSimplePanel
+      AlignWithMargins = True
+      Left = 3
+      Top = 28
+      Width = 1156
+      Height = 30
+      Hint = ''
+      ParentColor = False
+      Align = alTop
+      TabOrder = 3
+      object UniLabel5: TUniLabel
+        Left = 10
+        Top = 10
+        Width = 58
+        Height = 13
+        Hint = ''
+        Caption = 'Recherche :'
+        TabOrder = 1
+      end
+      object EdSearch: TUniEdit
+        Left = 83
+        Top = 5
+        Width = 225
+        Hint = 'Recherche ...'
+        ShowHint = True
+        ParentShowHint = False
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 2
+      end
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 913
+        Top = 3
+        Width = 75
+        Height = 24
+        Hint = ''
+        Caption = 'Ajouter'
+        Align = alRight
+        TabOrder = 3
+        IconCls = 'add'
+        OnClick = BtnAddClick
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 994
+        Top = 3
+        Width = 75
+        Height = 24
+        Hint = ''
+        Caption = 'Modifier'
+        Align = alRight
+        TabOrder = 4
+        IconCls = 'compose'
+        OnClick = BtnUpdateClick
+      end
+      object BtnDelete: TUniButton
+        AlignWithMargins = True
+        Left = 1075
+        Top = 3
+        Width = 78
+        Height = 24
+        Hint = ''
+        Caption = 'Supprimer'
+        Align = alRight
+        TabOrder = 5
+        IconCls = 'delete'
+      end
+    end
+  end
+end

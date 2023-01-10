@@ -1,0 +1,2 @@
+syg_rsp.exe: 00004078: 12:22:51 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ZEBlKzn1fe10BC71388 ) : Addr: $00836E0B
+syg_rsp.exe: 000057A0: 12:22:56 [Exit]:Unexpected attempt to terminate server application with Exit Code: 0

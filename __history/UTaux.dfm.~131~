@@ -1,0 +1,597 @@
+object FTaux: TFTaux
+  Left = 0
+  Top = 0
+  ClientHeight = 546
+  ClientWidth = 907
+  Caption = 'Taux'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 907
+    Height = 546
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 481
+    ExplicitHeight = 639
+    object UniPageControl1: TUniPageControl
+      Left = 0
+      Top = 27
+      Width = 907
+      Height = 519
+      Hint = ''
+      ActivePage = PageOperation
+      Align = alClient
+      TabOrder = 1
+      object PageOperation: TUniTabSheet
+        Hint = ''
+        Caption = 'Taux - Op'#233'rations'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 289
+        ExplicitHeight = 193
+        object UniContainerPanel2: TUniContainerPanel
+          Left = 0
+          Top = 0
+          Width = 899
+          Height = 491
+          Hint = ''
+          ParentColor = False
+          Align = alClient
+          TabOrder = 0
+          object UniPanel2: TUniPanel
+            Left = 0
+            Top = 0
+            Width = 899
+            Height = 73
+            Hint = ''
+            Align = alTop
+            TabOrder = 1
+            Caption = ''
+            object UniLabel1: TUniLabel
+              Left = 415
+              Top = 46
+              Width = 29
+              Height = 13
+              Hint = ''
+              Caption = 'Debut'
+              TabOrder = 8
+            end
+            object UniLabel3: TUniLabel
+              Left = 28
+              Top = 17
+              Width = 48
+              Height = 13
+              Hint = ''
+              Caption = 'Op'#233'ration'
+              TabOrder = 9
+            end
+            object DBLOperation: TUniDBLookupComboBox
+              Left = 82
+              Top = 10
+              Width = 507
+              Hint = ''
+              ListField = 'libelle'
+              ListSource = DM.DS_DBL_Ope
+              KeyField = 'id_operation'
+              ListFieldIndex = 0
+              ClearButton = True
+              TabOrder = 0
+              Color = clWindow
+            end
+            object BtnCancelTauxMarch: TUniButton
+              Left = 809
+              Top = 39
+              Width = 81
+              Height = 28
+              Hint = ''
+              Caption = 'Annuler'
+              TabOrder = 6
+              IconCls = 'delete'
+            end
+            object BtnSaveTauxMarch: TUniButton
+              Left = 809
+              Top = 7
+              Width = 81
+              Height = 28
+              Hint = ''
+              Caption = 'Enregistrer'
+              TabOrder = 5
+              IconCls = 'bookmarks'
+              OnClick = BtnSaveTauxMarchClick
+            end
+            object EdMontantTauxOpe: TUniFormattedNumberEdit
+              Left = 688
+              Top = 10
+              Width = 97
+              Hint = ''
+              TabOrder = 1
+              MaxValue = 9999999.000000000000000000
+              BlankValue = 0
+              DecimalUseOSDefault = True
+              DecimalPrecision = 3
+            end
+            object EdDateDebutTauxOpe: TUniDateTimePicker
+              Left = 450
+              Top = 41
+              Width = 136
+              Hint = ''
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 4
+              ClearButton = True
+            end
+            object EdMinTauxOpe: TUniNumberEdit
+              Left = 82
+              Top = 41
+              Width = 103
+              Hint = ''
+              MaxLength = 8
+              TabOrder = 2
+              BlankValue = 0
+              DecimalSeparator = ','
+            end
+            object EdMaxTauxOpe: TUniNumberEdit
+              Left = 264
+              Top = 41
+              Width = 105
+              Hint = ''
+              MaxLength = 8
+              TabOrder = 3
+              BlankValue = 0
+              DecimalSeparator = ','
+            end
+            object UniLabel6: TUniLabel
+              Left = 238
+              Top = 47
+              Width = 20
+              Height = 13
+              Hint = ''
+              Caption = 'Max'
+              TabOrder = 10
+            end
+            object UniLabel7: TUniLabel
+              Left = 28
+              Top = 47
+              Width = 16
+              Height = 13
+              Hint = ''
+              Caption = 'Min'
+              TabOrder = 11
+            end
+            object UniLabel4: TUniLabel
+              Left = 613
+              Top = 17
+              Width = 57
+              Height = 13
+              Hint = ''
+              Caption = 'Taux (Euro)'
+              TabOrder = 12
+            end
+            object UniDateTimePicker1: TUniDateTimePicker
+              Left = 665
+              Top = 45
+              Width = 120
+              Hint = ''
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 13
+            end
+          end
+          object UniPanel3: TUniPanel
+            Left = 0
+            Top = 73
+            Width = 44
+            Height = 418
+            Hint = ''
+            Align = alLeft
+            TabOrder = 2
+            Caption = ''
+            object BtnAddTauxOpe: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 4
+              Width = 36
+              Height = 30
+              Hint = 'Ajouter'
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Ajouter'
+              Align = alTop
+              TabOrder = 1
+              IconAlign = iaTop
+              IconCls = 'add'
+              OnClick = BtnAddTauxOpeClick
+            end
+            object BtnUpdateTauxOpe: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 40
+              Width = 36
+              Height = 30
+              Hint = 'Modifier'
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Modifier'
+              Align = alTop
+              TabOrder = 2
+              IconAlign = iaTop
+              IconCls = 'compose'
+            end
+            object BtnDeleteTauxOpe: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 112
+              Width = 36
+              Height = 30
+              Hint = 'Supprimer'
+              Enabled = False
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Supprimer'
+              Align = alTop
+              TabOrder = 3
+              IconAlign = iaTop
+              IconCls = 'trash'
+            end
+            object BtnFinTauxOpe: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 76
+              Width = 36
+              Height = 30
+              Hint = 'Mise a jours'
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Ajour'
+              Align = alTop
+              TabOrder = 4
+              IconAlign = iaTop
+              IconCls = 'retweet'
+              OnClick = BtnFinTauxOpeClick
+            end
+          end
+          object DBGrid_TauxOpe: TUniDBGrid
+            Left = 44
+            Top = 73
+            Width = 855
+            Height = 418
+            Hint = ''
+            DataSource = DM.DS_Grid_TauxOpe
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+            ReadOnly = True
+            LoadMask.Message = 'Loading data...'
+            StripeRows = False
+            Align = alClient
+            TabOrder = 3
+            OnRecordCount = DBGrid_TauxOpeRecordCount
+            Columns = <
+              item
+                FieldName = 'id_taux'
+                Title.Alignment = taCenter
+                Title.Caption = 'id'
+                Title.Font.Style = [fsBold]
+                Width = 64
+                Visible = False
+              end
+              item
+                FieldName = 'libelle_ope'
+                Title.Alignment = taCenter
+                Title.Caption = 'Op'#233'rations'
+                Title.Font.Style = [fsBold]
+                Width = 428
+                DisplayMemo = True
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                FieldName = 'taux_euro'
+                Title.Alignment = taCenter
+                Title.Caption = 'Taux (Euro)'
+                Title.Font.Style = [fsBold]
+                Width = 78
+                Alignment = taRightJustify
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                ShowToolTipAlways = False
+                FieldName = 'date_debut'
+                Title.Alignment = taCenter
+                Title.Caption = 'Debut'
+                Title.Font.Style = [fsBold]
+                Width = 94
+                Alignment = taCenter
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                FieldName = 'max'
+                Title.Alignment = taCenter
+                Title.Caption = 'Max'
+                Title.Font.Style = [fsBold]
+                Width = 48
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                FieldName = 'min'
+                Title.Alignment = taCenter
+                Title.Caption = ' Min'
+                Title.Font.Style = [fsBold]
+                Width = 47
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                FieldName = 'date_fin'
+                Title.Alignment = taCenter
+                Title.Caption = ' Fin'
+                Title.Font.Style = [fsBold]
+                Width = 89
+                Alignment = taCenter
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end>
+          end
+        end
+      end
+      object PageRade: TUniTabSheet
+        Hint = ''
+        Caption = 'Taux - Rades'
+        object UniContainerPanel3: TUniContainerPanel
+          Left = 0
+          Top = 0
+          Width = 899
+          Height = 491
+          Hint = ''
+          ParentColor = False
+          Align = alClient
+          TabOrder = 0
+          object UniPanel1: TUniPanel
+            Left = 0
+            Top = 0
+            Width = 899
+            Height = 49
+            Hint = ''
+            Align = alTop
+            TabOrder = 1
+            Caption = ''
+            object UniLabel2: TUniLabel
+              Left = 476
+              Top = 22
+              Width = 29
+              Height = 13
+              Hint = ''
+              Caption = 'Debut'
+              TabOrder = 1
+            end
+            object UniLabel5: TUniLabel
+              Left = 44
+              Top = 21
+              Width = 66
+              Height = 13
+              Hint = ''
+              Caption = 'Nombre Jours'
+              TabOrder = 2
+            end
+            object BtnCancelTauxRade: TUniButton
+              Left = 809
+              Top = 15
+              Width = 80
+              Height = 25
+              Hint = ''
+              Caption = 'Annuler'
+              TabOrder = 3
+              IconCls = 'delete'
+            end
+            object BtnSaveTauxRade: TUniButton
+              Left = 722
+              Top = 15
+              Width = 81
+              Height = 25
+              Hint = ''
+              Caption = 'Enregistrer'
+              TabOrder = 4
+              IconCls = 'bookmarks'
+            end
+            object EdNbJours: TUniFormattedNumberEdit
+              Left = 133
+              Top = 15
+              Width = 89
+              Hint = ''
+              TabOrder = 5
+              DecimalPrecision = 0
+              DecimalSeparator = ','
+              ThousandSeparator = #160
+            end
+            object UniDateTimePicker2: TUniDateTimePicker
+              Left = 520
+              Top = 15
+              Width = 93
+              Hint = ''
+              DateTime = 44760.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 6
+            end
+            object UniLabel8: TUniLabel
+              Left = 256
+              Top = 21
+              Width = 57
+              Height = 13
+              Hint = ''
+              Caption = 'Taux (Euro)'
+              TabOrder = 7
+            end
+            object UniFormattedNumberEdit1: TUniFormattedNumberEdit
+              Left = 332
+              Top = 15
+              Width = 97
+              Hint = ''
+              TabOrder = 8
+              BlankValue = 0
+              DecimalUseOSDefault = True
+              DecimalPrecision = 3
+            end
+          end
+          object UniPanel4: TUniPanel
+            Left = 0
+            Top = 49
+            Width = 44
+            Height = 442
+            Hint = ''
+            Align = alLeft
+            TabOrder = 2
+            Caption = ''
+            object BtnAddTauxRade: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 4
+              Width = 36
+              Height = 30
+              Hint = 'Ajouter'
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Ajouter'
+              Align = alTop
+              TabOrder = 1
+              IconAlign = iaTop
+              IconCls = 'add'
+            end
+            object BtnUpdateTauxRade: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 40
+              Width = 36
+              Height = 30
+              Hint = 'Modifier'
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Modifier'
+              Align = alTop
+              TabOrder = 2
+              IconAlign = iaTop
+              IconCls = 'compose'
+            end
+            object BtnDeleteTauxRade: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 112
+              Width = 36
+              Height = 30
+              Hint = 'Supprimer'
+              Enabled = False
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Supprimer'
+              Align = alTop
+              TabOrder = 3
+              IconAlign = iaTop
+              IconCls = 'trash'
+            end
+            object BtnReplaceTauxRade: TUniButton
+              AlignWithMargins = True
+              Left = 4
+              Top = 76
+              Width = 36
+              Height = 30
+              Hint = 'Mise a jours'
+              ShowHint = True
+              ParentShowHint = False
+              Caption = 'Ajour'
+              Align = alTop
+              TabOrder = 4
+              IconAlign = iaTop
+              IconCls = 'retweet'
+            end
+          end
+          object DBGrid_TauxRade: TUniDBGrid
+            Left = 44
+            Top = 49
+            Width = 855
+            Height = 442
+            Hint = ''
+            DataSource = DM.DS_Grid_TauxRade
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+            ReadOnly = True
+            LoadMask.Message = 'Loading data...'
+            StripeRows = False
+            Align = alClient
+            TabOrder = 3
+            OnRecordCount = DBGrid_TauxRadeRecordCount
+            Columns = <
+              item
+                FieldName = 'id_marchandise'
+                Title.Alignment = taCenter
+                Title.Caption = 'id'
+                Title.Font.Style = [fsBold]
+                Width = 64
+                Visible = False
+              end
+              item
+                FieldName = 'libelle_marchandise'
+                Title.Alignment = taCenter
+                Title.Caption = 'Nom'
+                Title.Font.Style = [fsBold]
+                Width = 370
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                FieldName = 'code_marchandise'
+                Title.Alignment = taCenter
+                Title.Caption = 'Code'
+                Title.Font.Style = [fsBold]
+                Width = 72
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                ShowToolTipAlways = False
+                FieldName = 'libelle_type_march'
+                Title.Alignment = taCenter
+                Title.Caption = 'Type'
+                Title.Font.Style = [fsBold]
+                Width = 124
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end
+              item
+                FieldName = 'description_unite'
+                Title.Alignment = taCenter
+                Title.Caption = 'Mesure'
+                Title.Font.Style = [fsBold]
+                Width = 107
+                Menu.MenuEnabled = False
+                Menu.ColumnHideable = False
+              end>
+          end
+        end
+      end
+    end
+    object PanTitle: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 907
+      Height = 27
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 2
+      Title = 'Escales'
+      Caption = 'Taux'
+      Color = clWhite
+      Layout = 'column'
+    end
+  end
+end

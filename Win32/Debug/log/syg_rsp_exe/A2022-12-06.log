@@ -1,0 +1,7 @@
+syg_rsp.exe: 00001624: 08:15:22 [Exit]:Unexpected attempt to terminate server application with Exit Code: 0
+syg_rsp.exe: 00000ADC: 11:49:02 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00000ADC: 11:49:02 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00000ADC: 11:49:02 [TUniServerModule]:Global Cache Folder Erased. <3> Files deleted.
+syg_rsp.exe: 00000ADC: 11:49:02 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00000ADC: 11:49:02 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00001C7C: 14:42:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 3gO4h13j7U10BA23D7D ) : Addr: $0082D9FE

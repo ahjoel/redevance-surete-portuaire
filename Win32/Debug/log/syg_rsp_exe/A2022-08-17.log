@@ -1,0 +1,530 @@
+syg_rsp.exe: 00001070: 08:31:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: fhren9BHxS10AF6B2D3 ) : Addr: $0080EC33
+syg_rsp.exe: 00004E40: 08:31:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ayBFUOq5Rk10AF6ABC4 ) : Addr: $0080EC33
+syg_rsp.exe: 00004E40: 08:31:39 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: w4dQSi5Tcs10AF7A821 ) : Addr: $0080EC33
+syg_rsp.exe: 000027FC: 09:18:45 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Z8Zwr5Ru3S10AF8AA14 ) : Addr: $0080EC33
+syg_rsp.exe: 00004AA4: 09:47:07 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00004AA4: 09:47:07 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00004AA4: 09:47:08 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00004AA4: 09:47:08 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00004AA4: 09:47:08 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003634: 09:47:18 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003634: 09:47:18 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003634: 09:47:18 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00003634: 09:47:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003634: 09:47:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003634: 10:00:50 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003634: 10:00:50 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003634: 10:00:51 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003634: 10:00:51 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003634: 10:00:51 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003634: 10:00:51 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003634: 10:00:51 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003634: 10:00:51 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003634: 10:00:51 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003634: 10:00:51 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003634: 10:00:51 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003BE0: 10:00:55 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003BE0: 10:00:55 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003BE0: 10:00:55 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00003BE0: 10:00:55 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003BE0: 10:00:55 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003E38: 10:00:56 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: tI2eeTeJuR10AF8BD12 ) : Addr: $0080EC33
+syg_rsp.exe: 00003BE0: 10:01:29 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003BE0: 10:01:29 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003BE0: 10:01:30 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003BE0: 10:01:30 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003BE0: 10:01:30 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000048B8: 10:01:34 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000048B8: 10:01:34 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000048B8: 10:01:34 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000048B8: 10:01:34 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000048B8: 10:01:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000048B8: 10:01:34 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000048BC: 10:01:36 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: yVNenTHYNY10AF8C0C3 ) : Addr: $0080EC33
+syg_rsp.exe: 000048B8: 10:01:57 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000048B8: 10:01:57 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000048B8: 10:01:58 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000048B8: 10:01:58 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000048B8: 10:01:58 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000048B8: 10:01:58 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000048B8: 10:01:58 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000048B8: 10:01:58 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000048B8: 10:01:59 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000048B8: 10:01:59 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000048B8: 10:01:59 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000367C: 10:02:02 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000367C: 10:02:02 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000367C: 10:02:02 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000367C: 10:02:02 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 0000367C: 10:02:02 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000367C: 10:02:02 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00002584: 10:02:05 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: jkWHNN4ljq10AF8C0F2 ) : Addr: $0080EC33
+syg_rsp.exe: 0000367C: 10:02:42 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000367C: 10:02:42 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000367C: 10:02:43 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000367C: 10:02:43 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000367C: 10:02:43 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000367C: 10:02:43 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000367C: 10:02:43 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000367C: 10:02:43 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000367C: 10:02:43 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000367C: 10:02:43 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000367C: 10:02:43 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000196C: 10:02:47 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000196C: 10:02:47 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000196C: 10:02:47 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000196C: 10:02:47 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 0000196C: 10:02:47 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000196C: 10:02:47 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000030F4: 10:02:48 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 3UNfWXcB9i10AF8C113 ) : Addr: $0080EC33
+syg_rsp.exe: 0000196C: 10:19:37 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000196C: 10:19:37 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000196C: 10:19:38 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000196C: 10:19:38 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000196C: 10:19:38 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000196C: 10:19:38 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000196C: 10:19:38 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000196C: 10:19:38 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000196C: 10:19:38 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000196C: 10:19:38 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000196C: 10:19:38 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00000914: 10:24:58 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00000914: 10:24:58 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00000914: 10:24:58 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00000914: 10:24:58 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00000914: 10:24:58 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003A74: 10:25:00 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 6YTk7MSrx210AF8C146 ) : Addr: $0080EC33
+syg_rsp.exe: 00000914: 10:32:02 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00000914: 10:32:02 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00000914: 10:32:03 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00000914: 10:32:03 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00000914: 10:32:03 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00000914: 10:32:03 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00000914: 10:32:03 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00000914: 10:32:03 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00000914: 10:32:03 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00000914: 10:32:03 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00000914: 10:32:03 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000400C: 10:32:09 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000400C: 10:32:09 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000400C: 10:32:09 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000400C: 10:32:09 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 0000400C: 10:32:09 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000400C: 10:32:09 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 0000346C: 10:32:12 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: wRWVXARSWS10AF8C74B ) : Addr: $0080EC33
+syg_rsp.exe: 0000400C: 10:44:54 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000400C: 10:44:54 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000400C: 10:44:55 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000400C: 10:44:55 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000400C: 10:44:55 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000400C: 10:44:55 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000400C: 10:44:55 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000400C: 10:44:55 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000400C: 10:44:55 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000400C: 10:44:55 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000400C: 10:44:55 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00000CE4: 10:45:15 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00000CE4: 10:45:15 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00000CE4: 10:45:15 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00000CE4: 10:45:15 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00000CE4: 10:45:15 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00000CE4: 10:45:15 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003614: 10:45:17 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: CnhIy67Et310AF8C941 ) : Addr: $0080EC33
+syg_rsp.exe: 00000CE4: 10:47:42 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00000CE4: 10:47:42 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00000CE4: 10:47:43 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00000CE4: 10:47:43 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00000CE4: 10:47:43 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000376C: 10:47:48 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000376C: 10:47:48 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000376C: 10:47:48 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000376C: 10:47:48 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 0000376C: 10:47:48 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000376C: 10:47:48 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003D44: 10:47:50 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hEl6CFgcVh10AF8CCEC ) : Addr: $0080EC33
+syg_rsp.exe: 0000376C: 11:18:23 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000376C: 11:18:23 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000376C: 11:18:24 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000376C: 11:18:24 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000376C: 11:18:24 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000376C: 11:18:24 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000376C: 11:18:24 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000376C: 11:18:24 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000376C: 11:18:24 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000376C: 11:18:24 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000376C: 11:18:24 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000475C: 11:19:57 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000475C: 11:19:57 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000475C: 11:19:57 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000475C: 11:19:57 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000475C: 11:19:57 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00002C94: 11:19:59 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ECUCPQH2oB10AF8CD7D ) : Addr: $0080EC33
+syg_rsp.exe: 00002C94: 11:20:22 [127.0.0.1]:EMyError : #42S22Unknown column 'id_esc' in 'where clause' : Addr: $0094CBE2
+syg_rsp.exe: 00000490: 11:21:44 [127.0.0.1]:EMyError : #42S22Unknown column 'id_esc' in 'where clause' : Addr: $0094CBE2
+syg_rsp.exe: 0000475C: 11:22:09 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000475C: 11:22:09 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000475C: 11:22:10 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000475C: 11:22:10 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000475C: 11:22:10 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000475C: 11:22:10 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000475C: 11:22:10 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000475C: 11:22:10 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000475C: 11:22:10 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000475C: 11:22:10 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000475C: 11:22:10 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000012C4: 11:22:15 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000012C4: 11:22:15 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000012C4: 11:22:15 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000012C4: 11:22:15 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000012C4: 11:22:15 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000012C4: 11:22:15 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00004D5C: 11:22:19 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ljluRS1YUF10AF8D635 ) : Addr: $0080EC33
+syg_rsp.exe: 00003BEC: 14:56:40 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 44RqpgQfRw10AF8D6D7 ) : Addr: $0080EC33
+syg_rsp.exe: 000012C4: 15:00:28 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000012C4: 15:00:28 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000012C4: 15:00:29 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000012C4: 15:00:29 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000012C4: 15:00:29 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000012C4: 15:00:29 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000012C4: 15:00:29 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000012C4: 15:00:29 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000012C4: 15:00:29 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000012C4: 15:00:29 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000012C4: 15:00:29 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000007D4: 15:00:34 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000007D4: 15:00:34 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000007D4: 15:00:34 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000007D4: 15:00:34 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000007D4: 15:00:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000007D4: 15:00:34 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00004780: 15:00:35 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: gdbeFJ4iaj10AF910FF ) : Addr: $0080EC33
+syg_rsp.exe: 000007D4: 15:02:25 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000007D4: 15:02:25 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000007D4: 15:02:27 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000007D4: 15:02:27 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000007D4: 15:02:27 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000007D4: 15:02:27 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000007D4: 15:02:27 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000007D4: 15:02:27 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000007D4: 15:02:27 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000007D4: 15:02:27 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000007D4: 15:02:27 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00004740: 15:02:29 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00004740: 15:02:29 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00004740: 15:02:29 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00004740: 15:02:29 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00004740: 15:02:29 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00004740: 15:02:29 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 0000024C: 15:02:30 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: iJdJwqzlcO10AF9120D ) : Addr: $0080EC33
+syg_rsp.exe: 00004740: 15:05:19 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00004740: 15:05:19 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00004740: 15:05:20 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00004740: 15:05:20 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00004740: 15:05:20 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00004740: 15:05:21 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00004740: 15:05:21 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00004740: 15:05:21 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00004740: 15:05:21 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00004740: 15:05:21 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00004740: 15:05:21 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00002460: 15:05:23 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00002460: 15:05:23 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00002460: 15:05:23 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00002460: 15:05:23 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00002460: 15:05:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00002460: 15:05:23 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000022C0: 15:05:23 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: GPiAQadAyf10AF91292 ) : Addr: $0080EC33
+syg_rsp.exe: 00002460: 15:05:50 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00002460: 15:05:50 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00002460: 15:05:51 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00002460: 15:05:51 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00002460: 15:05:51 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00002460: 15:05:51 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00002460: 15:05:51 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00002460: 15:05:51 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00002460: 15:05:51 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00002460: 15:05:51 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00002460: 15:05:51 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000456C: 15:05:55 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000456C: 15:05:55 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000456C: 15:05:55 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000456C: 15:05:55 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 0000456C: 15:05:55 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000456C: 15:05:55 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00002138: 15:05:57 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: No3qhqK5mt10AF9135B ) : Addr: $0080EC33
+syg_rsp.exe: 00000864: 15:17:53 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: m2b4aHnGsW10AF91382 ) : Addr: $0080EC33
+syg_rsp.exe: 0000456C: 16:01:32 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000456C: 16:01:32 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000456C: 16:01:32 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000456C: 16:01:32 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000456C: 16:01:32 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000046D8: 16:01:36 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000046D8: 16:01:36 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000046D8: 16:01:36 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000046D8: 16:01:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000046D8: 16:01:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00000770: 16:01:38 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: wHsbrvoDYs10AF916BF ) : Addr: $0080EC33
+syg_rsp.exe: 000046D8: 16:01:57 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000046D8: 16:01:57 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000046D8: 16:01:58 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000046D8: 16:01:58 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000046D8: 16:01:58 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000046D8: 16:01:58 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000046D8: 16:01:58 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000046D8: 16:01:58 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000046D8: 16:01:58 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000046D8: 16:01:58 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000046D8: 16:01:58 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00000DF0: 16:02:02 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00000DF0: 16:02:02 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00000DF0: 16:02:02 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00000DF0: 16:02:02 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00000DF0: 16:02:02 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00000DF0: 16:02:02 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00000DF0: 16:02:19 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00000DF0: 16:02:19 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00000DF0: 16:02:20 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00000DF0: 16:02:20 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00000DF0: 16:02:20 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003FDC: 16:02:23 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003FDC: 16:02:23 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003FDC: 16:02:23 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00003FDC: 16:02:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003FDC: 16:02:23 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00004358: 16:02:25 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: lOBhC2u1HN10AF9229C ) : Addr: $0080EC33
+syg_rsp.exe: 00003FDC: 16:02:59 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003FDC: 16:02:59 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003FDC: 16:03:00 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003FDC: 16:03:00 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003FDC: 16:03:00 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003F5C: 16:03:03 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003F5C: 16:03:03 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003F5C: 16:03:03 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00003F5C: 16:03:03 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00003F5C: 16:03:03 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003F5C: 16:03:03 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003F4C: 16:03:05 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: engIAF4sqw10AF922D3 ) : Addr: $0080EC33
+syg_rsp.exe: 00003F5C: 16:04:30 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003F5C: 16:04:30 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003F5C: 16:04:31 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003F5C: 16:04:31 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003F5C: 16:04:31 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000041AC: 16:06:23 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000041AC: 16:06:23 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000041AC: 16:06:23 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000041AC: 16:06:23 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000041AC: 16:06:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000041AC: 16:06:23 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000041AC: 16:10:18 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000041AC: 16:10:18 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000041AC: 16:10:19 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000041AC: 16:10:19 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000041AC: 16:10:19 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000041AC: 16:10:19 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000041AC: 16:10:19 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000041AC: 16:10:19 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000041AC: 16:10:19 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000041AC: 16:10:19 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000041AC: 16:10:19 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00002D04: 16:10:22 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00002D04: 16:10:22 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00002D04: 16:10:22 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00002D04: 16:10:22 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00002D04: 16:10:22 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00002D04: 16:10:22 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00001F18: 16:10:25 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: QJMS5ZMDxh10AF923E7 ) : Addr: $0080EC33
+syg_rsp.exe: 00002D04: 16:28:14 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00002D04: 16:28:14 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00002D04: 16:28:15 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00002D04: 16:28:15 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00002D04: 16:28:15 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00002D04: 16:28:15 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00002D04: 16:28:15 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00002D04: 16:28:15 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00002D04: 16:28:15 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00002D04: 16:28:15 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00002D04: 16:28:15 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003558: 16:28:18 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003558: 16:28:18 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003558: 16:28:18 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00003558: 16:28:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003558: 16:28:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00000ABC: 16:28:21 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 7v6BBn5KnQ10AF924FF ) : Addr: $0080EC33
+syg_rsp.exe: 00003558: 16:29:46 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003558: 16:29:46 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003558: 16:29:47 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003558: 16:29:47 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003558: 16:29:47 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003558: 16:29:47 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003558: 16:29:47 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003558: 16:29:47 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003558: 16:29:47 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003558: 16:29:47 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003558: 16:29:47 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000036B8: 16:29:52 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000036B8: 16:29:52 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000036B8: 16:29:52 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000036B8: 16:29:52 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000036B8: 16:29:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000036B8: 16:29:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003404: 16:29:53 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: GvYUjrwsdP10AF929DB ) : Addr: $0080EC33
+syg_rsp.exe: 000036B8: 16:31:15 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000036B8: 16:31:15 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000036B8: 16:31:16 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000036B8: 16:31:16 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000036B8: 16:31:16 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000036B8: 16:31:16 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000036B8: 16:31:16 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000036B8: 16:31:16 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000036B8: 16:31:16 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000036B8: 16:31:16 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000036B8: 16:31:16 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00000490: 16:31:19 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00000490: 16:31:19 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00000490: 16:31:19 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00000490: 16:31:19 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00000490: 16:31:19 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00000490: 16:31:19 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00004BB4: 16:31:20 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: GL8VS554tr10AF92A47 ) : Addr: $0080EC33
+syg_rsp.exe: 00000490: 16:32:36 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00000490: 16:32:36 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00000490: 16:32:37 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00000490: 16:32:37 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00000490: 16:32:37 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00000490: 16:32:37 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00000490: 16:32:37 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00000490: 16:32:37 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00000490: 16:32:37 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00000490: 16:32:37 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00000490: 16:32:37 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000035A4: 16:32:40 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000035A4: 16:32:40 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000035A4: 16:32:40 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000035A4: 16:32:40 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000035A4: 16:32:40 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000035A4: 16:32:40 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00004ED0: 16:32:42 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ohiSrlt7uK10AF92AAB ) : Addr: $0080EC33
+syg_rsp.exe: 000035A4: 16:35:31 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000035A4: 16:35:31 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000035A4: 16:35:32 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000035A4: 16:35:32 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000035A4: 16:35:32 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000035A4: 16:35:32 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000035A4: 16:35:32 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000035A4: 16:35:32 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000035A4: 16:35:32 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000035A4: 16:35:32 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000035A4: 16:35:32 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000065C: 16:35:35 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000065C: 16:35:35 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000065C: 16:35:35 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 0000065C: 16:35:35 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 0000065C: 16:35:35 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000065C: 16:35:35 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00002904: 16:35:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 59RiyqUa1A10AF92B0A ) : Addr: $0080EC33
+syg_rsp.exe: 0000065C: 16:36:07 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000065C: 16:36:07 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000065C: 16:36:08 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000065C: 16:36:08 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000065C: 16:36:08 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000065C: 16:36:08 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000065C: 16:36:08 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000065C: 16:36:08 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000065C: 16:36:08 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000065C: 16:36:08 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000065C: 16:36:08 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000048E8: 16:36:10 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000048E8: 16:36:10 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000048E8: 16:36:10 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 000048E8: 16:36:10 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 000048E8: 16:36:11 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000048E8: 16:36:11 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 0000413C: 16:36:12 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: azK354JK1H10AF92BD4 ) : Addr: $0080EC33
+syg_rsp.exe: 000048E8: 16:41:53 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000048E8: 16:41:53 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000048E8: 16:41:53 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000048E8: 16:41:53 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000048E8: 16:41:53 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00001A94: 16:41:59 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00001A94: 16:41:59 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00001A94: 16:41:59 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00001A94: 16:41:59 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00001A94: 16:41:59 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00001A94: 16:41:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 0000474C: 16:42:00 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 5nXGcOMkpo10AF92BFD ) : Addr: $0080EC33
+syg_rsp.exe: 00001A94: 17:38:57 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00001A94: 17:38:57 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00001A94: 17:38:58 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00001A94: 17:38:58 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00001A94: 17:38:58 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00001A94: 17:38:58 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00001A94: 17:38:58 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00001A94: 17:38:58 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00001A94: 17:38:58 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00001A94: 17:38:58 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00001A94: 17:38:58 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003C6C: 17:39:14 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003C6C: 17:39:14 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003C6C: 17:39:14 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00003C6C: 17:39:15 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003C6C: 17:39:15 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00001EC4: 17:39:20 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: pYN6r8H9OC10AF92D90 ) : Addr: $0080EC33
+syg_rsp.exe: 00003C6C: 17:40:26 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00003C6C: 17:40:26 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00003C6C: 17:40:27 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00003C6C: 17:40:27 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00003C6C: 17:40:27 [Terminated]:Exit Code: 0

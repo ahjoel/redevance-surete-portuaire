@@ -1,0 +1,8 @@
+syg_rsp.exe: 00002A54: 09:15:36 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00002A54: 09:15:36 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00002A54: 09:15:36 [TUniServerModule]:Start Path = D:\dev\syg_rsp\src\Win32\Debug\
+syg_rsp.exe: 00002A54: 09:15:36 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+syg_rsp.exe: 00002A54: 09:15:36 [TUniServerModule]:Node Id = 1
+syg_rsp.exe: 00002A54: 09:15:36 [TUniServerModule]:Node MaxSessions = 250
+syg_rsp.exe: 00002A54: 09:15:36 [TUniServerModule]:Starting HTTP Server on Port: 16385...
+syg_rsp.exe: 00002A54: 09:15:36 [TUniServerModule]:HTTP Server Started on Port: 16385

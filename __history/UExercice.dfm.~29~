@@ -1,0 +1,266 @@
+object FExercice: TFExercice
+  Left = 0
+  Top = 0
+  ClientHeight = 360
+  ClientWidth = 708
+  Caption = 'Exercices'
+  OnShow = UniFormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 708
+    Height = 360
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = -154
+    ExplicitTop = -152
+    ExplicitWidth = 799
+    ExplicitHeight = 461
+    object PanTitle: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 708
+      Height = 27
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 1
+      Title = 'Escales'
+      Caption = 'Exercices'
+      Color = clWhite
+      Layout = 'column'
+      ExplicitWidth = 930
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 27
+      Width = 708
+      Height = 61
+      Hint = ''
+      Align = alTop
+      TabOrder = 2
+      Caption = ''
+      ExplicitWidth = 803
+      object EdLibelle: TUniEdit
+        Left = 44
+        Top = 31
+        Width = 93
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 1
+      end
+      object UniLabel2: TUniLabel
+        Left = 44
+        Top = 12
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Libell'#233
+        TabOrder = 2
+      end
+      object BtnCancel: TUniButton
+        Left = 615
+        Top = 30
+        Width = 81
+        Height = 25
+        Hint = ''
+        Caption = 'Annuler'
+        TabOrder = 3
+        IconCls = 'delete'
+        OnClick = BtnCancelClick
+      end
+      object BtnSave: TUniButton
+        Left = 615
+        Top = 1
+        Width = 81
+        Height = 25
+        Hint = ''
+        Caption = 'Enregistrer'
+        TabOrder = 4
+        IconCls = 'bookmarks'
+        OnClick = BtnSaveClick
+      end
+      object EdDebut: TUniDateTimePicker
+        Left = 193
+        Top = 31
+        Width = 97
+        Hint = ''
+        DateFormat = 'dd/MM/yyyy'
+        TimeFormat = 'HH:mm:ss'
+        ShowBlankDate = False
+        TabOrder = 5
+      end
+      object EdFin: TUniDateTimePicker
+        Left = 328
+        Top = 31
+        Width = 97
+        Hint = ''
+        DateFormat = 'dd/MM/yyyy'
+        TimeFormat = 'HH:mm:ss'
+        TabOrder = 6
+      end
+      object RadActif: TUniRadioGroup
+        Left = 479
+        Top = 10
+        Width = 114
+        Height = 43
+        Hint = ''
+        Items.Strings = (
+          'Oui'
+          'Non')
+        Caption = 'Actif'
+        TabOrder = 7
+        Columns = 2
+      end
+      object UniLabel1: TUniLabel
+        Left = 193
+        Top = 12
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Debut'
+        TabOrder = 8
+      end
+      object UniLabel3: TUniLabel
+        Left = 333
+        Top = 12
+        Width = 14
+        Height = 13
+        Hint = ''
+        Caption = 'Fin'
+        TabOrder = 9
+      end
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 88
+      Width = 44
+      Height = 272
+      Hint = ''
+      Align = alLeft
+      TabOrder = 3
+      Caption = ''
+      ExplicitTop = 94
+      ExplicitHeight = 399
+      object BtnAdd: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 36
+        Height = 30
+        Hint = 'Ajouter'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Ajouter'
+        Align = alTop
+        TabOrder = 1
+        IconAlign = iaTop
+        IconCls = 'add'
+      end
+      object BtnUpdate: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 40
+        Width = 36
+        Height = 30
+        Hint = 'Modifier'
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Modifier'
+        Align = alTop
+        TabOrder = 2
+        IconAlign = iaTop
+        IconCls = 'compose'
+      end
+      object BtnDelete: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 76
+        Width = 36
+        Height = 30
+        Hint = 'Supprimer'
+        Enabled = False
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Supprimer'
+        Align = alTop
+        TabOrder = 3
+        IconAlign = iaTop
+        IconCls = 'trash'
+      end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 44
+      Top = 88
+      Width = 664
+      Height = 272
+      Hint = ''
+      DataSource = DM.DS_Grid_Exo
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 4
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'id_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+        end
+        item
+          FieldName = 'libelle_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'Libell'#233
+          Title.Font.Style = [fsBold]
+          Width = 148
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'debut_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'D'#233'but'
+          Title.Font.Style = [fsBold]
+          Width = 151
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'fin_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'Fin'
+          Title.Font.Style = [fsBold]
+          Width = 154
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'actif_exercice'
+          Title.Alignment = taCenter
+          Title.Caption = 'Actif'
+          Title.Font.Style = [fsBold]
+          Width = 160
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
+    end
+  end
+end

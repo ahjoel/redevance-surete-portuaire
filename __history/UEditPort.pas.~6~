@@ -1,0 +1,48 @@
+unit UEditPort;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniMultiItem, uniComboBox, uniDBComboBox,
+  uniDBLookupComboBox, uniEdit, uniLabel, uniButton, uniPanel, uniGUIBaseClasses;
+
+type
+  TFEditPort = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    UniPanel1: TUniPanel;
+    UniLabel4: TUniLabel;
+    EdCode: TUniEdit;
+    EdLib: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    DBLPays: TUniDBLookupComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     var
+    id_port, lib_port, code_port, pays_port : string;
+    FmContext : string;
+    EditContext : string;
+  end;
+
+function FEditPort: TFEditPort;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UFunction, UGlobal, ULoadData;
+
+function FEditPort: TFEditPort;
+begin
+  Result := TFEditPort(DM.GetFormInstance(TFEditPort));
+end;
+
+end.

@@ -1,0 +1,261 @@
+unit UEditConsignataire;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses, Data.DB,
+  uniGUIClasses, uniGUIForm, uniLabel, uniEdit, uniButton, uniPanel,
+  uniGUIBaseClasses;
+
+type
+  TFEditConsignataire = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    EdNom: TUniEdit;
+    EdCode: TUniEdit;
+    EdContacts: TUniEdit;
+    EdAdresse: TUniEdit;
+    EdEmail: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    UniLabel3: TUniLabel;
+    UniLabel4: TUniLabel;
+    UniLabel6: TUniLabel;
+    procedure BtnSaveClick(Sender: TObject);
+    procedure BtnCancelClick(Sender: TObject);
+    procedure UniFormCreate(Sender: TObject);
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    var
+    id_cons, nom_cons, code_cons, contacts_cons, email_cons, adresse_cons : string;
+    FmContext : string;
+
+    procedure ClearData;
+
+  end;
+
+function FEditConsignataire: TFEditConsignataire;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UFunction, UConsignataire, UGlobal;
+
+
+procedure TFEditConsignataire.ClearData;
+  begin
+      EdNom.Clear;
+      EdCode.Clear;
+      EdContacts.Clear;
+      EdAdresse.Clear;
+      EdEmail.Clear;
+  end;
+
+
+
+procedure TFEditConsignataire.UniFormCreate(Sender: TObject);
+begin
+
+  if FmContext = 'add' then
+    ClearData
+  else
+
+
+end;
+
+function FEditConsignataire: TFEditConsignataire;
+begin
+  Result := TFEditConsignataire(DM.GetFormInstance(TFEditConsignataire));
+end;
+
+
+
+procedure TFEditConsignataire.BtnCancelClick(Sender: TObject);
+begin
+close ;
+end;
+
+procedure TFEditConsignataire.BtnSaveClick(Sender: TObject);
+begin
+  //INSERT
+  if FmContext = AddContext then
+      begin
+        if EdNom.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Nom',mtWarning,[mbok]);
+                 EdNom.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+              with  DM.QCheck do
+                begin
+                     close;
+                     SQL.Clear;
+                     sql.add('select * from consignataire where nom_consignataire=:nom_consignataire');
+                     params.ParamByName('nom_consignataire').Value:=EdNom.text;
+                     ExecSQL;
+                     Open;
+                end;
+                if DM.QCheck.RecordCount > 0 then
+                     begin
+                         MessageDlg('Un Consignataire posséde dejà ce Nom',mtError,[mbok]);
+                         EdNom.JSInterface.JSCall('focus' ,[]);
+                         Abort;
+                     end
+
+            else
+
+             if EdCode.IsBlank = False then
+
+                with  DM.QCheck2 do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from consignataire where code_consignataire=:code_consignataire');
+                       params.ParamByName('code_consignataire').Value:=EdCode.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck2.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Consignataire posséde dejà ce Code',mtError,[mbok]);
+                           EdCode.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+
+
+          else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO consignataire (code_consignataire, nom_consignataire, contact_consignataire, adresse_consignataire, email_consignataire )'#13+
+                                                          ' Values (:code, :nom, :contacts, :adresse, :email)');
+                                                  params.ParamByName('code').Value:= EdCode.Text;
+                                                  params.ParamByName('nom').Value:= EdNom.Text;
+                                                  params.ParamByName('contacts').Value:= EdContacts.Text;
+                                                  params.ParamByName('adresse').Value:=EdAdresse.Text;
+                                                  params.ParamByName('email').Value:= EdEmail.Text;
+                                                  ExecSQL;
+                                              end;
+                                             ClearData;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_consignataire) from consignataire');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             FConsignataire.EdSearch.Clear;
+                                             FConsignataire.ShowData;
+                                             DM.DQ_Grid_Consignataire.Locate('id_consignataire',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+  //UPDATE
+    begin
+          if EdNom.IsBlank then
+                begin
+                   MessageDlg('Veuillez renseigner le Nom',mtWarning,[mbok]);
+                   EdNom.JSInterface.JSCall('focus' ,[]);
+                   Abort;
+                end ;
+
+          if (EdNom.Text <> nom_cons) then
+               begin
+                   with  DM.QCheck do
+                      begin
+                           close;
+                           SQL.Clear;
+                           sql.add('select * from consignataire where nom_consignataire=:nom_consignataire');
+                           params.ParamByName('nom_consignataire').Value:=EdNom.text;
+                           ExecSQL;
+                           Open;
+                      end;
+                      if DM.QCheck.RecordCount > 0 then
+                           begin
+                               MessageDlg('Un Consignataire posséde dejà ce Nom',mtError,[mbok]);
+                               EdNom.JSInterface.JSCall('focus' ,[]);
+                               Abort;
+                           end
+               end ;
+
+           if (EdCode.text <> '') and (EdCode.Text <> code_cons) then
+                 begin
+                   with  DM.QCheck2 do
+                    begin
+                         close;
+                         SQL.Clear;
+                         sql.add('select * from consignataire where code_consignataire=:code_consignataire');
+                         params.ParamByName('code_consignataire').Value:= EdCode.text;
+                         ExecSQL;
+                         Open;
+                    end;
+                    if DM.QCheck2.RecordCount > 0 then
+                         begin
+                             MessageDlg('Un Consignataire posséde dejà ce Code',mtError,[mbok]);
+                             EdCode.JSInterface.JSCall('focus' ,[]);
+                             Abort;
+                         end
+                 end ;
+
+            begin
+                  MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                        procedure(Sender: TComponent; Res: Integer)
+                        begin
+                          case Res of
+                            mrYes :
+                                begin
+                                      with DM.QUpdate do
+                                            begin
+                                                SQL.Text := ('UPDATE consignataire SET code_consignataire=:code, nom_consignataire=:nom, contact_consignataire=:contacts, adresse_consignataire=:adresse, email_consignataire=:email WHERE id_consignataire=:id ');
+                                                params.ParamByName('id').Value:= id_cons;
+                                                params.ParamByName('code').Value:= EdCode.Text;
+                                                params.ParamByName('nom').Value:= EdNom.Text;
+                                                params.ParamByName('contacts').Value:= EdContacts.Text;
+                                                params.ParamByName('adresse').Value:=EdAdresse.Text;
+                                                params.ParamByName('email').Value:= EdEmail.Text;
+                                                ExecSQL;
+//                                                DM.QSave.sql.SaveToFile('D:\re.sql');
+                                            end;
+
+                                           MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                           FConsignataire.ShowData;
+                                           DM.DQ_Grid_Consignataire.Locate('id_consignataire',id_cons,[loCaseInsensitive] );
+                                           close;
+                              end
+                          end ;
+                        end
+                      );
+            end;
+
+        end
+        
+end;
+
+end.

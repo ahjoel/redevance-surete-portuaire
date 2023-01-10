@@ -1,0 +1,62 @@
+unit UEtatsNavire;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, frxClass, frxDBSet, frxExportBaseDialog,
+  frxExportPDF, uniButton, uniComboBox, uniMultiItem, uniDBComboBox,
+  uniDBLookupComboBox, uniLabel, uniDateTimePicker, uniGroupBox, uniPanel,
+  uniGUIBaseClasses, uniBasicGrid, uniDBGrid;
+
+type
+  TUniForm2 = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    UniPanel1: TUniPanel;
+    UniGroupBox1: TUniGroupBox;
+    GBConsignataire: TUniGroupBox;
+    DBLConsignataire: TUniDBLookupComboBox;
+    GBTypeNav: TUniGroupBox;
+    DBLTypeNavire: TUniDBLookupComboBox;
+    GBFacturePAL: TUniGroupBox;
+    CBFacturePAL: TUniComboBox;
+    GBFactureInt: TUniGroupBox;
+    CBFactureInt: TUniComboBox;
+    GBNavire: TUniGroupBox;
+    DBLNavire: TUniDBLookupComboBox;
+    UniPanel3: TUniPanel;
+    BtnRecherche: TUniButton;
+    BtnReinitialise: TUniButton;
+    UniContainerPanel2: TUniContainerPanel;
+    BtnExport: TUniButton;
+    BtnPrint: TUniButton;
+    PanRowCount: TUniPanel;
+    frxPDFExport: TfrxPDFExport;
+    frxReport: TfrxReport;
+    frxDBDataset: TfrxDBDataset;
+    frxDBDataset_sum: TfrxDBDataset;
+    DBGrid: TUniDBGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function UniForm2: TUniForm2;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function UniForm2: TUniForm2;
+begin
+  Result := TUniForm2(UniMainModule.GetFormInstance(TUniForm2));
+end;
+
+end.

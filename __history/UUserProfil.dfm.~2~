@@ -1,0 +1,12 @@
+object UniForm1: TUniForm1
+  Left = 0
+  Top = 0
+  ClientHeight = 360
+  ClientWidth = 486
+  Caption = 'Profil Utilisateur'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+end

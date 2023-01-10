@@ -1,0 +1,33 @@
+unit UPermissions;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMPerms = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function DMPerms: TDMPerms;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  UniGUIVars, uniGUIMainModule, MainModule;
+
+function DMPerms: TDMPerms;
+begin
+  Result := TDMPerms(DMPerms.GetModuleInstance(TDMPerms));
+end;
+
+initialization
+  RegisterModuleClass(TDMPerms);
+
+end.

@@ -1,0 +1,203 @@
+object FEditTauxMarchandise: TFEditTauxMarchandise
+  Left = 0
+  Top = 0
+  ClientHeight = 220
+  ClientWidth = 547
+  Caption = 'Edit Taux Marchandise'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 547
+    Height = 220
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 32
+    ExplicitTop = 72
+    ExplicitWidth = 256
+    ExplicitHeight = 128
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 181
+      Width = 547
+      Height = 39
+      Hint = ''
+      Align = alBottom
+      TabOrder = 1
+      Caption = ''
+      ExplicitTop = 248
+      ExplicitWidth = 592
+      object BtnSave: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 93
+        Height = 31
+        Hint = ''
+        Caption = 'Enregistrer'
+        Align = alLeft
+        TabOrder = 1
+        Default = True
+        IconCls = 'bookmarks'
+        ExplicitHeight = 28
+      end
+      object BtnCancel: TUniButton
+        AlignWithMargins = True
+        Left = 465
+        Top = 4
+        Width = 78
+        Height = 31
+        Hint = ''
+        Caption = 'Annuler'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'delete'
+        ExplicitLeft = 407
+        ExplicitHeight = 28
+      end
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 547
+      Height = 181
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      ExplicitLeft = 128
+      ExplicitTop = 120
+      ExplicitWidth = 256
+      ExplicitHeight = 128
+      object DBLOperation: TUniDBLookupComboBox
+        Left = 20
+        Top = 27
+        Width = 507
+        Hint = ''
+        ListField = 'libelle'
+        ListSource = DM.DS_DBL_Ope
+        KeyField = 'id_operation'
+        ListFieldIndex = 0
+        ClearButton = True
+        TabOrder = 1
+        Color = clWindow
+      end
+      object UniLabel3: TUniLabel
+        Left = 20
+        Top = 8
+        Width = 48
+        Height = 13
+        Hint = ''
+        Caption = 'Op'#233'ration'
+        TabOrder = 2
+      end
+      object UniLabel7: TUniLabel
+        Left = 20
+        Top = 59
+        Width = 16
+        Height = 13
+        Hint = ''
+        Caption = 'Min'
+        TabOrder = 3
+      end
+      object EdMinTauxMarch: TUniNumberEdit
+        Left = 20
+        Top = 75
+        Width = 103
+        Hint = ''
+        MaxLength = 8
+        TabOrder = 4
+        BlankValue = 0
+        DecimalSeparator = ','
+      end
+      object UniLabel6: TUniLabel
+        Left = 208
+        Top = 56
+        Width = 20
+        Height = 13
+        Hint = ''
+        Caption = 'Max'
+        TabOrder = 5
+      end
+      object EdMaxTauxMarch: TUniNumberEdit
+        Left = 208
+        Top = 75
+        Width = 105
+        Hint = ''
+        MaxLength = 8
+        TabOrder = 6
+        BlankValue = 0
+        DecimalSeparator = ','
+      end
+      object UniLabel4: TUniLabel
+        Left = 430
+        Top = 56
+        Width = 57
+        Height = 13
+        Hint = ''
+        Caption = 'Taux (Euro)'
+        TabOrder = 7
+      end
+      object EdMontantTauxMarch: TUniFormattedNumberEdit
+        Left = 430
+        Top = 75
+        Width = 97
+        Hint = ''
+        TabOrder = 8
+        MaxValue = 9999999.000000000000000000
+        BlankValue = 0
+        DecimalUseOSDefault = True
+        DecimalPrecision = 3
+      end
+      object EdDateDebutTauxMarch: TUniDateTimePicker
+        Left = 20
+        Top = 126
+        Width = 189
+        Hint = ''
+        DateTime = 44799.000000000000000000
+        DateFormat = 'dd/MM/yyyy'
+        TimeFormat = 'HH:mm:ss'
+        ShowBlankDate = False
+        TabOrder = 9
+        EmptyText = '  /  /    '
+      end
+      object UniLabel1: TUniLabel
+        Left = 20
+        Top = 107
+        Width = 29
+        Height = 13
+        Hint = ''
+        Caption = 'Debut'
+        TabOrder = 10
+      end
+      object UniLabel2: TUniLabel
+        Left = 338
+        Top = 107
+        Width = 14
+        Height = 13
+        Hint = ''
+        Caption = 'Fin'
+        TabOrder = 11
+      end
+      object UniDateTimePicker1: TUniDateTimePicker
+        Left = 338
+        Top = 126
+        Width = 189
+        Hint = ''
+        DateTime = 44799.000000000000000000
+        DateFormat = 'dd/MM/yyyy'
+        TimeFormat = 'HH:mm:ss'
+        ShowBlankDate = False
+        TabOrder = 12
+        EmptyText = '  /  /    '
+      end
+    end
+  end
+end

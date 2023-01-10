@@ -1,0 +1,632 @@
+unit UFTypeFacture;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Data.DB,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniButton, uniLabel,
+  uniEdit, uniPanel, uniGUIBaseClasses, uniPageControl, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox;
+
+type
+  TFTypeFacture = class(TUniForm)
+    PType: TUniPageControl;
+    PageType: TUniTabSheet;
+    PageCategorie: TUniTabSheet;
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    UniPanel1: TUniPanel;
+    EdLibelle: TUniEdit;
+    UniLabel2: TUniLabel;
+    UniSimplePanel1: TUniSimplePanel;
+    BtnSaveTF: TUniButton;
+    BtnCancel: TUniButton;
+    EdCode: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniPanel2: TUniPanel;
+    BtnAddTF: TUniButton;
+    BtnUpdateTF: TUniButton;
+    BtnDeleteTF: TUniButton;
+    DBGridTF: TUniDBGrid;
+    UniPanel3: TUniPanel;
+    UniPanel4: TUniPanel;
+    EdLibCat: TUniEdit;
+    UniLabel3: TUniLabel;
+    UniSimplePanel2: TUniSimplePanel;
+    BtSaveCF: TUniButton;
+    UniButton2: TUniButton;
+    EdCodeCat: TUniEdit;
+    UniLabel4: TUniLabel;
+    UniPanel5: TUniPanel;
+    BtnAddCF: TUniButton;
+    BtnUpdateCF: TUniButton;
+    BtnDeleteCF: TUniButton;
+    DBGridCF: TUniDBGrid;
+    UniLabel5: TUniLabel;
+    DBLCat: TUniDBLookupComboBox;
+    procedure BtnSaveTFClick(Sender: TObject);
+    procedure DBGridTFRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnUpdateTFClick(Sender: TObject);
+    procedure BtSaveCFClick(Sender: TObject);
+    procedure DBGridCFRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure BtnAddTFClick(Sender: TObject);
+    procedure BtnAddCFClick(Sender: TObject);
+    procedure BtnUpdateCFClick(Sender: TObject);
+    procedure PageTypeBeforeActivate(Sender: TObject;
+      var AllowActivate: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     procedure ShowDataTF;
+     procedure ClearDataTF;
+
+
+     procedure ShowDataCF;
+     procedure ClearDataCF;
+      var
+      id_TypeFact,lib_TypeFact, code_TypeFact, categorie_TypeFact: string;
+      id_CatFact,lib_CatFact, code_CatFact : string;
+      FmContextTF : string;
+      FmContextCF : string;
+  end;
+
+function FTypeFacture: TFTypeFacture;
+
+var
+    filter_TF, search_TF, init_query_TF, query_TF:string;
+    filter_CF, search_CF, init_query_CF, query_CF:string;
+    title_TF :string = 'Types Facture';
+    title_CF :string = 'Catégories Facture';
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UGlobal, ULoadData;
+
+function FTypeFacture: TFTypeFacture;
+begin
+  Result := TFTypeFacture(DM.GetFormInstance(TFTypeFacture));
+end;
+
+procedure TFTypeFacture.BtnAddCFClick(Sender: TObject);
+begin
+  FmContextCF := AddContext;
+  ClearDataCF;
+  EdLibCat.JSInterface.JSCall('focus' ,[]);
+end;
+
+procedure TFTypeFacture.BtnAddTFClick(Sender: TObject);
+begin
+  FmContextTF := AddContext;
+  ClearDataTF;
+  EdLibelle.JSInterface.JSCall('focus' ,[]);
+end;
+
+procedure TFTypeFacture.BtnSaveTFClick(Sender: TObject);
+begin
+        //INSERT
+  if FmContextTF = AddContext then
+      begin
+          if EdLibelle.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+                 EdLibelle.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from type_facture where libelle_type_fact=:libelle_type_fact');
+                   Parameters.ParamByName('libelle_type_fact').Value:=EdLibelle.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Type posséde dejà ce Libellé',mtError,[mbok]);
+                       EdLibelle.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+            if EdCode.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+                 EdCode.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from type_facture where code_type_fact=:code_type_fact');
+                   Parameters.ParamByName('code_type_fact').Value:=EdCode.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Type posséde dejà ce Code ',mtError,[mbok]);
+                       EdCode.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+               if DBLCat.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner  la Catégorie ',mtWarning,[mbok]);
+                     DBLCat.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO type_facture (libelle_type_fact, code_type_fact, categorie ) Values (:libelle, :code , :categorie)');
+                                                  Parameters.ParamByName('libelle').Value:= EdLibelle.Text;
+                                                   Parameters.ParamByName('code').Value:= EdCode.Text;
+                                                   Parameters.ParamByName('categorie').Value:= DBLCat.KeyValue;
+                                                  ExecSQL;
+                                              end;
+                                             ClearDataTF;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_type_fact) from type_facture');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             ShowDataTF;
+                                             DM.DQ_Grid_TypeFact.Locate('id_type_fact',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+//UPDATE
+  if FmContextTF = UpdateContext then
+    begin
+     if EdLibelle.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+               EdLibelle.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdLibelle.Text <> lib_TypeFact) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from type_facture where libelle_type_fact=:libelle_type_fact');
+                       Parameters.ParamByName('libelle_type_fact').Value:=EdLibelle.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Type dejà ce Libellé',mtError,[mbok]);
+                           EdLibelle.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+
+       if EdCode.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+               EdLibelle.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdCode.Text <> code_TypeFact) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from type_facture where code_type_fact=:code_type_fact');
+                       Parameters.ParamByName('code_type_fact').Value:=EdLibelle.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Type dejà ce Code',mtError,[mbok]);
+                           EdCode.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+       if DBLCat.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner  la Catégorie ',mtWarning,[mbok]);
+                     DBLCat.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end  ;
+
+
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE type_facture SET libelle_type_fact=:libelle, code_type_fact=:code , categorie=:categorie  WHERE id_type_fact=:id ');
+                                            Parameters.ParamByName('id').Value:= id_TypeFact;
+                                            Parameters.ParamByName('libelle').Value:= EdLibelle.Text;
+                                            Parameters.ParamByName('code').Value:= EdCode.Text;
+                                            Parameters.ParamByName('categorie').Value:= DBLCat.KeyValue;
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       ShowDataTF;
+                                       DM.DQ_Grid_TypeFact.Locate('id_type_fact',id_TypeFact,[loCaseInsensitive] );
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
+end;
+
+procedure TFTypeFacture.BtnUpdateCFClick(Sender: TObject);
+begin
+          FmContextCF := UpdateContext;
+
+       with DM.QStand do
+                 begin
+                 close;
+                 SQL.Clear;
+                 sql.add('SELECT * FROM categorie_fact where id_cat=:id ');
+                 Parameters.ParamByName('id').Value:= DBGridCF.DataSource.DataSet.FieldByName('id_cat').AsString;
+                 ExecSQL;
+                 Open;
+                 end;
+
+                 if DM.QStand.RecordCount > 0 then
+                 begin
+                     id_CatFact:=DM.QStand.FieldValues['id_cat'];
+                     lib_CatFact :=DM.QStand.FieldValues['libelle_cat_fact'];
+                     code_CatFact :=DM.QStand.FieldValues['code_cat_fact'];
+
+                     EdLibCat.Text :=DM.QStand.FieldValues['libelle_cat_fact'];
+                     EdCodeCat.Text :=DM.QStand.FieldValues['code_cat_fact'];
+                 end
+end;
+
+procedure TFTypeFacture.BtnUpdateTFClick(Sender: TObject);
+begin
+       FmContextTF := UpdateContext;
+
+       with DM.QStand do
+                 begin
+                 close;
+                 SQL.Clear;
+                 sql.add('SELECT * FROM type_facture T, categorie_fact C WHERE t.categorie=C.id_cat AND id_type_fact=:id ');
+                 Parameters.ParamByName('id').Value:= DBGridTF.DataSource.DataSet.FieldByName('id_type_fact').AsString;
+                 ExecSQL;
+                 Open;
+                 end;
+
+                 if DM.QStand.RecordCount > 0 then
+                 begin
+                     id_TypeFact:=DM.QStand.FieldValues['id_type_fact'];
+                     lib_TypeFact :=DM.QStand.FieldValues['libelle_type_fact'];
+                     code_TypeFact :=DM.QStand.FieldValues['code_type_fact'];
+                     categorie_TypeFact :=DM.QStand.FieldValues['categorie'];
+
+                     EdLibelle.Text :=DM.QStand.FieldValues['libelle_type_fact'];
+                     EdCode.Text :=DM.QStand.FieldValues['code_type_fact'];
+                     DBLCat.KeyValue :=DM.QStand.FieldValues['categorie'];
+                 end
+end;
+
+procedure TFTypeFacture.BtSaveCFClick(Sender: TObject);
+begin
+          //INSERT
+  if FmContextCF = AddContext then
+      begin
+          if EdLibCat.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+                 EdLibCat.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from categorie_fact where libelle_cat_fact=:libelle_cat_fact');
+                   Parameters.ParamByName('libelle_cat_fact').Value:=EdLibCat.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Une Categorie posséde dejà ce Libellé',mtError,[mbok]);
+                       EdLibCat.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+            if EdCodeCat.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+                 EdCodeCat.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from categorie_fact where code_cat_fact=:code_cat_fact');
+                   Parameters.ParamByName('code_cat_fact').Value:=EdCodeCat.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Une Categorie posséde dejà ce Code ',mtError,[mbok]);
+                       EdCodeCat.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO categorie_fact (libelle_cat_fact, code_cat_fact) Values (:libelle_cat_fact, :code_cat_fact)');
+                                                  Parameters.ParamByName('libelle_cat_fact').Value:= EdLibCat.Text;
+                                                   Parameters.ParamByName('code_cat_fact').Value:= EdCodeCat.Text;
+                                                  ExecSQL;
+                                              end;
+                                             ClearDataCF;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_cat) from categorie_fact');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             ShowDataCF;
+                                             DM.DQ_Grid_CatFact.Locate('id_cat',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+//UPDATE
+  if FmContextCF = UpdateContext then
+    begin
+     if EdLibCat.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+               EdLibCat.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdLibCat.Text <> lib_CatFact) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from categorie_fact where libelle_cat_fact=:libelle_cat_fact');
+                       Parameters.ParamByName('libelle_type_fact').Value:=EdLibelle.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Type dejà ce Libellé',mtError,[mbok]);
+                           EdLibelle.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+
+       if EdCodeCat.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Code',mtWarning,[mbok]);
+               EdCodeCat.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdCodeCat.Text <> code_CatFact) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from categorie_fact where code_cat_fact=:code_cat_fact');
+                       Parameters.ParamByName('code_cat_fact').Value:=EdCodeCat.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Type dejà ce Code',mtError,[mbok]);
+                           EdCodeCat.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE categorie_fact SET libelle_cat_fact=:libelle, code_cat_fact=:code WHERE id_cat=:id ');
+                                            Parameters.ParamByName('id').Value:= id_CatFact;
+                                            Parameters.ParamByName('libelle').Value:= EdLibCat.Text;
+                                            Parameters.ParamByName('code').Value:= EdCodeCat.Text;
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       ShowDataCF;
+                                       DM.DQ_Grid_CatFact.Locate('id_cat',id_CatFact,[loCaseInsensitive] );
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
+end;
+
+procedure TFTypeFacture.ClearDataTF;
+  begin
+      EdLibelle.Clear;
+      EdCode.Clear;
+      DBLCat.KeyValue :=null;
+  end;
+
+procedure TFTypeFacture.ClearDataCF;
+  begin
+      EdLibCat.Clear;
+      EdCodeCat.Clear;
+  end;
+
+procedure TFTypeFacture.DBGridTFRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+   if  DBGridTF.DataSource.DataSet.RecordCount > 0 then
+        begin
+            BtnUpdateTF.Enabled:=true;
+            BtnDeleteTF.Enabled:=true;
+        end
+      else
+  if  DBGridTF.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdateTF.Enabled:=False;
+            BtnDeleteTF.Enabled:=False;
+         end;
+end;
+
+procedure TFTypeFacture.PageTypeBeforeActivate(Sender: TObject;
+  var AllowActivate: Boolean);
+begin
+    LoadDBLCatFact;
+end;
+
+procedure TFTypeFacture.ShowDataTF;
+  begin
+      filter_TF:=' order by libelle_type_fact ';
+
+      init_query_TF:= 'SELECT * FROM type_facture T, categorie_fact C WHERE t.categorie=C.id_cat' ;
+      query_TF:=init_query_TF + search_TF+ filter_TF;
+
+      DM.DQ_Grid_TypeFact.Close;
+      DM.DQ_Grid_TypeFact.SQL.Clear;
+      DM.DQ_Grid_TypeFact.SQL.Text := query_TF;
+      DM.DQ_Grid_TypeFact.Open;
+  end;
+
+procedure TFTypeFacture.ShowDataCF;
+  begin
+      filter_CF:=' order by libelle_cat_fact ';
+
+      init_query_CF:= 'SELECT * FROM categorie_fact ' ;
+      query_CF:=init_query_CF + search_CF+ filter_CF;
+
+      DM.DQ_Grid_CatFact.Close;
+      DM.DQ_Grid_CatFact.SQL.Clear;
+      DM.DQ_Grid_CatFact.SQL.Text := query_CF;
+      DM.DQ_Grid_CatFact.Open;
+  end;
+procedure TFTypeFacture.DBGridCFRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+     if  DBGridCF.DataSource.DataSet.RecordCount > 0 then
+        begin
+              BtnUpdateCF.Enabled:=true;
+              BtnDeleteCF.Enabled:=true;
+        end
+      else
+  if  DBGridCF.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdateCF.Enabled:=False;
+            BtnDeleteCF.Enabled:=False;
+         end;
+end;
+
+procedure TFTypeFacture.UniFormShow(Sender: TObject);
+begin
+
+  //CATEGORIE FACT
+  FmContextCF := AddContext;
+
+  ShowDataCF;
+
+  BtnAddCF.Caption := '';
+  BtnUpdateCF.Caption := '';
+  BtnDeleteCF.Caption := '';
+  ClearDataCF;
+
+
+  //TYPE FACT
+  FmContextTF := AddContext;
+  LoadDBLCatFact;
+  ShowDataTF;
+
+  BtnAddTF.Caption := '';
+  BtnUpdateTF.Caption := '';
+  BtnDeleteTF.Caption := '';
+
+
+end;
+
+end.

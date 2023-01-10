@@ -1,0 +1,32 @@
+object FReport: TFReport
+  Left = 0
+  Top = 0
+  ClientHeight = 815
+  ClientWidth = 1170
+  Caption = 'Rapport'
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu, biMaximize]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object URLFrame: TUniURLFrame
+    Left = 0
+    Top = 0
+    Width = 1170
+    Height = 815
+    Hint = ''
+    Align = alClient
+    TabOrder = 0
+    ParentColor = False
+    Color = clBtnFace
+    ExplicitLeft = -47
+    ExplicitTop = -83
+    ExplicitWidth = 1015
+    ExplicitHeight = 812
+  end
+  object frxGradientObject: TfrxGradientObject
+    Left = 536
+    Top = 224
+  end
+end

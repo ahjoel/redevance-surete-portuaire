@@ -1,0 +1,32 @@
+unit UEditRapportEscale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFEditRapportEscale = class(TUniForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEditRapportEscale: TFEditRapportEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEditRapportEscale: TFEditRapportEscale;
+begin
+  Result := TFEditRapportEscale(UniMainModule.GetFormInstance(TFEditRapportEscale));
+end;
+
+end.

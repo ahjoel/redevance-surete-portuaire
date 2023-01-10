@@ -1,0 +1,5 @@
+syg_rsp.exe: 0000373C: 04:06:06 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000373C: 04:06:06 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000373C: 04:06:06 [TUniServerModule]:Global Cache Folder Erased. <47> Files deleted.
+syg_rsp.exe: 0000373C: 04:06:06 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000373C: 04:06:06 [TUniServerModule]:HTTP Server Started on Port: 8077

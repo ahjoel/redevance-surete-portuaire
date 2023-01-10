@@ -1,0 +1,96 @@
+object FPrintOptionEscaleReport: TFPrintOptionEscaleReport
+  Left = 0
+  Top = 0
+  ClientHeight = 177
+  ClientWidth = 317
+  Caption = 'Option d'#39'Impression Etat Escale'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniPanel1: TUniPanel
+    Left = 0
+    Top = 0
+    Width = 317
+    Height = 177
+    Hint = ''
+    Align = alClient
+    TabOrder = 0
+    Caption = ''
+    object UniGroupBox1: TUniGroupBox
+      AlignWithMargins = True
+      Left = 4
+      Top = 70
+      Width = 309
+      Height = 60
+      Hint = ''
+      Caption = 'Groupage'
+      Align = alTop
+      TabOrder = 1
+      object CBGroup: TUniComboBox
+        Left = 13
+        Top = 24
+        Width = 281
+        Hint = ''
+        Style = csDropDownList
+        Text = ''
+        Items.Strings = (
+          ''
+          'Consignataire'
+          'Type navire'
+          'Inst. Port'
+          'Poste Quai'
+          'Observation'
+          'Facturable'
+          'Factur'#233' PAL'
+          'Factur'#233' INT')
+        TabOrder = 1
+        IconItems = <>
+      end
+    end
+    object UniGroupBox2: TUniGroupBox
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 309
+      Height = 60
+      Hint = ''
+      Caption = 'Sommaire'
+      Align = alTop
+      TabOrder = 2
+      object CBSummary: TUniComboBox
+        Left = 16
+        Top = 24
+        Width = 281
+        Hint = ''
+        Style = csDropDownList
+        Text = ''
+        Items.Strings = (
+          ''
+          'Consignataire'
+          'Type navire'
+          'Inst. Port'
+          'Poste Quai'
+          'Observation'
+          'Facturable'
+          'Factur'#233' PAL'
+          'Factur'#233' INT')
+        TabOrder = 1
+        IconItems = <>
+      end
+    end
+    object BtnValidat: TUniButton
+      Left = 104
+      Top = 136
+      Width = 105
+      Height = 33
+      Hint = ''
+      Caption = 'Aper'#231'u'
+      TabOrder = 3
+      IconCls = 'print'
+      OnClick = BtnValidatClick
+    end
+  end
+end

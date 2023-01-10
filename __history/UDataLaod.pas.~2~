@@ -1,0 +1,23 @@
+unit UDataLaod;
+
+interface
+
+implementation
+
+uses Main, MainModule, ServerModule, UFunction, UGlobal,
+      Windows, Messages, SysUtils, Variants, Classes, Graphics,
+      Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+      uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniLabel, uniEdit,
+      uniButton, uniPanel, uniGUIBaseClasses, uniMultiItem, uniComboBox,
+      uniDBComboBox, uniDBLookupComboBox;
+
+procedure LoadDBLData(DBLookup : DB);
+
+
+
+
+
+
+
+
+end.

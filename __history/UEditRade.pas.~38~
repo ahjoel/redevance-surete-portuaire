@@ -1,0 +1,478 @@
+unit UEditRade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses, Data.DB,
+  uniGUIClasses, uniGUIForm, uniBitBtn, uniSpeedButton, uniEdit, uniDBComboBox,
+  uniDBLookupComboBox, uniDateTimePicker, uniLabel, uniMultiItem, uniComboBox,
+  uniButton, uniPanel, uniGUIBaseClasses;
+
+type
+  TFEditRade = class(TUniForm)
+//    TFEditRade = class(TUniLoginForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    UniPanel1: TUniPanel;
+    UniLabel9: TUniLabel;
+    Edfin: TUniDateTimePicker;
+    DBLDestination: TUniDBLookupComboBox;
+    UniLabel6: TUniLabel;
+    UniLabel4: TUniLabel;
+    DBLConsignataire: TUniDBLookupComboBox;
+    DBLNavire: TUniDBLookupComboBox;
+    UniLabel2: TUniLabel;
+    UniLabel5: TUniLabel;
+    UniLabel7: TUniLabel;
+    Eddebut: TUniDateTimePicker;
+    DBLProvenance: TUniDBLookupComboBox;
+    BtAddNavire: TUniSpeedButton;
+    BtAddConsignataire: TUniSpeedButton;
+    BtAddDestination: TUniSpeedButton;
+    BtAddPorvenance: TUniSpeedButton;
+    EdRapport: TUniEdit;
+    BtnRapport: TUniButton;
+    procedure BtnSaveClick(Sender: TObject);
+    procedure BtnCancelClick(Sender: TObject);
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnRapportClick(Sender: TObject);
+    procedure BtAddPorvenanceClick(Sender: TObject);
+    procedure BtAddDestinationClick(Sender: TObject);
+    procedure BtAddNavireClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     var
+    id, user_create, user_control, user_valid, navire, consignataire, debut, fin, depart, provenance, destination: string;
+    FmContext : string;
+    EditContext : string;
+
+    procedure ClearData;
+  end;
+
+function FEditRade: TFEditRade;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UDataLaod, UFunction, UGlobal, ULoadData,
+  URade, UEditPort, UEditNavire;
+
+function FEditRade: TFEditRade;
+begin
+  Result := TFEditRade(DM.GetFormInstance(TFEditRade));
+end;
+
+
+procedure TFEditRade.ClearData;
+  begin
+      DBLNavire.KeyValue := null;
+      DBLConsignataire.KeyValue := null;
+      DBLProvenance.KeyValue := null;
+      DBLDestination.KeyValue := null;
+      Eddebut.DateTime := 0;
+      Edfin.DateTime := 0;
+
+  end;
+
+procedure TFEditRade.UniFormShow(Sender: TObject);
+begin
+  LoadDBLPort;
+  LoadDBLNavire;
+  LoadDBLConsignataire;
+
+  if FmContext=AddContext then
+    begin
+      Eddebut.DateTime := 0;
+      Edfin.DateTime := 0;
+    end;
+
+
+    if ((FmContext=ControlContext) or (FmContext=ValidatContext)) then
+    begin
+      BtAddNavire.Enabled := false;
+      BtAddConsignataire.Enabled := false;
+      BtAddDestination.Enabled := false;
+      BtAddPorvenance.Enabled := false;
+
+      BtnRapport.Visible := True;
+      EdRapport.Visible := True;
+    end;
+
+end;
+
+procedure TFEditRade.BtAddDestinationClick(Sender: TObject);
+begin
+    FEditPort.FmContext := AddContext;
+    FEditPort.Caption := FrmEditTitle('Port', AddTitle);
+    FEditPort.ShowModal;
+end;
+
+procedure TFEditRade.BtAddNavireClick(Sender: TObject);
+begin
+    FEditNavire.EditContext := LookUpContext;
+    FEditNavire.ShowModal;
+end;
+
+procedure TFEditRade.BtAddPorvenanceClick(Sender: TObject);
+begin
+    FEditPort.FmContext := AddContext;
+    FEditPort.Caption := FrmEditTitle('Port', AddTitle);
+    FEditPort.ShowModal;
+end;
+
+procedure TFEditRade.BtnCancelClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFEditRade.BtnRapportClick(Sender: TObject);
+begin
+       //RAPPORT CONTROL
+  if FmContext = ControlContext then
+
+          begin
+                if EdRapport.IsBlank then
+              begin
+                 MessageDlg('Veuillez Commenter votre rapport ',mtWarning,[mbok]);
+                 EdRapport.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+            else
+                MessageDlg('Voulez-vous Soumettre ce Rapport ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE rade SET rapport_control=:rapport_control,  user_control=:user_control, commentaire_control=:commentaire , date_rapport_control=CURRENT_TIMESTAMP WHERE id=:id');
+                                              Parameters.ParamByName('id').Value:= id;
+                                              Parameters.ParamByName('user_control').Value:= UserId;
+                                              Parameters.ParamByName('rapport_control').Value:= 1;
+                                              Parameters.ParamByName('commentaire').Value:= EdRapport.Text;
+                                              ExecSQL;
+                                          end;
+                                         ClearData;
+
+                                       MessageDlg('Rapport effectuée',mtConfirmation,[mbok]);
+                                       FRade.ShowData;
+                                       DM.DQ_Grid_Rade.Locate('id',id,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end
+
+         else
+
+  //RAPPORT VALIDATION
+  if FmContext = ValidatContext then
+           begin
+                if EdRapport.IsBlank then
+              begin
+                 MessageDlg('Veuillez Commenter votre rapport ',mtWarning,[mbok]);
+                 EdRapport.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+            else
+                MessageDlg('Voulez-vous Soumettre ce Rapport ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE rade SET rapport_validate=:rapport_validate, user_validate=:user_validate, commentaire_validate=:commentaire , date_rapport_validate=CURRENT_TIMESTAMP WHERE id=:id');
+                                              Parameters.ParamByName('id').Value:= id;
+                                              Parameters.ParamByName('user_validate').Value:= UserId;
+                                              Parameters.ParamByName('rapport_validate').Value:= 1;
+                                              Parameters.ParamByName('commentaire').Value:= EdRapport.Text;
+                                              ExecSQL;
+                                          end;
+                                         ClearData;
+
+                                       MessageDlg('Rapport effectuée',mtConfirmation,[mbok]);
+                                       FRade.ShowData;
+                                       DM.DQ_Grid_Rade.Locate('id',id,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end
+end;
+
+procedure TFEditRade.BtnSaveClick(Sender: TObject);
+begin
+     //INSERT
+  if FmContext = AddContext then
+      begin
+        if DBLNavire.IsBlank then
+              begin
+                 MessageDlg('Veuillez sélectionner le Navire',mtWarning,[mbok]);
+                 DBLNavire.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+
+         if DBLConsignataire.IsBlank then
+              begin
+                 MessageDlg('Veuillez sélectionner le Consignataire',mtWarning,[mbok]);
+                 DBLConsignataire.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+
+         if DBLProvenance.IsBlank then
+              begin
+                 MessageDlg('Veuillez sélectionner la Provenance',mtWarning,[mbok]);
+                 DBLProvenance.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+
+         if DBLDestination.IsBlank then
+              begin
+                 MessageDlg('Veuillez sélectionner le Destination',mtWarning,[mbok]);
+                 DBLDestination.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+
+         if DBLProvenance.KeyValue = DBLDestination.KeyValue then
+              begin
+                 MessageDlg('Provenance et Destination identique ',TMsgDlgType.mtError,[mbok]);
+                 DBLDestination.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+
+        if Eddebut.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner la Date de Debut',mtWarning,[mbok]);
+                 Eddebut.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+        if Edfin.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner la Date de Fin ',mtWarning,[mbok]);
+                 Edfin.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+        else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO RADE (ref, user_create, navire, consignataire, debut, fin, port_orgine, port_dest, exercice )'#13+
+                                                          ' Values (:ref , :user_create, :navire, :consignataire, :debut, :fin, :port_orgine, :port_dest, :exercice)');
+                                                  Parameters.ParamByName('ref').Value:= RefRadeInc;
+                                                  Parameters.ParamByName('user_create').Value:= UserId;
+                                                  Parameters.ParamByName('navire').Value:=DBLNavire.KeyValue;
+                                                  Parameters.ParamByName('consignataire').Value:= DBLConsignataire.KeyValue;
+                                                  Parameters.ParamByName('debut').Value:=msqlDateTime(Eddebut);
+                                                  Parameters.ParamByName('fin').Value:=msqlDateTime(Edfin);
+                                                  Parameters.ParamByName('port_orgine').Value:= DBLProvenance.KeyValue;
+                                                  Parameters.ParamByName('port_dest').Value:= DBLDestination.KeyValue;
+                                                  Parameters.ParamByName('exercice').Value:= IdExerciceInst;
+                                                  ExecSQL;
+                                              end;
+                                             ClearData;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id) from rade');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+
+                                           MessageDlg('Enregistrement effectuée',mtConfirmation,[mbok]);
+                                           FRade.ShowData;
+                                           DM.DQ_Grid_Rade.Locate('id',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+//  //UPDATE
+      if FmContext = UpdateContext then
+          begin
+            if DBLNavire.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner le Navire',mtWarning,[mbok]);
+                     DBLNavire.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end;
+             if DBLConsignataire.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner le Consignataire',mtWarning,[mbok]);
+                     DBLConsignataire.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end    ;
+
+             if DBLProvenance.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner la Provenance',mtWarning,[mbok]);
+                     DBLProvenance.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end;
+
+             if DBLDestination.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner le Destination',mtWarning,[mbok]);
+                     DBLDestination.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end;
+
+             if DBLProvenance.KeyValue = DBLDestination.KeyValue then
+                  begin
+                     MessageDlg('Provenance et Destination identique ',TMsgDlgType.mtError,[mbok]);
+                     DBLDestination.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end;
+
+            if Eddebut.IsBlank then
+                  begin
+                     MessageDlg('Veuillez renseigner la Date de Debut ',mtWarning,[mbok]);
+                     Eddebut.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end;
+
+            if Edfin.IsBlank then
+                  begin
+                     MessageDlg('Veuillez renseigner la Date de Fin ',mtWarning,[mbok]);
+                     Edfin.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end;
+
+                  begin
+                        MessageDlg('Voulez-vous appliquer les modifications ?', mtConfirmation, mbYesNo,
+                              procedure(Sender: TComponent; Res: Integer)
+                                begin
+                                  case Res of
+                                    mrYes :
+                                        begin
+                                              with DM.QSave do
+                                                    begin
+                                                        SQL.Text := ('UPDATE escale SET navire=:navire, consignataire=:consignataire, debut=:debut, fin=:fin, port_orgine=:port_orgine, port_dest=:port_dest ');
+
+                                                        Parameters.ParamByName('navire').Value:=DBLNavire.KeyValue;
+                                                        Parameters.ParamByName('consignataire').Value:= DBLConsignataire.KeyValue;
+                                                        Parameters.ParamByName('debut').Value:= Eddebut.DateTime;
+                                                        Parameters.ParamByName('fin').Value:= Edfin.DateTime;
+                                                        Parameters.ParamByName('port_orgine').Value:= DBLProvenance.KeyValue;
+                                                        Parameters.ParamByName('port_dest').Value:= DBLDestination.KeyValue;
+                                                        ExecSQL;
+                                                    end;
+                                                   ClearData;
+
+                                                 MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                                 FRade.ShowData;
+                                                 DM.DQ_Grid_Rade.Locate('id',id,[loCaseInsensitive] );
+                                                 close;
+
+                                      end
+                                  end ;
+                                end
+                            );
+                  end;
+
+          end
+          else
+
+  //CONTROL
+  if FmContext = ControlContext then
+        begin
+          begin
+                MessageDlg('Voulez-vous marquer les informations suivantes comme "Controlées" ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE rade SET  user_control=:user_control, date_control=CURRENT_TIMESTAMP WHERE id=:id');
+                                              Parameters.ParamByName('id').Value:= id;
+                                              Parameters.ParamByName('user_control').Value:= UserId;
+                                              ExecSQL;
+                                          end;
+                                         ClearData;
+
+                                       MessageDlg('Control effectuée',mtConfirmation,[mbok]);
+                                       FRade.ShowData;
+                                       DM.DQ_Grid_Rade.Locate('id',id,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end;
+
+        end
+
+         else
+
+  //VALIDATION
+  if FmContext = ValidatContext then
+        begin
+          begin
+                MessageDlg('Voulez-vous marquer les informations suivantes comme "Validées" ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE rade SET  user_validate=:user_validate, date_validate=CURRENT_TIMESTAMP WHERE id=:id');
+                                              Parameters.ParamByName('id').Value:= id;
+                                              Parameters.ParamByName('user_validate').Value:= UserId;
+                                              ExecSQL;
+                                          end;
+                                         ClearData;
+
+                                       MessageDlg('Control effectuée',mtConfirmation,[mbok]);
+                                       FRade.ShowData;
+                                       DM.DQ_Grid_Rade.Locate('id',id,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end;
+
+        end;
+
+
+end;
+
+end.

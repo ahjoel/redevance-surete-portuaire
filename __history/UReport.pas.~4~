@@ -1,0 +1,34 @@
+unit UReport;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, frxGradient, uniGUIBaseClasses, uniURLFrame;
+
+type
+  TFReport = class(TUniForm)
+    URLFrame: TUniURLFrame;
+    frxGradientObject: TfrxGradientObject;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FReport: TFReport;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FReport: TFReport;
+begin
+  Result := TFReport(DM.GetFormInstance(TFReport));
+end;
+
+end.

@@ -1,0 +1,158 @@
+object FEditConsignataire: TFEditConsignataire
+  Left = 0
+  Top = 0
+  ClientHeight = 222
+  ClientWidth = 489
+  Caption = 'Edit Consignataire'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  OnCreate = UniFormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 489
+    Height = 222
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    object PanOps: TUniPanel
+      Left = 0
+      Top = 186
+      Width = 489
+      Height = 36
+      Hint = ''
+      Align = alBottom
+      TabOrder = 1
+      Caption = ''
+      object BtnCancel: TUniButton
+        AlignWithMargins = True
+        Left = 407
+        Top = 4
+        Width = 78
+        Height = 28
+        Hint = ''
+        Caption = 'Annuler'
+        Align = alRight
+        TabOrder = 2
+        IconCls = 'delete'
+        OnClick = BtnCancelClick
+      end
+      object BtnSave: TUniButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 93
+        Height = 28
+        Hint = ''
+        Caption = 'Enregistrer'
+        Align = alLeft
+        TabOrder = 1
+        Default = True
+        IconCls = 'bookmarks'
+        OnClick = BtnSaveClick
+      end
+    end
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 489
+      Height = 186
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      object UniLabel6: TUniLabel
+        Left = 16
+        Top = 162
+        Width = 24
+        Height = 13
+        Hint = ''
+        Caption = 'Email'
+        TabOrder = 1
+      end
+      object EdEmail: TUniEdit
+        Left = 112
+        Top = 153
+        Width = 350
+        Hint = ''
+        Text = ''
+        TabOrder = 2
+      end
+      object UniLabel4: TUniLabel
+        Left = 16
+        Top = 127
+        Width = 39
+        Height = 13
+        Hint = ''
+        Caption = 'Adresse'
+        TabOrder = 3
+      end
+      object EdAdresse: TUniEdit
+        Left = 112
+        Top = 118
+        Width = 350
+        Hint = ''
+        Text = ''
+        TabOrder = 4
+      end
+      object EdContacts: TUniEdit
+        Left = 112
+        Top = 82
+        Width = 350
+        Hint = ''
+        Text = ''
+        TabOrder = 5
+      end
+      object EdCode: TUniEdit
+        Left = 112
+        Top = 47
+        Width = 350
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 6
+      end
+      object EdNom: TUniEdit
+        Left = 112
+        Top = 14
+        Width = 350
+        Hint = ''
+        CharCase = ecUpperCase
+        Text = ''
+        TabOrder = 7
+      end
+      object UniLabel1: TUniLabel
+        Left = 16
+        Top = 23
+        Width = 30
+        Height = 13
+        Hint = ''
+        Caption = 'Nom *'
+        TabOrder = 8
+      end
+      object UniLabel2: TUniLabel
+        Left = 16
+        Top = 56
+        Width = 25
+        Height = 13
+        Hint = ''
+        Caption = 'Code'
+        TabOrder = 9
+      end
+      object UniLabel3: TUniLabel
+        Left = 16
+        Top = 91
+        Width = 43
+        Height = 13
+        Hint = ''
+        Caption = 'Contacts'
+        TabOrder = 10
+      end
+    end
+  end
+end

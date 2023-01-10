@@ -1,0 +1,9 @@
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Failed Sequence Recovery: SeqId: 19, Event: move
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Sequence sent from cache:  SeqId: 19
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Processed: Id: 19, Evt: move, [aGaIxubtfY10AF00030]
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Failed Sequence Recovery: SeqId: 20, Event: resize
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Sequence sent from cache:  SeqId: 20
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Processed: Id: 20, Evt: resize, [aGaIxubtfY10AF00030]
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Failed Sequence Recovery: SeqId: 21, Event: deactivate
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Sequence sent from cache:  SeqId: 21
+syg_rsp.exe: 00003D30: 16:22:38 [127.0.0.1]:Processed: Id: 21, Evt: deactivate, [aGaIxubtfY10AF00030]

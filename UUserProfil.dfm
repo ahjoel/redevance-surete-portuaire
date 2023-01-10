@@ -1,0 +1,153 @@
+object FUserProfil: TFUserProfil
+  Left = 0
+  Top = 0
+  ClientHeight = 217
+  ClientWidth = 375
+  Caption = 'Profil Utilisateur'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniContainerPanel1: TUniContainerPanel
+    Left = 0
+    Top = 0
+    Width = 375
+    Height = 217
+    Hint = ''
+    ParentColor = False
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 136
+    ExplicitTop = 136
+    ExplicitWidth = 256
+    ExplicitHeight = 128
+    object UniPanel1: TUniPanel
+      Left = 0
+      Top = 0
+      Width = 375
+      Height = 28
+      Hint = ''
+      Align = alTop
+      ParentFont = False
+      Font.Height = -12
+      Font.Style = [fsBold]
+      TabOrder = 1
+      Caption = 'Profil Utilisateur'
+      ExplicitWidth = 474
+    end
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 28
+      Width = 375
+      Height = 189
+      Hint = ''
+      Align = alClient
+      TabOrder = 2
+      Caption = ''
+      ExplicitLeft = 88
+      ExplicitTop = 86
+      ExplicitWidth = 256
+      ExplicitHeight = 128
+      object UniLabel1: TUniLabel
+        Left = 16
+        Top = 19
+        Width = 21
+        Height = 13
+        Hint = ''
+        Caption = 'Nom'
+        TabOrder = 1
+      end
+      object UniLabel2: TUniLabel
+        Left = 16
+        Top = 58
+        Width = 41
+        Height = 13
+        Hint = ''
+        Caption = 'Prenoms'
+        TabOrder = 2
+      end
+      object UniLabel3: TUniLabel
+        Left = 16
+        Top = 90
+        Width = 21
+        Height = 13
+        Hint = ''
+        Caption = 'R'#244'le'
+        TabOrder = 3
+      end
+      object EdNom: TUniEdit
+        Left = 104
+        Top = 15
+        Width = 233
+        Hint = ''
+        Enabled = False
+        Text = ''
+        TabOrder = 4
+        Color = clInfoBk
+        ReadOnly = True
+      end
+      object Edprenoms: TUniEdit
+        Left = 104
+        Top = 51
+        Width = 233
+        Hint = ''
+        Enabled = False
+        Text = ''
+        TabOrder = 5
+        Color = clInfoBk
+        ReadOnly = True
+      end
+      object EdRole: TUniEdit
+        Left = 104
+        Top = 85
+        Width = 233
+        Hint = ''
+        Enabled = False
+        Text = ''
+        TabOrder = 6
+        Color = clInfoBk
+        ReadOnly = True
+      end
+      object EdLogin: TUniEdit
+        Left = 104
+        Top = 124
+        Width = 233
+        Hint = ''
+        Enabled = False
+        Text = ''
+        TabOrder = 7
+        Color = clInfoBk
+        ReadOnly = True
+      end
+      object UniLabel4: TUniLabel
+        Left = 16
+        Top = 128
+        Width = 25
+        Height = 13
+        Hint = ''
+        Caption = 'Login'
+        TabOrder = 8
+      end
+      object UniLabel5: TUniLabel
+        Left = 16
+        Top = 163
+        Width = 64
+        Height = 13
+        Hint = ''
+        Caption = 'Mot de passe'
+        TabOrder = 9
+      end
+      object EdPass: TUniEdit
+        Left = 104
+        Top = 159
+        Width = 233
+        Hint = ''
+        Enabled = False
+        Text = ''
+        TabOrder = 10
+      end
+    end
+  end
+end

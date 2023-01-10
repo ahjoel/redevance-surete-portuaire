@@ -1,0 +1,22 @@
+syg_rsp.exe: 000056A4: 08:29:15 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000056A4: 08:29:15 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000056A4: 08:29:16 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000056A4: 08:29:16 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000056A4: 08:29:16 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000056A4: 08:29:16 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000056A4: 08:29:16 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000056A4: 08:29:16 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000056A4: 08:29:16 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000056A4: 08:29:16 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000056A4: 08:29:16 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00003A3C: 08:29:23 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003A3C: 08:29:23 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003A3C: 08:29:23 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
+syg_rsp.exe: 00003A3C: 08:29:24 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003A3C: 08:29:24 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000052AC: 08:29:38 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: sKyBjWlw9I10BC2961E ) : Addr: $00836E0B
+syg_rsp.exe: 000042B4: 09:15:16 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: SepW3MPg9A10BC3991F ) : Addr: $00836E0B
+syg_rsp.exe: 00002F44: 09:31:46 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: rjwQuwpVCS10BC3A580 ) : Addr: $00836E0B
+syg_rsp.exe: 0000446C: 10:54:40 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: BUDZCKEYz210BC3A9FC ) : Addr: $00836E0B
+syg_rsp.exe: 00005744: 14:44:11 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ndp1p28cHt10BC3C079 ) : Addr: $00836E0B
+syg_rsp.exe: 0000579C: 15:02:05 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: kzd9bwZsy510BC3FEE3 ) : Addr: $00836E0B

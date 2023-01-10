@@ -1,0 +1,283 @@
+unit UExercice;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses, Data.DB,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniDBGrid, uniButton, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniLabel, uniEdit, uniPanel,
+  uniGUIBaseClasses, uniDateTimePicker, uniRadioGroup, Vcl.ComCtrls;
+
+type
+  TFExercice = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    UniPanel1: TUniPanel;
+    EdLibelle: TUniEdit;
+    UniLabel2: TUniLabel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    UniPanel2: TUniPanel;
+    BtnAdd: TUniButton;
+    BtnUpdate: TUniButton;
+    BtnDelete: TUniButton;
+    DBGrid: TUniDBGrid;
+    RadActif: TUniRadioGroup;
+    procedure UniFormShow(Sender: TObject);
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure BtnCancelClick(Sender: TObject);
+    procedure BtnSaveClick(Sender: TObject);
+    procedure BtnUpdateClick(Sender: TObject);
+    procedure BtnAddClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     procedure ShowData;
+     procedure ClearData;
+    var
+    id_Exo,lib_Exo, debut_Exo, fin_Exo, actif_Exo: string;
+    FmContext : string;
+  end;
+
+function FExercice: TFExercice;
+var
+    filter, search, init_query, query:string;
+    title :string = 'Exercice';
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UFunction, UGlobal;
+
+procedure TFExercice.BtnAddClick(Sender: TObject);
+begin
+  FmContext := AddContext;
+  ClearData;
+  EdLibelle.JSInterface.JSCall('focus' ,[]);
+end;
+
+procedure TFExercice.BtnCancelClick(Sender: TObject);
+begin
+  FmContext := AddContext;
+  ClearData;
+  EdLibelle.JSInterface.JSCall('focus' ,[]);
+end;
+
+procedure TFExercice.BtnSaveClick(Sender: TObject);
+begin
+//INSERT
+  if FmContext = AddContext then
+      begin
+          if EdLibelle.IsBlank then
+              begin
+                 MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+                 EdLibelle.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+            with  DM.QCheck do
+              begin
+                   close;
+                   SQL.Clear;
+                   sql.add('select * from exercice where libelle_exercice=:libelle_exercice');
+                   params.ParamByName('libelle_exercice').Value:=EdLibelle.text;
+                   ExecSQL;
+                   Open;
+              end;
+              if DM.QCheck.RecordCount > 0 then
+                   begin
+                       MessageDlg('Un Exercice posséde dejà ce Libellé',mtError,[mbok]);
+                       EdLibelle.JSInterface.JSCall('focus' ,[]);
+                       Abort;
+                   end
+              else
+              if RadActif.IsBlank then
+                  begin
+                     MessageDlg('Veuillez renseigner le Statut',mtWarning,[mbok]);
+                     RadActif.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+              begin
+                    MessageDlg('Voulez-vous enregister ?', mtConfirmation, mbYesNo,
+                          procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :
+                                  begin
+                                        with DM.QSave do
+                                              begin
+                                                  SQL.Text := ('INSERT INTO exercice (libelle_exercice, actif_exercice ) Values (:libelle, :actif   )');
+                                                  params.ParamByName('libelle').Value:= EdLibelle.Text;
+                                                  params.ParamByName('actif').Value:= ABS(RadActif.ItemIndex-1);
+                                                  ExecSQL;
+                                              end;
+                                             ClearData;
+
+                                             with DM.QMax  do
+                                               begin
+                                                   close;
+                                                   SQL.Clear;
+                                                    SQL.Add('select max(id_exercice) from exercice');
+                                                    ExecSQL;
+                                                   Open;
+                                               end;
+                                             MessageDlg('Enregistrement effectué',mtConfirmation,[mbok]);
+                                             ShowData;
+                                             DM.DQ_Grid_Exo.Locate('id_exercice',dm.QMax.Fields[0].AsString,[loCaseInsensitive] );
+                                end
+                            end ;
+                          end
+                        );
+              end;
+
+      end
+
+    else
+
+//UPDATE
+  if FmContext = UpdateContext then
+    begin
+     if EdLibelle.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Libellé',mtWarning,[mbok]);
+               EdLibelle.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end ;
+
+      if (EdLibelle.Text <> lib_Exo) then
+           begin
+               with  DM.QCheck do
+                  begin
+                       close;
+                       SQL.Clear;
+                       sql.add('select * from type_marchandise where libelle_type_march=:libelle_type_march');
+                       params.ParamByName('libelle_type_march').Value:=EdLibelle.text;
+                       ExecSQL;
+                       Open;
+                  end;
+                  if DM.QCheck.RecordCount > 0 then
+                       begin
+                           MessageDlg('Un Type de Marchandise dejà ce Libellé',mtError,[mbok]);
+                           EdLibelle.JSInterface.JSCall('focus' ,[]);
+                           Abort;
+                       end
+           end ;
+
+        if RadActif.IsBlank then
+            begin
+               MessageDlg('Veuillez renseigner le Statut ',mtWarning,[mbok]);
+               RadActif.JSInterface.JSCall('focus' ,[]);
+               Abort;
+            end;
+
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE exercice SET libelle_exercice=:libelle, actif_exercice=:actif WHERE id_exercice=:id ');
+                                            params.ParamByName('id').Value:= id_Exo;
+                                            params.ParamByName('libelle').Value:= EdLibelle.Text;
+                                            params.ParamByName('actif').Value:= ABS(RadActif.ItemIndex-1);
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       ShowData;
+                                       DM.DQ_Grid_Exo.Locate('id_exercice',id_Exo,[loCaseInsensitive] );
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
+end;
+
+procedure TFExercice.BtnUpdateClick(Sender: TObject);
+begin
+ FmContext := UpdateContext;
+ with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM exercice where id_exercice=:id ');
+           Params.ParamByName('id').Value:= DBGrid.DataSource.DataSet.FieldByName('id_exercice').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               id_Exo:=DM.QStand.FieldValues['id_exercice'];
+               lib_Exo :=DM.QStand.FieldValues['libelle_exercice'];
+               actif_Exo :=DM.QStand.FieldValues['actif_exercice'];
+
+               EdLibelle.Text :=DM.QStand.FieldValues['libelle_exercice'];
+               RadActif.ItemIndex :=1-(DM.QStand.FieldValues['actif_exercice']);
+           end
+end;
+
+procedure TFExercice.ClearData;
+  begin
+      EdLibelle.Clear;
+      RadActif.ItemIndex:=-1;
+  end;
+
+procedure TFExercice.DBGridRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+ if  DBGrid.DataSource.DataSet.RecordCount > 0 then
+        begin
+              BtnUpdate.Enabled:=true;
+              BtnDelete.Enabled:=true;
+        end
+      else
+  if  DBGrid.DataSource.DataSet.RecordCount = 0 then
+         begin
+            BtnUpdate.Enabled:=False;
+            BtnDelete.Enabled:=False;
+         end;
+end;
+
+procedure TFExercice.ShowData;
+  begin
+      filter:=' order by libelle_exercice DESC';
+
+      init_query:= 'SELECT * ,case 	WHEN actif_exercice=TRUE THEN ''OUI''	 ELSE ''NON'' 	end as statut FROM exercice' ;
+      query:=init_query + search+ filter;
+
+      DM.DQ_Grid_Exo.Close;
+      DM.DQ_Grid_Exo.SQL.Clear;
+      DM.DQ_Grid_Exo.SQL.Text := query;
+      DM.DQ_Grid_Exo.Open;
+  end;
+
+function FExercice: TFExercice;
+begin
+  Result := TFExercice(DM.GetFormInstance(TFExercice));
+end;
+
+procedure TFExercice.UniFormShow(Sender: TObject);
+begin
+  FmContext := AddContext;
+
+  BtnAdd.Caption := '';
+  BtnUpdate.Caption := '';
+  BtnDelete.Caption := '';
+  ClearData;
+  ShowData;
+end;
+
+end.

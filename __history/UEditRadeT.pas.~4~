@@ -1,0 +1,112 @@
+unit UEditRadeT;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniButton, uniEdit,
+  uniLabel, uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox,
+  uniDateTimePicker, uniBitBtn, uniSpeedButton;
+
+type
+  TFEditRadeT = class(TUniForm)
+    UniPanel1: TUniPanel;
+    PanOps: TUniPanel;
+    BtnSave: TUniButton;
+    BtnRapport: TUniButton;
+    UniButton2: TUniButton;
+    EdRapport: TUniEdit;
+    UniLabel1: TUniLabel;
+    UniLabel2: TUniLabel;
+    UniLabel3: TUniLabel;
+    DBLNavire: TUniDBLookupComboBox;
+    DBLConsignataire: TUniDBLookupComboBox;
+    Eddebut: TUniDateTimePicker;
+    Edfin: TUniDateTimePicker;
+    UniLabel4: TUniLabel;
+    BtAddNavire: TUniSpeedButton;
+    BtAddConsignataire: TUniSpeedButton;
+    procedure UniFormShow(Sender: TObject);
+    procedure BtAddConsignataireClick(Sender: TObject);
+    procedure BtAddNavireClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    var
+    id, user_create, user_control, user_valid, navire, consignataire, debut, fin, depart, provenance, destination: string;
+    FmContext : string;
+    EditContext : string;
+
+    procedure ClearData;
+  end;
+
+function FEditRadeT: TFEditRadeT;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UDataLaod, UFunction, UGlobal, ULoadData,
+  URadeTest, UEditPort, UEditNavire, UEditConsignataire;
+
+function FEditRadeT: TFEditRadeT;
+begin
+  Result := TFEditRadeT(DM.GetFormInstance(TFEditRadeT));
+end;
+
+procedure TFEditRadeT.BtAddConsignataireClick(Sender: TObject);
+begin
+    FEditConsignataire.EditContext := LookUpContext;
+    FEditConsignataire.FmContext := AddContext;
+
+    FEditConsignataire.Caption := FrmEditTitle('Consignataire', AddTitle);
+    FEditConsignataire.ShowModal;
+end;
+
+procedure TFEditRadeT.BtAddNavireClick(Sender: TObject);
+begin
+    FEditNavire.EditContext := LookUpContext;
+    FEditNavire.FmContext := AddContext;
+
+    FEditNavire.Caption := FrmEditTitle('Navire', AddTitle);
+    FEditNavire.ShowModal;
+end;
+
+procedure TFEditRadeT.ClearData;
+  begin
+      DBLNavire.KeyValue := null;
+      DBLConsignataire.KeyValue := null;
+      Eddebut.DateTime := 0;
+      Edfin.DateTime := 0;
+
+  end;
+
+
+procedure TFEditRadeT.UniFormShow(Sender: TObject);
+begin
+  LoadDBLPort;
+  LoadDBLNavire;
+  LoadDBLConsignataire;
+
+  if FmContext=AddContext then
+    begin
+      Eddebut.DateTime := 0;
+      Edfin.DateTime := 0;
+    end;
+
+
+    if ((FmContext=ControlContext) or (FmContext=ValidatContext)) then
+    begin
+      BtAddNavire.Enabled := false;
+      BtAddConsignataire.Enabled := false;
+
+      BtnRapport.Visible := True;
+      EdRapport.Visible := True;
+    end;
+
+end;
+
+end.
