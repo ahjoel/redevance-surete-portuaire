@@ -152,8 +152,6 @@ type
     QPrint: TADOQuery;
     QSum: TADOQuery;
     ADOQuery8: TADOQuery;
-    DQ_Grid_RadeT: TADOQuery;
-    DS_Grid_RadeT: TDataSource;
     procedure UniGUIMainModuleBeforeLogin(Sender: TObject;
       var Handled: Boolean);
     procedure DQ_Grid_TauxMarchAfterOpen(DataSet: TDataSet);
@@ -211,6 +209,8 @@ TCurrencyField(DataSet.FieldByName('montant')).DisplayFormat := '###,###,##0.00'
 TCurrencyField(DataSet.FieldByName('complement')).DisplayFormat := '###,###,##0.00';
 TCurrencyField(DataSet.FieldByName('montant_reel')).DisplayFormat := '###,###,##0.00';
 TCurrencyField(DataSet.FieldByName('montant_xof')).DisplayFormat := '###,###,###,##0';
+TCurrencyField(DataSet.FieldByName('mont_regle')).DisplayFormat := '###,###,###,##0';
+TCurrencyField(DataSet.FieldByName('mont_solde')).DisplayFormat := '###,###,###,##0';
 end;
 
 procedure TDM.DQ_Grid_ReglementAfterOpen(DataSet: TDataSet);

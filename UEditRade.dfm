@@ -174,7 +174,7 @@ object FEditRade: TFEditRade
       end
       object Eddebut: TUniDateTimePicker
         Left = 113
-        Top = 85
+        Top = 80
         Width = 100
         Hint = ''
         DateTime = 44765.000000000000000000

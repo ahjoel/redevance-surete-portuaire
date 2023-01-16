@@ -19,7 +19,6 @@ type
     UniLabel1: TUniLabel;
     BtnValidate: TUniButton;
     BtnControl: TUniButton;
-    DBGrid: TUniDBGrid;
     UniContainerPanel1: TUniContainerPanel;
     PanTitle: TUniPanel;
     UniPanel1: TUniPanel;
@@ -29,6 +28,7 @@ type
     UniMenuButton1: TUniMenuButton;
     UniImageList1: TUniImageList;
     PanRowCount: TUniPanel;
+    DBGrid: TUniDBGrid;
     procedure R1Click(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure E1Click(Sender: TObject);
@@ -52,7 +52,7 @@ type
 function FFactPalEmise: TFFactPalEmise;
 
 var
-    filter, search, init_query, query, fact_query:string;
+    filter, group_by, search, init_query, query, fact_query:string;
     exercice_filter :string;
     title :string = 'Facture Emises|PAL';
     title_rade :string = 'Facture Emises Rade|PAL';
@@ -129,49 +129,18 @@ end;
 procedure TFFactPalEmise.ShowData;
 
 begin
+      group_by := ' GROUP BY L.id_factures_pal ' ;
       filter:=' order by date_emise_facture_pal desc, ref_facture_pal desc ' ;
 
       if EdSearch.IsBlank then search:='' else
 
-      search:=' AND (UPPER(F.ref_facture_pal) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
+      search:=' AND (UPPER(L.ref_facture_pal) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
 
-       exercice_filter := ' AND E.exercice='''+ IdExerciceInst +'''';
+       exercice_filter := ' AND L.id_exercice ='''+ IdExerciceInst +'''';
 
-
-      init_query:= 'SELECT F.id_factures_pal,R.ref as reference, N.nom_navire, F.rapport_control, F.rapport_validate, F.ref_facture_pal, T.code_type_fact,'#13+
-                   '  F.montant_facture_pal as montant, F.montant_complement_facture_pal as complement, (montant_facture_pal-montant_complement_facture_pal) as montant_reel, FLOOR (montant_facture_pal * 655.957) as montant_xof,'#13+
-                   ' F.date_emise_facture_pal, F.date_trans_facture_pal, F.date_ech_facture_pal, F.statut_facture_pal, C.nom_consignataire as cons_fact, K.nom_consignataire as cons_nav, '#13+
-                   ' case WHEN date_control_facture_pal is null THEN '''' ELSE ''O''	end as control, '#13+
-                   ' case WHEN date_validate_facture_pal is null THEN '''' ELSE ''O''	end as validation '#13+
-                   ' FROM facture_pal F  '#13+
-                   'INNER JOIN consignataire C ON F.consignataire_facture_pal=C.id_consignataire'#13+
-                   'LEFT JOIN rade R on F.rade_facture_pal=R.id '#13+
-                   'INNER JOIN consignataire K on R.consignataire=K.id_consignataire '#13+
-                   'INNER JOIN navire N on R.navire=N.id_navire '#13+
-                   'INNER JOIN type_facture T on F.type_facture=T.id_type_fact '#13+
-                   ' '#13+
-
-                     'UNION '#13+
-
-                   'SELECT F.id_factures_pal,E.ref as reference, N.nom_navire, F.rapport_control, F.rapport_validate, F.ref_facture_pal, T.code_type_fact,'#13+
-                    '  F.montant_facture_pal as montant, F.montant_complement_facture_pal as complement,(montant_facture_pal-montant_complement_facture_pal) as montant_reel, FLOOR (montant_facture_pal * 655.957) as montant_xof,'#13+
-                   ' F.date_emise_facture_pal, F.date_trans_facture_pal, F.date_ech_facture_pal, F.statut_facture_pal, C.nom_consignataire as cons_fact, K.nom_consignataire as cons_nav, '#13+
-                   ' case WHEN date_control_facture_pal is null THEN '''' ELSE ''O''	end as control, '#13+
-                   ' case WHEN date_validate_facture_pal is null THEN '''' ELSE ''O''	end as validation '#13+
-                   ' FROM facture_pal F  '#13+
-                   'INNER JOIN consignataire C ON F.consignataire_facture_pal=C.id_consignataire'#13+
-                   'LEFT JOIN escale E on F.escale_facture_pal=E.id '#13+
-                   'INNER JOIN consignataire K on E.consignataire=K.id_consignataire '#13+
-                   ' INNER JOIN navire N on E.navire=N.id_navire '#13+
-                   'INNER JOIN type_facture T on F.type_facture=T.id_type_fact '#13+
-                    '  ';
-      query:=init_query + exercice_filter+ search+ filter;
+      query:=init_query_fact_PAL + exercice_filter+ search+ group_by+ filter;
 
       ExQuery(DM.DQ_Grid_FactPal, query);
-//      DM.DQ_Grid_FactPal.Close;
-//      DM.DQ_Grid_FactPal.SQL.Clear;
-//      DM.DQ_Grid_FactPal.SQL.Text := query;
-//      DM.DQ_Grid_FactPal.Open;
 end;
 
 
@@ -261,7 +230,6 @@ begin
                    'INNER JOIN type_facture T on F.type_facture=T.id_type_fact '#13+
                    'INNER JOIN taux_rade X on R.taux_rade=X.id_taux_rade '#13+
                    'AND F.id_factures_pal ='+DBGrid.DataSource.DataSet.FieldByName('id_factures_pal').AsString;
-
         ExQuery(DM.QCheck, fact_query)  ;
 
          if DM.QCheck.RecordCount > 0 then
@@ -394,7 +362,7 @@ begin
 
         //REQUETE DE SELECTION DE LA FACTURE AVEC INFORMATION COMPLEMENTAIRE - ESCALE
         fact_query:='SELECT F.id_factures_pal, E.id as id_esc, E.ref as reference, E.num_port, E.date_accost, N.id_navire, N.nom_navire, Q.code_pq, F.ref_facture_pal, T.id_type_fact,'#13+
-                    'F.montant_facture_pal as montant, F.montant_complement_facture_pal as complement,(montant_facture_pal-montant_complement_facture_pal) as montant_reel, FLOOR (montant_facture_pal * 655.957) as montant_xof,'#13+
+                    '  F.montant_facture_pal as montant, F.montant_complement_facture_pal as complement,(montant_facture_pal-montant_complement_facture_pal) as montant_reel, FLOOR (montant_facture_pal * 655.957) as montant_xof,'#13+
                    ' F.date_emise_facture_pal, F.date_trans_facture_pal, F.date_ech_facture_pal, F.statut_facture_pal, C.id_consignataire as cons_fact, K.nom_consignataire as cons_nav, '#13+
                    ' case WHEN date_control_facture_pal is null THEN '''' ELSE ''O''	end as control, '#13+
                    ' case WHEN date_validate_facture_pal is null THEN '''' ELSE ''O''	end as validation '#13+

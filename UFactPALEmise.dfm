@@ -151,224 +151,6 @@ object FFactPalEmise: TFFactPalEmise
         TabOrder = 7
       end
     end
-    object DBGrid: TUniDBGrid
-      Left = 0
-      Top = 64
-      Width = 1386
-      Height = 681
-      Hint = ''
-      DataSource = DM.DS_Grid_FactPal
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
-      ReadOnly = True
-      WebOptions.Paged = False
-      WebOptions.PageSize = 200
-      LoadMask.Message = 'Loading data...'
-      StripeRows = False
-      Align = alClient
-      TabOrder = 2
-      OnSelectionChange = DBGridSelectionChange
-      OnDrawColumnCell = DBGridDrawColumnCell
-      OnRecordCount = DBGridRecordCount
-      Columns = <
-        item
-          ShowToolTipAlways = False
-          FieldName = 'id_factures_pal'
-          Title.Alignment = taCenter
-          Title.Caption = 'id'
-          Title.Font.Style = [fsBold]
-          Width = 64
-          Visible = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'ref_facture_pal'
-          Title.Alignment = taCenter
-          Title.Caption = 'N'#176' Facture'
-          Title.Font.Style = [fsBold]
-          Width = 110
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'reference'
-          Title.Alignment = taCenter
-          Title.Caption = 'Ref Int'
-          Title.Font.Style = [fsBold]
-          Width = 84
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'code_type_fact'
-          Title.Alignment = taCenter
-          Title.Caption = ' Type'
-          Title.Font.Style = [fsBold]
-          Width = 128
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'nom_navire'
-          Title.Alignment = taCenter
-          Title.Caption = 'Navire'
-          Title.Font.Style = [fsBold]
-          Width = 163
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'cons_nav'
-          Title.Alignment = taCenter
-          Title.Caption = 'Consign Nav.'
-          Title.Font.Style = [fsBold]
-          Width = 170
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'cons_fact'
-          Title.Alignment = taCenter
-          Title.Caption = 'Consign Fact.'
-          Title.Font.Style = [fsBold]
-          Width = 170
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'montant_reel'
-          Title.Alignment = taCenter
-          Title.Caption = 'Mt R ('#8364')'
-          Title.Font.Style = [fsBold]
-          Width = 80
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'complement'
-          Title.Alignment = taCenter
-          Title.Caption = 'Compl.('#8364')'
-          Title.Font.Style = [fsBold]
-          Width = 70
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'montant'
-          Title.Alignment = taCenter
-          Title.Caption = 'Mt T ('#8364')'
-          Title.Font.Style = [fsBold]
-          Width = 71
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'montant_xof'
-          Title.Alignment = taCenter
-          Title.Caption = ' Montant T(XOF)'
-          Title.Font.Style = [fsBold]
-          Width = 126
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'date_emise_facture_pal'
-          Title.Alignment = taCenter
-          Title.Caption = 'Emise'
-          Title.Font.Style = [fsBold]
-          Width = 80
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'date_trans_facture_pal'
-          Title.Alignment = taCenter
-          Title.Caption = 'Transmis'
-          Title.Font.Style = [fsBold]
-          Width = 80
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'date_ech_facture_pal'
-          Title.Alignment = taCenter
-          Title.Caption = 'Ech'#233'ance'
-          Title.Font.Style = [fsBold]
-          Width = 80
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'control'
-          Title.Alignment = taCenter
-          Title.Caption = 'C'
-          Title.Font.Style = [fsBold]
-          Width = 30
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'validation'
-          Title.Alignment = taCenter
-          Title.Caption = 'V'
-          Title.Font.Style = [fsBold]
-          Width = 30
-          Alignment = taCenter
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'statut'
-          Title.Alignment = taCenter
-          Title.Caption = 'St'
-          Title.Font.Style = [fsBold]
-          Width = 33
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'commentaire_control'
-          Title.Alignment = taCenter
-          Title.Caption = 'commentaire_control'
-          Title.Font.Style = [fsBold]
-          Width = 64
-          Visible = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'commentaire_validate'
-          Title.Alignment = taCenter
-          Title.Caption = 'commentaire_validate'
-          Title.Font.Style = [fsBold]
-          Width = 64
-          Visible = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'rapport_control'
-          Title.Caption = 'rapport_control'
-          Width = 64
-          Visible = False
-        end
-        item
-          ShowToolTipAlways = False
-          FieldName = 'rapport_validate'
-          Title.Caption = 'rapport_validate'
-          Width = 64
-          Visible = False
-        end>
-    end
     object UniContainerPanel1: TUniContainerPanel
       Left = 0
       Top = 0
@@ -377,7 +159,7 @@ object FFactPalEmise: TFFactPalEmise
       Hint = ''
       ParentColor = False
       Align = alTop
-      TabOrder = 3
+      TabOrder = 2
       object PanTitle: TUniPanel
         Left = 35
         Top = 0
@@ -428,6 +210,255 @@ object FFactPalEmise: TFFactPalEmise
         Caption = ''
         Color = clSkyBlue
       end
+    end
+    object DBGrid: TUniDBGrid
+      Left = 0
+      Top = 64
+      Width = 1386
+      Height = 681
+      Hint = ''
+      DataSource = DM.DS_Grid_FactPal
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      ReadOnly = True
+      WebOptions.Paged = False
+      WebOptions.PageSize = 200
+      LoadMask.Message = 'Loading data...'
+      StripeRows = False
+      Align = alClient
+      TabOrder = 3
+      OnSelectionChange = DBGridSelectionChange
+      OnDrawColumnCell = DBGridDrawColumnCell
+      OnRecordCount = DBGridRecordCount
+      Columns = <
+        item
+          FieldName = 'id_factures_pal'
+          Title.Alignment = taCenter
+          Title.Caption = 'id'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'ref_fact'
+          Title.Alignment = taCenter
+          Title.Caption = 'N'#176' Facture'
+          Title.Font.Style = [fsBold]
+          Width = 110
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'date_emise_facture_pal'
+          Title.Alignment = taCenter
+          Title.Caption = 'Emise'
+          Title.Font.Style = [fsBold]
+          Width = 80
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'date_trans_facture_pal'
+          Title.Alignment = taCenter
+          Title.Caption = 'Transmis'
+          Title.Font.Style = [fsBold]
+          Width = 80
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'date_ech_facture_pal'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ech'#233'ance'
+          Title.Font.Style = [fsBold]
+          Width = 80
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'ref_nav'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ref Int'
+          Title.Font.Style = [fsBold]
+          Width = 70
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'code_type_fact'
+          Title.Alignment = taCenter
+          Title.Caption = ' Type'
+          Title.Font.Style = [fsBold]
+          Width = 95
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'nom_navire'
+          Title.Alignment = taCenter
+          Title.Caption = 'Navire'
+          Title.Font.Style = [fsBold]
+          Width = 160
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          ShowToolTipAlways = False
+          FieldName = 'cons_nav'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consign Nav.'
+          Title.Font.Style = [fsBold]
+          Width = 160
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'cons_fact'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consign Fact.'
+          Title.Font.Style = [fsBold]
+          Width = 160
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'montant_reel'
+          Title.Alignment = taCenter
+          Title.Caption = 'Mt R ('#8364')'
+          Title.Font.Style = [fsBold]
+          Width = 70
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'complement'
+          Title.Alignment = taCenter
+          Title.Caption = 'Compl.('#8364')'
+          Title.Font.Style = [fsBold]
+          Width = 70
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'montant'
+          Title.Alignment = taCenter
+          Title.Caption = 'Mt T ('#8364')'
+          Title.Font.Style = [fsBold]
+          Width = 70
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'montant_xof'
+          Title.Alignment = taCenter
+          Title.Caption = ' Mt T(XOF)'
+          Title.Font.Style = [fsBold]
+          Width = 100
+          Alignment = taRightJustify
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'mont_regle'
+          Title.Alignment = taCenter
+          Title.Caption = 'Mt R'#233'gl'#233
+          Title.Font.Style = [fsBold]
+          Width = 100
+          Alignment = taRightJustify
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'mont_solde'
+          Title.Alignment = taCenter
+          Title.Caption = 'Solde'
+          Title.Font.Style = [fsBold]
+          Width = 100
+          Alignment = taRightJustify
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'control'
+          Title.Alignment = taCenter
+          Title.Caption = 'C'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'validation'
+          Title.Alignment = taCenter
+          Title.Caption = 'V'
+          Title.Font.Style = [fsBold]
+          Width = 30
+          Alignment = taCenter
+          ReadOnly = True
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'st_fact'
+          Title.Caption = 'St'
+          Title.Font.Style = [fsBold]
+          Width = 31
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'commentaire_control'
+          Title.Alignment = taCenter
+          Title.Caption = 'commentaire_control'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'commentaire_validate'
+          Title.Alignment = taCenter
+          Title.Caption = 'commentaire_validate'
+          Title.Font.Style = [fsBold]
+          Width = 64
+          Visible = False
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'rapport_control'
+          Title.Caption = 'rapport_control'
+          Width = 64
+          Visible = False
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end
+        item
+          FieldName = 'rapport_validate'
+          Title.Caption = 'rapport_validate'
+          Width = 64
+          Visible = False
+          Menu.MenuEnabled = False
+          Menu.ColumnHideable = False
+        end>
     end
   end
   object PopupMenu_add: TUniPopupMenu

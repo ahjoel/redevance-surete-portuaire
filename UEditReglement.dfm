@@ -207,7 +207,7 @@ object FEditReglement: TFEditReglement
         end
         object EdTypeFact: TUniEdit
           Left = 559
-          Top = 46
+          Top = 51
           Width = 130
           Hint = ''
           Text = ''

@@ -316,8 +316,6 @@ object FEtatsEscale: TFEtatsEscale
         Caption = 'Etats Escales'
         Color = clSkyBlue
         Layout = 'column'
-        ExplicitLeft = 41
-        ExplicitTop = -3
       end
       object UniPanel2: TUniPanel
         Left = 0
@@ -723,7 +721,7 @@ object FEtatsEscale: TFEtatsEscale
     Top = 200
   end
   object frxReport: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -768,6 +766,10 @@ object FEtatsEscale: TFEtatsEscale
       TitleBeforeHeader = False
       object PageHeader_sum: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
@@ -791,6 +793,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ReportTitle_sum: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 115.472480000000000000
         Top = 64.252010000000000000
@@ -1111,6 +1117,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ColumnHeader_sum: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110236220470000
         Top = 204.094620000000000000
@@ -1169,6 +1179,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ReportSummary_sum: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110236220470000
         Top = 355.275820000000000000
@@ -1210,6 +1224,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object PageFooter_sum: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118120000000000000
         Top = 393.071120000000000000
@@ -1233,6 +1251,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object MasterData_sum: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110236220470000
         Top = 279.685220000000000000
@@ -1308,6 +1330,10 @@ object FEtatsEscale: TFEtatsEscale
       TitleBeforeHeader = False
       object PageFooter_main: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 336.378170000000000000
@@ -1351,6 +1377,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object PageHeader_main: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
@@ -1374,6 +1404,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ColumnHeader_main: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897637800000000000
         Top = 181.417440000000000000
@@ -1665,6 +1699,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ReportTitle_main: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1974,6 +2012,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object MasterData_main: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2268,7 +2310,7 @@ object FEtatsEscale: TFEtatsEscale
     Top = 264
   end
   object frxReport_group: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -2319,6 +2361,10 @@ object FEtatsEscale: TFEtatsEscale
       TitleBeforeHeader = False
       object PageHeader_sum: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
@@ -2342,6 +2388,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ReportTitle_sum: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 115.472480000000000000
         Top = 64.252010000000000000
@@ -2662,6 +2712,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ColumnHeader_sum: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 204.094620000000000000
@@ -2720,6 +2774,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ReportSummary_sum: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110236220500000
         Top = 355.275820000000000000
@@ -2761,6 +2819,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object PageFooter_sum: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118120000000000000
         Top = 393.071120000000000000
@@ -2784,6 +2846,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object MasterData_sum: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 279.685220000000000000
@@ -2857,6 +2923,10 @@ object FEtatsEscale: TFEtatsEscale
       TitleBeforeHeader = False
       object PageFooter_main: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 411.968770000000000000
@@ -2900,6 +2970,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object PageHeader_main: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
@@ -2923,6 +2997,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ColumnHeader_main: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897637800000000000
         Top = 181.417440000000000000
@@ -3214,6 +3292,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object ReportTitle_main: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3523,6 +3605,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object MasterData_main: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3808,6 +3894,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object GroupHeader: TfrxGroupHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 260.787570000000000000
@@ -3854,6 +3944,10 @@ object FEtatsEscale: TFEtatsEscale
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 336.378170000000000000

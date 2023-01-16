@@ -372,6 +372,8 @@ begin
                     TfrxMemoView(FEtatsEscale.frxReport_group.FindObject('title_factPAL')).Text :=title_factPAL ;
 
                     query_print:= init_query + filter_periode  + filter_IP + filter_poste + filter_consign + filter_TypeNave + filter_navire + filter_facturable +filter_fact_pal + filter_fact_int+ filter_obs + order_group;
+
+
                     FReport.DataAndShowReport(DM.QPrint, query_print, FEtatsEscale.frxDBDataset, FEtatsEscale.frxReport_group, FEtatsEscale.frxPDFExport, FReport.URLFrame, 'Etat_Escale');
 
 

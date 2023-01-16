@@ -1,8 +1,8 @@
 object FExercice: TFExercice
   Left = 0
   Top = 0
-  ClientHeight = 272
-  ClientWidth = 503
+  ClientHeight = 229
+  ClientWidth = 323
   Caption = 'Exercices'
   OnShow = UniFormShow
   BorderStyle = bsSingle
@@ -14,18 +14,18 @@ object FExercice: TFExercice
   object UniContainerPanel1: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 503
-    Height = 272
+    Width = 323
+    Height = 229
     Hint = ''
     ParentColor = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 599
-    ExplicitHeight = 360
+    ExplicitWidth = 503
+    ExplicitHeight = 272
     object PanTitle: TUniPanel
       Left = 0
       Top = 0
-      Width = 503
+      Width = 323
       Height = 27
       Hint = ''
       Align = alTop
@@ -38,83 +38,103 @@ object FExercice: TFExercice
       Caption = 'Exercices'
       Color = clWhite
       Layout = 'column'
-      ExplicitWidth = 599
+      ExplicitWidth = 503
     end
     object UniPanel1: TUniPanel
       Left = 0
       Top = 27
-      Width = 503
-      Height = 45
+      Width = 323
+      Height = 60
       Hint = ''
       Align = alTop
       TabOrder = 2
       Caption = ''
-      ExplicitWidth = 599
+      ExplicitWidth = 394
       object EdLibelle: TUniEdit
-        Left = 53
-        Top = 11
-        Width = 109
+        Left = 15
+        Top = 23
+        Width = 82
         Hint = ''
         CharCase = ecUpperCase
         Text = ''
         TabOrder = 1
       end
       object UniLabel2: TUniLabel
-        Left = 12
-        Top = 16
+        Left = 15
+        Top = 7
         Width = 29
         Height = 13
         Hint = ''
         Caption = 'Libell'#233
         TabOrder = 2
       end
-      object BtnCancel: TUniButton
-        Left = 412
-        Top = 8
-        Width = 81
-        Height = 25
-        Hint = ''
-        Caption = 'Annuler'
-        TabOrder = 3
-        IconCls = 'delete'
-        OnClick = BtnCancelClick
-      end
-      object BtnSave: TUniButton
-        Left = 321
-        Top = 8
-        Width = 81
-        Height = 25
-        Hint = ''
-        Caption = 'Enregistrer'
-        TabOrder = 4
-        IconCls = 'bookmarks'
-        OnClick = BtnSaveClick
-      end
       object RadActif: TUniRadioGroup
-        Left = 191
-        Top = 0
+        Left = 113
+        Top = 6
         Width = 106
-        Height = 40
+        Height = 41
         Hint = ''
         Items.Strings = (
           'Oui'
           'Non')
         Caption = 'Actif'
-        TabOrder = 5
+        TabOrder = 3
         Columns = 2
+      end
+      object UniSimplePanel1: TUniSimplePanel
+        AlignWithMargins = True
+        Left = 238
+        Top = 4
+        Width = 81
+        Height = 52
+        Hint = ''
+        ParentColor = False
+        Align = alRight
+        TabOrder = 4
+        ExplicitLeft = 312
+        ExplicitTop = 1
+        ExplicitHeight = 58
+        object BtnSave: TUniButton
+          Left = 0
+          Top = 0
+          Width = 81
+          Height = 25
+          Hint = ''
+          Caption = 'Enregistrer'
+          Align = alTop
+          TabOrder = 1
+          IconCls = 'bookmarks'
+          OnClick = BtnSaveClick
+          ExplicitLeft = 13
+          ExplicitTop = 8
+        end
+        object BtnCancel: TUniButton
+          Left = 0
+          Top = 27
+          Width = 81
+          Height = 25
+          Hint = ''
+          Caption = 'Annuler'
+          Align = alBottom
+          TabOrder = 2
+          IconCls = 'delete'
+          OnClick = BtnCancelClick
+          ExplicitLeft = 13
+          ExplicitTop = 8
+        end
       end
     end
     object UniPanel2: TUniPanel
       Left = 0
-      Top = 72
+      Top = 87
       Width = 44
-      Height = 200
+      Height = 142
       Hint = ''
       Align = alLeft
       TabOrder = 3
       Caption = ''
-      ExplicitTop = 79
-      ExplicitHeight = 281
+      ExplicitTop = 72
+      ExplicitHeight = 200
       object BtnAdd: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -166,9 +186,9 @@ object FExercice: TFExercice
     end
     object DBGrid: TUniDBGrid
       Left = 44
-      Top = 72
-      Width = 459
-      Height = 200
+      Top = 87
+      Width = 279
+      Height = 142
       Hint = ''
       DataSource = DM.DS_Grid_Exo
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
@@ -193,7 +213,7 @@ object FExercice: TFExercice
           Title.Alignment = taCenter
           Title.Caption = 'Libell'#233
           Title.Font.Style = [fsBold]
-          Width = 192
+          Width = 108
           Menu.MenuEnabled = False
           Menu.ColumnHideable = False
         end
@@ -202,7 +222,7 @@ object FExercice: TFExercice
           Title.Alignment = taCenter
           Title.Caption = 'Actif'
           Title.Font.Style = [fsBold]
-          Width = 160
+          Width = 111
           Menu.MenuEnabled = False
           Menu.ColumnHideable = False
         end>

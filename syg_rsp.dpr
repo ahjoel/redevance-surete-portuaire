@@ -56,10 +56,7 @@ uses
   UReglement in 'UReglement.pas' {FReglements: TUniForm},
   UEditReglement in 'UEditReglement.pas' {FEditReglement: TUniForm},
   UEtatsReglement in 'UEtatsReglement.pas' {FEtatsReglement: TUniForm},
-  UEtatsRadeTest in 'UEtatsRadeTest.pas' {FEtatsRadeTest},
-  UniForm in 'UniForm.pas' {UniForm2: TUniForm},
-  URadeTest in 'URadeTest.pas' {FRadeTest: TUniForm},
-  UEditRadeT in 'UEditRadeT.pas' {FEditRadeT: TUniForm};
+  UPrintOptionReglement in 'UPrintOptionReglement.pas' {FPrintOptionReglement: TUniForm};
 
 {$R *.res}
 
@@ -67,6 +64,5 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;
   TUniServerModule.Create(Application);
-  Application.CreateForm(TFEtatsRadeTest, FEtatsRadeTest);
   Application.Run;
 end.

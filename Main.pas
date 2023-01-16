@@ -185,6 +185,13 @@ if (NavTree.Selected.Text = 'Rades') then
       FEtatNavire.ShowModal;
   end;
 
+   if (NavTree.Selected.Text = 'Gestion des Utilisateurs') then
+  begin
+      FUser.ShowModal;
+  end;
+
+
+
 
 
 

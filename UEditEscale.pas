@@ -281,7 +281,7 @@ begin
                 end;
                 if DM.QCheck.RecordCount > 0 then
                      begin
-                         MessageDlg('Une Escale posséde dejà cette référence Port',mtError,[mbok]);
+                         MessageDlg('Un Escale posséde dejà cette référence Port',mtError,[mbok]);
                          EdRefPort.JSInterface.JSCall('focus' ,[]);
                          Abort;
                      end

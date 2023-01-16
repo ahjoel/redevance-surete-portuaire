@@ -1,7 +1,7 @@
 object FRade: TFRade
   Left = 0
   Top = 0
-  ClientHeight = 763
+  ClientHeight = 769
   ClientWidth = 1359
   Caption = 'Rades'
   OnShow = UniFormShow
@@ -14,12 +14,11 @@ object FRade: TFRade
     Left = 0
     Top = 0
     Width = 1359
-    Height = 763
+    Height = 769
     Hint = ''
     ParentColor = False
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 769
     object PanOp: TUniPanel
       AlignWithMargins = True
       Left = 3
@@ -54,6 +53,7 @@ object FRade: TFRade
         TabOrder = 2
         IconCls = 'compose'
         OnClick = BtnUpdateClick
+        ExplicitTop = 3
       end
       object BtnAdd: TUniButton
         AlignWithMargins = True
@@ -116,28 +116,15 @@ object FRade: TFRade
         IconCls = 'check2'
         OnClick = BtnControlClick
       end
-      object UniButton1: TUniButton
-        AlignWithMargins = True
-        Left = 866
-        Top = 4
-        Width = 75
-        Height = 25
-        Hint = ''
-        Caption = 'Rades Test'
-        Align = alRight
-        TabOrder = 8
-        OnClick = UniButton1Click
-        ExplicitTop = 5
-      end
     end
     object DBGrid: TUniDBGrid
       Left = 0
       Top = 64
       Width = 1359
-      Height = 699
+      Height = 705
       Hint = ''
       DataSource = DM.DS_Grid_Rade
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
       ReadOnly = True
       WebOptions.Paged = False
       WebOptions.PageSize = 200

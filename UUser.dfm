@@ -28,7 +28,7 @@ object FUser: TFUser
       Width = 1084
       Height = 666
       Hint = ''
-      ActivePage = TUser
+      ActivePage = TPerms
       Align = alClient
       TabOrder = 1
       object TUser: TUniTabSheet

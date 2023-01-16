@@ -16,14 +16,15 @@ type
     UniPanel1: TUniPanel;
     EdLibelle: TUniEdit;
     UniLabel2: TUniLabel;
-    BtnCancel: TUniButton;
-    BtnSave: TUniButton;
     UniPanel2: TUniPanel;
     BtnAdd: TUniButton;
     BtnUpdate: TUniButton;
     BtnDelete: TUniButton;
     DBGrid: TUniDBGrid;
     RadActif: TUniRadioGroup;
+    UniSimplePanel1: TUniSimplePanel;
+    BtnSave: TUniButton;
+    BtnCancel: TUniButton;
     procedure UniFormShow(Sender: TObject);
     procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
     procedure BtnCancelClick(Sender: TObject);

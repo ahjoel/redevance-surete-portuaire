@@ -57,7 +57,7 @@ type
   public
     { Public declarations }
      var
-    id_fact, imma_fact,  navire, consignataire,  date_em, date_ech : string;
+    id_fact, id_reg,  date, consignataire : string;
     FmContext : string;
     EditContext : string;
 
@@ -83,22 +83,25 @@ end;
 
 procedure TFEditReglement.loaddata ;
 begin
-     id_fact := DM.QCheck.FieldValues['id_factures_pal'];
+
+     id_fact :=DM.QCheck.FieldValues['id_factures_pal'];
      EdFacture.Text := DM.QCheck.FieldValues['ref_fact'];
      EdConsignataire.Text := DM.QCheck.FieldValues['cons_fact'];
      EdEmmissionFact.Text := DM.QCheck.FieldValues['date_emise_facture_pal'];
      EdEcheanceFact.Text := DM.QCheck.FieldValues['date_ech_facture_pal'];
      EdTypeFact.Text := DM.QCheck.FieldValues['code_type_fact'];
      EdMontantFact.Text := DM.QCheck.FieldValues['montant_xof'];
-     EdMontReg.Text  := DM.QCheck.FieldValues['mont_regle'];
-     EdMontSolde.Text  := DM.QCheck.FieldValues['mont_solde'];
+     EdMontReg.Text := DM.QCheck.FieldValues['mont_regle'];
+     EdMontSolde.Text := DM.QCheck.FieldValues['mont_solde'];
+
      DBLConsignataire.KeyValue  := DM.QCheck.FieldValues['id_cons_fact'];
+
 end;
 
 procedure TFEditReglement.BtnRechFactClick(Sender: TObject);
 begin
     query := init_query_select_fact + ' AND L.ref_facture_pal=:ref_fact AND L.date_emise_facture_pal=:date_em ' + 'GROUP BY L.id_factures_pal';
-     with DM.QCheck do
+    with DM.QCheck do
            begin
                close;
                SQL.Clear;
@@ -145,8 +148,7 @@ begin
   //INSERT
   if FmContext = AddContext then
       begin
-
-            if EdFacture.IsBlank then
+          if EdFacture.IsBlank then
               begin
                  MessageDlg('Veuillez sélectionner une Facture',mtWarning,[mbok]);
                  BtnRechFact.JSInterface.JSCall('focus' ,[]);
@@ -186,8 +188,9 @@ begin
                                   begin
                                         with DM.QSave do
                                               begin
+
                                                   SQL.Text := ('INSERT INTO reglement (facture_regle, montant_regle, date_regle, consignataire_regle, user_create_regle , exercice)'#13+
-                                                          'Values (:facture, :montant, :date, :consignataire, :user_create, :exercice)');
+                                                          ' Values (:facture, :montant, :date, :consignataire, :user_create, :exercice)');
                                                   Parameters.ParamByName('facture').Value:= id_fact;
                                                   Parameters.ParamByName('montant').Value:= EdReg.Text;
                                                   Parameters.ParamByName('date').Value:= msqlDateTime(EdDateReg);
@@ -223,6 +226,139 @@ begin
 
     else
 
+     //  //UPDATE
+      if FmContext = UpdateContext then
+          begin
+             if EdFacture.IsBlank then
+                begin
+                   MessageDlg('Veuillez sélectionner une Facture',mtWarning,[mbok]);
+                   BtnRechFact.JSInterface.JSCall('focus' ,[]);
+                   Abort;
+                end
+              else
+
+             if EdReg.IsBlank then
+                begin
+                   MessageDlg('Veuillez renseigner le Montant ',mtWarning,[mbok]);
+                   EdReg.JSInterface.JSCall('focus' ,[]);
+                   Abort;
+                end
+              else
+
+            if  EdDateReg.DateTime=0 then
+                begin
+                   MessageDlg('Veuillez renseigner la Date du Réglement ',mtWarning,[mbok]);
+                   EdDateReg.JSInterface.JSCall('focus' ,[]);
+                   Abort;
+                end
+            else
+            if DBLConsignataire.KeyValue = null then
+                begin
+                   MessageDlg('Veuillez sélectionner le Consignataire',mtWarning,[mbok]);
+                   DBLConsignataire.JSInterface.JSCall('focus' ,[]);
+                   Abort;
+                end
+            else
+                  begin
+                        MessageDlg('Voulez-vous appliquer les modifications ?', mtConfirmation, mbYesNo,
+                              procedure(Sender: TComponent; Res: Integer)
+                              begin
+                                case Res of
+                                  mrYes :
+                                      begin
+                                            with DM.QSave do
+                                                  begin
+                                                      SQL.Text := ('UPDATE reglement SET facture_regle=:facture, montant_regle=:montant, date_regle=:date, consignataire_regle=:consignataire WHERE id_regle=:id');
+                                                      Parameters.ParamByName('facture').Value:= id_fact;
+                                                      Parameters.ParamByName('montant').Value:= EdReg.Text;
+                                                      Parameters.ParamByName('date').Value:= msqlDateTime(EdDateReg);
+                                                      Parameters.ParamByName('consignataire').Value:= DBLConsignataire.KeyValue;
+                                                      Parameters.ParamByName('id').Value:= id_reg;
+                                                      ExecSQL;
+                                                  end;
+                                                 ClearData;
+
+                                               MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                               FReglements.ShowData;
+                                               DM.DQ_Grid_Reglement.Locate('id_regle',id_reg,[loCaseInsensitive] );
+                                               close;
+
+                                    end
+                                end ;
+                              end
+                            );
+                  end;
+
+          end
+
+
+    else
+   //CONTROL
+  if FmContext = ControlContext then
+        begin
+          begin
+                MessageDlg('Voulez-vous marquer les informations suivantes comme "Controlées" ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE reglement SET  rapport_control=:rapport_control, user_control_regle=:user_control, date_control_regle=CURRENT_TIMESTAMP WHERE id_regle=:id');
+                                              Parameters.ParamByName('id').Value:= id_reg;
+                                              Parameters.ParamByName('rapport_control').Value:= 0;
+                                              Parameters.ParamByName('user_control').Value:= UserId;
+                                              ExecSQL;
+                                          end;
+                                         ClearData;
+
+                                       MessageDlg('Control effectuée',mtConfirmation,[mbok]);
+                                       FReglements.ShowData;
+                                       DM.DQ_Grid_Reglement.Locate('id_regle',id_reg,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end;
+
+        end
+
+         else
+
+  //VALIDATION
+  if FmContext = ValidatContext then
+        begin
+          begin
+                MessageDlg('Voulez-vous marquer les informations suivantes comme "Validées" ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE reglement SET rapport_validate=:rapport_validate,  user_validate_regle=:user_validate, date_validate_regle=CURRENT_TIMESTAMP WHERE id_regle=:id');
+                                              Parameters.ParamByName('id').Value:= id_reg;
+                                              Parameters.ParamByName('user_validate').Value:= UserId;
+                                              Parameters.ParamByName('rapport_validate').Value:= 0;
+                                              ExecSQL;
+                                          end;
+                                         ClearData;
+                                       MessageDlg('Control effectuée',mtConfirmation,[mbok]);
+                                       FReglements.ShowData;
+                                       DM.DQ_Grid_Reglement.Locate('id_regle',id_reg,[loCaseInsensitive] );
+                                       close;
+                            end
+                        end ;
+                      end
+                    );
+          end;
+
+        end;
+
 
 
 
@@ -253,6 +389,7 @@ end;
 
 procedure TFEditReglement.UniFormShow(Sender: TObject);
 begin
+    edRechDateEm.DateTime := 0;
     LoadDBLConsignataire;
     if FmContext = AddContext then
       begin

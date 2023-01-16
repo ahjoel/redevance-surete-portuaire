@@ -144,6 +144,7 @@ object FNavire: TFNavire
           Alignment = taRightJustify
           Caption = ''
           Color = clSkyBlue
+          ExplicitLeft = 1255
         end
       end
       object UniPanel4: TUniPanel
@@ -231,7 +232,7 @@ object FNavire: TFNavire
     end
   end
   object frxReport: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -275,6 +276,10 @@ object FNavire: TFNavire
       TitleBeforeHeader = False
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 94.488250000000000000
         Top = 71.811070000000000000
@@ -441,6 +446,10 @@ object FNavire: TFNavire
       end
       object MasterData: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -677,6 +686,10 @@ object FNavire: TFNavire
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 381.732530000000000000
@@ -720,6 +733,10 @@ object FNavire: TFNavire
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
@@ -743,6 +760,10 @@ object FNavire: TFNavire
       end
       object ColumnHeader1: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897637800000000000
         Top = 188.976500000000000000
@@ -982,6 +1003,10 @@ object FNavire: TFNavire
       end
       object GroupHeader: TfrxGroupHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 268.346630000000000000

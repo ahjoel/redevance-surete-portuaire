@@ -24,7 +24,6 @@ type
     PanTitle: TUniPanel;
     UniPanel2: TUniPanel;
     PanRowCount: TUniPanel;
-    UniButton1: TUniButton;
     procedure BtnAddClick(Sender: TObject);
     procedure BtnUpdateClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
@@ -35,7 +34,6 @@ type
     procedure DBGridDrawColumnCell(Sender: TObject; ACol, ARow: Integer;
       Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
     procedure EdSearchChange(Sender: TObject);
-    procedure UniButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure UpdateLoadData;
@@ -60,7 +58,7 @@ implementation
 
 uses
   MainModule, uniGUIApplication, Main, UDataLaod, UEditRade, UFunction, UGlobal,
-  ULoadData, UProject_Function, UEtatsRadeTest, URadeTest;
+  ULoadData, UProject_Function;
 
 function FRade: TFRade;
 begin
@@ -144,6 +142,7 @@ begin
 
     FEditRade.ShowModal;
     FEditRade.FmContext := UpdateContext;
+    FEditRade.BtnSave.Caption := UpdateBtnCaption;
     FEditRade.BtnSave.IconCls := 'compose';
 
      with DM.QStand do
@@ -286,7 +285,6 @@ procedure TFRade.ShowData;
   begin
       filter:=' order by ref desc , debut desc ' ;
 
-
       if EdSearch.IsBlank then search:='' else
       search:=' AND (UPPER(N.nom_navire) LIKE ''%'+UpperCase(EdSearch.Text)+'%'')';
 
@@ -298,8 +296,7 @@ procedure TFRade.ShowData;
                    ' case WHEN date_control is null THEN '''' ELSE ''O''	end as control , '#13+
                    ' case WHEN date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
                    ' case WHEN facturer_int = False THEN ''N''  ELSE ''O''	end as fact_int , '#13+
-                   ' case WHEN facturer_pal = False THEN ''N''  ELSE ''O''	end as fact_pal , '#13+
-                   ' "TEST" as TEST '#13+
+                   ' case WHEN facturer_pal = False THEN ''N''  ELSE ''O''	end as fact_pal  '#13+
                    ' FROM rade R '#13+
                    'INNER JOIN user as us on R. user_create=us.id_user '#13+
                    'LEFT JOIN user as uc on R.user_control=uc.id_user '#13+
@@ -310,7 +307,6 @@ procedure TFRade.ShowData;
                    'INNER JOIN taux_rade X on R.taux_rade=X.id_taux_rade '#13+
                    'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
                    ' WHERE R.id is not null ';
-
       query:=init_query + exercice_filter + search+ filter;
 
       DM.DQ_Grid_Rade.Close;
@@ -319,15 +315,10 @@ procedure TFRade.ShowData;
       DM.DQ_Grid_Rade.Open;
   end;
 
-procedure TFRade.UniButton1Click(Sender: TObject);
-begin
- FRadeTest.ShowModal;
-end;
-
 procedure TFRade.UniFormShow(Sender: TObject);
 begin
   PanTitle.Caption := FrmPanTitle(title, FrmModeTitle, LibExerciceInst);
-  ShowData;
+ ShowData;
 end;
 
 end.

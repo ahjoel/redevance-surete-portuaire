@@ -1,22 +1,174 @@
-syg_rsp.exe: 00004C70: 08:32:09 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Re4Cg2gIBj10BC5B7BC ) : Addr: $00836E0B
-syg_rsp.exe: 0000163C: 08:44:47 [TUniServerModule]:Shutting Down Server.
-syg_rsp.exe: 0000163C: 08:44:47 [TUniServerModule]:Stopping HTTP Server.
-syg_rsp.exe: 0000163C: 08:44:48 [TUniServerModule]:HTTP Server Stopped.
-syg_rsp.exe: 0000163C: 08:44:48 [TUniGUISessionManager]:Terminating Session manager.
-syg_rsp.exe: 0000163C: 08:44:48 [TUniGUISessionManager]:Stopping Cache Eraser...
-syg_rsp.exe: 0000163C: 08:44:48 [TUniGUISessionManager]:Cache Eraser Stopped.
-syg_rsp.exe: 0000163C: 08:44:48 [TUniGUISessionManager]:Destroying Worker Threads.
-syg_rsp.exe: 0000163C: 08:44:48 [TUniGUISessionManager]:Session manager terminated.
-syg_rsp.exe: 0000163C: 08:44:48 [TUniServerModule]:Server Shutdown Completed.
-syg_rsp.exe: 0000163C: 08:44:48 []:<-------------------------------------------------------------->
-syg_rsp.exe: 0000163C: 08:44:48 [Terminated]:Exit Code: 0
-syg_rsp.exe: 000057A0: 08:44:53 []:>--------------------------------------------------------------<
-syg_rsp.exe: 000057A0: 08:44:53 [TUniServerModule]:Server First Init.
-syg_rsp.exe: 000057A0: 08:44:53 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
-syg_rsp.exe: 000057A0: 08:44:54 [TUniServerModule]:Starting HTTP Server on Port: 8077...
-syg_rsp.exe: 000057A0: 08:44:54 [TUniServerModule]:HTTP Server Started on Port: 8077
-syg_rsp.exe: 00002F74: 08:45:02 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: QjtXBOrLko10BC6A70E ) : Addr: $00836E0B
-syg_rsp.exe: 0000445C: 10:00:08 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: lahrd15mWJ10BC6AA8D ) : Addr: $00836E0B
-syg_rsp.exe: 0000085C: 10:38:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: wfusLEXCBK10BC6BEEF ) : Addr: $00836E0B
-syg_rsp.exe: 00004C84: 11:16:36 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: WmkiLTVVKH10BC6C95F ) : Addr: $00836E0B
-syg_rsp.exe: 00005F0C: 15:11:59 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Q5xajstOwp10BC6D3AD ) : Addr: $00836E0B
+syg_rsp.exe: 00003178: 08:49:46 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TBosLCyq2e10BC5AA12 ) : Addr: $0082D9FE
+syg_rsp.exe: 00003178: 08:49:46 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TBosLCyq2e10BC5AA12 ) : Addr: $0082D9FE
+syg_rsp.exe: 00003178: 08:49:46 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TBosLCyq2e10BC5AA12 ) : Addr: $0082D9FE
+syg_rsp.exe: 00003178: 08:49:46 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TBosLCyq2e10BC5AA12 ) : Addr: $0082D9FE
+syg_rsp.exe: 00003178: 08:49:46 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TBosLCyq2e10BC5AA12 ) : Addr: $0082D9FE
+syg_rsp.exe: 000058DC: 09:07:55 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000058DC: 09:07:55 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000058DC: 09:07:56 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000058DC: 09:07:56 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000058DC: 09:07:56 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000058DC: 09:07:56 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000058DC: 09:07:56 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000058DC: 09:07:56 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000058DC: 09:07:56 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000058DC: 09:07:56 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000058DC: 09:07:56 [Terminated]:Exit Code: 0
+syg_rsp.exe: 0000666C: 09:08:06 []:>--------------------------------------------------------------<
+syg_rsp.exe: 0000666C: 09:08:06 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 0000666C: 09:08:06 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 0000666C: 09:08:07 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00001844: 09:08:11 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: gqbdCkAp8M10BC6ABE0 ) : Addr: $0082D9FE
+syg_rsp.exe: 0000381C: 09:08:11 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: gqbdCkAp8M10BC6ABE0 ) : Addr: $0082D9FE
+syg_rsp.exe: 0000666C: 09:08:27 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 0000666C: 09:08:27 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 0000666C: 09:08:28 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 0000666C: 09:08:28 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 0000666C: 09:08:28 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 0000666C: 09:08:28 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 0000666C: 09:08:29 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 0000666C: 09:08:29 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 0000666C: 09:08:29 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 0000666C: 09:08:29 []:<-------------------------------------------------------------->
+syg_rsp.exe: 0000666C: 09:08:29 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00004F1C: 09:08:31 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00004F1C: 09:08:31 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00004F1C: 09:08:31 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00004F1C: 09:08:32 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00005D30: 09:08:32 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: T4fziAQw2i10BC6B0D2 ) : Addr: $0082D9FE
+syg_rsp.exe: 000043E0: 09:08:32 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: T4fziAQw2i10BC6B0D2 ) : Addr: $0082D9FE
+syg_rsp.exe: 00005D30: 09:08:39 [127.0.0.1]:EDatabaseError : QStand: Champ 'cons_fact' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00004F1C: 09:09:25 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00004F1C: 09:09:25 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00004F1C: 09:09:26 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00004F1C: 09:09:26 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00004F1C: 09:09:26 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00001834: 09:09:29 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00001834: 09:09:29 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00001834: 09:09:29 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00001834: 09:09:29 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00003C4C: 09:09:30 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: baUaaCyBQo10BC6B0ED ) : Addr: $0082D9FE
+syg_rsp.exe: 00000D20: 09:09:30 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: baUaaCyBQo10BC6B0ED ) : Addr: $0082D9FE
+syg_rsp.exe: 00000D20: 09:09:35 [127.0.0.1]:EDatabaseError : QStand: Champ 'mont_regle' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00000D20: 09:09:53 [127.0.0.1]:EDatabaseError : QStand: Champ 'mont_regle' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00000D20: 09:10:14 [127.0.0.1]:EDatabaseError : QStand: Champ 'mont_regle' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00001834: 09:12:07 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00001834: 09:12:07 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00001834: 09:12:08 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00001834: 09:12:08 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00001834: 09:12:08 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00001834: 09:12:08 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00001834: 09:12:08 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00001834: 09:12:08 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00001834: 09:12:08 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00001834: 09:12:08 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00001834: 09:12:08 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00005BA0: 09:12:14 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00005BA0: 09:12:14 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00005BA0: 09:12:14 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00005BA0: 09:12:14 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00002718: 09:12:16 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: I7kJmcDoWr10BC6B130 ) : Addr: $0082D9FE
+syg_rsp.exe: 00003E14: 09:12:16 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: I7kJmcDoWr10BC6B130 ) : Addr: $0082D9FE
+syg_rsp.exe: 00003E14: 09:12:22 [127.0.0.1]:EDatabaseError : QStand: Champ 'mont_solde' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00005BA0: 09:12:43 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00005BA0: 09:12:43 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00005BA0: 09:12:45 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00005BA0: 09:12:45 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00005BA0: 09:12:45 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00004A24: 09:12:47 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00004A24: 09:12:47 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00004A24: 09:12:47 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00004A24: 09:12:47 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00005E64: 09:12:50 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: eytvUWzDt310BC6B1F0 ) : Addr: $0082D9FE
+syg_rsp.exe: 00006350: 09:12:50 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: eytvUWzDt310BC6B1F0 ) : Addr: $0082D9FE
+syg_rsp.exe: 00006350: 09:12:57 [127.0.0.1]:EDatabaseError : QStand: Champ 'id_cons_fact' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00006350: 09:13:24 [127.0.0.1]:EDatabaseError : QStand: Champ 'id_cons_fact' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00006350: 09:13:47 [127.0.0.1]:EDatabaseError : QStand: Champ 'id_cons_fact' non trouvé : Addr: $006BC9C2
+syg_rsp.exe: 00004A24: 09:16:20 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00004A24: 09:16:20 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00004A24: 09:16:20 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00004A24: 09:16:20 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00004A24: 09:16:20 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00005C58: 09:16:24 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00005C58: 09:16:24 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00005C58: 09:16:24 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00005C58: 09:16:24 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000066B0: 09:16:27 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 31gpgDZShX10BC6B218 ) : Addr: $0082D9FE
+syg_rsp.exe: 000066B0: 09:16:27 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 31gpgDZShX10BC6B218 ) : Addr: $0082D9FE
+syg_rsp.exe: 00005C58: 09:18:13 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00005C58: 09:18:13 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00005C58: 09:18:14 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00005C58: 09:18:14 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00005C58: 09:18:14 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00005C58: 09:18:14 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00005C58: 09:18:14 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00005C58: 09:18:14 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00005C58: 09:18:14 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00005C58: 09:18:14 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00005C58: 09:18:14 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000038A4: 09:45:36 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000038A4: 09:45:36 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000038A4: 09:45:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000038A4: 09:45:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000025FC: 09:45:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Zny7bKGYMq10BC6B313 ) : Addr: $0082D9FE
+syg_rsp.exe: 000025FC: 09:45:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Zny7bKGYMq10BC6B313 ) : Addr: $0082D9FE
+syg_rsp.exe: 000025FC: 09:45:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Zny7bKGYMq10BC6B313 ) : Addr: $0082D9FE
+syg_rsp.exe: 000025FC: 09:45:37 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Zny7bKGYMq10BC6B313 ) : Addr: $0082D9FE
+syg_rsp.exe: 000025FC: 09:45:50 [127.0.0.1]:EDatabaseError : QCheck: Paramètres 'ref_fact' non trouvés : Addr: $006BC9C2
+syg_rsp.exe: 000025FC: 09:47:07 [127.0.0.1]:EDatabaseError : QCheck: Paramètres 'ref_fact' non trouvés : Addr: $006BC9C2
+syg_rsp.exe: 000038A4: 09:49:04 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000038A4: 09:49:04 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000038A4: 09:49:04 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000038A4: 09:49:04 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000038A4: 09:49:04 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000038A4: 09:49:05 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000038A4: 09:49:05 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000038A4: 09:49:05 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000038A4: 09:49:05 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000038A4: 09:49:05 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000038A4: 09:49:05 [Terminated]:Exit Code: 0
+syg_rsp.exe: 000024CC: 09:49:08 []:>--------------------------------------------------------------<
+syg_rsp.exe: 000024CC: 09:49:08 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 000024CC: 09:49:08 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 000024CC: 09:49:08 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000045F4: 09:49:09 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: r1j9z9pBPN10BC6BAFE ) : Addr: $0082D9FE
+syg_rsp.exe: 000064F8: 09:49:09 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: r1j9z9pBPN10BC6BAFE ) : Addr: $0082D9FE
+syg_rsp.exe: 000024CC: 15:52:59 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 000024CC: 15:52:59 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 000024CC: 15:53:00 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 000024CC: 15:53:00 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 000024CC: 15:53:00 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 000024CC: 15:53:00 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 000024CC: 15:53:00 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 000024CC: 15:53:00 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 000024CC: 15:53:00 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 000024CC: 15:53:00 []:<-------------------------------------------------------------->
+syg_rsp.exe: 000024CC: 15:53:00 [Terminated]:Exit Code: 0
+syg_rsp.exe: 00001C74: 16:17:58 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00001C74: 16:17:58 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00001C74: 16:17:58 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00001C74: 16:17:58 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000060E0: 16:18:00 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ZrZSKCm4XK10BC6BBF2 ) : Addr: $0082D9FE
+syg_rsp.exe: 000060E0: 16:18:00 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ZrZSKCm4XK10BC6BBF2 ) : Addr: $0082D9FE
+syg_rsp.exe: 00004FF8: 17:44:09 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hQUF8xmthB10BC7256D ) : Addr: $0082D9FE
+syg_rsp.exe: 00004FF8: 17:44:09 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hQUF8xmthB10BC7256D ) : Addr: $0082D9FE
+syg_rsp.exe: 00004FF8: 17:44:09 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hQUF8xmthB10BC7256D ) : Addr: $0082D9FE
+syg_rsp.exe: 00004FF8: 17:44:14 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: hQUF8xmthB10BC7256D ) : Addr: $0082D9FE

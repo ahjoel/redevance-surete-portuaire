@@ -19,8 +19,6 @@ object FPrintOptionEscaleReport: TFPrintOptionEscaleReport
     Align = alClient
     TabOrder = 0
     Caption = ''
-    ExplicitWidth = 317
-    ExplicitHeight = 177
     object GBGroup: TUniGroupBox
       AlignWithMargins = True
       Left = 4
@@ -31,9 +29,6 @@ object FPrintOptionEscaleReport: TFPrintOptionEscaleReport
       Caption = 'Groupage'
       Align = alTop
       TabOrder = 1
-      ExplicitLeft = 8
-      ExplicitTop = 0
-      ExplicitWidth = 309
       object CBGroup: TUniComboBox
         Left = 13
         Top = 24
@@ -65,8 +60,6 @@ object FPrintOptionEscaleReport: TFPrintOptionEscaleReport
       Caption = 'Sommaire'
       Align = alTop
       TabOrder = 2
-      ExplicitTop = 4
-      ExplicitWidth = 309
       object CBSummary: TUniComboBox
         Left = 16
         Top = 24

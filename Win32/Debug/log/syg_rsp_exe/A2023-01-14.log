@@ -1,0 +1,11 @@
+syg_rsp.exe: 00004920: 06:20:50 [TUniServerModule]:Shutting Down Server.
+syg_rsp.exe: 00004920: 06:20:50 [TUniServerModule]:Stopping HTTP Server.
+syg_rsp.exe: 00004920: 06:20:50 [TUniServerModule]:HTTP Server Stopped.
+syg_rsp.exe: 00004920: 06:20:50 [TUniGUISessionManager]:Terminating Session manager.
+syg_rsp.exe: 00004920: 06:20:50 [TUniGUISessionManager]:Stopping Cache Eraser...
+syg_rsp.exe: 00004920: 06:20:50 [TUniGUISessionManager]:Cache Eraser Stopped.
+syg_rsp.exe: 00004920: 06:20:50 [TUniGUISessionManager]:Destroying Worker Threads.
+syg_rsp.exe: 00004920: 06:20:50 [TUniGUISessionManager]:Session manager terminated.
+syg_rsp.exe: 00004920: 06:20:50 [TUniServerModule]:Server Shutdown Completed.
+syg_rsp.exe: 00004920: 06:20:50 []:<-------------------------------------------------------------->
+syg_rsp.exe: 00004920: 06:20:50 [Terminated]:Exit Code: 0

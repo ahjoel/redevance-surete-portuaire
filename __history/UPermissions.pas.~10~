@@ -1,0 +1,70 @@
+unit UPermissions;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMPerms = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  //ESCALES
+
+    escale_create,escale_update, escale_delete,escale_control,escale_can_validate: Boolean;
+
+  //RADES
+
+
+  //FACTURATIONS
+
+
+  //REGLEMENTS
+
+
+
+  //USERS
+
+
+
+  //BAREME
+
+
+
+
+  //STATISTIQUES
+
+
+
+  //PARAMETRES
+
+
+  // TABLEAU DE BORDS
+
+
+  //S
+
+
+function DMPerms: TDMPerms;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  UniGUIVars, uniGUIMainModule, MainModule;
+
+function DMPerms: TDMPerms;
+begin
+  Result := TDMPerms(DM.GetModuleInstance(TDMPerms));
+end;
+
+initialization
+  RegisterModuleClass(TDMPerms);
+
+end.

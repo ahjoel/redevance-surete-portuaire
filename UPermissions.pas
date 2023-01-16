@@ -14,13 +14,11 @@ type
   end;
 
 var
-  //ESCALES
+   //Menu
 
-    escale_can_create: Boolean = false;
-    escale_can_update: Boolean = false;
-    escale_can_delete: Boolean = false;
-    escale_can_control: Boolean = false;
-    escale_can_validate: Boolean = false;
+
+  //ESCALES
+    escale_create,escale_update, escale_delete,escale_control,escale_can_validate: Boolean;
 
   //RADES
 

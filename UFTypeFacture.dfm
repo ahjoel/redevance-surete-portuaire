@@ -25,10 +25,6 @@ object FTypeFacture: TFTypeFacture
     object PageCategorie: TUniTabSheet
       Hint = ''
       Caption = 'Categorie Facture'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 563
-      ExplicitHeight = 321
       object UniPanel3: TUniPanel
         Left = 0
         Top = 0
@@ -45,8 +41,6 @@ object FTypeFacture: TFTypeFacture
         Caption = 'Categories Facture'
         Color = clWhite
         Layout = 'column'
-        ExplicitTop = 8
-        ExplicitWidth = 555
       end
       object UniPanel4: TUniPanel
         Left = 0
@@ -57,8 +51,6 @@ object FTypeFacture: TFTypeFacture
         Align = alTop
         TabOrder = 1
         Caption = ''
-        ExplicitTop = 35
-        ExplicitWidth = 555
         object EdLibCat: TUniEdit
           Left = 12
           Top = 25
@@ -88,7 +80,6 @@ object FTypeFacture: TFTypeFacture
           ParentColor = False
           Align = alRight
           TabOrder = 4
-          ExplicitLeft = 466
           object BtSaveCF: TUniButton
             Left = 0
             Top = 0
@@ -100,8 +91,6 @@ object FTypeFacture: TFTypeFacture
             TabOrder = 1
             IconCls = 'bookmarks'
             OnClick = BtSaveCFClick
-            ExplicitLeft = -6
-            ExplicitTop = 2
           end
           object BtnCancelCF: TUniButton
             Left = 0
@@ -145,7 +134,6 @@ object FTypeFacture: TFTypeFacture
         Align = alLeft
         TabOrder = 2
         Caption = ''
-        ExplicitLeft = 8
         object BtnAddCF: TUniButton
           AlignWithMargins = True
           Left = 4
@@ -193,7 +181,6 @@ object FTypeFacture: TFTypeFacture
           TabOrder = 3
           IconAlign = iaTop
           IconCls = 'trash'
-          ExplicitLeft = 5
         end
       end
       object DBGridCF: TUniDBGrid
@@ -244,7 +231,6 @@ object FTypeFacture: TFTypeFacture
       Hint = ''
       Caption = 'Types Facture'
       OnBeforeActivate = PageTypeBeforeActivate
-      ExplicitWidth = 555
       object UniContainerPanel1: TUniContainerPanel
         Left = 0
         Top = 0
@@ -271,7 +257,6 @@ object FTypeFacture: TFTypeFacture
           Caption = 'Types Facture'
           Color = clWhite
           Layout = 'column'
-          ExplicitWidth = 555
         end
         object UniPanel1: TUniPanel
           Left = 0
@@ -282,7 +267,6 @@ object FTypeFacture: TFTypeFacture
           Align = alTop
           TabOrder = 2
           Caption = ''
-          ExplicitWidth = 555
           object EdLibelle: TUniEdit
             Left = 12
             Top = 25
@@ -312,7 +296,6 @@ object FTypeFacture: TFTypeFacture
             ParentColor = False
             Align = alRight
             TabOrder = 4
-            ExplicitLeft = 466
             object BtnSaveTF: TUniButton
               Left = 0
               Top = 0

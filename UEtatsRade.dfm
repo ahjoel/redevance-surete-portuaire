@@ -1,8 +1,8 @@
 object FEtatsRade: TFEtatsRade
   Left = 0
   Top = 0
-  ClientHeight = 734
-  ClientWidth = 1271
+  ClientHeight = 756
+  ClientWidth = 1304
   Caption = 'Editions Etats des Navires en Rade'
   OnShow = UniFormShow
   WindowState = wsMaximized
@@ -14,8 +14,8 @@ object FEtatsRade: TFEtatsRade
   object MainContainer: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 1271
-    Height = 734
+    Width = 1304
+    Height = 756
     Hint = ''
     ParentColor = False
     Align = alClient
@@ -27,17 +27,16 @@ object FEtatsRade: TFEtatsRade
     object UniContainerPanel1: TUniContainerPanel
       Left = 0
       Top = 0
-      Width = 1271
+      Width = 1304
       Height = 30
       Hint = ''
       ParentColor = False
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 1304
       object PanTitle: TUniPanel
         Left = 35
         Top = 0
-        Width = 1236
+        Width = 1269
         Height = 30
         Hint = ''
         Align = alClient
@@ -52,8 +51,6 @@ object FEtatsRade: TFEtatsRade
         Caption = 'Etats Rade'
         Color = clSkyBlue
         Layout = 'column'
-        ExplicitLeft = 41
-        ExplicitTop = -3
       end
       object UniPanel1: TUniPanel
         Left = 0
@@ -72,13 +69,12 @@ object FEtatsRade: TFEtatsRade
       AlignWithMargins = True
       Left = 3
       Top = 33
-      Width = 1265
+      Width = 1298
       Height = 114
       Hint = ''
       Caption = 'Options de Recherche'
       Align = alTop
       TabOrder = 2
-      ExplicitWidth = 1298
       object GBPeriode: TUniGroupBox
         Left = 3
         Top = 16
@@ -236,7 +232,7 @@ object FEtatsRade: TFEtatsRade
       end
       object UniPanel3: TUniPanel
         AlignWithMargins = True
-        Left = 1113
+        Left = 1146
         Top = 18
         Width = 147
         Height = 91
@@ -244,7 +240,6 @@ object FEtatsRade: TFEtatsRade
         Align = alRight
         TabOrder = 7
         Caption = ''
-        ExplicitLeft = 1146
         object BtnRecherche: TUniButton
           AlignWithMargins = True
           Left = 4
@@ -278,35 +273,21 @@ object FEtatsRade: TFEtatsRade
           OnClick = BtnReinitialiseClick
         end
       end
-      object UniButton1: TUniButton
-        Left = 1056
-        Top = 15
-        Width = 54
-        Height = 97
-        Hint = ''
-        Caption = 'TEST'
-        Align = alRight
-        TabOrder = 8
-        OnClick = UniButton1Click
-        ExplicitHeight = 34
-      end
     end
     object UniContainerPanel2: TUniContainerPanel
       AlignWithMargins = True
       Left = 3
-      Top = 698
-      Width = 1265
+      Top = 720
+      Width = 1298
       Height = 33
       Hint = ''
       ParentColor = False
       Color = clInfoBk
       Align = alBottom
       TabOrder = 3
-      ExplicitTop = 720
-      ExplicitWidth = 1298
       object BtnExport: TUniButton
         AlignWithMargins = True
-        Left = 1106
+        Left = 1139
         Top = 3
         Width = 75
         Height = 27
@@ -317,11 +298,10 @@ object FEtatsRade: TFEtatsRade
         Font.Color = clBlack
         TabOrder = 1
         IconCls = 'action'
-        ExplicitLeft = 1139
       end
       object BtnPrint: TUniButton
         AlignWithMargins = True
-        Left = 1187
+        Left = 1220
         Top = 3
         Width = 75
         Height = 27
@@ -333,7 +313,6 @@ object FEtatsRade: TFEtatsRade
         TabOrder = 2
         IconCls = 'print'
         OnClick = BtnPrintClick
-        ExplicitLeft = 1220
       end
       object PanRowCount: TUniPanel
         AlignWithMargins = True
@@ -355,8 +334,8 @@ object FEtatsRade: TFEtatsRade
     object DBGrid: TUniDBGrid
       Left = 0
       Top = 150
-      Width = 1271
-      Height = 545
+      Width = 1304
+      Height = 567
       Hint = ''
       DataSource = DM.DS_Grid_Rade
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
@@ -526,7 +505,7 @@ object FEtatsRade: TFEtatsRade
     Top = 200
   end
   object frxReport: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -571,6 +550,10 @@ object FEtatsRade: TFEtatsRade
       TitleBeforeHeader = False
       object PageHeader_sum: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
@@ -594,6 +577,10 @@ object FEtatsRade: TFEtatsRade
       end
       object ReportTitle_sum: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 96.574830000000000000
         Top = 64.252010000000000000
@@ -782,6 +769,10 @@ object FEtatsRade: TFEtatsRade
       end
       object ColumnHeader_sum: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 185.196970000000000000
@@ -840,6 +831,10 @@ object FEtatsRade: TFEtatsRade
       end
       object ReportSummary_sum: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 336.378170000000000000
@@ -881,6 +876,10 @@ object FEtatsRade: TFEtatsRade
       end
       object PageFooter_sum: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118120000000000000
         Top = 374.173470000000000000
@@ -904,6 +903,10 @@ object FEtatsRade: TFEtatsRade
       end
       object MasterData_sum: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 260.787570000000000000
@@ -976,6 +979,10 @@ object FEtatsRade: TFEtatsRade
       TitleBeforeHeader = False
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 94.488250000000000000
         Top = 71.811070000000000000
@@ -1142,6 +1149,10 @@ object FEtatsRade: TFEtatsRade
       end
       object MasterData: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1378,6 +1389,10 @@ object FEtatsRade: TFEtatsRade
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 381.732530000000000000
@@ -1421,6 +1436,10 @@ object FEtatsRade: TFEtatsRade
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
@@ -1444,6 +1463,10 @@ object FEtatsRade: TFEtatsRade
       end
       object ColumnHeader1: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897637800000000000
         Top = 188.976500000000000000
@@ -1683,6 +1706,10 @@ object FEtatsRade: TFEtatsRade
       end
       object GroupHeader: TfrxGroupHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 268.346630000000000000

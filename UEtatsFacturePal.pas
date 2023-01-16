@@ -57,7 +57,8 @@ type
     procedure BtnRechercheClick(Sender: TObject);
     procedure BtnPrintClick(Sender: TObject);
     procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
-    procedure DBLCatFactChangeValue(Sender: TObject);
+    procedure DBLCatFactChange(Sender: TObject);
+    procedure CBStatutChangeValue(Sender: TObject);
   private
     { Private declarations }
     procedure ClearData;
@@ -69,7 +70,8 @@ type
 function FEtatsFacturePal: TFEtatsFacturePal;
 
 var
-    filter, search, init_query, query:string;
+    statut : string ;
+    filter, group_by, search, init_query, query:string;
     exercice_filter, filter_periode_em, filter_periode_ech , filter_consign_fact, filter_consign_nav, filter_TypeNav, filter_CatFact, filter_TypeFact, filter_compl, filter_navire, filter_obs, filter_facturable, filter_fact_pal, filter_fact_int, filter_statut :string;
     group_filter : string;
 
@@ -95,6 +97,7 @@ end;
 procedure TFEtatsFacturePal.ShowData;
 begin
   filter:=' ORDER BY L.date_emise_facture_pal DESC, L.id_factures_pal DESC ' ;
+  group_by := ' GROUP BY L.id_factures_pal ' ;
 
   //FILTRE SUR PERIODE  EMMISSION
       if (EdPeriode1_Em.DateTime <> 0) and (EdPeriode1_Em.DateTime <> 0) then
@@ -145,7 +148,7 @@ begin
           end;
 
 
-     //FILTRE TYPE FAMILLE ESCALE OU RADE
+     //FILTRE CATEGORIE FACT ESCALE OU RADE
       if DBLCatFact.KeyValue=null  then
           begin
               filter_CatFact := '';
@@ -153,7 +156,7 @@ begin
           end
       else
           begin
-              filter_CatFact :=' AND C.id_cat ='+ IntToStr(DBLCatFact.KeyValue);
+              filter_CatFact :=' AND L.id_cat ='+ IntToStr(DBLCatFact.KeyValue);
               title_CatFact := DBLCatFact.Text;
           end;
 
@@ -214,32 +217,28 @@ begin
           end;
 
       //FILTRE STATUT
-      case CBStatut.ItemIndex of
-          -1 : begin
-                filter_statut := '' ;
-                title_statut := '' ;
-              end;
+      if CBStatut.ItemIndex=-1  then
+          begin
+              filter_statut := '';
+              title_statut := '';
+          end
+      else
+          begin
+              filter_statut := statut;
+              title_statut := CBStatut.Text;
+          end;
 
-          0 : begin
-                filter_statut := ' AND L.statut_fact = ''N'' ' ;
-                title_statut := ' IMPAYÉES ' ;
-              end;
-
-          1: begin
-                filter_statut := ' AND L.statut_fact = ''R'' ' ;
-                title_statut := ' REGLÉES ' ;
-              end;
-
-          2 : begin
-                filter_statut := ' AND L.statut_fact = ''P'' ' ;
-                title_statut := ' PARTIELEMENT REGLÉES ' ;
-              end;
-      end;
-
-      query:=init_query_etat_fact_PAL + filter_periode_em  + filter_consign_fact + filter_consign_nav + filter_CatFact + filter_TypeFact + filter_periode_ech + filter_navire + filter_TypeNav +filter_compl + filter_statut + filter;
+      query:=init_query_fact_PAL + filter_periode_em  + filter_consign_fact + filter_consign_nav + filter_CatFact + filter_TypeFact + filter_periode_ech + filter_navire + filter_TypeNav +filter_compl + filter_statut + group_by + filter;
       title_report := title_etat_fact_PAL + title_periode_em + title_consign_fact;
+      ExQuery(DM.DQ_Grid_FactPal, query)
 
-      ExQuery(DM.DQ_Grid_FactPal, query )
+//      DM.QPrint.Close;
+//      DM.QPrint.SQL.Clear;
+//      DM.QPrint.SQL.Text := query;
+//      DM.QPrint.sql.SaveToFile('D:\queryFact.sql');
+//      DM.QPrint.Open;
+
+
 
 end;
 
@@ -292,6 +291,22 @@ begin
 
 end;
 
+procedure TFEtatsFacturePal.CBStatutChangeValue(Sender: TObject);
+begin
+    if CBStatut.ItemIndex = -1 then
+     statut := ''
+  else
+     begin
+        case CBStatut.ItemIndex of
+          0 : statut:=' AND L.st_fact = ''I'' ';
+
+          1 :statut:=' AND L.st_fact = ''R'' ';
+
+          2 :statut:=' AND L.st_fact = ''P'' ';
+        end;
+     end;
+end;
+
 procedure TFEtatsFacturePal.ClearData;
   begin
       EdPeriode1_Em.DateTime := 0;
@@ -316,21 +331,16 @@ begin
 PanRowCount.Caption := IntToStr(DBGrid.DataSource.DataSet.RecordCount) ;
 end;
 
-procedure TFEtatsFacturePal.DBLCatFactChangeValue(Sender: TObject);
+procedure TFEtatsFacturePal.DBLCatFactChange(Sender: TObject);
 begin
-  if DBLCatFact.KeyValue <> null then
+    if DBLCatFact.KeyValue <> null then
       begin
-        DBLDataLoad(DM.DQ_DBL_TypeFact,'SELECT * FROM type_facture T, categorie_fact C WHERE T.categorie=C.id_cat AND T.categorie=' + IntToStr(DBLCatFact.KeyValue));
-//        DM.DQ_DBL_TypeFact.Close;
-//        DM.DQ_DBL_TypeFact.SQL.Clear;
-//        DM.DQ_DBL_TypeFact.SQL.Text := 'SELECT * FROM type_facture T, categorie_fact C WHERE T.categorie=C.id_cat AND T.categorie=' + IntToStr(DBLCatFact.KeyValue);
-//        DM.DQ_DBL_TypeFact.sql.SaveToFile('D:\look.sql');
-//        DM.DQ_DBL_TypeFact.Open;
-
+        DBLDataLoad(DM.DQ_DBL_TypeFact,'SELECT * FROM categorie_fact C , type_facture T WHERE T.categorie=C.id_cat AND T.categorie =' + IntToStr(DBLCatFact.KeyValue));
       end
-        else
+      else
       begin
         DM.DQ_DBL_TypeFact.Close;
+        DBLTypeFact.KeyValue := null ;
       end;
 end;
 

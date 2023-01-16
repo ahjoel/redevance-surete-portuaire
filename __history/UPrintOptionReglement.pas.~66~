@@ -1,0 +1,193 @@
+unit UPrintOptionReglement;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGroupBox, uniPanel, uniBasicGrid, uniDBGrid,
+  uniGUIBaseClasses, uniLabel, uniDateTimePicker, uniMultiItem, uniComboBox,
+  uniDBComboBox, uniDBLookupComboBox, uniRadioGroup, uniButton, uniStatusBar,
+  frxClass, frxExportBaseDialog, frxExportPDF, frxDBSet;
+
+type
+  TFPrintOptionReglement = class(TUniForm)
+    UniPanel1: TUniPanel;
+    GBGroup: TUniGroupBox;
+    CBGroup: TUniComboBox;
+    GBSum: TUniGroupBox;
+    CBSummary: TUniComboBox;
+    BtnValidat: TUniButton;
+    procedure BtnValidatClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FPrintOptionReglement: TFPrintOptionReglement;
+var
+    query_print, group_filter, group_select, group_by : string;
+    query_sum,  init_query_sum, order_sum, lib_sum, data_sum: string;
+    query_group, init_query_group, data_group, filter_group, order_group , title_group: string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UEtatsReglement, UGlobal, UReport, UFunction,
+  ULoadData;
+
+function FPrintOptionReglement: TFPrintOptionReglement;
+begin
+  Result := TFPrintOptionReglement(DM.GetFormInstance(TFPrintOptionReglement));
+end;
+
+procedure TFPrintOptionReglement.BtnValidatClick(Sender: TObject);
+begin
+       if ((FEtatsReglement.DBGrid.DataSource.DataSet.RecordCount=0) OR (query.IsEmpty = True)) then
+          begin
+              MessageDlg('Aucune Donnée á Imprimer',mtWarning,[mbok]);
+              Abort;
+          end
+    else
+    begin
+
+          if CBGroup.ItemIndex = -1 then
+              begin
+//               MAKE GROUPHEAD INVISIBLE
+                 TfrxGroupHeader(FEtatsReglement.frxReport.FindObject('GroupHeader')).Visible :=false;
+                 TfrxGroupHeader(FEtatsReglement.frxReport.FindObject('GroupFooter')).Visible :=false;
+                 TfrxGroupHeader(FEtatsReglement.frxReport.FindObject('GroupHeader')).Condition :='frxDBDataset."id_regle"';
+                 TfrxMemoView(FEtatsReglement.frxReport.FindObject('line')).Text :='[Line#]';
+                  order_group := '';
+              end
+
+          else
+              begin
+
+                   case CBGroup.ItemIndex of
+                        0 : begin
+                              data_group := 'frxDBDataset."cons_reg"' ;
+                              order_group :=  ' ORDER BY S.id_consignataire  '  ;
+                              title_group := '[frxDBDataset."cons_reg"]';
+                            end;
+
+                        1: begin
+                              data_group := 'frxDBDataset."libelle_cat_fact"' ;
+                              order_group :=  ' ORDER BY I.libelle_cat_fact  '  ;
+                              title_group := '[frxDBDataset."libelle_cat_fact"]';
+                            end;
+
+                        2 : begin
+                              data_group := 'frxDBDataset."libelle_type_fact"'  ;
+                              order_group :=  ' ORDER BY type_facture '  ;
+                              title_group := '[frxDBDataset."libelle_type_fact"]';
+                            end;
+
+                        3 : begin
+                              data_group := 'frxDBDataset."type_nav_real"'  ;
+                              order_group :=  ' ORDER BY id_type_nav '  ;
+                              title_group := '[frxDBDataset."type_nav_real"]';
+                            end;
+                    end;
+
+                    //MAKE VISIBLE GROUP HEADER AND FOOTER
+                    TfrxGroupHeader(FEtatsReglement.frxReport.FindObject('GroupHeader')).Visible :=True;
+                   TfrxGroupHeader(FEtatsReglement.frxReport.FindObject('GroupFooter')).Visible :=True;
+
+                   //GROUP DATA
+                   TfrxGroupHeader(FEtatsReglement.frxReport.FindObject('GroupHeader')).Condition :=data_group;
+                   TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_group')).Text :=title_group ;
+                   TfrxMemoView(FEtatsReglement.frxReport.FindObject('line')).Text :='[Line]';
+              end ;
+
+            if CBSummary.Text = '' then
+                begin
+                FEtatsReglement.frxReport.Pages[1].Visible := False
+                end
+            else
+               begin
+                  case CBSummary.ItemIndex of
+                    0 : begin
+                          group_select := ' S.nom_consignataire ' ;
+                          group_filter := ' GROUP BY R.consignataire_regle ' ;
+                          lib_sum := 'CONSIGNATAIRE' ;
+                          data_sum := '[frxDBDataset_sum."nom_consignataire"]'
+                        end;
+
+                    1 : begin
+                          group_select := ' I.libelle_cat_fact ' ;
+                          group_filter := ' GROUP BY categorie ' ;
+                          lib_sum := 'CATEGORIE DE FACTURE';
+                          data_sum := '[frxDBDataset_sum."libelle_cat_fact"]'
+                        end;
+
+                    2 : begin
+                          group_select := ' T.libelle_type_fact  ' ;
+                          group_filter := ' GROUP BY type_facture ' ;
+                          lib_sum := 'TYPE DE FACTURE' ;
+                          data_sum := '[frxDBDataset_sum."libelle_type_fact"]'
+                        end;
+                    3 : begin
+                          group_select := ' type_nav_real ' ;
+                          group_filter := ' GROUP BY id_type_nav ' ;
+                          lib_sum := 'TYPE DE NAVIRE';
+                          data_sum := '[frxDBDataset_sum."type_nav_real"]'
+                        end;
+
+                   end;
+
+                      order_sum := ' order by  mt_reg desc  ' ;
+
+
+                      query_sum := init_query_reg_sum + filter_periode_reg + filter_periode_fact + filter_consign_reg + filter_consign_fact + filter_periode_fact + filter_cat_fact+ filter_type_fact + filter_TypeNave + filter_navire +group_filter + order_sum;
+                      query_sum := format(query_sum, [group_select]);
+
+                      ExQuery(DM.QSum, query_sum);
+
+                      //SUMMARY DATA
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('sum_lib_title')).Text := lib_sum ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('sum_lib_data')).Text := data_sum ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('sum_nb_data')).Text := '[frxDBDataset_sum."nb_reg"]' ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('sum_montant_data')).Text := '[frxDBDataset_sum."mt_reg"]' ;
+                      FEtatsReglement.frxReport.Pages[1].Visible := True ;
+
+
+                      //SUMMARY CRITERIA
+                      //MAIN REPORT CRITERIA
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_sum')).Text :=title_report ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_periodeFact_sum')).Text :=title_periode_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_consFact_sum')).Text :=title_consign_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_typeNav_sum')).Text :=title_typeNav ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_catFact_sum')).Text :=title_cat_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_TypeFact_sum')).Text :=title_type_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_navire_sum')).Text :=title_navire ;
+               end;
+
+
+         begin
+                      //MAIN REPORT CRITERIA
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_report')).Text :=title_report ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_periodeFact')).Text :=title_periode_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_consFact')).Text :=title_consign_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_typeNav')).Text :=title_typeNav ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_catFact')).Text :=title_cat_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_TypeFact')).Text :=title_type_fact ;
+                      TfrxMemoView(FEtatsReglement.frxReport.FindObject('title_navire')).Text :=title_navire ;
+
+            //EXECUTE QUERY AND PREVEIW
+            query_print:= init_query_reg + filter_periode_reg + filter_periode_fact + filter_consign_reg + filter_consign_fact + filter_periode_fact + filter_cat_fact+ filter_type_fact + filter_TypeNave + filter_navire + order_group ;
+//            DM.QPrint.Close;
+//            DM.QPrint.SQL.Clear;
+//            DM.QPrint.SQL.Text := query_print;
+//            DM.QPrint.sql.SaveToFile('D:\query.sql');
+//            DM.QPrint.Open;
+            FReport.DataAndShowReport(DM.QPrint, query_print, FEtatsReglement.frxDBDataset, FEtatsReglement.frxReport, FEtatsReglement.frxPDFExport, FReport.URLFrame, 'Etat_Réglements');
+           end;
+
+      end;
+end;
+
+end.

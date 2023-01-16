@@ -226,6 +226,7 @@ object FAction: TFAction
             DataSource = DM.DS_Grid_Action
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
             ReadOnly = True
+            WebOptions.Paged = False
             LoadMask.Message = 'Loading data...'
             StripeRows = False
             Align = alClient
@@ -438,6 +439,7 @@ object FAction: TFAction
             DataSource = DM.Ds_Grid_Nature
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
             ReadOnly = True
+            WebOptions.Paged = False
             LoadMask.Message = 'Loading data...'
             StripeRows = False
             Align = alClient

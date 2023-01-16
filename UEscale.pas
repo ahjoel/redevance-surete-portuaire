@@ -352,15 +352,6 @@ if DBGrid.DataSource.DataSet.FieldByName('validation').AsString <> '' then
        BtnValidate.Enabled:=False;
     end
   else
-//if ((DBGrid.DataSource.DataSet.FieldByName('control').AsString = '') AND (DBGrid.DataSource.DataSet.FieldByName('validation').AsString = '')) then
-//    begin
-//      BtnUpdate.Enabled := True;
-//    end
-//    else
-//     BtnUpdate.Enabled := False;
-
-
-
 
 end;
 

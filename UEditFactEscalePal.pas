@@ -279,8 +279,8 @@ begin
                                         with DM.QSave do
                                               begin
 
-                                                  SQL.Text := ('INSERT INTO facture_pal (escale_facture_pal, ref_facture_pal, consignataire_facture_pal, montant_facture_pal, montant_complement_facture_pal,  )'#13+
-                                                               ' date_emise_facture_pal, date_trans_facture_pal, date_ech_facture_pal, type_facture, user_create_facture_pal, exercice_facture_pal '#13+
+                                                  SQL.Text := ('INSERT INTO facture_pal (escale_facture_pal, ref_facture_pal, consignataire_facture_pal, montant_facture_pal, montant_complement_facture_pal, '#13+
+                                                               ' date_emise_facture_pal, date_trans_facture_pal, date_ech_facture_pal, type_facture, user_create_facture_pal, exercice_facture_pal) '#13+
                                                                ' Values (:escale, :ref, :consignataire, :montant, :complement, :emis, :trans, :echeance, :type, :user_create, :exercice)');
                                                   Parameters.ParamByName('escale').Value:= id_esc;
                                                   Parameters.ParamByName('ref').Value:= EdNumFact.Text;

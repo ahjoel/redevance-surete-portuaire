@@ -175,6 +175,7 @@ object FUniteMesure: TFUniteMesure
       DataSource = DM.DS_Grid_UM
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
       ReadOnly = True
+      WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'
       StripeRows = False
       Align = alClient

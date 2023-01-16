@@ -43,13 +43,11 @@ type
     frxReport: TfrxReport;
     frxDBDataset: TfrxDBDataset;
     frxDBDataset_sum: TfrxDBDataset;
-    UniButton1: TUniButton;
     procedure BtnReinitialiseClick(Sender: TObject);
     procedure BtnRechercheClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure BtnPrintClick(Sender: TObject);
     procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
-    procedure UniButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure ClearData;
@@ -73,7 +71,7 @@ implementation
 
 uses
   MainModule, uniGUIApplication, UFunction, UProject_Function, ULoadData,
-  UReport, UPrintOptionRadeReport, UEtatsRadeTest, UniForm;
+  UReport, UPrintOptionRadeReport;
 
 function FEtatsRade: TFEtatsRade;
 begin
@@ -259,11 +257,6 @@ procedure TFEtatsRade.ShowData;
 //      DM.DQ_Grid_Rade.Open;
 
   end;
-
-procedure TFEtatsRade.UniButton1Click(Sender: TObject);
-begin
- UniForm2.ShowModal;
-end;
 
 procedure TFEtatsRade.UniFormShow(Sender: TObject);
 begin

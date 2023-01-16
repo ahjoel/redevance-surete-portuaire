@@ -2,6 +2,7 @@ object UniServerModule: TUniServerModule
   OldCreateOrder = False
   AutoCoInitialize = True
   TempFolder = 'temp\'
+  SessionTimeout = 1200000
   Title = 'SYG-RSP | Syst'#233'me de Gestion de la Redevance Suret'#233' Portuaire'
   SuppressErrors = []
   Bindings = <>
