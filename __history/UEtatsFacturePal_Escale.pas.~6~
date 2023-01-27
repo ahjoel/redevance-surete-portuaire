@@ -1,0 +1,121 @@
+unit UEtatsFacturePal_Escale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniButton, uniGroupBox,
+  uniDateTimePicker, uniLabel, uniBasicGrid, uniDBGrid, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox;
+
+type
+  TFEtatsFacturePalEscale = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniContainerPanel2: TUniContainerPanel;
+    UniPanel2: TUniPanel;
+    UniGroupBox1: TUniGroupBox;
+    UniGroupBox2: TUniGroupBox;
+    UniGroupBox3: TUniGroupBox;
+    EdPeriode1_Em: TUniDateTimePicker;
+    EdPeriode2_Em: TUniDateTimePicker;
+    UniLabel1: TUniLabel;
+    DBGrid: TUniDBGrid;
+    EdPeriode1_Ech: TUniDateTimePicker;
+    EdPeriode2_Ech: TUniDateTimePicker;
+    UniGroupBox4: TUniGroupBox;
+    DBLConsignataire_Fact: TUniDBLookupComboBox;
+    GBNavire: TUniGroupBox;
+    DBLNavire: TUniDBLookupComboBox;
+    GBConsignataire_Nav: TUniGroupBox;
+    DBLConsignataire_Nav: TUniDBLookupComboBox;
+    GBTypeFact: TUniGroupBox;
+    DBLCatFact: TUniDBLookupComboBox;
+    DBLTypeFact: TUniDBLookupComboBox;
+    GBTypeNav: TUniGroupBox;
+    DBLTypeNavire: TUniDBLookupComboBox;
+    GBFacturable: TUniGroupBox;
+    CBComplement: TUniComboBox;
+    GBStatut: TUniGroupBox;
+    CBStatut: TUniComboBox;
+    UniPanel3: TUniPanel;
+    BtnRecherche: TUniButton;
+    BtnReinitialise: TUniButton;
+    PanRowCount: TUniPanel;
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnReinitialiseClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure ClearData;
+  public
+    { Public declarations }
+  end;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+
+var
+    statut : string ;
+    filter, group_by, search, init_query, query:string;
+    exercice_filter, filter_periode_em, filter_periode_ech , filter_consign_fact, filter_consign_nav, filter_TypeNav, filter_CatFact, filter_TypeFact, filter_compl, filter_navire, filter_obs, filter_facturable, filter_fact_pal, filter_fact_int, filter_statut :string;
+    group_filter : string;
+
+//  REPORT TITLES VARIABLES
+    title_report, title_main, title_periode_em, title_periode_ech, title_consign_fact, title_consign_nav, title_typeNav, title_CatFact, title_TypeFact, title_compl, title_navire, title_obs, title_statut, title_factPAL, title_factInt : string;
+
+//  REQUETE POUR SELECTION DES SOUS TYPE DE FACTURE
+    query_TypeFact : string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UDataLaod;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+begin
+  Result := TFEtatsFacturePalEscale(DM.GetFormInstance(TFEtatsFacturePalEscale));
+end;
+
+procedure TFEtatsFacturePalEscale.BtnReinitialiseClick(Sender: TObject);
+begin
+     ClearData;
+end;
+
+procedure TFEtatsFacturePal.ClearData;
+  begin
+      EdPeriode1_Em.DateTime := 0;
+      EdPeriode2_Em.DateTime := 0;
+      EdPeriode1_Ech.DateTime := 0;
+      EdPeriode2_Ech.DateTime := 0;
+      DBLConsignataire_Fact.KeyValue := null;
+      DBLConsignataire_Nav.KeyValue := null;
+      DBLCatFact.KeyValue := null;
+      DBLTypeFact.KeyValue := null;
+      DBLNavire.KeyValue := null;
+      CBComplement.ItemIndex := -1;
+      PanRowCount.Caption := '0';
+      query:= '' ;
+      DBGrid.DataSource.DataSet.Close;
+  end;
+
+procedure TFEtatsFacturePalEscale.DBGridRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+PanRowCount.Caption := IntToStr(DBGrid.DataSource.DataSet.RecordCount) ;
+end;
+
+procedure TFEtatsFacturePalEscale.UniFormShow(Sender: TObject);
+begin
+    LoadDBLConsignataire;
+    LoadDBLNavire;
+    LoadDBLTypeNavire;
+    LoadDBLInstallationPort;
+    LoadDBLCatFact;
+    ClearData;
+    DM.DQ_Grid_Escale.Close;
+end;
+
+end.

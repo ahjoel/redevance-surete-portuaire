@@ -1,0 +1,73 @@
+unit UEtatsFacturePal_Escale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniButton, uniGroupBox,
+  uniDateTimePicker, uniLabel, uniBasicGrid, uniDBGrid, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox;
+
+type
+  TFEtatsFacturePalEscale = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniContainerPanel2: TUniContainerPanel;
+    UniPanel2: TUniPanel;
+    UniGroupBox1: TUniGroupBox;
+    UniGroupBox2: TUniGroupBox;
+    UniGroupBox3: TUniGroupBox;
+    UniDateTimePicker1: TUniDateTimePicker;
+    UniDateTimePicker2: TUniDateTimePicker;
+    UniLabel1: TUniLabel;
+    DBGrid: TUniDBGrid;
+    UniDateTimePicker3: TUniDateTimePicker;
+    UniDateTimePicker4: TUniDateTimePicker;
+    UniGroupBox4: TUniGroupBox;
+    DBLConsignataire_Fact: TUniDBLookupComboBox;
+    GBNavire: TUniGroupBox;
+    DBLNavire: TUniDBLookupComboBox;
+    GBConsignataire_Nav: TUniGroupBox;
+    DBLConsignataire_Nav: TUniDBLookupComboBox;
+    GBTypeFact: TUniGroupBox;
+    DBLCatFact: TUniDBLookupComboBox;
+    DBLTypeFact: TUniDBLookupComboBox;
+    GBTypeNav: TUniGroupBox;
+    DBLTypeNavire: TUniDBLookupComboBox;
+    GBFacturable: TUniGroupBox;
+    CBComplement: TUniComboBox;
+    GBStatut: TUniGroupBox;
+    CBStatut: TUniComboBox;
+    UniPanel3: TUniPanel;
+    BtnRecherche: TUniButton;
+    BtnReinitialise: TUniButton;
+    PanRowCount: TUniPanel;
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+begin
+  Result := TFEtatsFacturePalEscale(DM.GetFormInstance(TFEtatsFacturePalEscale));
+end;
+
+procedure TFEtatsFacturePalEscale.DBGridRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+PanRowCount.Caption := IntToStr(DBGrid.DataSource.DataSet.RecordCount) ;
+end;
+
+end.

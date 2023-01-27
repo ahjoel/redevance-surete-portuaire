@@ -1,0 +1,38 @@
+unit UPrintOptionFactPalEscal;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniButton, uniMultiItem, uniComboBox,
+  uniGUIBaseClasses, uniGroupBox;
+
+type
+  TFPrintOptionFactPALEscale = class(TUniForm)
+    GBGroup: TUniGroupBox;
+    CBGroup: TUniComboBox;
+    GBSum: TUniGroupBox;
+    CBSummary: TUniComboBox;
+    BtnValidat: TUniButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FPrintOptionFactPALEscale: TFPrintOptionFactPALEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FPrintOptionFactPALEscale: TFPrintOptionFactPALEscale;
+begin
+  Result := TFPrintOptionFactPALEscale(UniMainModule.GetFormInstance(TFPrintOptionFactPALEscale));
+end;
+
+end.

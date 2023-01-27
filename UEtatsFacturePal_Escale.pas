@@ -1,0 +1,325 @@
+unit UEtatsFacturePal_Escale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniButton, uniGroupBox,
+  uniDateTimePicker, uniLabel, uniBasicGrid, uniDBGrid, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox, frxClass, frxDBSet,
+  frxExportBaseDialog, frxExportPDF;
+
+type
+  TFEtatsFacturePalEscale = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    UniContainerPanel2: TUniContainerPanel;
+    UniPanel2: TUniPanel;
+    UniGroupBox1: TUniGroupBox;
+    UniGroupBox2: TUniGroupBox;
+    UniGroupBox3: TUniGroupBox;
+    EdPeriode1_Em: TUniDateTimePicker;
+    EdPeriode2_Em: TUniDateTimePicker;
+    UniLabel1: TUniLabel;
+    DBGrid: TUniDBGrid;
+    EdPeriode1_Ech: TUniDateTimePicker;
+    EdPeriode2_Ech: TUniDateTimePicker;
+    UniGroupBox4: TUniGroupBox;
+    DBLConsignataire_Fact: TUniDBLookupComboBox;
+    GBNavire: TUniGroupBox;
+    DBLNavire: TUniDBLookupComboBox;
+    GBConsignataire_Nav: TUniGroupBox;
+    DBLConsignataire_Nav: TUniDBLookupComboBox;
+    GBTypeFact: TUniGroupBox;
+    DBLCatFact: TUniDBLookupComboBox;
+    DBLTypeFact: TUniDBLookupComboBox;
+    GBTypeNav: TUniGroupBox;
+    DBLTypeNavire: TUniDBLookupComboBox;
+    GBFacturable: TUniGroupBox;
+    CBComplement: TUniComboBox;
+    GBStatut: TUniGroupBox;
+    CBStatut: TUniComboBox;
+    UniPanel3: TUniPanel;
+    BtnRecherche: TUniButton;
+    BtnReinitialise: TUniButton;
+    PanRowCount: TUniPanel;
+    BtnPrint: TUniButton;
+    BtnExport: TUniButton;
+    frxReport: TfrxReport;
+    frxPDFExport: TfrxPDFExport;
+    frxDBDataset_sum: TfrxDBDataset;
+    frxDBDataset: TfrxDBDataset;
+    procedure DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnReinitialiseClick(Sender: TObject);
+    procedure BtnPrintClick(Sender: TObject);
+    procedure BtnRechercheClick(Sender: TObject);
+    procedure DBLCatFactChange(Sender: TObject);
+  private
+    { Private declarations }
+    procedure ClearData;
+  public
+    { Public declarations }
+    procedure ShowData;
+  end;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+
+var
+    statut : string ;
+    filter, group_by, search, init_query, query:string;
+    exercice_filter, filter_periode_em, filter_periode_ech , filter_consign_fact, filter_consign_nav, filter_TypeNav, filter_CatFact, filter_TypeFact, filter_compl, filter_navire, filter_obs, filter_facturable, filter_fact_pal, filter_fact_int, filter_statut :string;
+    group_filter : string;
+
+//  REPORT TITLES VARIABLES
+    title_report, title_main, title_periode_em, title_periode_ech, title_consign_fact, title_consign_nav, title_typeNav, title_CatFact, title_TypeFact, title_compl, title_navire, title_obs, title_statut, title_factPAL, title_factInt : string;
+
+//  REQUETE POUR SELECTION DES SOUS TYPE DE FACTURE
+    query_TypeFact : string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UDataLaod, ULoadData, UFunction, UProject_Function, UGlobal, UPrintOptionFactPalEscal;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+begin
+  Result := TFEtatsFacturePalEscale(DM.GetFormInstance(TFEtatsFacturePalEscale));
+end;
+
+procedure TFEtatsFacturePalEscale.BtnPrintClick(Sender: TObject);
+begin
+  if ( (query.IsEmpty = True)OR (DBGrid.DataSource.DataSet.RecordCount=0)) then
+          begin
+              MessageDlg('Aucune Donnée á Imprimer',mtWarning,[mbok]);
+              Abort;
+          end
+    else
+        begin
+            FPrintOptionFactPALEscale.ShowModal;
+        end;
+end;
+
+procedure TFEtatsFacturePalEscale.BtnRechercheClick(Sender: TObject);
+begin
+    if EdPeriode1_Em.DateTime = 0 then
+        begin
+           MessageDlg('Veuillez renseigner une periode d''émmission ',mtWarning,[mbok]);
+           EdPeriode1_Em.JSInterface.JSCall('focus' ,[]);
+           Abort;
+        end
+    else
+     if EdPeriode2_Em.DateTime = 0 then
+        begin
+           MessageDlg('Veuillez renseigner une periode d''émmission ',mtWarning,[mbok]);
+           EdPeriode2_Em.JSInterface.JSCall('focus' ,[]);
+           Abort;
+        end
+    else
+        ShowData;
+end;
+
+procedure TFEtatsFacturePalEscale.ShowData;
+begin
+  filter:=' ORDER BY L.date_emise_facture_pal DESC, L.id_factures_pal DESC ' ;
+  group_by := ' GROUP BY L.id_factures_pal ' ;
+
+  //FILTRE SUR PERIODE  EMMISSION
+      if (EdPeriode1_Em.DateTime <> 0) and (EdPeriode1_Em.DateTime <> 0) then
+          begin
+            filter_periode_em := ' AND (DATE(L.date_emise_facture_pal) between '''+ msqlDateTime(EdPeriode1_Em) +'''and '''+ msqlDateTime(EdPeriode2_Em) +''')'  ;
+            title_periode_em :=  'ENTRE LE '+ EdPeriode1_Em.Text+ ' ET LE '+ EdPeriode2_Em.Text
+          end
+      else
+         begin
+             filter_periode_em := ''  ;
+             title_periode_em :='' ;
+         end;
+
+  //FILTRE SUR PERIODE  ECHEANCE
+      if (EdPeriode1_Ech.DateTime <> 0) and (EdPeriode1_Ech.DateTime <> 0) then
+          begin
+            filter_periode_Ech := ' AND (DATE(L.date_ech_facture_pal) between '''+ msqlDateTime(EdPeriode1_Ech) +'''and '''+ msqlDateTime(EdPeriode2_Ech) +''')'  ;
+            title_periode_Ech :=  'ENTRE LE '+ EdPeriode1_Ech.Text+ ' ET LE '+ EdPeriode1_Ech.Text
+          end
+      else
+         begin
+             filter_periode_Ech := ''  ;
+             title_periode_Ech :='' ;
+         end;
+
+    //FILTRE CONSIGNATAIRE   FACTURE
+     if DBLConsignataire_Fact.KeyValue = null then
+          begin
+              filter_consign_fact := '';
+              title_consign_fact := '';
+          end
+      else
+          begin
+              filter_consign_fact := ' AND L.id_cons_fact ='+ IntToStr(DBLConsignataire_Fact.KeyValue) ;
+              title_consign_fact := ' DU CONSIGNATAIRE '+ DBLConsignataire_Fact.Text;
+          end;
+
+     //FILTRE CONSIGNATAIRE   NAVIRE
+     if DBLConsignataire_Nav.KeyValue = null then
+          begin
+              filter_consign_nav := '';
+              filter_consign_nav := '';
+          end
+      else
+          begin
+              filter_consign_nav := ' AND L.id_cons_nav ='+ IntToStr(DBLConsignataire_Nav.KeyValue) ;
+              title_consign_nav := DBLConsignataire_Nav.Text;
+          end;
+
+
+     //FILTRE CATEGORIE FACT ESCALE OU RADE
+      if DBLCatFact.KeyValue=null  then
+          begin
+              filter_CatFact := '';
+              title_CatFact := '';
+          end
+      else
+          begin
+              filter_CatFact :=' AND L.id_cat ='+ IntToStr(DBLCatFact.KeyValue);
+              title_CatFact := DBLCatFact.Text;
+          end;
+
+
+       //FILTRE TYPE FACTURE
+       if DBLTypeFact.KeyValue=null  then
+          begin
+              filter_TypeFact := '';
+              title_TypeFact := '';
+          end
+      else
+          begin
+              filter_TypeFact :=' AND L.id_type_fact ='+ IntToStr(DBLTypeFact.KeyValue);
+              title_TypeFact := DBLTypeFact.Text;
+          end;
+
+       //FILTRE NAVIRE
+      if DBLNavire.KeyValue=null  then
+          begin
+              filter_navire := '';
+              title_navire := '';
+          end
+      else
+          begin
+              filter_navire :=' AND L.id_navire ='+ IntToStr(DBLNavire.KeyValue);
+              title_navire := DBLNavire.Text;
+          end;
+
+
+        //FILTRE TYPE NAVIRE
+      if DBLTypeNavire.KeyValue=null  then
+          begin
+              filter_TypeNav := '';
+              title_typeNav := '';
+          end
+      else
+          begin
+              filter_TypeNav :=' AND L.id_type_nav ='+ IntToStr(DBLTypeNavire.KeyValue);
+              title_typeNav := DBLTypeNavire.Text;
+          end;
+
+
+      //FILTRE COMPLEMENT
+      if  CBComplement.Text = '' then
+          begin
+             filter_compl := '';
+             title_compl := '';
+          end
+      else if CBComplement.Text = 'OUI' then
+          begin
+              filter_compl :=' AND L.complement > 0';
+              title_compl := 'OUI';
+          end
+      else if CBComplement.Text = 'NON' then
+          begin
+            filter_compl :=' AND L.complement = 0';
+            title_compl := 'NON';
+          end;
+
+      //FILTRE STATUT
+      if CBStatut.ItemIndex=-1  then
+          begin
+              filter_statut := '';
+              title_statut := '';
+          end
+      else
+          begin
+              filter_statut := statut;
+              title_statut := CBStatut.Text;
+          end;
+
+      query:=init_query_fact_PAL + filter_periode_em  + filter_consign_fact + filter_consign_nav + filter_CatFact + filter_TypeFact + filter_periode_ech + filter_navire + filter_TypeNav +filter_compl + filter_statut + group_by + filter;
+      title_report := title_etat_fact_PAL + title_periode_em + title_consign_fact;
+      ExQuery(DM.DQ_Grid_FactPal, query)
+
+//      DM.QPrint.Close;
+//      DM.QPrint.SQL.Clear;
+//      DM.QPrint.SQL.Text := query;
+//      DM.QPrint.sql.SaveToFile('D:\queryFact.sql');
+//      DM.QPrint.Open;
+
+
+
+end;
+
+procedure TFEtatsFacturePalEscale.BtnReinitialiseClick(Sender: TObject);
+begin
+     ClearData;
+end;
+
+procedure TFEtatsFacturePalEscale.ClearData;
+  begin
+      EdPeriode1_Em.DateTime := 0;
+      EdPeriode2_Em.DateTime := 0;
+      EdPeriode1_Ech.DateTime := 0;
+      EdPeriode2_Ech.DateTime := 0;
+      DBLConsignataire_Fact.KeyValue := null;
+      DBLConsignataire_Nav.KeyValue := null;
+      DBLCatFact.KeyValue := null;
+      DBLTypeFact.KeyValue := null;
+      DBLNavire.KeyValue := null;
+      CBComplement.ItemIndex := -1;
+      PanRowCount.Caption := '0';
+      query:= '' ;
+      DBGrid.DataSource.DataSet.Close;
+  end;
+
+procedure TFEtatsFacturePalEscale.DBGridRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+PanRowCount.Caption := IntToStr(DBGrid.DataSource.DataSet.RecordCount) ;
+end;
+
+procedure TFEtatsFacturePalEscale.DBLCatFactChange(Sender: TObject);
+begin
+    if DBLCatFact.KeyValue <> null then
+      begin
+        DBLDataLoad(DM.DQ_DBL_TypeFact,'SELECT * FROM categorie_fact C , type_facture T WHERE T.categorie=C.id_cat AND T.categorie =' + IntToStr(DBLCatFact.KeyValue));
+      end
+      else
+      begin
+        DM.DQ_DBL_TypeFact.Close;
+        DBLTypeFact.KeyValue := null;
+      end;
+end;
+
+procedure TFEtatsFacturePalEscale.UniFormShow(Sender: TObject);
+begin
+    LoadDBLConsignataire;
+    LoadDBLNavire;
+    LoadDBLTypeNavire;
+    LoadDBLInstallationPort;
+    LoadDBLCatFact;
+    ClearData;
+    DM.DQ_Grid_Escale.Close;
+end;
+
+end.

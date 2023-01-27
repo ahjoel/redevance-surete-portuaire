@@ -45,7 +45,7 @@ uses
   UInstallationPort, UPaysPorts, UTaux, UEscale, UUser, URade, UDataLaod,
   UGlobal, ULoadData, UNavire, UUserProfil, URapportEscale, UFactPALEmise,
   UFTypeFacture, UObservationEscale, UEtatsEscale, UEtatsRade, UEtatsNavire,
-  UEtatsFacturePal, UReglement, UEtatsReglement;
+  UEtatsFacturePal, UEtatsFacturePal_Escale, UReglement, UEtatsReglement;
 
 function MainForm: TMainForm;
 begin
@@ -171,6 +171,11 @@ if (NavTree.Selected.Text = 'Rades') then
   if (NavTree.Selected.Text = 'Etats Factures PAL') then
   begin
       FEtatsFacturePal.ShowModal;
+  end;
+
+    if (NavTree.Selected.Text = 'Etats Factures PAL Escale') then
+  begin
+      FEtatsFacturePalEscale.ShowModal;
   end;
 
   if (NavTree.Selected.Text = 'Etats Reglement') then

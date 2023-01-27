@@ -1,0 +1,33 @@
+unit UEtatsFacturePal_Escale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel;
+
+type
+  TFEtatsFacturePalEscale = class(TUniForm)
+    UniPanel1: TUniPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEtatsFacturePalEscale: TFEtatsFacturePalEscale;
+begin
+  Result := TFEtatsFacturePalEscale(DM.GetFormInstance(TFEtatsFacturePalEscale));
+end;
+
+end.

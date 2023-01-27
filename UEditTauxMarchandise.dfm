@@ -33,7 +33,6 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
       Align = alBottom
       TabOrder = 1
       Caption = ''
-      ExplicitWidth = 599
       object BtnSave: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -47,8 +46,6 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         Default = True
         IconCls = 'bookmarks'
         OnClick = BtnSaveClick
-        ExplicitLeft = 3
-        ExplicitTop = 3
       end
       object BtnCancel: TUniButton
         AlignWithMargins = True
@@ -61,7 +58,6 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         Align = alRight
         TabOrder = 2
         IconCls = 'delete'
-        ExplicitLeft = 517
       end
     end
     object UniPanel2: TUniPanel
@@ -73,7 +69,6 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
       Align = alClient
       TabOrder = 2
       Caption = ''
-      ExplicitWidth = 599
       object DBLOperation: TUniDBLookupComboBox
         Left = 20
         Top = 33
@@ -123,6 +118,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         Width = 115
         Hint = ''
         ParentShowHint = False
+        DateTime = 44944.000000000000000000
         DateFormat = 'dd/MM/yyyy'
         TimeFormat = 'HH:mm:ss'
         TabOrder = 5

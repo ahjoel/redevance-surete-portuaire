@@ -31,8 +31,6 @@ object FEditTauxRade: TFEditTauxRade
       Align = alBottom
       TabOrder = 1
       Caption = ''
-      ExplicitTop = 97
-      ExplicitWidth = 470
       object BtnSave: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -59,7 +57,6 @@ object FEditTauxRade: TFEditTauxRade
         TabOrder = 2
         IconCls = 'delete'
         OnClick = BtnCancelClick
-        ExplicitLeft = 388
       end
     end
     object UniPanel2: TUniPanel
@@ -71,8 +68,6 @@ object FEditTauxRade: TFEditTauxRade
       Align = alClient
       TabOrder = 2
       Caption = ''
-      ExplicitWidth = 470
-      ExplicitHeight = 97
       object UniLabel7: TUniLabel
         Left = 20
         Top = 20
