@@ -19,21 +19,6 @@ type
     EdRapport: TUniEdit;
     UniPanel1: TUniPanel;
     UniSimplePanel5: TUniSimplePanel;
-    UniGroupBox1: TUniGroupBox;
-    UniSimplePanel1: TUniSimplePanel;
-    BtnRechEscale: TUniButton;
-    UniLabel4: TUniLabel;
-    UniLabel5: TUniLabel;
-    UniLabel6: TUniLabel;
-    UniLabel7: TUniLabel;
-    UniLabel8: TUniLabel;
-    UniLabel9: TUniLabel;
-    EdRefPort: TUniEdit;
-    EdRefInt: TUniEdit;
-    EdNavire: TUniEdit;
-    EdConsignataire: TUniEdit;
-    EdPoste: TUniEdit;
-    EdArrive: TUniEdit;
     UniSimplePanel6: TUniSimplePanel;
     UniSimplePanelBtAddline: TUniSimplePanel;
     BtAddLine: TUniButton;
@@ -48,16 +33,36 @@ type
     UniLabel3: TUniLabel;
     UniSimplePanelbtdeleteLine: TUniSimplePanel;
     BtDeleteLine: TUniButton;
-    UniSimplePanel3: TUniSimplePanel;
+    UniS: TUniSimplePanel;
     UniLabel10: TUniLabel;
     EdDate: TUniDateTimePicker;
     UniLabel11: TUniLabel;
     EdNumATP: TUniEdit;
     UniLabel12: TUniLabel;
     EdNumVoyage: TUniEdit;
+    Group_infos: TUniGroupBox;
+    UniLabel4: TUniLabel;
+    UniLabel5: TUniLabel;
+    UniLabel6: TUniLabel;
+    UniLabel7: TUniLabel;
+    UniLabel8: TUniLabel;
+    UniLabel9: TUniLabel;
+    EdRefPort: TUniEdit;
+    EdRefInt: TUniEdit;
+    EdNavire: TUniEdit;
+    EdConsignataire: TUniEdit;
+    EdPoste: TUniEdit;
+    EdAccost: TUniEdit;
+    Group_rech: TUniGroupBox;
+    UniLabel15: TUniLabel;
+    UniLabel16: TUniLabel;
+    UniLabel17: TUniLabel;
+    edRechAccost: TUniDateTimePicker;
+    BtnRechEscale: TUniButton;
+    DBLRechNavire: TUniDBLookupComboBox;
+    DBLRechCons: TUniDBLookupComboBox;
     procedure UniFormShow(Sender: TObject);
     procedure BtnCancelClick(Sender: TObject);
-    procedure BtnRechEscaleClick(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure BtAddLineClick(Sender: TObject);
     procedure BtDeleteLineClick(Sender: TObject);
@@ -66,8 +71,11 @@ type
     procedure StringGridRapportDrawCell(Sender: TObject; ACol, ARow: Integer;
       var Value: string; Attribs: TUniCellAttribs);
     procedure BtnSaveClick(Sender: TObject);
+    procedure BtnRechEscaleClick(Sender: TObject);
   private
     { Private declarations }
+    procedure loaddata ;
+    procedure string_grid_init ;
   public
     { Public declarations }
     id_rap_esc, escale, date, num_voyage, num_atp : string;
@@ -92,13 +100,36 @@ implementation
 
 uses
   MainModule, uniGUIApplication, UGlobal, ULoadData, USelectEscale, UFunction,
-  UProject_Function, URapportEscale;
+  UProject_Function, URapportEscale, UDataLaod;
 
 function FEditRapportEscale: TFEditRapportEscale;
 begin
   Result := TFEditRapportEscale(DM.GetFormInstance(TFEditRapportEscale));
 end;
 
+procedure TFEditRapportEscale.string_grid_init ;
+
+begin
+  StringGridRapport.RowCount:=2 ;
+  StringGridRapport.Cells[0,1]:='';
+  StringGridRapport.Cells[1,1]:='';
+  StringGridRapport.Cells[2,1]:='';
+  StringGridRapport.Cells[3,1]:='';
+end;
+
+
+
+
+procedure TFEditRapportEscale.loaddata ;
+begin
+     id_esc := DM.QCheck.FieldValues['id'];
+     EdRefPort.Text := DM.QCheck.FieldValues['num_port'];
+     EdRefInt.Text := DM.QCheck.FieldValues['ref'];
+     EdNavire.Text := DM.QCheck.FieldValues['nom_navire'];
+     EdConsignataire.Text := DM.QCheck.FieldValues['nom_consignataire'];
+     EdPoste.Text := DM.QCheck.FieldValues['libelle_pq'];
+     EdAccost.Text := DM.QCheck.FieldValues['date_accost'];
+end;
 
 procedure TFEditRapportEscale.BtAddLineClick(Sender: TObject);
 var
@@ -120,6 +151,27 @@ begin
              Abort;
           end
       else
+
+     query := init_query_select_taux + ' AND M.id_marchandise=:march AND A.id_action=:action ';
+     with DM.QCheck do
+           begin
+               close;
+               SQL.Clear;
+               sql.add(query );
+               Parameters.ParamByName('march').Value:= DBLMarchandise.KeyValue;
+               Parameters.ParamByName('action').Value:= DBLAct.KeyValue;
+               ExecSQL;
+               Open;
+           end;
+
+     if DM.QCheck.RecordCount = 0 then
+          begin
+               MessageDlg('Aucun Taux encours pour cette ligne',mtWarning,[mbok]);
+               DBLMarchandise.JSInterface.JSCall('focus' ,[]);
+               Abort;
+          end
+     else
+
       if EdQte.Value <= 0 then
           begin
              MessageDlg('Veuillez renseigner la Quantite',mtWarning,[mbok]);
@@ -232,9 +284,92 @@ begin
 close;
 end;
 
+procedure TFEditRapportEscale.BtnRechEscaleClick(Sender: TObject);
+begin
+     query := init_query_select_escale + ' AND E.navire=:nav AND E.consignataire=:cons AND E.date_accost=:accost ';
+     with DM.QCheck do
+           begin
+               close;
+               SQL.Clear;
+               sql.add(query );
+               Parameters.ParamByName('nav').Value:= DBLRechNavire.KeyValue;
+               Parameters.ParamByName('cons').Value:= DBLRechCons.KeyValue;
+               Parameters.ParamByName('accost').Value:= msqlDateTime(edRechAccost);
+               ExecSQL;
+               Open;
+           end;
+
+     if DM.QCheck.RecordCount = 0 then
+          begin
+               MessageDlg('Aucune Escale ne correspond á cette Recherche',mtWarning,[mbok]);
+               DBLRechNavire.JSInterface.JSCall('focus' ,[]);
+               Abort;
+          end
+     else
+        begin
+            if DM.QCheck.FieldValues['date_validate'] = null then
+               begin
+                   MessageDlg('Escale non validée',mtWarning,[mbok]);
+                   DBLRechNavire.JSInterface.JSCall('focus' ,[]);
+                   Abort;
+               end
+             else
+
+             if DM.QCheck.FieldValues['rapport'] = 1 then
+                begin
+                   MessageDlg('Escale deja Traité, voulez-vous continuer ?', mtConfirmation, mbYesNo,
+                        procedure(Sender: TComponent; Res: Integer)
+                          begin
+                            case Res of
+                              mrYes :loaddata;
+                            end;
+                          end
+                      );
+                end
+
+              else
+              if (DM.QCheck.FieldValues['rapport'] = 0)  then
+                begin
+                     loaddata;
+                end;
+
+
+        end
+end;
+
 procedure TFEditRapportEscale.ClearData;
 begin
-//  pass
+    //ZONE RECHERCHE
+  DBLRechNavire.KeyValue := null;
+  DBLRechCons.KeyValue := null;
+  edRechAccost.DateTime := 0;
+
+  //ZONE INFOS
+  EdRefPort.Clear;
+  EdRefInt.Clear;
+  EdNavire.Clear;
+  EdConsignataire.Clear;
+  EdPoste.Clear;
+  EdAccost.Clear;
+
+  //ENREGISTREMENT
+   EdDate.DateTime := 0;
+  EdNumATP.Clear;
+  EdNumVoyage.Clear;
+
+  DBLMarchandise.KeyValue := null;
+  DBLAct.KeyValue := null;
+  EdQte.Clear;
+
+
+  //INIT STRING GRID
+  StringGridRapport.RowCount:=2 ;
+  StringGridRapport.Cells[0,1]:='';
+  StringGridRapport.Cells[1,1]:='';
+  StringGridRapport.Cells[2,1]:='';
+  StringGridRapport.Cells[3,1]:='';
+
+
 end;
 procedure TFEditRapportEscale.StringGridRapportDrawCell(Sender: TObject; ACol,
   ARow: Integer; var Value: string; Attribs: TUniCellAttribs);
@@ -251,12 +386,6 @@ procedure TFEditRapportEscale.StringGridRapportSelectCell(Sender: TObject; ACol,
   ARow: Integer; var CanSelect: Boolean);
 begin
  posit := ARow;
-end;
-
-procedure TFEditRapportEscale.BtnRechEscaleClick(Sender: TObject);
-begin
-    FSelectEscale.FrmMode := ModeRapport;
-    FSelectEscale.ShowModal;
 end;
 
 procedure TFEditRapportEscale.BtnSaveClick(Sender: TObject);
@@ -354,24 +483,28 @@ begin
                                                end;
 
 
-                                  //Clé de Mouvement
+                                  //Clé de Taux
                                   with DM.QStand1 do
-                                               begin
-                                               close;
-                                               SQL.Clear;
-                                               SQL.Add('select id_action from action where libelle_action=:libelle');
-                                               Parameters.ParamByName('libelle').Value:=StringGridRapport.Cells[2,i];
-                                               Open;
-                                               end;
+                                         begin
+                                             close;
+                                             SQL.Clear;
+                                             sql.add(init_query_select_taux + ' AND M.libelle_marchandise=:march AND A.libelle_action=:action ');
+                                             Parameters.ParamByName('march').Value:= StringGridRapport.Cells[1,i];
+                                             Parameters.ParamByName('action').Value:= StringGridRapport.Cells[2,i];
+                                             ExecSQL;
+                                             Open;
+                                         end;
+
+
 
                                   with DM.QSave do
                                                 begin
                                                 close;
                                                 SQL.Clear;
-                                                SQL.Add('INSERT INTO ligne_rapport_esc ( rapport_ligne_rap, marchandise_ligne_rap, qte_ligne_rap, mouvement_ligne_rap) Values (:rapport ,:marchandise ,:qte ,:mouvement)');
+                                                SQL.Add('INSERT INTO ligne_rapport_esc ( rapport_ligne_rap, marchandise_ligne_rap, qte_ligne_rap, taux_ligne_rap) Values (:rapport ,:marchandise ,:qte ,:taux)');
                                                 Parameters.ParamByName('rapport').Value:=DM.QMax.FieldValues['maxrap'];
                                                 Parameters.ParamByName('marchandise').Value:= DM.QStand.FieldValues['id_marchandise'];
-                                                Parameters.ParamByName('mouvement').Value:= DM.QStand1.FieldValues['id_action'];
+                                                Parameters.ParamByName('taux').Value:= DM.QStand1.FieldValues['id'];
                                                 Parameters.ParamByName('qte').Value:=StringGridRapport.Cells[3,i];
                                                 ExecSQL;
                                                 end;
@@ -388,9 +521,11 @@ begin
 
 
                                MessageDlg('Enregistrement effectuée',mtConfirmation,[mbok]);
+                               ClearData;
                                FRapportEscale.ShowData;
 
-                               DM.DQ_Grid_RapEsc.Locate('id',DM.QMax.FieldValues['maxrap'],[loCaseInsensitive] );
+                               DM.DQ_Grid_RapEsc.Locate('id_rap_esc',DM.QMax.FieldValues['maxrap'],[loCaseInsensitive] );
+
                            end
                         end ;
                       end
@@ -625,11 +760,13 @@ end;
 
 procedure TFEditRapportEscale.UniFormCreate(Sender: TObject);
 begin
+
+//      string_grid_init;
+
     StringGridRapport.Cells[0, 0] := 'N°';
     StringGridRapport.Cells[1, 0] := 'Marchandise';
     StringGridRapport.Cells[2, 0] := 'Mouvements';
     StringGridRapport.Cells[3, 0] := 'Qté';
-
 
     StringGridRapport.ColWidths[0] := 30;
     StringGridRapport.ColWidths[1] := 230;
@@ -643,10 +780,13 @@ procedure TFEditRapportEscale.UniFormShow(Sender: TObject);
 begin
     LoadDBLMarchandise;
     LoadDBLAction;
+    LoadDBLNavire;
+    LoadDBLConsignataire;
+
 
     if FmContext=AddContext then
     begin
-      EdDate.DateTime := 0;
+       ClearData;
     end;
 end;
 

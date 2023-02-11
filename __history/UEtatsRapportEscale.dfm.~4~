@@ -1,0 +1,12 @@
+object FEtatsRapportEscale: TFEtatsRapportEscale
+  Left = 0
+  Top = 0
+  ClientHeight = 659
+  ClientWidth = 1261
+  Caption = 'Editions Etats des Rapports Escale'
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+end

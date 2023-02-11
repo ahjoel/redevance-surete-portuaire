@@ -1,0 +1,144 @@
+unit UEditFactRadeInt;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniButton, uniEdit, uniMultiItem, uniComboBox,
+  uniDBComboBox, uniDBLookupComboBox, uniLabel, uniDateTimePicker, uniGroupBox,
+  uniPanel, uniGUIBaseClasses;
+
+type
+  TFEditFactRadeInt = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    Group_fact: TUniGroupBox;
+    EdDateEmis: TUniDateTimePicker;
+    UniLabel10: TUniLabel;
+    UniLabel11: TUniLabel;
+    EdNumFact: TUniEdit;
+    UniLabel14: TUniLabel;
+    DBLConsignataire: TUniDBLookupComboBox;
+    EdDateTrans: TUniDateTimePicker;
+    UniLabel3: TUniLabel;
+    UniLabel12: TUniLabel;
+    EdMontFact: TUniFormattedNumberEdit;
+    EdDateEch: TUniDateTimePicker;
+    UniLabel13: TUniLabel;
+    Group_infos: TUniGroupBox;
+    UniLabel6: TUniLabel;
+    EdNavire: TUniEdit;
+    UniLabel7: TUniLabel;
+    EdConsignataire: TUniEdit;
+    UniLabel4: TUniLabel;
+    Edarrive: TUniEdit;
+    UniLabel8: TUniLabel;
+    Eddepart: TUniEdit;
+    UniLabel5: TUniLabel;
+    EdRefInt: TUniEdit;
+    EdQte: TUniEdit;
+    UniLabel2: TUniLabel;
+    EdBase: TUniEdit;
+    UniLabel1: TUniLabel;
+    EdNbJours: TUniEdit;
+    UniLabel9: TUniLabel;
+    Group_rech: TUniGroupBox;
+    BtnRechRade: TUniButton;
+    edRechArrive: TUniDateTimePicker;
+    UniLabel17: TUniLabel;
+    DBLRechCons: TUniDBLookupComboBox;
+    UniLabel16: TUniLabel;
+    DBLRechNavire: TUniDBLookupComboBox;
+    UniLabel15: TUniLabel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    BtnRapport: TUniButton;
+    EdRapport: TUniEdit;
+    procedure UniFormShow(Sender: TObject);
+  private
+    { Private declarations }
+    procedure loaddata ;
+  public
+    { Public declarations }
+    var
+    id_fact, imma_fact, id_rade, ref, num_port, user_create, user_control, user_valid, navire, consignataire,  arrive, depart : string;
+    FmContext : string;
+    EditContext : string;
+    validate_filter , fact_filter, rade_filter , query:string ;
+
+    procedure ClearData;
+  end;
+
+function FEditFactRadeInt: TFEditFactRadeInt;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UGlobal, ULoadData;
+
+function FEditFactRadeInt: TFEditFactRadeInt;
+begin
+  Result := TFEditFactRadeInt(DM.GetFormInstance(TFEditFactRadeInt));
+end;
+
+procedure TFEditFactRadeInt.loaddata;
+begin
+     id_rade := DM.QCheck.FieldValues['id'];
+     EdRefInt.Text := DM.QCheck.FieldValues['ref'];
+     EdNavire.Text := DM.QCheck.FieldValues['nom_navire'];
+     EdConsignataire.Text := DM.QCheck.FieldValues['nom_consignataire'];
+     Edarrive.Text := DM.QCheck.FieldValues['debut'];
+     Eddepart.Text := DM.QCheck.FieldValues['fin'];
+     EdBase.Text := DM.QCheck.FieldValues['nombre_jour_taux_rade'];
+     EdNbJours.Text := DM.QCheck.FieldValues['sejour'];
+     DBLConsignataire.KeyValue := DM.QCheck.FieldValues['consignataire'];
+end;
+
+procedure TFEditFactRadeInt.ClearData;
+
+begin
+   //ZONE RECHERCHE
+   DBLRechNavire.KeyValue:= null;
+   DBLRechCons.KeyValue := null;
+   edRechArrive.DateTime := 0;
+
+
+  EdNavire.Clear;
+  EdConsignataire.Clear;
+  Edarrive.Clear;
+  Eddepart.Clear;
+  EdRefInt.Clear;
+  EdNbJours.Clear;
+  EdBase.Clear;
+  EdQte.Clear;
+
+  EdNumFact.Clear;
+  DBLConsignataire.KeyValue := null;
+  EdMontFact.Clear;
+  EdDateEmis.DateTime := 0;
+  EdDateTrans.DateTime := 0;
+  EdDateEch.DateTime := 0;
+end;
+
+procedure TFEditFactRadeInt.UniFormShow(Sender: TObject);
+begin
+   if FmContext = AddContext then
+      begin
+        ClearData;
+      end;
+    LoadDBLConsignataire;
+    LoadDBLNavire;
+    LoadDBLTypeFactRade;
+
+     if ((FmContext=ControlContext) or (FmContext=ValidatContext)) then
+    begin
+      BtnRapport.Visible := True;
+      EdRapport.Visible := True;
+    end;
+end;
+
+end.

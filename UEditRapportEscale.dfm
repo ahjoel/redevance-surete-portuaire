@@ -1,8 +1,8 @@
 object FEditRapportEscale: TFEditRapportEscale
   Left = 0
   Top = 0
-  ClientHeight = 425
-  ClientWidth = 852
+  ClientHeight = 571
+  ClientWidth = 894
   Caption = 'Edition Rapport Escale'
   OnShow = UniFormShow
   BorderStyle = bsSingle
@@ -15,8 +15,8 @@ object FEditRapportEscale: TFEditRapportEscale
   object UniContainerPanel1: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 852
-    Height = 425
+    Width = 894
+    Height = 571
     Hint = ''
     ParentColor = False
     Align = alClient
@@ -25,8 +25,8 @@ object FEditRapportEscale: TFEditRapportEscale
     ExplicitHeight = 466
     object PanOps: TUniPanel
       Left = 0
-      Top = 389
-      Width = 852
+      Top = 535
+      Width = 894
       Height = 36
       Hint = ''
       Align = alBottom
@@ -34,7 +34,7 @@ object FEditRapportEscale: TFEditRapportEscale
       Caption = ''
       object BtnCancel: TUniButton
         AlignWithMargins = True
-        Left = 770
+        Left = 812
         Top = 4
         Width = 78
         Height = 28
@@ -91,8 +91,8 @@ object FEditRapportEscale: TFEditRapportEscale
     object UniPanel1: TUniPanel
       Left = 0
       Top = 0
-      Width = 852
-      Height = 389
+      Width = 894
+      Height = 535
       Hint = ''
       Align = alClient
       TabOrder = 2
@@ -100,47 +100,25 @@ object FEditRapportEscale: TFEditRapportEscale
       object UniSimplePanel5: TUniSimplePanel
         Left = 1
         Top = 1
-        Width = 850
-        Height = 90
+        Width = 892
+        Height = 168
         Hint = ''
         ParentColor = False
         Align = alTop
         TabOrder = 1
-        object UniGroupBox1: TUniGroupBox
+        ExplicitWidth = 850
+        object Group_infos: TUniGroupBox
           AlignWithMargins = True
           Left = 3
-          Top = 3
-          Width = 844
+          Top = 79
+          Width = 886
           Height = 84
           Hint = ''
-          Caption = 'Informations Accostage'
-          Align = alClient
+          Caption = '  Infos Accostage  '
+          Align = alTop
           ParentColor = False
-          Color = clInfoBk
+          Color = 10469119
           TabOrder = 1
-          object UniSimplePanel1: TUniSimplePanel
-            Left = 741
-            Top = 15
-            Width = 101
-            Height = 67
-            Hint = ''
-            ParentColor = False
-            Align = alRight
-            TabOrder = 1
-            object BtnRechEscale: TUniButton
-              Left = 0
-              Top = 0
-              Width = 101
-              Height = 67
-              Hint = ''
-              Caption = 'Recherches Escale'
-              Align = alClient
-              TabOrder = 1
-              IconAlign = iaBottom
-              IconCls = 'search'
-              OnClick = BtnRechEscaleClick
-            end
-          end
           object UniLabel4: TUniLabel
             Left = 16
             Top = 24
@@ -148,120 +126,230 @@ object FEditRapportEscale: TFEditRapportEscale
             Height = 13
             Hint = ''
             Caption = 'Ref Port'
-            TabOrder = 2
+            TabOrder = 1
           end
           object UniLabel5: TUniLabel
             Left = 18
-            Top = 59
+            Top = 55
             Width = 34
             Height = 13
             Hint = ''
             Caption = 'Ref Int'
-            TabOrder = 3
+            TabOrder = 2
           end
           object UniLabel6: TUniLabel
-            Left = 171
+            Left = 200
             Top = 24
             Width = 31
             Height = 13
             Hint = ''
             Caption = 'Navire'
-            TabOrder = 4
+            TabOrder = 3
           end
           object UniLabel7: TUniLabel
-            Left = 171
-            Top = 59
+            Left = 200
+            Top = 55
             Width = 66
             Height = 13
             Hint = ''
             Caption = 'Consignataire'
-            TabOrder = 5
+            TabOrder = 4
           end
           object UniLabel8: TUniLabel
-            Left = 535
+            Left = 524
             Top = 24
             Width = 27
             Height = 13
             Hint = ''
             Caption = 'Poste'
-            TabOrder = 6
+            TabOrder = 5
           end
           object UniLabel9: TUniLabel
-            Left = 535
-            Top = 59
-            Width = 29
+            Left = 524
+            Top = 55
+            Width = 36
             Height = 13
             Hint = ''
-            Caption = 'Arriv'#233
-            TabOrder = 7
+            Caption = 'Accost.'
+            TabOrder = 6
           end
           object EdRefPort: TUniEdit
             Left = 72
             Top = 20
-            Width = 75
+            Width = 90
             Hint = ''
             Text = ''
-            TabOrder = 8
-            Color = clSkyBlue
+            ParentFont = False
+            Font.Color = clMaroon
+            Font.Style = [fsBold]
+            TabOrder = 7
+            Color = clInfoBk
             ReadOnly = True
           end
           object EdRefInt: TUniEdit
             Left = 72
-            Top = 53
-            Width = 75
+            Top = 49
+            Width = 90
             Hint = ''
             Text = ''
-            TabOrder = 9
-            Color = clSkyBlue
+            ParentFont = False
+            Font.Color = clMaroon
+            Font.Style = [fsBold]
+            TabOrder = 8
+            Color = clInfoBk
             ReadOnly = True
           end
           object EdNavire: TUniEdit
-            Left = 257
+            Left = 286
             Top = 20
-            Width = 250
+            Width = 200
             Hint = ''
             Text = ''
-            TabOrder = 10
-            Color = clSkyBlue
+            ParentFont = False
+            Font.Color = clMaroon
+            Font.Style = [fsBold]
+            TabOrder = 9
+            Color = clInfoBk
             ReadOnly = True
           end
           object EdConsignataire: TUniEdit
-            Left = 257
-            Top = 53
-            Width = 250
+            Left = 286
+            Top = 49
+            Width = 200
             Hint = ''
             Text = ''
-            TabOrder = 11
-            Color = clSkyBlue
+            ParentFont = False
+            Font.Color = clMaroon
+            Font.Style = [fsBold]
+            TabOrder = 10
+            Color = clInfoBk
             ReadOnly = True
           end
           object EdPoste: TUniEdit
-            Left = 578
+            Left = 567
             Top = 20
-            Width = 80
+            Width = 90
             Hint = ''
             Text = ''
-            TabOrder = 12
-            Color = clSkyBlue
+            ParentFont = False
+            Font.Color = clMaroon
+            Font.Style = [fsBold]
+            TabOrder = 11
+            Color = clInfoBk
             ReadOnly = True
           end
-          object EdArrive: TUniEdit
-            Left = 578
-            Top = 53
-            Width = 80
+          object EdAccost: TUniEdit
+            Left = 567
+            Top = 48
+            Width = 90
             Hint = ''
             Text = ''
-            TabOrder = 13
-            Color = clSkyBlue
+            ParentFont = False
+            Font.Color = clMaroon
+            Font.Style = [fsBold]
+            TabOrder = 12
+            Color = clInfoBk
             ReadOnly = True
+          end
+        end
+        object Group_rech: TUniGroupBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 886
+          Height = 70
+          Hint = ''
+          Caption = '  Recherche  '
+          Align = alTop
+          ParentColor = False
+          Color = 8454143
+          TabOrder = 2
+          object UniLabel15: TUniLabel
+            Left = 12
+            Top = 17
+            Width = 31
+            Height = 13
+            Hint = ''
+            Caption = 'Navire'
+            TabOrder = 1
+          end
+          object UniLabel16: TUniLabel
+            Left = 246
+            Top = 17
+            Width = 66
+            Height = 13
+            Hint = ''
+            Caption = 'Consignataire'
+            TabOrder = 2
+          end
+          object UniLabel17: TUniLabel
+            Left = 514
+            Top = 17
+            Width = 50
+            Height = 13
+            Hint = ''
+            Caption = 'Accostage'
+            TabOrder = 3
+          end
+          object edRechAccost: TUniDateTimePicker
+            Left = 514
+            Top = 36
+            Width = 91
+            Hint = ''
+            DateTime = 44809.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 6
+          end
+          object BtnRechEscale: TUniButton
+            AlignWithMargins = True
+            Left = 829
+            Top = 18
+            Width = 52
+            Height = 47
+            Hint = ''
+            Caption = ''
+            Align = alRight
+            TabOrder = 7
+            IconAlign = iaBottom
+            IconCls = 'search'
+            OnClick = BtnRechEscaleClick
+          end
+          object DBLRechNavire: TUniDBLookupComboBox
+            Left = 12
+            Top = 36
+            Width = 214
+            Hint = ''
+            ListField = 'nom_navire'
+            ListSource = DM.DS_DBL_Navire
+            KeyField = 'id_navire'
+            ListFieldIndex = 0
+            ClearButton = True
+            TabOrder = 4
+            Color = clWindow
+            Style = csDropDown
+          end
+          object DBLRechCons: TUniDBLookupComboBox
+            Left = 246
+            Top = 36
+            Width = 241
+            Hint = ''
+            ListField = 'nom_consignataire'
+            ListSource = DM.DS_DBL_Cons
+            KeyField = 'id_consignataire'
+            ListFieldIndex = 0
+            ClearButton = True
+            TabOrder = 5
+            Color = clWindow
+            Style = csDropDown
           end
         end
       end
       object UniSimplePanel6: TUniSimplePanel
         Left = 1
-        Top = 142
+        Top = 220
         Width = 288
-        Height = 246
+        Height = 314
         Hint = ''
         ParentColor = False
         Color = clCream
@@ -406,9 +494,9 @@ object FEditRapportEscale: TFEditRapportEscale
       end
       object UniSimplePanel2: TUniSimplePanel
         Left = 289
-        Top = 142
-        Width = 562
-        Height = 246
+        Top = 220
+        Width = 604
+        Height = 314
         Hint = ''
         ParentColor = False
         Align = alClient
@@ -417,32 +505,35 @@ object FEditRapportEscale: TFEditRapportEscale
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 556
-          Height = 240
+          Width = 598
+          Height = 308
           Hint = ''
           FixedCols = 0
           RowCount = 2
           ColCount = 4
-          Options = [goVertLine, goHorzLine, goRowSelect, goAlwaysShowEditor]
+          Options = [goVertLine, goHorzLine, goRowSelect, goAlwaysShowEditor, goFixedRowDefAlign]
           Columns = <>
           HeaderTitleAlign = taCenter
           OnDrawCell = StringGridRapportDrawCell
           OnSelectCell = StringGridRapportSelectCell
           Align = alClient
           TabOrder = 1
+          ExplicitTop = 5
         end
       end
-      object UniSimplePanel3: TUniSimplePanel
+      object UniS: TUniSimplePanel
         AlignWithMargins = True
         Left = 4
-        Top = 94
-        Width = 844
+        Top = 172
+        Width = 886
         Height = 45
         Hint = ''
         ParentColor = False
         Color = clMoneyGreen
         Align = alTop
         TabOrder = 4
+        ExplicitLeft = 5
+        ExplicitTop = 173
         object UniLabel10: TUniLabel
           Left = 16
           Top = 20

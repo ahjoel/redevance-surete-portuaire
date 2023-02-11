@@ -57,7 +57,8 @@ uses
   UEditReglement in 'UEditReglement.pas' {FEditReglement: TUniForm},
   UEtatsReglement in 'UEtatsReglement.pas' {FEtatsReglement: TUniForm},
   UPrintOptionReglement in 'UPrintOptionReglement.pas' {FPrintOptionReglement: TUniForm},
-  UEtatsFacturePal_Escale in 'UEtatsFacturePal_Escale.pas' {FEtatsFacturePalEscale: TUniForm};
+  UUpdateRapportEscale in 'UUpdateRapportEscale.pas' {FUpdateRapportEscale: TUniForm},
+  UEtatsRapportEscale in 'UEtatsRapportEscale.pas' {FEtatsRapportEscale: TUniForm};
 
 {$R *.res}
 

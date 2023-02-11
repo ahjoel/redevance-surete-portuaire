@@ -106,7 +106,7 @@ begin
                                         with DM.QSave do
                                                begin
                                                   SQL.Text := ('INSERT INTO taux_operation (taux_euro, date_debut, operation_taux ) Values (:taux, :debut, :operation  )');
-                                                  Parameters.ParamByName('taux').Value:=EdMontantTauxMarch.Value ;
+                                                  Parameters.ParamByName('taux').Value:=  (FormatCurr('0.00#', EdMontantTauxMarch.Value)).Replace(',', '.');
                                                   Parameters.ParamByName('debut').Value:= datefr(EdDateDebutTauxMarch.Text);
                                                   Parameters.ParamByName('operation').Value:= DBLOperation.KeyValue;
                                                   ExecSQL;

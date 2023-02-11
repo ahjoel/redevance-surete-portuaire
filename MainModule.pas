@@ -110,8 +110,8 @@ type
     DS_DBL_Pays: TDataSource;
     DS_DBL_Ope: TDataSource;
     DQ_Grid_RapEsc: TADOQuery;
-    ADOQuery2: TADOQuery;
-    ADOQuery3: TADOQuery;
+    DQ_Grid_FactInterne: TADOQuery;
+    DQ_Details_RapEsc: TADOQuery;
     ADOQuery4: TADOQuery;
     QStand2: TADOQuery;
     ADOQuery6: TADOQuery;
@@ -120,7 +120,7 @@ type
     DQ_DBL_Obs: TADOQuery;
     QData: TADOQuery;
     DQ_Grid_Obs: TADOQuery;
-    ADOQuery13: TADOQuery;
+    DQ_Grid_LigneRapEsc: TADOQuery;
     ADOQuery14: TADOQuery;
     DQ_Grid_Reglement: TADOQuery;
     DQ_Grid_FactPal: TADOQuery;
@@ -139,9 +139,9 @@ type
     DS_Grid_TypeFact: TDataSource;
     DS_Grid_Reglement: TDataSource;
     DataSource7: TDataSource;
-    DataSource8: TDataSource;
-    DataSource9: TDataSource;
-    DataSource10: TDataSource;
+    DS_Grid_FactInterne: TDataSource;
+    DS_Details_RapEsc: TDataSource;
+    DS_Grid_LigneRapEsc: TDataSource;
     DataSource11: TDataSource;
     DataSource12: TDataSource;
     DataSource13: TDataSource;
@@ -227,6 +227,7 @@ end;
 procedure TDM.DQ_Grid_TauxOpeAfterOpen(DataSet: TDataSet);
 begin
     TIntegerField(DataSet.FieldByName('taux_euro')).DisplayFormat := '#,##0.000';
+    TIntegerField(DataSet.FieldByName('qte_max')).DisplayFormat := '###,###,###,##0';
 end;
 
 procedure TDM.DQ_Grid_TauxRadeAfterOpen(DataSet: TDataSet);

@@ -190,7 +190,7 @@ object FTypeFacture: TFTypeFacture
         Height = 206
         Hint = ''
         DataSource = DM.DS_Grid_CatFact
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
         ReadOnly = True
         WebOptions.Paged = False
         LoadMask.Message = 'Loading data...'
@@ -428,7 +428,7 @@ object FTypeFacture: TFTypeFacture
           Height = 206
           Hint = ''
           DataSource = DM.DS_Grid_TypeFact
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
           ReadOnly = True
           WebOptions.Paged = False
           LoadMask.Message = 'Loading data...'

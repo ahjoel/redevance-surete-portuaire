@@ -26,6 +26,8 @@ type
     EdFin: TUniDateTimePicker;
     UniLabel2: TUniLabel;
     DBLTypeFact: TUniDBLookupComboBox;
+    EdLibelle: TUniEdit;
+    UniLabel3: TUniLabel;
     procedure BtnCancelClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure BtnSaveClick(Sender: TObject);
@@ -96,7 +98,13 @@ begin
                      Abort;
                   end
               else
-
+            if EdLibelle.IsBlank then
+                  begin
+                     MessageDlg('Veuillez renseigner  le Libellé ',mtWarning,[mbok]);
+                     EdLibelle.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
 
           if EdDebut.DateTime = 0 then
               begin
@@ -123,11 +131,12 @@ begin
                               begin
                                     with DM.QSave do
                                            begin
-                                              SQL.Text := ('INSERT INTO taux_rade (nombre_jour_taux_rade, type_fact, montant_taux_rade, debut_taux_rade) Values (:nombre_jour, :type_fact, :taux, :debut )');
+                                              SQL.Text := ('INSERT INTO taux_rade (nombre_jour_taux_rade, type_fact, montant_taux_rade, debut_taux_rade, libelle_taux) Values (:nombre_jour, :type_fact, :taux, :debut, :libelle )');
                                               Parameters.ParamByName('nombre_jour').Value:=EdNbJours.Value ;
                                               Parameters.ParamByName('type_fact').Value:=DBLTypeFact.KeyValue ;
                                               Parameters.ParamByName('taux').Value:= EdMontantTaux.Value;
                                               Parameters.ParamByName('debut').Value:= msqlDateTime(EdDebut);
+                                              Parameters.ParamByName('libelle').Value:= EdLibelle.Text;
                                               ExecSQL;
                                           end;
 
@@ -152,6 +161,78 @@ begin
 
       end
 
+    else
+
+    if FmContext = UpdateContext then
+    begin
+         if EdNbJours.Value <= 0 then
+              begin
+                 MessageDlg('Veuillez renseigner le Nombre de Jours',mtWarning,[mbok]);
+                 EdNbJours.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+            if DBLTypeFact.IsBlank then
+                  begin
+                     MessageDlg('Veuillez sélectionner  le Type de Facture ',mtWarning,[mbok]);
+                     DBLTypeFact.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+            if EdLibelle.IsBlank then
+                  begin
+                     MessageDlg('Veuillez renseigner  le Libellé ',mtWarning,[mbok]);
+                     EdLibelle.JSInterface.JSCall('focus' ,[]);
+                     Abort;
+                  end
+              else
+
+          if EdDebut.DateTime = 0 then
+              begin
+                 MessageDlg('Veuillez renseigner le Date Debut',mtWarning,[mbok]);
+                 EdDebut.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+
+          if EdMontantTaux.Value <= 0  then
+              begin
+                 MessageDlg('Veuillez renseigner le Taux',mtWarning,[mbok]);
+                 EdMontantTaux.JSInterface.JSCall('focus' ,[]);
+                 Abort;
+              end
+          else
+
+        begin
+              MessageDlg('Voulez-vous enregister les modifications ?', mtConfirmation, mbYesNo,
+                    procedure(Sender: TComponent; Res: Integer)
+                    begin
+                      case Res of
+                        mrYes :
+                            begin
+                                  with DM.QUpdate do
+                                        begin
+                                            SQL.Text := ('UPDATE taux_rade SET nombre_jour_taux_rade=:nombre_jour, type_fact=:type_fact, montant_taux_rade=:taux, debut_taux_rade=:debut, libelle_taux=:libelle  WHERE id_taux_rade=:id ');
+                                            Parameters.ParamByName('id').Value:= id_TauxRade;
+                                            Parameters.ParamByName('nombre_jour').Value:=EdNbJours.Value ;
+                                            Parameters.ParamByName('type_fact').Value:=DBLTypeFact.KeyValue ;
+                                            Parameters.ParamByName('taux').Value:= EdMontantTaux.Value;
+                                            Parameters.ParamByName('debut').Value:= msqlDateTime(EdDebut);
+                                            Parameters.ParamByName('libelle').Value:= EdLibelle.Text;
+                                            ExecSQL;
+                                        end;
+
+                                       MessageDlg('modification effectuée',mtConfirmation,[mbok]);
+                                       FTaux.ShowDataTauxRade;
+                                       DM.DQ_Grid_TauxRade.Locate('id_taux_rade',id_TauxRade,[loCaseInsensitive] );
+                                       close;
+                          end
+                      end ;
+                    end
+                  );
+        end;
+
+    end
     else
 
     //MISE EN FIN

@@ -1,17 +1,9 @@
-syg_rsp.exe: 000032F0: 07:32:53 [TUniServerModule]:Shutting Down Server.
-syg_rsp.exe: 000032F0: 07:32:53 [TUniServerModule]:Stopping HTTP Server.
-syg_rsp.exe: 000032F0: 07:32:54 [TUniServerModule]:HTTP Server Stopped.
-syg_rsp.exe: 000032F0: 07:32:54 [TUniGUISessionManager]:Terminating Session manager.
-syg_rsp.exe: 000032F0: 07:32:54 [TUniGUISessionManager]:Stopping Cache Eraser...
-syg_rsp.exe: 000032F0: 07:32:54 [TUniGUISessionManager]:Cache Eraser Stopped.
-syg_rsp.exe: 000032F0: 07:32:54 [TUniGUISessionManager]:Destroying Worker Threads.
-syg_rsp.exe: 000032F0: 07:32:54 [TUniGUISessionManager]:Session manager terminated.
-syg_rsp.exe: 000032F0: 07:32:54 [TUniServerModule]:Server Shutdown Completed.
-syg_rsp.exe: 000032F0: 07:32:54 []:<-------------------------------------------------------------->
-syg_rsp.exe: 000032F0: 07:32:54 [Terminated]:Exit Code: 0
-syg_rsp.exe: 000018F0: 08:09:08 []:>--------------------------------------------------------------<
-syg_rsp.exe: 000018F0: 08:09:08 [TUniServerModule]:Server First Init.
-syg_rsp.exe: 000018F0: 08:09:08 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
-syg_rsp.exe: 000018F0: 08:09:08 [TUniServerModule]:Starting HTTP Server on Port: 8077...
-syg_rsp.exe: 000018F0: 08:09:08 [TUniServerModule]:HTTP Server Started on Port: 8077
-syg_rsp.exe: 00001FE4: 08:09:13 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 49N9UDcTx510BE072B2 ) : Addr: $00836E0B
+syg_rsp.exe: 00003FB8: 07:51:59 []:>--------------------------------------------------------------<
+syg_rsp.exe: 00003FB8: 07:51:59 [TUniServerModule]:Server First Init.
+syg_rsp.exe: 00003FB8: 07:51:59 [TUniServerModule]:Global Cache Folder Erased. <49> Files deleted.
+syg_rsp.exe: 00003FB8: 07:51:59 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+syg_rsp.exe: 00003FB8: 07:51:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 00001BB0: 09:14:56 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: YCnlMg7ZkS10BE21D3C ) : Addr: $0082D9FE
+syg_rsp.exe: 00003F88: 09:14:56 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: YCnlMg7ZkS10BE21D3C ) : Addr: $0082D9FE
+syg_rsp.exe: 0000218C: 09:38:38 [127.0.0.1]:EOleException : Objet Parameter défini de manière incorrecte. Des informations incohérentes ou incomplètes ont été fournies : Addr: $0083F24B
+syg_rsp.exe: 00003FB8: 10:02:17 [Exit]:Unexpected attempt to terminate server application with Exit Code: 0

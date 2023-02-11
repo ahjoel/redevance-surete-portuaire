@@ -1,0 +1,67 @@
+unit UFactInterne;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniImageList, Vcl.Menus,
+  uniMainMenu, uniBasicGrid, uniDBGrid, uniBitBtn, uniMenuButton, uniLabel,
+  uniEdit, uniButton, uniPanel;
+
+type
+  TFFactInterne = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    PanOp: TUniPanel;
+    BtnDel: TUniButton;
+    BtnUpdate: TUniButton;
+    EdSearch: TUniEdit;
+    UniLabel1: TUniLabel;
+    BtnValidate: TUniButton;
+    BtnControl: TUniButton;
+    UniMenuButton1: TUniMenuButton;
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    PanRowCount: TUniPanel;
+    UniPanel1: TUniPanel;
+    DBGrid: TUniDBGrid;
+    PopupMenu_add: TUniPopupMenu;
+    E1: TUniMenuItem;
+    R1: TUniMenuItem;
+    UniImageList1: TUniImageList;
+    procedure R1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FFactInterne: TFFactInterne;
+var
+    filter, group_by, search, init_query, query, fact_query:string;
+    exercice_filter :string;
+    title :string = 'Facture Emises|Interne';
+    title_rade :string = 'Facture Emises Rade|Interne';
+    title_escale :string = 'Facture Emises Escale|Interne';
+    FrmMode, FrmModeTitle : string;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, UEditFactRadeInt, UFunction, UGlobal;
+
+function FFactInterne: TFFactInterne;
+begin
+  Result := TFFactInterne(DM.GetFormInstance(TFFactInterne));
+end;
+
+procedure TFFactInterne.R1Click(Sender: TObject);
+begin
+    FEditFactRadeInt.FmContext := AddContext;
+    FEditFactRadeInt.Caption := FrmEditTitle(title_rade, AddTitle);
+    FEditFactRadeInt.ShowModal;
+end;
+
+end.

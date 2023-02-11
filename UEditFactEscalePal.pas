@@ -560,12 +560,12 @@ end;
 procedure TFEditFactEscalePal.UniFormShow(Sender: TObject);
 begin
     LoadDBLNavire;
+    LoadDBLConsignataire;
     LoadDBLTypeFactEscale;
     if FmContext = AddContext then
       begin
         ClearData;
       end;
-    LoadDBLConsignataire;
 
       if ((FmContext=ControlContext) or (FmContext=ValidatContext)) then
     begin

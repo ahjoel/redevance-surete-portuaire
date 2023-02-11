@@ -1,0 +1,32 @@
+unit UEtatsRapportEscale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFEtatsRapportEscale = class(TUniForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEtatsRapportEscale: TFEtatsRapportEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEtatsRapportEscale: TFEtatsRapportEscale;
+begin
+  Result := TFEtatsRapportEscale(DM.GetFormInstance(TFEtatsRapportEscale));
+end;
+
+end.

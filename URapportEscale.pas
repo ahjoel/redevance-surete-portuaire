@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
   uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniGroupBox,
-  uniBasicGrid, uniDBGrid, uniLabel, uniEdit, uniButton;
+  uniBasicGrid, uniDBGrid, uniLabel, uniEdit, uniButton, frxClass,
+  frxExportBaseDialog, frxExportPDF, frxDBSet, uniComboBox, uniMultiItem,
+  uniDBComboBox, uniDBLookupComboBox, uniDateTimePicker;
 
 type
   TFRapportEscale = class(TUniForm)
@@ -23,10 +25,27 @@ type
     UniContainerPanel1: TUniContainerPanel;
     PanTitle: TUniPanel;
     UniPanel1: TUniPanel;
+    frxReport: TfrxReport;
+    UniContainerPanel2: TUniContainerPanel;
+    UniContainerPanel4: TUniContainerPanel;
+    BtnExport: TUniButton;
+    PanRowCount: TUniPanel;
+    frxDBDataset: TfrxDBDataset;
+    frxPDFExport: TfrxPDFExport;
+    UniDBGrid: TUniDBGrid;
+    BtnDetails: TUniButton;
     procedure BtnAddClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
+    procedure UniDBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
+    procedure BtnDetailsClick(Sender: TObject);
+    procedure BtnControlClick(Sender: TObject);
+    procedure UniDBGridDrawColumnCell(Sender: TObject; ACol, ARow: Integer;
+      Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
+    procedure BtnValidateClick(Sender: TObject);
+    procedure UniDBGridSelectionChange(Sender: TObject);
   private
     { Private declarations }
+    procedure UpdateLoadData;
   public
     { Public declarations }
     procedure ShowData;
@@ -35,6 +54,7 @@ type
 function FRapportEscale: TFRapportEscale;
 
 var
+    query_print: string ;
     filter, search, init_query, query:string;
     exercice_filter :string;
     title :string = 'Rapport Escale';
@@ -45,11 +65,104 @@ implementation
 {$R *.dfm}
 
 uses
-  MainModule, uniGUIApplication, UEditRapportEscale, UGlobal, UFunction;
+  MainModule, uniGUIApplication, UEditRapportEscale, UGlobal, UFunction,
+  UReport, UUpdateRapportEscale, UEditEscale, ULoadData, UProject_Function;
 
 function FRapportEscale: TFRapportEscale;
 begin
   Result := TFRapportEscale(DM.GetFormInstance(TFRapportEscale));
+end;
+
+procedure TFRapportEscale.UpdateLoadData;
+begin
+    //UPDATE CHECK VARIABLES
+   FUpdateRapportEscale.id_rap :=DM.DQ_Grid_LigneRapEsc.FieldValues['id_rap_esc'];
+   FUpdateRapportEscale.num_atp :=DM.DQ_Grid_LigneRapEsc.FieldValues['num_atp'];
+
+   //UPDATE LOAD_DATA
+   FUpdateRapportEscale.DBLRechNavire.KeyValue :=DM.DQ_Grid_LigneRapEsc.FieldValues['id_navire'];
+   FUpdateRapportEscale.DBLRechCons.KeyValue :=DM.DQ_Grid_LigneRapEsc.FieldValues['id_consignataire'];
+   FUpdateRapportEscale.edRechAccost.DateTime :=DM.DQ_Grid_LigneRapEsc.FieldValues['date_accost'];
+
+
+   FUpdateRapportEscale.EdNumATP.Text :=DM.DQ_Grid_LigneRapEsc.FieldValues['num_atp'];
+   FUpdateRapportEscale.EdNumVoyage.Text :=DM.DQ_Grid_LigneRapEsc.FieldValues['num_voyage'];
+   FUpdateRapportEscale.EdDate.Text :=DM.DQ_Grid_LigneRapEsc.FieldValues['date_rappport'];
+
+end;
+
+procedure TFRapportEscale.BtnControlClick(Sender: TObject);
+begin
+    FUpdateRapportEscale.Caption := FrmEditTitle(title, ControlTitle);
+
+    FUpdateRapportEscale.ShowModal;
+    FUpdateRapportEscale.BtnSave.Caption := ControlBtnCaption;
+    FUpdateRapportEscale.BtnSave.IconCls := 'check2';
+    FUpdateRapportEscale.FmContext := ControlContext;
+
+    query_print:= init_query_details_rapport_escale + ' AND L.rapport_ligne_rap ='+DBGrid.DataSource.DataSet.FieldByName('id_rap_esc').AsString + ' ORDER BY libelle_marchandise';
+
+
+    ExQuery(DM.DQ_Grid_LigneRapEsc , query_print) ;
+       if DM.QStand.RecordCount > 0 then
+       begin
+           FUpdateRapportEscale.ShowModal;
+
+           UpdateLoadData;
+
+           //ENABLE DATA
+
+           //UPDATE LOAD_DATA
+           FUpdateRapportEscale.Group_rech.Enabled := False;
+           FUpdateRapportEscale.Group_infos.Enabled := False;
+           FUpdateRapportEscale.PanRap.Enabled := False;
+           FUpdateRapportEscale.PanAddLine.Enabled := False;
+
+
+       end
+
+       else
+end;
+
+procedure TFRapportEscale.BtnDetailsClick(Sender: TObject);
+begin
+
+     query_print:= init_query_details_rapport_escale + ' AND L.rapport_ligne_rap ='+DBGrid.DataSource.DataSet.FieldByName('id_rap_esc').AsString + ' ORDER BY libelle_marchandise';
+     FReport.DataAndShowReport(DM.QPrint, query_print, FRapportEscale.frxDBDataset, FRapportEscale.frxReport, FRapportEscale.frxPDFExport, FReport.URLFrame, 'Details_Rapport_Escale');
+
+ end;
+
+procedure TFRapportEscale.BtnValidateClick(Sender: TObject);
+begin
+    FUpdateRapportEscale.Caption := FrmEditTitle(title, ValidateTitle);
+
+    FUpdateRapportEscale.ShowModal;
+    FUpdateRapportEscale.BtnSave.Caption := ValidatBtnCaption;
+    FUpdateRapportEscale.BtnSave.IconCls := 'check';
+    FUpdateRapportEscale.FmContext := ValidatContext;
+
+    query_print:= init_query_details_rapport_escale + ' AND L.rapport_ligne_rap ='+DBGrid.DataSource.DataSet.FieldByName('id_rap_esc').AsString + ' ORDER BY libelle_marchandise';
+
+
+    ExQuery(DM.DQ_Grid_LigneRapEsc , query_print) ;
+       if DM.QStand.RecordCount > 0 then
+       begin
+           FUpdateRapportEscale.ShowModal;
+
+           UpdateLoadData;
+
+           //ENABLE DATA
+
+           //UPDATE LOAD_DATA
+           FUpdateRapportEscale.Group_rech.Enabled := False;
+           FUpdateRapportEscale.Group_infos.Enabled := False;
+           FUpdateRapportEscale.PanRap.Enabled := False;
+           FUpdateRapportEscale.PanAddLine.Enabled := False;
+
+
+       end
+
+       else
 end;
 
 procedure TFRapportEscale.ShowData;
@@ -62,23 +175,7 @@ procedure TFRapportEscale.ShowData;
 
        exercice_filter := ' AND E.exercice='''+ IdExerciceInst +'''';
 
-
-      init_query:= 'SELECT *,  '#13+
-                   ' case WHEN R.date_control is null THEN '''' ELSE ''O''	end as control , '#13+
-                   ' case WHEN R.date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
-                   ' us.login_user as user_saisie , uc.login_user as user_control , uv.login_user as user_validation '#13+
-                   'FROM rapport_escale R '#13+
-                   'INNER JOIN escale E on R.escale_rap_esc=E.id '#13+
-                   'INNER JOIN consignataire C on E.consignataire=C.id_consignataire '#13+
-                   'INNER JOIN navire  N on E.navire=N.id_navire '#13+
-                   'INNER JOIN poste_quai Q on E.post_quai=Q.id_pq '#13+
-                   'INNER JOIN exercice Z on E.exercice=Z.id_exercice '#13+
-                   'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
-                   'INNER JOIN user as us on E. user_create=us.id_user '#13+
-                   'LEFT JOIN user as uc on E.user_control=uc.id_user '#13+
-                   'LEFT JOIN user as uv on E.user_validate=uv.id_user '#13+
-                    '  ';
-      query:=init_query + search+ filter;
+      query:=init_query_rapport_escale + exercice_filter + search+ filter;
 
       DM.DQ_Grid_RapEsc.Close;
       DM.DQ_Grid_RapEsc.SQL.Clear;
@@ -86,8 +183,61 @@ procedure TFRapportEscale.ShowData;
       DM.DQ_Grid_RapEsc.Open;
   end;
 
+procedure TFRapportEscale.UniDBGridDrawColumnCell(Sender: TObject; ACol,
+  ARow: Integer; Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
+begin
+      if DBGrid.DataSource.DataSet.FieldByName('rapport_control').AsInteger = 1 then
+      Attribs.Color:= clWebLemonChiffon
+    else
+    if DBGrid.DataSource.DataSet.FieldByName('rapport_validate').AsInteger = 1 then
+      Attribs.Color:= clWebLightSalmon
+    else
+end;
+
+procedure TFRapportEscale.UniDBGridRecordCount(Sender: TUniDBGrid;
+  var RecCount: Integer);
+begin
+    PanRowCount.Caption := IntToStr(DBGrid.DataSource.DataSet.RecordCount) ;
+  if  DBGrid.DataSource.DataSet.RecordCount=0 then
+      begin
+            BtnUpdate.Enabled:=False;
+            BtnDel.Enabled:=False;
+            BtnControl.Enabled:=False;
+            BtnValidate.Enabled:=False;
+      end
+    else
+       begin
+          BtnUpdate.Enabled:=true;
+         // BtnDel.Enabled:=true;
+          BtnControl.Enabled:=true;
+          BtnValidate.Enabled:=true;
+       end;
+end;
+
+procedure TFRapportEscale.UniDBGridSelectionChange(Sender: TObject);
+begin
+  if DBGrid.DataSource.DataSet.FieldByName('control').AsString = '' then
+    begin
+        BtnControl.Enabled:=True;
+        BtnValidate.Enabled:=False;
+    end
+    else
+    begin
+        BtnControl.Enabled:=False;
+        BtnValidate.Enabled:=True;
+
+    end;
+
+if DBGrid.DataSource.DataSet.FieldByName('validation').AsString <> '' then
+    begin
+       BtnValidate.Enabled:=False;
+    end
+  else
+end;
+
 procedure TFRapportEscale.UniFormShow(Sender: TObject);
 begin
+    PanTitle.Caption := FrmPanTitle(title, FrmModeTitle, LibExerciceInst);
     ShowData;
 end;
 

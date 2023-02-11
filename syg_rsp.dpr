@@ -57,8 +57,10 @@ uses
   UEditReglement in 'UEditReglement.pas' {FEditReglement: TUniForm},
   UEtatsReglement in 'UEtatsReglement.pas' {FEtatsReglement: TUniForm},
   UPrintOptionReglement in 'UPrintOptionReglement.pas' {FPrintOptionReglement: TUniForm},
-  UEtatsFacturePal_Escale in 'UEtatsFacturePal_Escale.pas' {FEtatsFacturePalEscale: TUniForm},
-  UPrintOptionFactPalEscal in 'UPrintOptionFactPalEscal.pas' {FPrintOptionFactPALEscale: TUniForm};
+  UUpdateRapportEscale in 'UUpdateRapportEscale.pas' {FUpdateRapportEscale: TUniForm},
+  UEtatsRapportEscale in 'UEtatsRapportEscale.pas' {FEtatsRapportEscale: TUniForm},
+  UFactInterne in 'UFactInterne.pas' {FFactInterne: TUniForm},
+  UEditFactRadeInt in 'UEditFactRadeInt.pas' {FEditFactRadeInt: TUniForm};
 
 {$R *.res}
 

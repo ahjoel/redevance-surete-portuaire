@@ -1,0 +1,79 @@
+unit UEditFactRadeInt;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniButton, uniEdit, uniMultiItem, uniComboBox,
+  uniDBComboBox, uniDBLookupComboBox, uniLabel, uniDateTimePicker, uniGroupBox,
+  uniPanel, uniGUIBaseClasses;
+
+type
+  TFEditFactRadeInterne = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    UniPanel1: TUniPanel;
+    Group_fact: TUniGroupBox;
+    EdDateEmis: TUniDateTimePicker;
+    UniLabel10: TUniLabel;
+    UniLabel11: TUniLabel;
+    EdNumFact: TUniEdit;
+    UniLabel14: TUniLabel;
+    DBLConsignataire: TUniDBLookupComboBox;
+    EdDateTrans: TUniDateTimePicker;
+    UniLabel3: TUniLabel;
+    UniLabel12: TUniLabel;
+    EdMontFact: TUniFormattedNumberEdit;
+    EdDateEch: TUniDateTimePicker;
+    UniLabel13: TUniLabel;
+    Group_infos: TUniGroupBox;
+    UniLabel6: TUniLabel;
+    EdNavire: TUniEdit;
+    UniLabel7: TUniLabel;
+    EdConsignataire: TUniEdit;
+    UniLabel4: TUniLabel;
+    Edarrive: TUniEdit;
+    UniLabel8: TUniLabel;
+    Eddepart: TUniEdit;
+    UniLabel5: TUniLabel;
+    EdRefInt: TUniEdit;
+    EdQte: TUniEdit;
+    UniLabel2: TUniLabel;
+    EdBase: TUniEdit;
+    UniLabel1: TUniLabel;
+    EdNbJours: TUniEdit;
+    UniLabel9: TUniLabel;
+    Group_rech: TUniGroupBox;
+    BtnRechRade: TUniButton;
+    edRechArrive: TUniDateTimePicker;
+    UniLabel17: TUniLabel;
+    DBLRechCons: TUniDBLookupComboBox;
+    UniLabel16: TUniLabel;
+    DBLRechNavire: TUniDBLookupComboBox;
+    UniLabel15: TUniLabel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    BtnRapport: TUniButton;
+    EdRapport: TUniEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEditFactRadeInterne: TFEditFactRadeInterne;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEditFactRadeInterne: TFEditFactRadeInterne;
+begin
+  Result := TFEditFactRadeInterne(DM.GetFormInstance(TFEditFactRadeInterne));
+end;
+
+end.

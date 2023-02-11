@@ -20,7 +20,6 @@ object FTypeNavire: TFTypeNavire
     ParentColor = False
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 362
     object PanTitle: TUniPanel
       Left = 0
       Top = 0
@@ -93,9 +92,6 @@ object FTypeNavire: TFTypeNavire
         ParentColor = False
         Align = alRight
         TabOrder = 5
-        ExplicitLeft = 371
-        ExplicitTop = 1
-        ExplicitHeight = 65
         object BtnSave: TUniButton
           Left = 0
           Top = 0
@@ -119,7 +115,6 @@ object FTypeNavire: TFTypeNavire
           TabOrder = 2
           IconCls = 'delete'
           OnClick = BtnCancelClick
-          ExplicitTop = 40
         end
       end
     end
@@ -132,8 +127,6 @@ object FTypeNavire: TFTypeNavire
       Align = alLeft
       TabOrder = 3
       Caption = ''
-      ExplicitTop = 94
-      ExplicitHeight = 268
       object BtnAdd: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -191,7 +184,7 @@ object FTypeNavire: TFTypeNavire
       Height = 227
       Hint = ''
       DataSource = DM.DS_Grid_TypeNav
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'

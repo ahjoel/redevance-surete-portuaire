@@ -46,6 +46,7 @@ type
       Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
     procedure DBGrid_TauxRadeDrawColumnCell(Sender: TObject; ACol,
       ARow: Integer; Column: TUniDBGridColumn; Attribs: TUniCellAttribs);
+    procedure BtnUpdateTauxRadeClick(Sender: TObject);
   private
     { Private declarations }
     procedure UpdateLoadDataMarch;
@@ -58,6 +59,7 @@ type
     procedure ShowDataTauxRade;
     procedure ClearDataTauxRade;
 
+
     var
     id_TauxMarch, code_TauxMarch, lib_TauxMarch, debut_TauxMarch, fin_TauxMarch: string;
     id_TauxRade, code_TauxRade, lib_TauxRade, ip_TauxRade, debut_TauxRade, fin_TauxRade : string;
@@ -68,6 +70,10 @@ type
   end;
 
 function FTaux: TFTaux;
+var
+    filter, search, init_query, query:string;
+    title_rade :string = 'Taux Rade';
+    title_ope :string = 'Taux Opérations';
 
 var
     filter_TauxMarch, search_TauxMarch, init_query_TauxMarch, query_TauxMarch:string;
@@ -90,6 +96,8 @@ begin
 end;
 
 
+
+
 procedure TFTaux.UpdateLoadDataMarch;
 begin
     //UPDATE CHECK VARIABLES
@@ -99,6 +107,7 @@ begin
    //UPDATE LOAD_DATA
    FEditTauxMarchandise.DBLOperation.KeyValue :=DM.QStand.FieldValues['operation_taux'];
    FEditTauxMarchandise.EdMontantTauxMarch.Text :=DM.QStand.FieldValues['taux_euro'];
+   FEditTauxMarchandise.EdQteMax.Text :=DM.QStand.FieldValues['qte_max'];
    FEditTauxMarchandise.EdDateDebutTauxMarch.Text :=DM.QStand.FieldValues['date_debut'];
 
 end;
@@ -114,6 +123,7 @@ begin
    FEditTauxRade.EdMontantTaux.Text :=DM.QStand.FieldValues['montant_taux_rade'];
     FEditTauxRade.DBLTypeFact.KeyValue :=DM.QStand.FieldValues['type_fact'];
    FEditTauxRade.EdDebut.Text :=DM.QStand.FieldValues['debut_taux_rade'];
+   FEditTauxRade.EdLibelle.Text :=DM.QStand.FieldValues['libelle_taux'];
 
 end;
 
@@ -174,11 +184,13 @@ begin
         FEditTauxMarchandise.DBLOperation.ReadOnly:=True;
         FEditTauxMarchandise.EdDateDebutTauxMarch.ReadOnly:=True;
         FEditTauxMarchandise.EdMontantTauxMarch.ReadOnly:=True;
+        FEditTauxMarchandise.EdQteMax.ReadOnly:=True;
 
 
         FEditTauxMarchandise.DBLOperation.Color:=clWebLemonChiffon;
         FEditTauxMarchandise.EdDateDebutTauxMarch.Color:=clWebLemonChiffon;
         FEditTauxMarchandise.EdMontantTauxMarch.Color:=clWebLemonChiffon;
+        FEditTauxMarchandise.EdQteMax.Color:=clWebLemonChiffon;
       end;
 
 end;
@@ -224,6 +236,35 @@ begin
       end;
 
 
+end;
+
+procedure TFTaux.BtnUpdateTauxRadeClick(Sender: TObject);
+begin
+    FEditTauxRade.Caption := FrmEditTitle(title_rade, UpdateTitle);
+
+    FEditTauxRade.ShowModal;
+    FEditTauxRade.BtnSave.Caption := UpdateBtnCaption;
+    FEditTauxRade.BtnSave.IconCls := 'compose';
+
+    FEditTauxRade.FmContext := UpdateContext;
+
+     with DM.QStand do
+           begin
+           close;
+           SQL.Clear;
+           sql.add('SELECT * FROM taux_rade where id_taux_rade=:id ');
+           Parameters.ParamByName('id').Value:= DBGrid_TauxRade.DataSource.DataSet.FieldByName('id_taux_rade').AsString;
+           ExecSQL;
+           Open;
+           end;
+
+           if DM.QStand.RecordCount > 0 then
+           begin
+               FEditTauxRade.ShowModal;
+               UpdateLoadDataRade;
+           end
+
+           else
 end;
 
 procedure TFTaux.ClearDataTauxOpe;
@@ -311,10 +352,10 @@ end;
 
 procedure TFTaux.ShowDataTauxOpe;
   begin
-      filter_TauxMarch:=' order by T.date_debut';
+      filter_TauxMarch:=' order by libelle_ope ';
 
       init_query_TauxMarch:= 'SELECT *, CONCAT( Y.libelle_type_march ," - ", A.libelle_action ) as libelle_ope FROM taux_operation T, operation O, action A, type_marchandise Y WHERE T.operation_taux = O.id_operation '#13+
-                              'AND O.action=A.id_action AND O.type_marchandise=Y.id_type_march ';
+                              'AND O.action=A.id_action AND O.type_marchandise=Y.id_type_march  ';
       query_TauxMarch:=init_query_TauxMarch + search_TauxMarch+ filter_TauxMarch;
 
       DM.DQ_Grid_TauxOpe.Close;

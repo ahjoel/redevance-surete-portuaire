@@ -27,7 +27,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
       Left = 0
       Top = 0
       Width = 1234
-      Height = 25
+      Height = 36
       Hint = ''
       ParentColor = False
       Align = alTop
@@ -36,7 +36,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         Left = 35
         Top = 0
         Width = 1199
-        Height = 25
+        Height = 36
         Hint = ''
         Align = alClient
         ParentFont = False
@@ -55,7 +55,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         Left = 0
         Top = 0
         Width = 35
-        Height = 25
+        Height = 36
         Hint = ''
         Align = alLeft
         TabOrder = 2
@@ -67,7 +67,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
     object UniGroupBox1: TUniGroupBox
       AlignWithMargins = True
       Left = 3
-      Top = 28
+      Top = 39
       Width = 1228
       Height = 118
       Hint = ''
@@ -435,9 +435,9 @@ object FEtatsFacturePal: TFEtatsFacturePal
     end
     object DBGrid: TUniDBGrid
       Left = 0
-      Top = 149
+      Top = 160
       Width = 1234
-      Height = 480
+      Height = 469
       Hint = ''
       DataSource = DM.DS_Grid_FactPal
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
@@ -686,8 +686,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
     CloseDataSource = False
     DataSource = DM.DS_Grid_Escale
     BCDToCurrency = False
-    Left = 176
-    Top = 192
+    Left = 184
+    Top = 216
   end
   object frxPDFExport: TfrxPDFExport
     ShowDialog = False
@@ -718,11 +718,11 @@ object FEtatsFacturePal: TFEtatsFacturePal
     PdfA = False
     PDFStandard = psNone
     PDFVersion = pv17
-    Left = 264
-    Top = 256
+    Left = 400
+    Top = 200
   end
   object frxReport: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -767,6 +767,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       TitleBeforeHeader = False
       object PageHeader_sum: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
@@ -790,6 +794,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportTitle_sum: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 92.795300000000000000
         Top = 64.252010000000000000
@@ -945,6 +953,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ColumnHeader_sum: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 181.417440000000000000
@@ -1065,27 +1077,14 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportSummary_sum: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
-        object Memo53: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Width = 302.362180310000000000
-          Height = 15.118110240000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'TOTAL')
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object sum_total: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
@@ -1166,9 +1165,30 @@ object FEtatsFacturePal: TFEtatsFacturePal
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo53: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 302.362180310000000000
+          Height = 15.118110240000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'TOTAL')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
       object PageFooter_sum: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118120000000000000
         Top = 370.393940000000000000
@@ -1192,6 +1212,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object MasterData_sum: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 257.008040000000000000
@@ -1236,7 +1260,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
           Align = baLeft
           AllowVectorExport = True
           Left = 302.362143700000000000
-          Top = -0.028424360000000010
+          Top = -0.028424360000000000
           Width = 75.590551180000000000
           Height = 15.118110240000000000
           DisplayFormat.FormatStr = '#,##0'
@@ -1326,6 +1350,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       TitleBeforeHeader = False
       object PageFooter_main: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 442.205010000000000000
@@ -1369,6 +1397,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object PageHeader_main: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
@@ -1392,6 +1424,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ColumnHeader_main: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897637800000000000
         Top = 170.078850000000000000
@@ -1418,7 +1454,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
           Align = baLeft
           AllowVectorExport = True
           Left = 37.795275590000000000
-          Width = 75.590551181102360000
+          Width = 75.590551181102400000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1436,7 +1472,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo9: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 219.212598424645700000
+          Left = 219.212598424645800000
           Width = 56.692913390000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1455,7 +1491,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo10: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 275.905511814645700000
+          Left = 275.905511814645800000
           Width = 68.031496060000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1474,7 +1510,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo11: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 343.937007874645700000
+          Left = 343.937007874645800000
           Width = 128.503937010000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1513,8 +1549,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo13: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 472.440944884645700000
-          Width = 117.165354330708700000
+          Left = 472.440944884645800000
+          Width = 117.165354330709000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1532,8 +1568,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo14: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 589.606299215354400000
-          Width = 117.165354330708700000
+          Left = 589.606299215354800000
+          Width = 117.165354330709000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1551,7 +1587,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo15: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 706.771653546063100000
+          Left = 706.771653546063800000
           Width = 41.574803149606300000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1571,7 +1607,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo16: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 748.346456695669400000
+          Left = 748.346456695670100000
           Width = 45.354330710000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1591,7 +1627,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo17: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 793.700787405669400000
+          Left = 793.700787405670100000
           Width = 45.354330710000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1611,7 +1647,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo18: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 839.055118115669400000
+          Left = 839.055118115670100000
           Width = 68.031496060000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1632,7 +1668,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
           Align = baLeft
           AllowVectorExport = True
           Left = 113.385826771102400000
-          Width = 52.913385826771650000
+          Width = 52.913385826771700000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1650,8 +1686,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo43: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 166.299212597874000000
-          Width = 52.913385826771650000
+          Left = 166.299212597874100000
+          Width = 52.913385826771700000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1669,8 +1705,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo44: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 907.086614175669400000
-          Width = 68.031496062992130000
+          Left = 907.086614175670100000
+          Width = 68.031496062992100000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1689,8 +1725,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo54: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 975.118110238661500000
-          Width = 68.031496062992130000
+          Left = 975.118110238662200000
+          Width = 68.031496062992100000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1709,6 +1745,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportTitle_main: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1852,6 +1892,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object MasterData_main: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1888,7 +1932,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
           Align = baLeft
           AllowVectorExport = True
           Left = 37.795275590000000000
-          Width = 75.590551181102360000
+          Width = 75.590551181102400000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           Font.Charset = DEFAULT_CHARSET
@@ -1906,7 +1950,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo22: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 219.212598424645700000
+          Left = 219.212598424645800000
           Width = 56.692913390000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -1925,7 +1969,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo23: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 275.905511814645700000
+          Left = 275.905511814645800000
           Width = 68.031496060000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -1944,7 +1988,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo24: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 343.937007874645700000
+          Left = 343.937007874645800000
           Width = 128.503937010000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -1963,7 +2007,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo25: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 1043.149606294252000000
+          Left = 1043.149606295670000000
           Width = 26.456692910000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -1983,8 +2027,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo26: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 472.440944884645700000
-          Width = 117.165354330000000000
+          Left = 472.440944884645800000
+          Width = 117.165354330709000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           Font.Charset = DEFAULT_CHARSET
@@ -2002,8 +2046,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo27: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 589.606299214645700000
-          Width = 117.165354330000000000
+          Left = 589.606299215354800000
+          Width = 117.165354330709000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           Font.Charset = DEFAULT_CHARSET
@@ -2021,7 +2065,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo28: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 706.771653544645700000
+          Left = 706.771653546063800000
           Width = 41.574803149606300000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -2043,7 +2087,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo29: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 748.346456694252000000
+          Left = 748.346456695670100000
           Width = 45.354330710000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -2065,7 +2109,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo30: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 793.700787404252000000
+          Left = 793.700787405670100000
           Width = 45.354330710000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -2087,7 +2131,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo31: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 839.055118114252000000
+          Left = 839.055118115670100000
           Width = 68.031496060000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -2110,7 +2154,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
           Align = baLeft
           AllowVectorExport = True
           Left = 113.385826771102400000
-          Width = 52.913385826771650000
+          Width = 52.913385826771700000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           Font.Charset = DEFAULT_CHARSET
@@ -2128,8 +2172,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo45: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 166.299212597874000000
-          Width = 52.913385826771650000
+          Left = 166.299212597874100000
+          Width = 52.913385826771700000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           Font.Charset = DEFAULT_CHARSET
@@ -2147,7 +2191,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo55: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 907.086614174252000000
+          Left = 907.086614175670100000
           Width = 68.031496060000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -2169,7 +2213,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         object Memo56: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 975.118110234252000000
+          Left = 975.118110235670100000
           Width = 68.031496060000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
@@ -2191,6 +2235,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object GroupHeader: TfrxGroupHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 249.448980000000000000
@@ -2217,6 +2265,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 404.409710000000000000
@@ -2228,25 +2280,6 @@ object FEtatsFacturePal: TFEtatsFacturePal
           Fill.BackColor = 15000804
           Fill.ForeColor = clNone
           Frame.Typ = []
-        end
-        object Memo42: TfrxMemoView
-          AllowVectorExport = True
-          Left = 839.055118110000000000
-          Width = 68.031496060000000000
-          Height = 15.118110240000000000
-          DisplayFormat.FormatStr = '#,##0'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial Narrow'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[SUM(<frxDBDataset."montant_xof">,MasterData_main)]')
-          ParentFont = False
-          VAlign = vaCenter
         end
         object Memo59: TfrxMemoView
           AllowVectorExport = True
@@ -2286,9 +2319,50 @@ object FEtatsFacturePal: TFEtatsFacturePal
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo42: TfrxMemoView
+          AllowVectorExport = True
+          Left = 839.055660000000000000
+          Width = 68.031496060000000000
+          Height = 15.118110240000000000
+          DisplayFormat.FormatStr = '#,##0'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial Narrow'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxDBDataset."montant_xof">,MasterData_main)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo67: TfrxMemoView
+          AllowVectorExport = True
+          Width = 839.055616060000000000
+          Height = 15.118110240000000000
+          DisplayFormat.FormatStr = '#,##0'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial Narrow'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'TOTAL GENERAL')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
       object GroupFooter: TfrxGroupFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 328.819110000000000000
@@ -2374,24 +2448,6 @@ object FEtatsFacturePal: TFEtatsFacturePal
           VAlign = vaCenter
         end
       end
-      object Memo35: TfrxMemoView
-        AllowVectorExport = True
-        Left = -3.779530000000000000
-        Top = 404.409710000000000000
-        Width = 831.496270470000000000
-        Height = 15.118110240000000000
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -9
-        Font.Name = 'Arial Narrow'
-        Font.Style = [fsBold]
-        Frame.Typ = []
-        HAlign = haCenter
-        Memo.UTF8W = (
-          'TOTAL')
-        ParentFont = False
-        VAlign = vaCenter
-      end
     end
   end
   object frxDBDataset_sum: TfrxDBDataset
@@ -2399,7 +2455,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
     CloseDataSource = False
     DataSet = DM.QSum
     BCDToCurrency = False
-    Left = 176
-    Top = 256
+    Left = 152
+    Top = 264
   end
 end

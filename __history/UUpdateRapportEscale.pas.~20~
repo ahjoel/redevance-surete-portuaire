@@ -1,0 +1,162 @@
+unit UUpdateRapportEscale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,   Data.DB,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniBasicGrid, uniStringGrid, uniEdit, uniMultiItem,
+  uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniDateTimePicker, uniLabel,
+  uniGroupBox, uniPanel, uniButton, uniGUIBaseClasses, uniDBGrid;
+
+type
+  TFUpdateRapportEscale = class(TUniForm)
+    UniContainerPanel1: TUniContainerPanel;
+    PanOps: TUniPanel;
+    BtnCancel: TUniButton;
+    BtnSave: TUniButton;
+    BtnRapport: TUniButton;
+    EdRapport: TUniEdit;
+    UniPanel1: TUniPanel;
+    UniSimplePanel5: TUniSimplePanel;
+    Group_infos: TUniGroupBox;
+    UniLabel4: TUniLabel;
+    UniLabel5: TUniLabel;
+    UniLabel6: TUniLabel;
+    UniLabel7: TUniLabel;
+    UniLabel8: TUniLabel;
+    UniLabel9: TUniLabel;
+    EdRefPort: TUniEdit;
+    EdRefInt: TUniEdit;
+    EdNavire: TUniEdit;
+    EdConsignataire: TUniEdit;
+    EdPoste: TUniEdit;
+    EdAccost: TUniEdit;
+    Group_rech: TUniGroupBox;
+    UniLabel15: TUniLabel;
+    UniLabel16: TUniLabel;
+    UniLabel17: TUniLabel;
+    edRechAccost: TUniDateTimePicker;
+    BtnRechEscale: TUniButton;
+    DBLRechNavire: TUniDBLookupComboBox;
+    DBLRechCons: TUniDBLookupComboBox;
+    PanAddLine: TUniSimplePanel;
+    UniSimplePanelBtAddline: TUniSimplePanel;
+    BtAddLine: TUniButton;
+    UniSimplePanelselectline: TUniSimplePanel;
+    UniLabel1: TUniLabel;
+    DBLMarchandise: TUniDBLookupComboBox;
+    UniLabel2: TUniLabel;
+    DBLAct: TUniDBLookupComboBox;
+    EdQte: TUniNumberEdit;
+    UniLabel3: TUniLabel;
+    UniSimplePanelbtdeleteLine: TUniSimplePanel;
+    BtDeleteLine: TUniButton;
+    UniSimplePanel2: TUniSimplePanel;
+    PanRap: TUniSimplePanel;
+    UniLabel10: TUniLabel;
+    EdDate: TUniDateTimePicker;
+    UniLabel11: TUniLabel;
+    EdNumATP: TUniEdit;
+    UniLabel12: TUniLabel;
+    EdNumVoyage: TUniEdit;
+    StringGridRapport: TUniDBGrid;
+    procedure UniFormShow(Sender: TObject);
+    procedure BtnSaveClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    var
+    id_rap, ref, num_atp, num_voyage, user_create, user_control, user_valid, navire, consignataire, obs : string;
+    FmContext : string;
+    EditContext : string;
+  end;
+
+function FUpdateRapportEscale: TFUpdateRapportEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, ULoadData, UGlobal, URapportEscale;
+
+function FUpdateRapportEscale: TFUpdateRapportEscale;
+begin
+  Result := TFUpdateRapportEscale(DM.GetFormInstance(TFUpdateRapportEscale));
+end;
+
+procedure TFUpdateRapportEscale.BtnSaveClick(Sender: TObject);
+begin
+    //CONTROL
+  if FmContext = ControlContext then
+
+          begin
+                MessageDlg('Voulez-vous marquer les informations suivantes comme "Controlées" ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE rapport_escale SET rapport_control=:rapport_control, user_control=:user_control, date_control=CURRENT_TIMESTAMP WHERE id_rap_esc=:id');
+                                              Parameters.ParamByName('id').Value:= id_rap;
+                                              Parameters.ParamByName('user_control').Value:= UserId;
+                                              Parameters.ParamByName('rapport_control').Value:= 0;
+                                              ExecSQL;
+                                          end;
+
+
+                                       MessageDlg('Control effectuée',mtConfirmation,[mbok]);
+                                       FRapportEscale.ShowData;
+                                       DM.DQ_Grid_RapEsc.Locate('id_rap_esc',id_rap,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end
+
+         else
+
+  //VALIDATION
+  if FmContext = ValidatContext then
+          begin
+                MessageDlg('Voulez-vous marquer les informations suivantes comme "Validées" ?', mtConfirmation, mbYesNo,
+                      procedure(Sender: TComponent; Res: Integer)
+                      begin
+                        case Res of
+                          mrYes :
+                              begin
+                                    with DM.QSave do
+                                          begin
+                                              SQL.Text := ('UPDATE rapport_escale SET rapport_validate=:rapport_validate, user_validate=:user_validate, date_validate=CURRENT_TIMESTAMP WHERE id_rap_esc=81');
+//                                              Parameters.ParamByName('id').Value:= id_rap;
+                                              Parameters.ParamByName('user_validate').Value:= UserId;
+                                              Parameters.ParamByName('rapport_validate').Value:= 0;
+                                              ExecSQL;
+                                          end;
+                                       MessageDlg('Validation effectuée',mtConfirmation,[mbok]);
+                                       FRapportEscale.ShowData;
+                                       DM.DQ_Grid_RapEsc.Locate('id_rap_esc',81,[loCaseInsensitive] );
+                                       close;
+
+                            end
+                        end ;
+                      end
+                    );
+          end
+end;
+
+procedure TFUpdateRapportEscale.UniFormShow(Sender: TObject);
+begin
+    LoadDBLMarchandise;
+    LoadDBLAction;
+    LoadDBLNavire;
+    LoadDBLConsignataire;
+end;
+
+end.

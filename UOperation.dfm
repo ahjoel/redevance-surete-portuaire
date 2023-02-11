@@ -208,8 +208,9 @@ object FOperation: TFOperation
       Height = 400
       Hint = ''
       DataSource = DM.DS_Grid_Ope
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
+      WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'
       StripeRows = False
       Align = alClient

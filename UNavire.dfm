@@ -27,7 +27,7 @@ object FNavire: TFNavire
       Height = 640
       Hint = ''
       DataSource = DM.Ds_Grid_Navire
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       WebOptions.PageSize = 200
@@ -144,7 +144,6 @@ object FNavire: TFNavire
           Alignment = taRightJustify
           Caption = ''
           Color = clSkyBlue
-          ExplicitLeft = 1255
         end
       end
       object UniPanel4: TUniPanel

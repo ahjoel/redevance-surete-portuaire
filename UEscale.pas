@@ -118,7 +118,7 @@ procedure TFEscale.ShowData;
                    'INNER JOIN exercice Z on E.exercice=Z.id_exercice '#13+
                    'INNER JOIN observation O on E.observation=O.id_obs '#13+
                    'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
-                    ' WHERE E.id is not null ';
+                   ' WHERE E.id is not null ';
       query:=init_query + exercice_filter+ search+ filter;
 
       DM.DQ_Grid_Escale.Close;
@@ -317,7 +317,7 @@ end;
 procedure TFEscale.DBGridRecordCount(Sender: TUniDBGrid; var RecCount: Integer);
 begin
   PanRowCount.Caption := IntToStr(DBGrid.DataSource.DataSet.RecordCount) ;
-  if  DM.DQ_Grid_Escale.RecordCount=0 then
+  if  DBGrid.DataSource.DataSet.RecordCount=0 then
       begin
             BtnUpdate.Enabled:=False;
             BtnDel.Enabled:=False;

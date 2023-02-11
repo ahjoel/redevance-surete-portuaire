@@ -53,6 +53,7 @@ object FRade: TFRade
         TabOrder = 2
         IconCls = 'compose'
         OnClick = BtnUpdateClick
+        ExplicitTop = 3
       end
       object BtnAdd: TUniButton
         AlignWithMargins = True
@@ -254,14 +255,6 @@ object FRade: TFRade
           Title.Caption = ' FP'
           Title.Font.Style = [fsBold]
           Width = 30
-          Menu.MenuEnabled = False
-          Menu.ColumnHideable = False
-        end
-        item
-          FieldName = 'TEST'
-          Title.Caption = 'TEST'
-          Width = 64
-          Font.Style = [fsBold]
           Menu.MenuEnabled = False
           Menu.ColumnHideable = False
         end>

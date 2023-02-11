@@ -1,0 +1,52 @@
+unit UFactInterne;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniGUIBaseClasses, uniImageList, Vcl.Menus,
+  uniMainMenu, uniBasicGrid, uniDBGrid, uniBitBtn, uniMenuButton, uniLabel,
+  uniEdit, uniButton, uniPanel;
+
+type
+  TFFactInterne = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    PanOp: TUniPanel;
+    BtnDel: TUniButton;
+    BtnUpdate: TUniButton;
+    EdSearch: TUniEdit;
+    UniLabel1: TUniLabel;
+    BtnValidate: TUniButton;
+    BtnControl: TUniButton;
+    UniMenuButton1: TUniMenuButton;
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    PanRowCount: TUniPanel;
+    UniPanel1: TUniPanel;
+    DBGrid: TUniDBGrid;
+    PopupMenu_add: TUniPopupMenu;
+    E1: TUniMenuItem;
+    R1: TUniMenuItem;
+    UniImageList1: TUniImageList;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FFactInterne: TFFactInterne;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FFactInterne: TFFactInterne;
+begin
+  Result := TFFactInterne(DM.GetFormInstance(TFFactInterne));
+end;
+
+end.

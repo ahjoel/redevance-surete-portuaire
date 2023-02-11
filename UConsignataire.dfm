@@ -115,7 +115,7 @@ object FConsignataire: TFConsignataire
       Height = 463
       Hint = ''
       DataSource = DM.DS_Grid_Consignataire
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'
@@ -190,8 +190,6 @@ object FConsignataire: TFConsignataire
       Color = clInfoBk
       Align = alBottom
       TabOrder = 4
-      ExplicitTop = 632
-      ExplicitWidth = 1306
       object BtnExport: TUniButton
         AlignWithMargins = True
         Left = 765

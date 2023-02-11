@@ -28,7 +28,7 @@ object FUser: TFUser
       Width = 1084
       Height = 666
       Hint = ''
-      ActivePage = TPerms
+      ActivePage = TUser
       Align = alClient
       TabOrder = 1
       object TUser: TUniTabSheet
@@ -249,7 +249,7 @@ object FUser: TFUser
             Height = 565
             Hint = ''
             DataSource = DM.DS_Grid_User
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
             ReadOnly = True
             LoadMask.Message = 'Loading data...'
             StripeRows = False

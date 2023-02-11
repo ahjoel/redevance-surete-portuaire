@@ -24,6 +24,8 @@ type
     EdDateFinTauxMarch: TUniDateTimePicker;
     BtnSave: TUniButton;
     BtnCancel: TUniButton;
+    UniLabel2: TUniLabel;
+    EdQteMax: TUniFormattedNumberEdit;
     procedure UniFormShow(Sender: TObject);
     procedure BtnSaveClick(Sender: TObject);
   private
@@ -105,10 +107,11 @@ begin
                                   begin
                                         with DM.QSave do
                                                begin
-                                                  SQL.Text := ('INSERT INTO taux_operation (taux_euro, date_debut, operation_taux ) Values (:taux, :debut, :operation  )');
-                                                  Parameters.ParamByName('taux').Value:= FormatCurr('0.00#',  EdMontantTauxMarch.Value).Replace(',', '.');
+                                                  SQL.Text := ('INSERT INTO taux_operation (taux_euro, date_debut, operation_taux, qte_max ) Values (:taux, :debut, :operation, :qte_max  )');
+                                                  Parameters.ParamByName('taux').Value:=  (FormatCurr('0.00#', EdMontantTauxMarch.Value)).Replace(',', '.');
                                                   Parameters.ParamByName('debut').Value:= datefr(EdDateDebutTauxMarch.Text);
                                                   Parameters.ParamByName('operation').Value:= DBLOperation.KeyValue;
+                                                  Parameters.ParamByName('qte_max').Value:= EdQteMax.Text;
                                                   ExecSQL;
                                               end;
 

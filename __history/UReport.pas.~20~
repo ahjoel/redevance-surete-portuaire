@@ -1,0 +1,91 @@
+unit UReport;
+
+interface
+
+uses
+  Forms,SysUtils, Classes, DB, ADODB,inifiles, DBCtrls, Grids,Dialogs, uniDBGrid, UniDateTimePicker,
+    Windows,clipbrd , DBGrids,strUtils, Excel2000,Variants, sGauge,Graphics ,TLHelp32,jpeg,
+    Messages, Controls,Menus,NB30,registry,sEdit, frxGradient, UniURLFrame , uniPanel, uniGUIBaseClasses,
+    frxClass, frxExportBaseDialog, frxExportPDF, frxDBSet,  uniGUIAbstractClasses, uniGUIClasses, uniGUIForm, uniButton;
+
+type
+  TFReport = class(TUniForm)
+    URLFrame: TUniURLFrame;
+    frxGradientObject: TfrxGradientObject;
+    procedure UniFormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    //PREPAR AND SHOW WEB REPORT WITH FAST REPORT
+    procedure DataAndShowReport (ADOQuery : TADOQuery; Query : String; DataSet : TfrxDBDataset; Report: TfrxReport; Exp: TfrxPDFExport; URLFrame: TUniURLFrame; Name : String) ;
+
+
+  end;
+
+function FReport: TFReport;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, ULoadData, ServerModule;
+
+function FReport: TFReport;
+begin
+  Result := TFReport(DM.GetFormInstance(TFReport));
+end;
+
+
+procedure TFReport.DataAndShowReport (ADOQuery : TADOQuery; Query : String; DataSet : TfrxDBDataset; Report: TfrxReport; Exp: TfrxPDFExport; URLFrame: TUniURLFrame; Name : String) ;
+
+ var
+    AUrl : string;
+begin
+      ExQuery(ADOQuery, Query) ;
+
+     if ADOQuery.RecordCount>0 then
+         begin
+              DataSet.DataSet := ADOQuery;
+
+
+              Report.PrintOptions.ShowDialog := False;
+              Report.ShowProgress := false;
+
+              Report.EngineOptions.SilentMode := True;
+              Report.EngineOptions.EnableThreadSafe := True;
+              Report.EngineOptions.DestroyForms := False;
+              Report.EngineOptions.UseGlobalDataSetList := False;
+
+
+              Exp.Background := True;
+              Exp.ShowProgress := False;
+              Exp.ShowDialog := False;
+              Exp.FileName := ServerModule.UniServerModule.NewCacheFileUrl(False, 'pdf', Name, '', AUrl, True);
+              Exp.DefaultPath := '';
+
+              Report.PreviewOptions.AllowEdit := False;
+              Report.PrepareReport;
+              Report.Export(Exp);
+
+              FReport.Caption := Name;
+
+
+              URLFrame.URL := AUrl;
+         end
+    else
+        begin
+            MessageDlg('Aucune Donnée à Imprimer',mtWarning,[mbok]);
+            Abort;
+        end;
+
+end;
+
+
+procedure TFReport.UniFormCreate(Sender: TObject);
+begin
+  FReport.ShowModal() ;
+end;
+
+end.

@@ -56,7 +56,7 @@ begin
                    FEditRapportEscale.EdRefPort.Text := DBGrid.DataSource.DataSet.FieldByName('num_port').AsString;
                    FEditRapportEscale.EdNavire.Text := DBGrid.DataSource.DataSet.FieldByName('nom_navire').AsString;
                    FEditRapportEscale.EdConsignataire.Text := DBGrid.DataSource.DataSet.FieldByName('nom_consignataire').AsString;
-                   FEditRapportEscale.EdArrive.Text := DBGrid.DataSource.DataSet.FieldByName('date_accost').AsString;
+                   //FEditRapportEscale.EdArrive.Text := DBGrid.DataSource.DataSet.FieldByName('date_accost').AsString;
                    FEditRapportEscale.EdPoste.Text := DBGrid.DataSource.DataSet.FieldByName('code_pq').AsString;
                    FEditRapportEscale.id_esc :=DBGrid.DataSource.DataSet.FieldByName('id').AsString;
 

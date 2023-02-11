@@ -2,7 +2,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
   Left = 0
   Top = 0
   ClientHeight = 150
-  ClientWidth = 529
+  ClientWidth = 621
   Caption = 'Edit Taux Marchandise'
   OnShow = UniFormShow
   BorderStyle = bsSingle
@@ -14,7 +14,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
   object UniContainerPanel1: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 529
+    Width = 621
     Height = 150
     Hint = ''
     ParentColor = False
@@ -27,12 +27,13 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
     object UniPanel1: TUniPanel
       Left = 0
       Top = 115
-      Width = 529
+      Width = 621
       Height = 35
       Hint = ''
       Align = alBottom
       TabOrder = 1
       Caption = ''
+      ExplicitWidth = 529
       object BtnSave: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -49,7 +50,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
       end
       object BtnCancel: TUniButton
         AlignWithMargins = True
-        Left = 447
+        Left = 539
         Top = 4
         Width = 78
         Height = 27
@@ -58,21 +59,23 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         Align = alRight
         TabOrder = 2
         IconCls = 'delete'
+        ExplicitLeft = 447
       end
     end
     object UniPanel2: TUniPanel
       Left = 0
       Top = 0
-      Width = 529
+      Width = 621
       Height = 115
       Hint = ''
       Align = alClient
       TabOrder = 2
       Caption = ''
+      ExplicitWidth = 529
       object DBLOperation: TUniDBLookupComboBox
         Left = 20
         Top = 33
-        Width = 487
+        Width = 589
         Hint = ''
         ListField = 'libelle'
         ListSource = DM.DS_DBL_Ope
@@ -92,7 +95,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         TabOrder = 2
       end
       object UniLabel4: TUniLabel
-        Left = 216
+        Left = 197
         Top = 64
         Width = 41
         Height = 13
@@ -101,7 +104,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         TabOrder = 3
       end
       object EdMontantTauxMarch: TUniFormattedNumberEdit
-        Left = 216
+        Left = 197
         Top = 83
         Width = 90
         Hint = ''
@@ -121,7 +124,7 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         DateTime = 44944.000000000000000000
         DateFormat = 'dd/MM/yyyy'
         TimeFormat = 'HH:mm:ss'
-        TabOrder = 5
+        TabOrder = 6
         EmptyText = '  /  /    '
       end
       object UniLabel1: TUniLabel
@@ -131,27 +134,48 @@ object FEditTauxMarchandise: TFEditTauxMarchandise
         Height = 13
         Hint = ''
         Caption = 'Debut'
-        TabOrder = 6
+        TabOrder = 7
       end
       object LbFin: TUniLabel
-        Left = 392
+        Left = 494
         Top = 64
         Width = 14
         Height = 13
         Hint = ''
         Caption = 'Fin'
-        TabOrder = 7
+        TabOrder = 8
       end
       object EdDateFinTauxMarch: TUniDateTimePicker
-        Left = 392
+        Left = 494
         Top = 83
         Width = 115
         Hint = ''
         DateTime = 44811.000000000000000000
         DateFormat = 'dd/MM/yyyy'
         TimeFormat = 'HH:mm:ss'
-        TabOrder = 8
+        TabOrder = 9
         EmptyText = '  /  /    '
+      end
+      object UniLabel2: TUniLabel
+        Left = 341
+        Top = 64
+        Width = 41
+        Height = 13
+        Hint = ''
+        Caption = 'Qt'#233' Max'
+        TabOrder = 10
+      end
+      object EdQteMax: TUniFormattedNumberEdit
+        Left = 341
+        Top = 83
+        Width = 90
+        Hint = ''
+        Alignment = taRightJustify
+        TabOrder = 5
+        MaxValue = 9999999.000000000000000000
+        BlankValue = 0
+        DecimalUseOSDefault = True
+        DecimalPrecision = 0
       end
     end
   end

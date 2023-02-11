@@ -173,7 +173,7 @@ end;
 procedure LoadDBLOperation;
 begin
   DBLDataLoad(DM.DQ_DBL_Ope,'SELECT * , CONCAT( T.libelle_type_march ," - ", A.libelle_action ) as libelle '#13+
-                            'FROM operation O, type_marchandise T, action A WHERE O.type_marchandise=T.id_type_march AND O.action=A.id_action');
+                            'FROM operation O, type_marchandise T, action A WHERE O.type_marchandise=T.id_type_march AND O.action=A.id_action order by libelle ');
 end;
 
 procedure LoadDBLAction;

@@ -126,7 +126,7 @@ object FEscale: TFEscale
       Hint = ''
       TitleFont.Style = [fsBold]
       DataSource = DM.DS_Grid_Escale
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       WebOptions.PageSize = 200

@@ -1,5 +1,1 @@
-syg_rsp.exe: 00003F40: 07:42:51 []:>--------------------------------------------------------------<
-syg_rsp.exe: 00003F40: 07:42:51 [TUniServerModule]:Server First Init.
-syg_rsp.exe: 00003F40: 07:42:51 [TUniServerModule]:Start Path = D:\SYG-RSP\src\Win32\Debug\
-syg_rsp.exe: 00003F40: 07:42:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
-syg_rsp.exe: 00003F40: 07:42:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+syg_rsp.exe: 000057B8: 07:39:24 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: DzHFWWdCuW10BE99EF6 ) : Addr: $0082D9FE

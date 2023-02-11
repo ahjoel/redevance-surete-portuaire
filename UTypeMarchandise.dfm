@@ -197,8 +197,9 @@ object FTypeMarchandise: TFTypeMarchandise
       Height = 367
       Hint = ''
       DataSource = DM.DS_Grid_TM
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
+      WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'
       StripeRows = False
       Align = alClient

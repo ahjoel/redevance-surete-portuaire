@@ -20,8 +20,6 @@ object FObservationEscale: TFObservationEscale
     ParentColor = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 599
-    ExplicitHeight = 360
     object PanTitle: TUniPanel
       Left = 0
       Top = 0
@@ -38,7 +36,6 @@ object FObservationEscale: TFObservationEscale
       Caption = 'Observations Escale'
       Color = clWhite
       Layout = 'column'
-      ExplicitWidth = 535
     end
     object UniPanel1: TUniPanel
       Left = 0
@@ -102,8 +99,6 @@ object FObservationEscale: TFObservationEscale
           TabOrder = 1
           IconCls = 'bookmarks'
           OnClick = BtnSaveClick
-          ExplicitLeft = -6
-          ExplicitTop = 2
         end
         object BtnCancel: TUniButton
           Left = 0
@@ -115,9 +110,6 @@ object FObservationEscale: TFObservationEscale
           Align = alBottom
           TabOrder = 2
           IconCls = 'delete'
-          ExplicitLeft = 19
-          ExplicitTop = 11
-          ExplicitWidth = 81
         end
       end
       object EdCode: TUniEdit
@@ -149,8 +141,6 @@ object FObservationEscale: TFObservationEscale
       Align = alLeft
       TabOrder = 3
       Caption = ''
-      ExplicitTop = 72
-      ExplicitHeight = 200
       object BtnAdd: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -207,7 +197,7 @@ object FObservationEscale: TFObservationEscale
       Height = 254
       Hint = ''
       DataSource = DM.DS_Grid_Obs
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'

@@ -1,0 +1,32 @@
+unit UEditFactRadeInt;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFEditFactRadeInterne = class(TUniForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEditFactRadeInterne: TFEditFactRadeInterne;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEditFactRadeInterne: TFEditFactRadeInterne;
+begin
+  Result := TFEditFactRadeInterne(UniMainModule.GetFormInstance(TFEditFactRadeInterne));
+end;
+
+end.

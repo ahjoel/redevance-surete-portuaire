@@ -53,7 +53,6 @@ object FRade: TFRade
         TabOrder = 2
         IconCls = 'compose'
         OnClick = BtnUpdateClick
-        ExplicitTop = 3
       end
       object BtnAdd: TUniButton
         AlignWithMargins = True
@@ -124,7 +123,7 @@ object FRade: TFRade
       Height = 705
       Hint = ''
       DataSource = DM.DS_Grid_Rade
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       WebOptions.PageSize = 200

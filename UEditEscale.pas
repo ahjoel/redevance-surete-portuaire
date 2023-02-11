@@ -605,7 +605,7 @@ begin
                                           end;
                                          ClearData;
 
-                                       MessageDlg('Control effectuée',mtConfirmation,[mbok]);
+                                       MessageDlg('Validation effectuée',mtConfirmation,[mbok]);
                                        FEscale.ShowData;
                                        DM.DQ_Grid_Escale.Locate('id',id_esc,[loCaseInsensitive] );
                                        close;

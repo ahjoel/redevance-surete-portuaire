@@ -55,6 +55,16 @@ var
 
     //VARIABLE REQUETE SQL
 
+    //SELECT TAUX_OPERATION FOR LIGNE RAPPORT
+    init_query_select_taux : string = ' SELECT T.id FROM taux_operation T '#13+
+                                      ' INNER JOIN operation O on T.operation_taux=O.id_operation '#13+
+                                      ' INNER JOIN action A on O.action=A.id_action '#13+
+                                      ' INNER JOIN type_marchandise Y on O.type_marchandise = Y.id_type_march '#13+
+                                      ' INNER JOIN marchandise M on M.type_marchandise = Y.id_type_march '#13+
+                                      ' WHERE T.date_fin is null '#13+
+                                      '  ';
+
+
 
     //REQUETE DE RECHERCHE DE REGLEMENT AVEC INFORMATION SUR LA FACTURE LIEE
     init_query_select_reg : string = ' SELECT R.id_regle, R.date_regle,F.id_factures_pal, F.ref_facture_pal, T.code_type_fact, F.date_emise_facture_pal, F.date_ech_facture_pal, '#13+
@@ -299,6 +309,45 @@ var
                                     ' LEFT JOIN type_navire Y ON N.type_navire=Y.id_type_nav '#13+
                                     ' WHERE R.id_regle IS NOT NULL '#13+
                                     '  ';
+
+
+//RAPPORT ESCALE REQUETE
+init_query_rapport_escale : string = 'SELECT R.id_rap_esc, R.date, N.id_navire, N.nom_navire, E.num_port, CONCAT(E.ref, ''-'', RIGHT(Z.libelle_exercice, 2)) as ref_esc , R.num_atp, R.num_voyage, C.nom_consignataire,  '#13+
+                                   ' E.date_accost, E.date_depart, Q.code_pq,  po.libelle_port as orgine, pd.libelle_port as destination, '#13+
+                                   ' CASE WHEN R.facturer_int = 0 THEN '''' ELSE ''O'' END AS fact_int , '#13+
+                                   ' case WHEN R.date_control is null THEN '''' ELSE ''O''	end as control , '#13+
+                                   ' case WHEN R.date_validate is null THEN '''' ELSE ''O''	end as validation , '#13+
+                                   ' us.login_user as user_saisie , uc.login_user as user_control , uv.login_user as user_validation, R.rapport_control, R.rapport_validate '#13+
+                                   'FROM rapport_escale R '#13+
+                                   'INNER JOIN escale E on R.escale_rap_esc=E.id '#13+
+                                   'INNER JOIN consignataire C on E.consignataire=C.id_consignataire '#13+
+                                   'INNER JOIN navire  N on E.navire=N.id_navire '#13+
+                                   'INNER JOIN poste_quai Q on E.post_quai=Q.id_pq '#13+
+                                   'INNER JOIN port as po on E.port_orgine=po.id_port '#13+
+                                   'INNER JOIN observation o ON E.observation = o.id_obs '#13+
+                                   'LEFT JOIN port as pd on E.port_dest=pd.id_port '#13+
+                                   'INNER JOIN exercice Z on E.exercice=Z.id_exercice '#13+
+                                   'LEFT JOIN type_navire T on N.type_navire=T.id_type_nav '#13+
+                                   'INNER JOIN user as us on E. user_create=us.id_user '#13+
+                                   'LEFT JOIN user as uc on E.user_control=uc.id_user '#13+
+                                   'LEFT JOIN user as uv on E.user_validate=uv.id_user '#13+
+                                    ' WHERE  R.id_rap_esc is not null ';
+// DETAIL RAPPORT ESCALE
+ init_query_details_rapport_escale : string =  ' SELECT L.id_ligne_rap, L.rapport_ligne_rap, R.id_rap_esc, R.date as date_rappport, M.libelle_marchandise, A.libelle_action, L.qte_ligne_rap, V.nom_navire,V.id_navire,  C.nom_consignataire, C.id_consignataire, R.num_atp, R.num_voyage, E.date_accost '#13+
+                                               ' FROM ligne_rapport_esc L '#13+
+                                               ' INNER JOIN rapport_escale R on L.rapport_ligne_rap=R.id_rap_esc '#13+
+                                               ' INNER JOIN escale E on R.escale_rap_esc = E.id '#13+
+                                               ' INNER JOIN navire V on E.navire = V.id_navire '#13+
+                                               ' INNER JOIN consignataire C on E.consignataire=C.id_consignataire '#13+
+                                               ' INNER JOIN marchandise M on L.marchandise_ligne_rap=M.id_marchandise '#13+
+                                               ' INNER JOIN taux_operation T on L.taux_ligne_rap = T.id '#13+
+                                               ' INNER JOIN operation O on T.operation_taux=O.id_operation '#13+
+                                               ' INNER JOIN type_marchandise Y on O.type_marchandise=Y.id_type_march '#13+
+                                               ' INNER JOIN action A on O.action=A.id_action '#13+
+                                               ' INNER JOIN nature N on A.nature = N.id_nature '#13+
+                                               ' WHERE L.id_ligne_rap is not null '#13+
+                                               '  ';
+
 
 
 implementation

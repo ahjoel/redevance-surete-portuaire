@@ -1,0 +1,65 @@
+unit UEtatsRapportEscale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, frxClass, frxExportBaseDialog, frxExportPDF,
+  frxDBSet, uniComboBox, uniButton, uniMultiItem, uniDBComboBox,
+  uniDBLookupComboBox, uniLabel, uniDateTimePicker, uniGroupBox, uniPanel,
+  uniGUIBaseClasses, uniBasicGrid, uniDBGrid;
+
+type
+  TFEtatsRapportEscale = class(TUniForm)
+    MainContainer: TUniContainerPanel;
+    UniContainerPanel1: TUniContainerPanel;
+    PanTitle: TUniPanel;
+    UniPanel2: TUniPanel;
+    UniGroupBox1: TUniGroupBox;
+    GBPeriode_Em: TUniGroupBox;
+    EdPeriode1_Reg: TUniDateTimePicker;
+    EdPeriode2_Reg: TUniDateTimePicker;
+    UniLabel1: TUniLabel;
+    GBConsignataire_Fact: TUniGroupBox;
+    DBLConsignataire_Fact: TUniDBLookupComboBox;
+    GBNavire: TUniGroupBox;
+    DBLNavire: TUniDBLookupComboBox;
+    UniPanel3: TUniPanel;
+    BtnRecherche: TUniButton;
+    BtnReinitialise: TUniButton;
+    UniContainerPanel2: TUniContainerPanel;
+    BtnExport: TUniButton;
+    BtnPrint: TUniButton;
+    PanRowCount: TUniPanel;
+    frxDBDataset: TfrxDBDataset;
+    frxPDFExport: TfrxPDFExport;
+    frxReport: TfrxReport;
+    frxDBDataset_sum: TfrxDBDataset;
+    UniDBGrid: TUniDBGrid;
+    GBInstaPost: TUniGroupBox;
+    DBLInstallationPort: TUniDBLookupComboBox;
+    DBLPostQuai: TUniDBLookupComboBox;
+    UniGroupBox2: TUniGroupBox;
+    UniDBLookupComboBox1: TUniDBLookupComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FEtatsRapportEscale: TFEtatsRapportEscale;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FEtatsRapportEscale: TFEtatsRapportEscale;
+begin
+  Result := TFEtatsRapportEscale(DM.GetFormInstance(TFEtatsRapportEscale));
+end;
+
+end.

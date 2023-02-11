@@ -1,0 +1,71 @@
+program syg_rsp;
+
+uses
+  Forms,
+  ServerModule in 'ServerModule.pas' {UniServerModule: TUniGUIServerModule},
+  MainModule in 'MainModule.pas' {DM: TUniGUIMainModule},
+  Main in 'Main.pas' {MainForm: TUniForm},
+  UConsignataire in 'UConsignataire.pas' {FConsignataire: TUniForm},
+  UEditConsignataire in 'UEditConsignataire.pas' {FEditConsignataire: TUniForm},
+  UFunction in 'UFunction.pas',
+  UGlobal in 'UGlobal.pas',
+  UUniteMesure in 'UUniteMesure.pas' {FUniteMesure: TUniForm},
+  UTypeMarchandise in 'UTypeMarchandise.pas' {FTypeMarchandise: TUniForm},
+  UDataLaod in 'UDataLaod.pas',
+  UMarchandise in 'UMarchandise.pas' {FMarchandise: TUniForm},
+  UOperation in 'UOperation.pas' {FOperation: TUniForm},
+  UAction in 'UAction.pas' {FAction: TUniForm},
+  UExercice in 'UExercice.pas' {FExercice: TUniForm},
+  UTypeNavire in 'UTypeNavire.pas' {FTypeNavire: TUniForm},
+  UInstallationPort in 'UInstallationPort.pas' {FInstallationPort: TUniForm},
+  UPaysPorts in 'UPaysPorts.pas' {FPaysPorts: TUniForm},
+  UTaux in 'UTaux.pas' {FTaux: TUniForm},
+  UEscale in 'UEscale.pas' {FEscale: TUniForm},
+  UEditEscale in 'UEditEscale.pas' {FEditEscale: TUniForm},
+  ULoadData in 'ULoadData.pas',
+  UEditNavire in 'UEditNavire.pas' {FEditNavire: TUniForm},
+  UNavire in 'UNavire.pas' {FNavire: TUniForm},
+  UUser in 'UUser.pas' {FUser: TUniForm},
+  ULogin in 'ULogin.pas' {FLogin: TUniLoginForm},
+  URade in 'URade.pas' {FRade: TUniForm},
+  UEditRade in 'UEditRade.pas' {FEditRade: TUniForm},
+  UEditPort in 'UEditPort.pas' {FEditPort: TUniForm},
+  UProject_Function in 'UProject_Function.pas',
+  UPermissions in 'UPermissions.pas' {DMPerms: TDataModule},
+  UUserProfil in 'UUserProfil.pas' {FUserProfil: TUniForm},
+  URapportEscale in 'URapportEscale.pas' {FRapportEscale: TUniForm},
+  UEditTauxMarchandise in 'UEditTauxMarchandise.pas' {FEditTauxMarchandise: TUniForm},
+  UEditRapportEscale in 'UEditRapportEscale.pas' {FEditRapportEscale: TUniForm},
+  USelectEscale in 'USelectEscale.pas' {FSelectEscale: TUniForm},
+  UEditTauxRade in 'UEditTauxRade.pas' {FEditTauxRade: TUniForm},
+  UFactPALEmise in 'UFactPALEmise.pas' {FFactPalEmise: TUniForm},
+  UEditFactEscPal in 'UEditFactEscPal.pas' {UniForm1: TUniForm},
+  UEditFactRadePal in 'UEditFactRadePal.pas' {FEditFactRadePal: TUniForm},
+  USelectRade in 'USelectRade.pas' {FSelectRade: TUniForm},
+  UEditFactEscalePal in 'UEditFactEscalePal.pas' {FEditFactEscalePal: TUniForm},
+  UObservationEscale in 'UObservationEscale.pas' {FObservationEscale: TUniForm},
+  UFTypeFacture in 'UFTypeFacture.pas' {FTypeFacture: TUniForm},
+  UEtatsEscale in 'UEtatsEscale.pas' {FEtatsEscale: TUniForm},
+  UReport in 'UReport.pas' {FReport: TUniForm},
+  UEtatsRade in 'UEtatsRade.pas' {FEtatsRade: TUniForm},
+  UPrintOptionEscaleReport in 'UPrintOptionEscaleReport.pas' {FPrintOptionEscaleReport: TUniForm},
+  UPrintOptionRadeReport in 'UPrintOptionRadeReport.pas' {FPrintOptionRadeReport: TUniForm},
+  UEtatsFacturePal in 'UEtatsFacturePal.pas' {FEtatsFacturePal: TUniForm},
+  UEtatsNavire in 'UEtatsNavire.pas' {FEtatNavire: TUniForm},
+  UPrintOptionFactPal in 'UPrintOptionFactPal.pas' {FPrintOptionFactPAL: TUniForm},
+  UReglement in 'UReglement.pas' {FReglements: TUniForm},
+  UEditReglement in 'UEditReglement.pas' {FEditReglement: TUniForm},
+  UEtatsReglement in 'UEtatsReglement.pas' {FEtatsReglement: TUniForm},
+  UPrintOptionReglement in 'UPrintOptionReglement.pas' {FPrintOptionReglement: TUniForm},
+  UUpdateRapportEscale in 'UUpdateRapportEscale.pas' {FUpdateRapportEscale: TUniForm},
+  UEtatsRapportEscale in 'UEtatsRapportEscale.pas' {FEtatsRapportEscale: TUniForm},
+  UFactInterne in 'UFactInterne.pas' {FFactInterne: TUniForm};
+
+{$R *.res}
+
+begin
+  ReportMemoryLeaksOnShutdown := True;
+  Application.Initialize;
+  TUniServerModule.Create(Application);
+  Application.Run;
+end.

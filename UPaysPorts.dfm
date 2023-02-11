@@ -196,7 +196,7 @@ object FPaysPorts: TFPaysPorts
             Height = 263
             Hint = ''
             DataSource = DM.DS_Grid_Pays
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
             ReadOnly = True
             WebOptions.Paged = False
             LoadMask.Message = 'Loading data...'
@@ -427,7 +427,7 @@ object FPaysPorts: TFPaysPorts
             Height = 263
             Hint = ''
             DataSource = DM.DS_Grid_Port
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
             ReadOnly = True
             WebOptions.Paged = False
             LoadMask.Message = 'Loading data...'

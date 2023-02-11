@@ -349,7 +349,7 @@ object FEditFactRadePal: TFEditFactRadePal
           Width = 52
           Height = 46
           Hint = ''
-          Caption = 'DM.DS_DBL_Cat_Fact'
+          Caption = ''
           Align = alRight
           TabOrder = 3
           IconAlign = iaBottom

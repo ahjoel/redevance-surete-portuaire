@@ -27,7 +27,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
       Left = 0
       Top = 0
       Width = 1234
-      Height = 25
+      Height = 36
       Hint = ''
       ParentColor = False
       Align = alTop
@@ -36,7 +36,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
         Left = 35
         Top = 0
         Width = 1199
-        Height = 25
+        Height = 36
         Hint = ''
         Align = alClient
         ParentFont = False
@@ -50,33 +50,30 @@ object FEtatsFacturePal: TFEtatsFacturePal
         Caption = 'Etats Factures PAL'
         Color = clSkyBlue
         Layout = 'column'
-        ExplicitHeight = 36
       end
       object UniPanel2: TUniPanel
         Left = 0
         Top = 0
         Width = 35
-        Height = 25
+        Height = 36
         Hint = ''
         Align = alLeft
         TabOrder = 2
         BorderStyle = ubsNone
         Caption = ''
         Color = clSkyBlue
-        ExplicitHeight = 36
       end
     end
     object UniGroupBox1: TUniGroupBox
       AlignWithMargins = True
       Left = 3
-      Top = 28
+      Top = 39
       Width = 1228
       Height = 118
       Hint = ''
       Caption = 'Options de Recherche'
       Align = alTop
       TabOrder = 2
-      ExplicitTop = 25
       object GBPeriode_Em: TUniGroupBox
         Left = 3
         Top = 16
@@ -438,9 +435,9 @@ object FEtatsFacturePal: TFEtatsFacturePal
     end
     object DBGrid: TUniDBGrid
       Left = 0
-      Top = 149
+      Top = 160
       Width = 1234
-      Height = 480
+      Height = 469
       Hint = ''
       DataSource = DM.DS_Grid_FactPal
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
@@ -689,8 +686,8 @@ object FEtatsFacturePal: TFEtatsFacturePal
     CloseDataSource = False
     DataSource = DM.DS_Grid_Escale
     BCDToCurrency = False
-    Left = 176
-    Top = 192
+    Left = 184
+    Top = 216
   end
   object frxPDFExport: TfrxPDFExport
     ShowDialog = False
@@ -721,11 +718,11 @@ object FEtatsFacturePal: TFEtatsFacturePal
     PdfA = False
     PDFStandard = psNone
     PDFVersion = pv17
-    Left = 264
-    Top = 256
+    Left = 400
+    Top = 200
   end
   object frxReport: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -770,6 +767,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       TitleBeforeHeader = False
       object PageHeader_sum: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
@@ -793,6 +794,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportTitle_sum: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 92.795300000000000000
         Top = 64.252010000000000000
@@ -948,6 +953,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ColumnHeader_sum: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 181.417440000000000000
@@ -1068,6 +1077,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportSummary_sum: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 332.598640000000000000
@@ -1172,6 +1185,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object PageFooter_sum: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118120000000000000
         Top = 370.393940000000000000
@@ -1195,6 +1212,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object MasterData_sum: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 257.008040000000000000
@@ -1329,6 +1350,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       TitleBeforeHeader = False
       object PageFooter_main: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 442.205010000000000000
@@ -1372,6 +1397,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object PageHeader_main: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
@@ -1395,6 +1424,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ColumnHeader_main: TfrxColumnHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897637800000000000
         Top = 170.078850000000000000
@@ -1712,6 +1745,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportTitle_main: TfrxReportTitle
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1855,6 +1892,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object MasterData_main: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2194,6 +2235,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object GroupHeader: TfrxGroupHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 249.448980000000000000
@@ -2220,6 +2265,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 404.409710000000000000
@@ -2292,6 +2341,10 @@ object FEtatsFacturePal: TFEtatsFacturePal
       end
       object GroupFooter: TfrxGroupFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 15.118110240000000000
         Top = 328.819110000000000000
@@ -2402,7 +2455,7 @@ object FEtatsFacturePal: TFEtatsFacturePal
     CloseDataSource = False
     DataSet = DM.QSum
     BCDToCurrency = False
-    Left = 176
-    Top = 256
+    Left = 152
+    Top = 264
   end
 end

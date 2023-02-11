@@ -20,8 +20,6 @@ object FExercice: TFExercice
     ParentColor = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 503
-    ExplicitHeight = 272
     object PanTitle: TUniPanel
       Left = 0
       Top = 0
@@ -38,7 +36,6 @@ object FExercice: TFExercice
       Caption = 'Exercices'
       Color = clWhite
       Layout = 'column'
-      ExplicitWidth = 503
     end
     object UniPanel1: TUniPanel
       Left = 0
@@ -49,7 +46,6 @@ object FExercice: TFExercice
       Align = alTop
       TabOrder = 2
       Caption = ''
-      ExplicitWidth = 394
       object EdLibelle: TUniEdit
         Left = 15
         Top = 23
@@ -91,9 +87,6 @@ object FExercice: TFExercice
         ParentColor = False
         Align = alRight
         TabOrder = 4
-        ExplicitLeft = 312
-        ExplicitTop = 1
-        ExplicitHeight = 58
         object BtnSave: TUniButton
           Left = 0
           Top = 0
@@ -105,8 +98,6 @@ object FExercice: TFExercice
           TabOrder = 1
           IconCls = 'bookmarks'
           OnClick = BtnSaveClick
-          ExplicitLeft = 13
-          ExplicitTop = 8
         end
         object BtnCancel: TUniButton
           Left = 0
@@ -119,8 +110,6 @@ object FExercice: TFExercice
           TabOrder = 2
           IconCls = 'delete'
           OnClick = BtnCancelClick
-          ExplicitLeft = 13
-          ExplicitTop = 8
         end
       end
     end
@@ -133,8 +122,6 @@ object FExercice: TFExercice
       Align = alLeft
       TabOrder = 3
       Caption = ''
-      ExplicitTop = 72
-      ExplicitHeight = 200
       object BtnAdd: TUniButton
         AlignWithMargins = True
         Left = 4
@@ -191,7 +178,7 @@ object FExercice: TFExercice
       Height = 142
       Hint = ''
       DataSource = DM.DS_Grid_Exo
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow, dgRowNumbers]
       ReadOnly = True
       WebOptions.Paged = False
       LoadMask.Message = 'Loading data...'

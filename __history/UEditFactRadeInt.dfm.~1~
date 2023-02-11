@@ -1,0 +1,13 @@
+object FEditFactRadeInterne: TFEditFactRadeInterne
+  Left = 0
+  Top = 0
+  ClientHeight = 534
+  ClientWidth = 822
+  Caption = 'Edition Facture Rade Interne'
+  BorderStyle = bsSingle
+  OldCreateOrder = False
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+end
